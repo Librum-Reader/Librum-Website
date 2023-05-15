@@ -1,0 +1,40 @@
+.count-up {
+  min-height: 200px;
+}
+
+.count-up-container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  height: 200px;
+}
+.count {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+}
+.count p {
+  font-size: calc(12px + 0.5vw);
+}
+.count h1 {
+  font-size: calc(18px + 0.5vw);
+  color: var(--color-primary1);
+  letter-spacing: 1px;
+}
+.count-number {
+  display: flex;
+}
+.count-number i {
+  color: var(--color-primary1);
+  font-size: 18px;
+}
+
+@media screen and (min-width: 900px) {
+  .count h1 {
+    font-size: 38px;
+  }
+  .count p {
+    font-size: 20px;
+  }
+}

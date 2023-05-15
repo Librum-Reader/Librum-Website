@@ -1,0 +1,155 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@100;300;400;500;600;700&display=swap");
+
+.login-form-container {
+  /* height: 700px; */
+  padding: 100px 0;
+  border: 1px solid red;
+}
+.login-form {
+  width: 100%;
+  max-width: 800px;
+  margin: 0px auto;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  height: 400px;
+
+  font-family: "Fira Sans", sans-serif;
+  color: white;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.4);
+  animation: pop-down 800ms ease-in-out;
+  border: 1px solid crimson;
+}
+
+.login-form > div {
+  background-color: white;
+  padding: 5px;
+  color: grey;
+  width: 80%;
+  max-width: 35rem;
+  margin: 0 auto;
+  border-radius: 5px;
+}
+.form-input {
+  text-align: left;
+}
+.login-form input {
+  width: 90%;
+  max-width: 20rem;
+  height: 2rem;
+  border: none;
+  padding: 0 6px;
+  font-size: 14px;
+  margin-left: 8px;
+
+  /* border: 2px solid crimson; */
+}
+input[type="password"] {
+  font-family: Verdana;
+  /* letter-spacing: 0.125em;
+  font-size: 16px; */
+}
+.login-form button {
+  margin: 0 auto;
+}
+
+.form-container {
+  padding-bottom: 100px;
+  margin: 0px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 2px solid red; */
+}
+
+.form-container a,
+.form-container a:visited {
+  color: white;
+}
+
+.log-form {
+  /* border: 1px solid red; */
+  width: 95%;
+  max-width: 550px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 0;
+  border-radius: 5px;
+  margin-top: 125px;
+  box-shadow: var(--box-shadow);
+  background-color: var(--color-primary);
+  color: white;
+}
+.form-input {
+  width: 100%;
+  max-width: 350px;
+  padding: 15px 5px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.form-input input {
+  width: 100%;
+  text-align: left;
+  margin: 5px 0;
+  padding: 12px 10px;
+  font-family: "Fira Sans", sans-serif;
+  border-radius: 3px;
+  border: none;
+}
+
+.form-input-title {
+  text-align: left;
+}
+.reg {
+  display: flex;
+  gap: 5px;
+}
+.form-checkbox {
+  width: 100%;
+  max-width: 290px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 20px auto;
+}
+.form-checkbox span {
+  cursor: pointer;
+}
+.log-form button {
+  width: 100%;
+  max-width: 290px;
+  padding: 15px 5px;
+  margin-top: 20px;
+}
+.checkbox-unit {
+  margin-top: 10px;
+}
+.log-form p {
+  margin: 15px 0;
+  max-width: 300px;
+  letter-spacing: 1px;
+}
+.form-container img {
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.form-error {
+  color: wheat;
+
+  padding: 5px 0px;
+}
+@keyframes pop-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-20%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}

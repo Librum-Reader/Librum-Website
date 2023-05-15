@@ -1,0 +1,254 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@100;300;400;500;600;700&display=swap");
+
+.aboutPage-container {
+  font-family: "Fira Sans", sans-serif;
+  margin-top: 0px;
+  padding-top: 50px;
+  width: 95%;
+}
+.header-container-2 {
+  /* padding-top: 50px; */
+  background-color: #2892d7;
+  background-color: white;
+  transition: 800ms ease-in-out;
+  overflow-y: hidden;
+  /* margin-bottom: 50px; */
+}
+.header-2 {
+  color: var(--color-primary);
+  color: var(--color-secondary);
+
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+.header-2 h1 {
+  font-size: 38px;
+}
+.header-2 p {
+  width: 300px;
+  margin: 0 auto;
+  line-height: 1.8em;
+
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.header-info-2 {
+  display: flex;
+}
+.header-image-2 {
+  width: 100%;
+  align-items: center;
+  margin: 0 auto;
+  overflow-y: hidden;
+}
+.header-image-2 img {
+  height: 150px;
+  padding: 10px;
+}
+
+.header {
+  color: var(--color-primary);
+  margin: 0px auto !important;
+  /* border: 1px solid green; */
+}
+.header h1 {
+  font-size: 38px;
+  text-align: left;
+}
+.header p {
+  width: 300px;
+  margin: 0 auto;
+  line-height: 1.8em;
+
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+.about-reasons {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  margin: 80px auto;
+  width: 100%;
+
+  height: max-content;
+}
+.reason {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  max-width: 1300px;
+  padding: 10px 20px;
+  margin: 20px auto;
+  animation: fade-in-right 1700ms ease-in-out;
+}
+.reason:nth-child(even) {
+  flex-direction: column-reverse;
+  animation: fade-in-left 1700ms ease-in-out;
+}
+.reason-image {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 30px;
+  width: 100%;
+  height: 100%;
+}
+.reason-image img {
+  width: 100%;
+  max-width: 400px;
+}
+.reason-text {
+  width: 100%;
+
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.reason-text h2 {
+  color: var(--color-primary);
+  letter-spacing: 1px;
+}
+.reason-text p {
+  padding: 5px 15px;
+  letter-spacing: 1.25px;
+  line-height: 1.8em;
+  width: 100%;
+  max-width: 500px;
+}
+.about-intro-container {
+  margin: 40px 0 0px;
+  animation: fade-in-left 600ms ease-in-out;
+  border: 1px solid transparent;
+}
+
+.about-intro {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 100%;
+  max-width: 1300px;
+  margin: 20px auto;
+}
+.sm2 {
+  flex-direction: column-reverse;
+}
+.about-intro-text {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 10px;
+}
+.about-intro h3 {
+  color: var(--color-primary);
+  padding: 0 5px;
+}
+.about-intro h1 {
+  color: var(--color-alternate);
+  padding: 0 5px;
+}
+.about-intro p {
+  letter-spacing: 1px;
+  line-height: 1.6em;
+  padding: 0 5px;
+}
+.about-intro ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 15px;
+  line-height: 1.4em;
+  padding: 0 5px;
+}
+#spe i {
+  color: #2892d7;
+  font-size: 8px;
+  line-height: 100%;
+}
+.about-intro i {
+  color: var(--color-secondary);
+  color: goldenrod;
+  margin-right: 5px;
+  font-size: 8px;
+}
+.btn-about {
+  border: 1px solid blue;
+  padding: 15px;
+}
+.btn-about i {
+  font-size: 12px;
+  margin: 0 10px;
+}
+
+.btn-about:hover {
+  background-color: #2892d7;
+  color: white;
+}
+.about-intro-image {
+  height: 100%;
+  /* max-width: 400px; */
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+  /* background-color: rgba(240, 248, 255, 0.308); */
+  border-radius: 5px;
+  /* border: 1px solid white; */
+}
+.about-intro-image img {
+  width: 100%;
+}
+@media only screen and (min-width: 769px) {
+  .header-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .reason {
+    display: grid;
+    grid-template-columns: 1.05fr 2fr;
+  }
+  .reason:nth-child(even) {
+    grid-template-columns: 2fr 1.05fr;
+  }
+  .reason-text {
+    margin: 0 auto;
+  }
+  .reason-text h2 {
+    text-align: left;
+    padding: 10px 15px;
+
+    width: 100%;
+    max-width: 500px;
+  }
+  .reason-text p {
+    padding: 5px 15px;
+    letter-spacing: 1.25px;
+    line-height: 1.8em;
+    width: 100%;
+    max-width: 900px;
+    text-align: left;
+  }
+  .reason-text:nth-child(odd) p {
+    max-width: 500px;
+  }
+  .about-intro {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .about-intro-text {
+    letter-spacing: 2px !important;
+    line-height: 1.8em;
+    gap: 30px;
+    /* border: 2px solid green; */
+    padding: 10px 0;
+  }
+  .about-intro-image img {
+    padding: 25px;
+  }
+}

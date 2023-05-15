@@ -1,0 +1,130 @@
+@import url("https://fonts.googleapis.com/css2?family=Judson:wght@400;700&display=swap");
+.about-container {
+  margin: 150px 10px;
+  padding: 15px 15px 20px;
+  height: auto;
+
+  background-color: var(--color-primary);
+
+  border-radius: 10px;
+  /* box-shadow: 0px 15px 15px rgba(46, 104, 229, 0.4); */
+  width: 95%;
+}
+.about-container h1 {
+  color: white;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  padding-bottom: 20px;
+  font-family: Fira Sans;
+  text-align: center;
+}
+.about-info {
+  padding: 0px;
+  color: white;
+  text-align: left;
+
+  display: flex;
+  align-items: center;
+}
+.about-quote {
+  display: none;
+  /* border: 1px solid white; */
+}
+.about-info p {
+  line-height: 1.8em !important;
+  letter-spacing: 1px !important;
+  padding: 25px;
+}
+.about-container p {
+  letter-spacing: 1px;
+  line-height: 1.6em;
+}
+.about-platforms {
+  margin: 10px auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+  /* border: 1px solid white; */
+}
+.about-platforms i {
+  min-height: 100px;
+  width: 100%;
+  max-width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  background-color: var(--color-alternate);
+  animation: fade-in-right 600ms ease-in-out;
+  font-size: calc(25px + 1vw);
+  color: white;
+}
+
+@media only screen and (min-width: 600px) {
+  .about-quote {
+    display: flex;
+    align-items: center;
+  }
+  .about-info {
+    padding: 0px 30px;
+    color: white;
+    text-align: center;
+  }
+  .about-container h1 {
+    text-align: center;
+  }
+
+  .about-platforms {
+    margin: 10px auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* justify-content: center; */
+    align-items: center;
+    gap: 30px;
+    width: 95%;
+    max-width: 900px;
+    min-height: 300px;
+    padding: 10px 20px;
+  }
+
+  .about-platforms i {
+    min-height: 200px;
+    width: 80%;
+    max-width: 200px;
+  }
+}
+@media only screen and (min-width: 900px) {
+  .about-container {
+    width: 100%;
+  }
+  .about-top {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .about-platforms {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .about-platforms {
+    min-height: 0px;
+  }
+  .about-platforms i {
+    min-height: 200px;
+    margin-bottom: -100px;
+  }
+  .about-quote {
+    height: 300px;
+    display: flex;
+
+    padding: 25px 75px 0px;
+    font-family: "Judson", Sans-serif;
+    color: white;
+    letter-spacing: 0.75px;
+  }
+
+  .about-platforms i {
+    font-size: 34px;
+  }
+}

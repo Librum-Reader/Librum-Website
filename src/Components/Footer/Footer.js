@@ -11,8 +11,6 @@ export const Footer = ({ image }) => {
     if (localStorage.getItem("Theme")) {
       let theme = JSON.parse(localStorage.getItem("Theme"));
 
-      console.log(theme);
-
       setBg(theme);
 
       return;

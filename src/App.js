@@ -11,6 +11,7 @@ import { News } from "./Pages/News/News";
 import { Profile } from "./Pages/Profile/Profile";
 import { Article } from "./Pages/Article/Article";
 import ScrollToTop from "./Components/ScrollToTop/ScrollToTop";
+import { Test } from "./Components/Test/Test";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
               <Route path="/News/:title" element={<Article />} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/profile" element={<Profile />} />
+              <Route path="/test" element={<Test />} />
             </Routes>
           </ScrollToTop>
           <Footer />

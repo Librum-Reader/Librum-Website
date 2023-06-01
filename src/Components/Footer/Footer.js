@@ -41,7 +41,7 @@ export const Footer = ({ image }) => {
       className="footer"
       id="footer"
     >
-      <div className="container">
+      <div>
         <div className="footer-container">
           <div className="footer-upper footer-light">
             <h2

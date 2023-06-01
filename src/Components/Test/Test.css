@@ -2,3 +2,13 @@
   background-color: grey;
   color: white;
 }
+.profile-page {
+  border: 3px solid white;
+  height: 60vh;
+  padding: 5px;
+}
+.profile-btn {
+  max-width: 10rem;
+  padding: 5px;
+  margin: 10px 0px;
+}

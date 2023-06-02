@@ -63,7 +63,7 @@ html {
 
 .container {
   width: 100%;
-  min-height: 100vh;
+  min-height: 50vh;
   /* max-width: var(--max-width); */
   margin: 0 auto;
   background-color: transparent;

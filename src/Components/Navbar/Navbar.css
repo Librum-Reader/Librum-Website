@@ -38,6 +38,11 @@
   padding-left: 2px;
   background-color: grey;
 }
+.fa-moon {
+  position: absolute;
+  top: 5.25px;
+  left: 4.75px;
+}
 .fas.fa-toggle-on.fa-3x,
 .fas.fa-toggle-off.fa-3x {
   /* border: 1px solid green; */

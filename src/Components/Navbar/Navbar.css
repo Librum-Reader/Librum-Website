@@ -20,6 +20,7 @@
   position: absolute;
   left: 0;
   top: 0px;
+
   /* width: 50px;
   height: 65px; */
 }
@@ -37,6 +38,16 @@
   padding-top: 3px;
   padding-left: 2px;
   background-color: grey;
+}
+.sun-icon {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+}
+.fa-moon {
+  position: absolute;
+  top: 5.25px;
+  left: 4.75px;
 }
 .fas.fa-toggle-on.fa-3x,
 .fas.fa-toggle-off.fa-3x {

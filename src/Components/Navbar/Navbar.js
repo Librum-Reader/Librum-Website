@@ -49,7 +49,7 @@ export const Navbar = () => {
               className="nav-toggle-circle"
             >
               <svg
-                className="icon-sun"
+                className="sun-icon"
                 width="17"
                 height="17"
                 viewBox="0 0 21 21"

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { SiteContext } from "../../Context/Context";
 
 export const Footer = ({ image }) => {
-  const { bg, setBg } = useContext(SiteContext);
+  const { bg, setBg, setSelected } = useContext(SiteContext);
 
   useEffect(() => {
     if (localStorage.getItem("Theme")) {
@@ -77,18 +77,27 @@ export const Footer = ({ image }) => {
           <Link
             style={bg === "light" ? { color: "crimson" } : { color: "white" }}
             to={"/support"}
+            onClick={() => {
+              setSelected(2);
+            }}
           >
             <li>Support</li>
           </Link>
           <Link
             style={bg === "light" ? { color: "crimson" } : { color: "white" }}
             to={"/news"}
+            onClick={() => {
+              setSelected(3);
+            }}
           >
             <li>News</li>
           </Link>
           <Link
             style={bg === "light" ? { color: "crimson" } : { color: "white" }}
             to={"/about"}
+            onClick={() => {
+              setSelected(4);
+            }}
           >
             {" "}
             <li>About</li>

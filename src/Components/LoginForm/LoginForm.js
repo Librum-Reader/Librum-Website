@@ -19,6 +19,7 @@ export const LoginForm = () => {
   const [loginEmail, setloginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [regLogState, setRegLogState] = useState(true);
+  const [remember, setRemember] = useState(true);
   const { user, setUser, bg } = useContext(SiteContext);
 
   const register = async () => {
@@ -75,16 +76,27 @@ export const LoginForm = () => {
   return (
     <div className="container">
       {regLogState ? (
-        <div className="form-container">
-          <div className="log-form">
-            <img
-              src={logo}
-              alt="logo"
-              width={"100px"}
-              style={{ marginBottom: "30px" }}
-            />
+        <div className="form-container login-form-container">
+          <div
+            className="log-form"
+            style={
+              bg === "light"
+                ? {
+                    backgroundColor: "white",
+                    color: "var(--color-primary)",
+                  }
+                : {
+                    backgroundColor: "#282c34",
+                    color: "white",
+                  }
+            }
+          >
+            <div className="login-form-logo">
+              <div className="login-form-logo-square"></div>
+            </div>
             <div className="log-form-header">
-              <h2>Login</h2>
+              <h2>Welcome back!</h2>
+              <small>Log into your account</small>
             </div>
             <div className="form-input">
               <div>Email</div>
@@ -118,6 +130,12 @@ export const LoginForm = () => {
               </div>
             </div>
 
+            <div className="form-checkbox">
+              <div className="checkbox-unit">
+                {" "}
+                <input type="checkbox" /> Remember me
+              </div>
+            </div>
             <button
               onClick={() => {
                 login();
@@ -126,34 +144,43 @@ export const LoginForm = () => {
             >
               Log in
             </button>
+          </div>
 
-            <div className="form-checkbox">
-              <div className="checkbox-unit">
-                {" "}
-                Not a member? Click{" "}
-                <span
-                  onClick={() => {
-                    setRegLogState(false);
-                  }}
-                  style={{ textDecoration: "underline" }}
-                >
-                  here{" "}
-                </span>
-                to register
-              </div>
-            </div>
+          <div className="login-register-cta">
+            {" "}
+            Not a member? Click{" "}
+            <span
+              className="login-cta-text"
+              onClick={() => {
+                setRegLogState(false);
+              }}
+              style={{ textDecoration: "underline" }}
+            >
+              here{" "}
+            </span>
+            to register
           </div>
         </div>
       ) : (
         <div className="form-container">
-          <div className="log-form">
+          <div
+            className="log-form"
+            style={
+              bg === "light"
+                ? {
+                    backgroundColor: "white",
+                    color: "var(--color-primary)",
+                  }
+                : {
+                    backgroundColor: "#282c34",
+                    color: "white",
+                  }
+            }
+          >
             <div className="log-form-header">
-              <img
-                src={logo}
-                alt="logo"
-                width={"80px"}
-                style={{ marginBottom: "20px" }}
-              />
+              <div className="login-form-logo">
+                <div className="login-form-logo-square"></div>
+              </div>
               <h2>Welcome</h2>
               <p>
                 Your credentials are only used to authenticate yourself Your

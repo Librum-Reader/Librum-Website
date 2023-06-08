@@ -3,8 +3,29 @@
 .login-form-container {
   /* height: 700px; */
   padding: 100px 0;
-  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
 }
+
+/* logo */
+.login-form-logo {
+  height: 70px;
+  width: 70px;
+
+  background-color: var(--color-primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  margin: 0 auto 30px;
+}
+.login-form-logo-square {
+  height: 35px;
+  width: 35px;
+  background-color: #302c2c;
+  border-radius: 5px;
+}
+
 .login-form {
   width: 100%;
   max-width: 800px;
@@ -22,7 +43,13 @@
   animation: pop-down 800ms ease-in-out;
   border: 1px solid crimson;
 }
-
+.login-register-cta {
+  margin-top: 10px;
+  color: var(--color-primary);
+}
+.login-cta-text {
+  cursor: pointer;
+}
 .login-form > div {
   background-color: white;
   padding: 5px;
@@ -35,7 +62,10 @@
 .form-input {
   text-align: left;
 }
-.login-form input {
+.form-input input {
+  border: 1px solid #302c2c !important;
+}
+.login-form input[type="text"] {
   width: 90%;
   max-width: 20rem;
   height: 2rem;
@@ -43,7 +73,7 @@
   padding: 0 6px;
   font-size: 14px;
   margin-left: 8px;
-
+  background-color: #302c2c !important;
   /* border: 2px solid crimson; */
 }
 input[type="password"] {
@@ -61,6 +91,7 @@ input[type="password"] {
   display: flex;
   justify-content: center;
   align-items: center;
+
   /* border: 2px solid red; */
 }
 
@@ -81,11 +112,12 @@ input[type="password"] {
   margin-top: 125px;
   box-shadow: var(--box-shadow);
   background-color: var(--color-primary);
+  background-color: #302c2c;
   color: white;
 }
 .form-input {
   width: 100%;
-  max-width: 350px;
+  max-width: 400px;
   padding: 15px 5px;
   font-weight: 700;
   letter-spacing: 1px;
@@ -106,10 +138,11 @@ input[type="password"] {
 .reg {
   display: flex;
   gap: 5px;
+  justify-content: space-between;
 }
 .form-checkbox {
   width: 100%;
-  max-width: 290px;
+  max-width: 400px;
   text-align: left;
   display: flex;
   flex-direction: column;
@@ -128,9 +161,12 @@ input[type="password"] {
 .checkbox-unit {
   margin-top: 10px;
 }
+.checkbox-unit input {
+  margin-right: 5px;
+}
 .log-form p {
   margin: 15px 0;
-  max-width: 300px;
+  max-width: 400px;
   letter-spacing: 1px;
 }
 .form-container img {

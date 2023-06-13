@@ -12,6 +12,7 @@ import { Profile } from "./Pages/Profile/Profile";
 import { Article } from "./Pages/Article/Article";
 import ScrollToTop from "./Components/ScrollToTop/ScrollToTop";
 import { PrivacyPolicy } from "./Pages/PrivacyPolicy/PrivacyPolicy";
+import { TermsOfService } from "./Pages/TermsOfService/TermsOfService"
 import { Test } from "./Components/Test/Test";
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
               <Route path="/login" element={<LoginPage />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/privacypolicy" element={<PrivacyPolicy />} />
+              <Route path="/termsofservice" element={<TermsOfService />} />
               <Route path="/test" element={<Test />} />
             </Routes>
           </ScrollToTop>

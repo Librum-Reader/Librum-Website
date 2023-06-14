@@ -12,6 +12,7 @@ import { Profile } from "./Pages/Profile/Profile";
 import { Article } from "./Pages/Article/Article";
 import ScrollToTop from "./Components/ScrollToTop/ScrollToTop";
 import { Test } from "./Components/Test/Test";
+import { ProfilePage } from "./Components/Profile/ProfilePage";
 
 function App() {
   return (
@@ -36,7 +37,7 @@ function App() {
               <Route path="/News" element={<News />} />
               <Route path="/News/:title" element={<Article />} />
               <Route path="/login" element={<LoginPage />} />
-              <Route path="/profile" element={<Profile />} />
+              <Route path="/profile" element={<ProfilePage />} />
               <Route path="/test" element={<Test />} />
             </Routes>
           </ScrollToTop>

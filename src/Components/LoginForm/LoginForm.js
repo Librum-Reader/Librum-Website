@@ -1,13 +1,10 @@
 import React, { useContext, useState } from "react";
 import "./LoginForm.css";
-import logo from "../Navbar/ereader1.png";
-import {
-  createUserWithEmailAndPassword,
-  onAuthStateChanged,
-  signInWithEmailAndPassword,
-  signOut,
-} from "firebase/auth";
-import { auth } from "../../firebase-config";
+
+import axios from "axios";
+
+import { useNavigate } from "react-router-dom";
+
 import { SiteContext } from "../../Context/Context";
 export const LoginForm = () => {
   const [registerEmail, setRegisterEmail] = useState("");
@@ -20,59 +17,87 @@ export const LoginForm = () => {
   const [loginPassword, setLoginPassword] = useState("");
   const [regLogState, setRegLogState] = useState(true);
   const [remember, setRemember] = useState(true);
+  const navigate = useNavigate();
   const { user, setUser, bg } = useContext(SiteContext);
+
+  function isValidEmail(email) {
+    // Email validation regular expression
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    return emailRegex.test(email);
+  }
 
   const register = async () => {
     if (displayName === "") {
       setErrorMessage("Please Enter your name");
       return;
     }
-    if (registerEmail === "") {
+    if (registerEmail === "" || !isValidEmail(registerEmail)) {
       setErrorMessage("Please Enter a valid Email Address");
       return;
+    }
+
+    if (registerPassword.length > 6) {
+      setErrorMessage("Password should be at least 6 characters");
     }
 
     if (registerPassword !== confirmPassword) {
       setErrorMessage("Passwords don't match");
       return;
     }
-
+    const url = "https://librum-dev.azurewebsites.net/api/register";
+    const data = {
+      FirstName: displayName,
+      LastName: lastName,
+      Email: registerEmail,
+      Password: registerPassword,
+    };
     try {
-      const user = await createUserWithEmailAndPassword(
-        auth,
-        registerEmail,
-        registerPassword,
-        displayName
-      );
+      const headers = {
+        "X-Version": "1.0",
+      };
+      const response = await axios.post(url, data, {
+        headers,
+      });
 
-      console.log("successful login");
+      console.log(response.data);
+
+      // Registration successful
+      console.log("Registration successful!");
+      setRegisterEmail("");
+      setRegisterPassword("");
     } catch (error) {
-      console.log(error.message, auth, registerEmail, registerPassword);
-      setErrorMessage("Password should be at least 6 characters");
+      console.error("Error during registration:", error);
     }
-    setRegisterEmail("");
-    setRegisterPassword("");
   };
 
   const login = async () => {
+    const token = localStorage.getItem("token");
+    console.log("clicked");
+    // setLoading(true);
+    const data = {
+      Email: loginEmail,
+      Password: loginPassword,
+    };
+
+    const headers = {
+      "X-Version": "1.0",
+      Authorization: `Bearer ${token}`,
+    };
+
     try {
-      const user = await signInWithEmailAndPassword(
-        auth,
-        loginEmail,
-        loginPassword
+      const response = await axios.post(
+        "https://librum-dev.azurewebsites.net/api/login",
+        data,
+        { headers }
       );
-
-      console.log(user);
+      console.log(response.data);
+      localStorage.setItem("token", response.data);
+      navigate("/profile");
     } catch (error) {
-      console.log(error.message);
+      console.error(error);
     }
-    setloginEmail("");
-    setLoginPassword("");
   };
-  const logout = async () => {
-    await signOut(auth);
-  };
-
   return (
     <div className="container">
       {regLogState ? (

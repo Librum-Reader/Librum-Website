@@ -32,14 +32,14 @@ export const Test = () => {
   //     sendData();
   //   }, []);
 
-  const login = () => {
+  const login = (email, password) => {
     const token = localStorage.getItem("token");
 
     (async () => {
       setLoading(true);
       const data = {
-        Email: "js1@protonmail.com",
-        Password: "Abc123",
+        Email: "js2@protonmail.com",
+        Password: "Abc1234",
       };
 
       const headers = {
@@ -82,28 +82,21 @@ export const Test = () => {
   }, []);
 
   const getUserData = async () => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      console.log("Error: No token");
-      return;
-    }
+    const url = "https://librum-dev.azurewebsites.net/api/user";
 
-    const headers = {
-      "X-Version": "1.0",
-      Authorization: `Bearer ${token}`,
-    };
-
-    console.log(headers);
-
-    try {
-      // axios.defaults.headers.common["Authorization"] = "Bearer " + token;
-      const response = await axios.get(
-        "https://librum-dev.azurewebsites.net/api/user"
-      );
-      console.log(response.data);
-    } catch (error) {
-      console.error(error);
-    }
+    axios
+      .get(url, {
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoidGVzdDdAZ21haWwuY29tIiwiZXhwIjoxNjkxMTg5ODUzLCJpc3MiOiJMaWJydW0tU2VydmVyIiwiYXVkIjoibGlicnVtYXBpIn0.1BGCfvtNmfCOuROhZnyuDknvwpqqW3c_jnFwczb6jgU",
+        },
+      })
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error(error.message);
+      });
   };
 
   return (

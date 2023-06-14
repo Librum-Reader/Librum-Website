@@ -39,7 +39,6 @@ export const Homepage = () => {
     >
       {/* Hello {auth.currentUser.email} */}
       <Showcase image1={image1} />
-
       <Attributes />
       <Features />
       <Circles />

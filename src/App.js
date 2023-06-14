@@ -40,6 +40,8 @@ function App() {
               <Route path="/News/:title" element={<Article />} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/profile" element={<Profile />} />
+              <Route path="/privacypolicy" element={<PrivacyPolicy />} />
+              <Route path="/termsofservice" element={<TermsOfService />} />
               <Route path="/test" element={<Test />} />
             </Routes>
           </ScrollToTop>

@@ -11,15 +11,15 @@ export const Attributes = () => {
       <div className="ft-services" id="ft-services">
         <div className="services-container">
           <div className="service">
-            <i class="fab fa-instalod"></i>
+            <i className="fab fa-instalod"></i>
             <h3>Quick Installation</h3>
             <p
               style={
                 bg === "light"
                   ? { color: "var(--color-primary0)" }
                   : {
-                      color: "white",
-                    }
+                    color: "white",
+                  }
               }
             >
               Install in just 2 clicks
@@ -27,15 +27,15 @@ export const Attributes = () => {
           </div>
 
           <div className="service">
-            <i class="fas fa-sync sync"></i>
+            <i className="fas fa-sync sync"></i>
             <h3>Easily Synchronized</h3>
             <p
               style={
                 bg === "light"
                   ? { color: "var(--color-primary0)" }
                   : {
-                      color: "white",
-                    }
+                    color: "white",
+                  }
               }
             >
               Automatic synchronization
@@ -43,15 +43,15 @@ export const Attributes = () => {
           </div>
 
           <div className="service">
-            <i class="fas fa-book-open"></i>
+            <i className="fas fa-book-open"></i>
             <h3>Thousands of free books</h3>
             <p
               style={
                 bg === "light"
                   ? { color: "var(--color-primary0)" }
                   : {
-                      color: "white",
-                    }
+                    color: "white",
+                  }
               }
             >
               Access to over 60,000 books
@@ -59,15 +59,15 @@ export const Attributes = () => {
           </div>
 
           <div className="service">
-            <i class="fas fa-asterisk"></i>
+            <i className="fas fa-asterisk"></i>
             <h3>Light and Secure</h3>
             <p
               style={
                 bg === "light"
                   ? { color: "var(--color-primary0)" }
                   : {
-                      color: "white",
-                    }
+                    color: "white",
+                  }
               }
             >
               Small file-size, quick Updates

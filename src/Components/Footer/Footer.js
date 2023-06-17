@@ -29,14 +29,14 @@ export const Footer = ({ image }) => {
       style={
         bg === "light"
           ? {
-              backgroundColor: "white",
-              color: "var(--color-primary)",
-              borderTop: "2px dotted grey",
-            }
+            backgroundColor: "white",
+            color: "var(--color-primary)",
+            borderTop: "2px dotted grey",
+          }
           : {
-              backgroundColor: "#282c34",
-              color: "var(--color-primary)",
-            }
+            backgroundColor: "#282c34",
+            color: "var(--color-primary)",
+          }
       }
       className="footer"
       id="footer"

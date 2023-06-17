@@ -33,8 +33,8 @@ export const Showcase = ({ image1 }) => {
               bg === "light"
                 ? { color: "var(--color-primary0)" }
                 : {
-                    color: "white",
-                  }
+                  color: "white",
+                }
             }
           >
             A clean and simple way to read your books on any device, without

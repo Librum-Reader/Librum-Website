@@ -7,7 +7,7 @@
   height: auto;
   overflow: hidden;
   transition: var(--transition);
-  padding: 5em 0 5em 0;
+  padding: 4em 0 4em 0;
 }
 
 .not-found-image-container {
@@ -29,29 +29,28 @@
 }
 
 .not-found-container h1 {
-  color: #9C34C2;
+  color: #9068D8;
   font-size: 6em;
 }
 
 @media screen and (max-width: 820px) {
   .not-found-image {
-    width: 40%;
-    object-fit: cover;
+    width: 60%;
     margin-top: 2em;
   }
 
   .not-found-container h1 {
-    font-size: 4em;
+    font-size: 3.5em;
   }
 
   .not-found-container .title {
-    font-size: 1.5em;
+    font-size: 1.75em;
   }
 }
 
 @media screen and (min-width: 820px) {
   .not-found-image {
-    width: 20%;
+    width: 60%;
     object-fit: cover;
     margin-top: 2em;
   }

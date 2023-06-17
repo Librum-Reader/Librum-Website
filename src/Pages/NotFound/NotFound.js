@@ -1,7 +1,7 @@
 import "./NotFound.css";
 import { useContext } from "react";
 import { SiteContext } from "../../Context/Context";
-import notFoundImage from "./pngegg.png"
+import notFoundImage from "./not_found.png"
 
 const NotFound = () => {
   const { bg } = useContext(SiteContext);
@@ -22,9 +22,7 @@ const NotFound = () => {
             { color: "#282C34" } : { color: "white" }
         }
       >
-        Whoops!
-        <br />
-        Page not found
+        Whoops! Page not found
       </h3>
       <div className="not-found-image-container">
         <img

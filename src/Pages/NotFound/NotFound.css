@@ -1,5 +1,4 @@
 .not-found-container {
-  height: 75vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -8,6 +7,7 @@
   overflow: hidden;
   transition: var(--transition);
   padding: 4em 0 4em 0;
+  height: 90vh;
 }
 
 .not-found-image-container {
@@ -16,10 +16,13 @@
   justify-content: center;
 }
 
+.not-found-container img {
+  margin-top: 4em;
+}
+
 .not-found-image {
   display: flex;
   width: 20%;
-
 }
 
 .not-found-container .title {
@@ -50,7 +53,7 @@
 
 @media screen and (min-width: 820px) {
   .not-found-image {
-    width: 60%;
+    width: 65%;
     object-fit: cover;
     margin-top: 2em;
   }

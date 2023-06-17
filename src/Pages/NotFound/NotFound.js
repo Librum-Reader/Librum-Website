@@ -1,7 +1,7 @@
 import "./NotFound.css";
 import { useContext } from "react";
 import { SiteContext } from "../../Context/Context";
-import notFoundImage from "./not_found.png"
+import notFoundImage from "./not_found.svg"
 
 const NotFound = () => {
   const { bg } = useContext(SiteContext);

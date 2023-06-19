@@ -35,22 +35,23 @@ export const SupportPage = ({ message, anchor, cards }) => {
       style={
         bg === "light"
           ? {
-              backgroundColor: "white",
-              color: "var(--color-primary)",
-              paddingBottom: "100px;",
-            }
+            backgroundColor: "white",
+            color: "var(--color-primary)",
+            paddingBottom: "100px;",
+          }
           : {
-              backgroundColor: "#282c34",
-              color: "var(--color-primary)",
-              paddingBottom: "100px",
-            }
+            backgroundColor: "#282c34",
+            color: "var(--color-primary)",
+            paddingBottom: "100px",
+          }
       }
       className="container"
     >
+      <Form />
       <div className="supportPage-container">
+
         <SupportWays pics={[reason3, reason1, reason2]} cards={cards} />
       </div>
-
       <div className="support-page-need-support">
         <div>
           <img src={bg === "dark" ? supportLight : supportDark} alt="" />
@@ -60,11 +61,11 @@ export const SupportPage = ({ message, anchor, cards }) => {
               style={
                 bg === "light"
                   ? {
-                      color: "var(--color-primary0)",
-                    }
+                    color: "var(--color-primary0)",
+                  }
                   : {
-                      color: "white",
-                    }
+                    color: "white",
+                  }
               }
             >
               Need Support with the software? Having issues with your login
@@ -79,7 +80,6 @@ export const SupportPage = ({ message, anchor, cards }) => {
         </div>
       </div>
 
-      <Form />
     </div>
   );
 };

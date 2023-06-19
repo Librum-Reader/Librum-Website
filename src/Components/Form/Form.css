@@ -1,0 +1,48 @@
+.contact-form-title {
+  font-size: 1.75em;
+  /* text-align: center; */
+}
+
+.support-page-contact {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5em 0 5em 0;
+}
+
+.support-page-contact-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.support-page-contact-form .title {
+  font-size: 1.75em;
+  color: #946BDE;
+  font-weight: 700;
+}
+
+.form-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+}
+
+.form-div p {
+  width: 100%;
+}
+
+.form-div input, textarea {
+  width: 800px;
+  border-radius: 0.25em;
+  padding: 1em;
+}
+
+/* .form-div p {
+  text-align: start;
+  border: 1px solid red;
+  w
+} */

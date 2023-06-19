@@ -16,7 +16,7 @@ export const Form = () => {
         <p
           className="title"
         >
-          Send us a message 🔥!
+          Send us a message
         </p>
         <div className="form-div">
         </div>
@@ -61,8 +61,12 @@ export const Form = () => {
           />
         </div>
 
-        <div>
-          <button className="btn btn-secondary">Submit </button>
+        <div className="btn-container">
+          <button
+            className="submit btn btn-secondary"
+          >
+            Submit
+          </button>
         </div>
       </div>
       {/* <div className="support-page-contact-image">

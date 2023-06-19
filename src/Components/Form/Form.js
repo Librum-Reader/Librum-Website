@@ -9,40 +9,16 @@ export const Form = () => {
 
   return (
     <div
-      style={{ margin: "100px auto 0", paddingBottom: "100px" }}
+      // style={{ margin: "100px auto 0", paddingBottom: "100px" }}
       className="support-page-contact"
     >
       <div className="support-page-contact-form">
-        <h2>Contact Us</h2>
         <p
-          style={
-            bg === "light"
-              ? { color: "var(--color-primary0)" }
-              : {
-                  color: "white",
-                }
-          }
+          className="title"
         >
-          Send us a message today
+          Send us a message
         </p>
         <div className="form-div">
-          <p
-            style={
-              bg === "light"
-                ? { color: "var(--color-primary0)" }
-                : {
-                    color: "white",
-                  }
-            }
-            className="p-form"
-          >
-            Name
-          </p>
-          <input
-            style={bg === "light" ? { color: "black" } : { color: "white" }}
-            type="text"
-            placeholder="Enter your Name"
-          />
         </div>
         <div className="form-div">
           {" "}
@@ -51,8 +27,8 @@ export const Form = () => {
               bg === "light"
                 ? { color: "var(--color-primary0)" }
                 : {
-                    color: "white",
-                  }
+                  color: "white",
+                }
             }
             className="p-form"
           >
@@ -71,8 +47,8 @@ export const Form = () => {
               bg === "light"
                 ? { color: "var(--color-primary0)" }
                 : {
-                    color: "white",
-                  }
+                  color: "white",
+                }
             }
             className="p-form"
           >
@@ -85,13 +61,17 @@ export const Form = () => {
           />
         </div>
 
-        <div>
-          <button className="btn btn-secondary">Submit </button>
+        <div className="btn-container">
+          <button
+            className="submit btn btn-secondary"
+          >
+            Submit
+          </button>
         </div>
       </div>
-      <div className="support-page-contact-image">
+      {/* <div className="support-page-contact-image">
         <img src={pic} alt="" />
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -190,7 +190,7 @@ export const Navbar = () => {
                   <p
                     style={
                       window.location.href === "http://localhost:3000/" ||
-                      window.location.href === "https://librum-reader.com/"
+                      window.location.href === "https://librumreader.com/"
                         ? { color: color }
                         : bg === "light"
                         ? { color: colorB }
@@ -213,7 +213,7 @@ export const Navbar = () => {
                       window.location.href ===
                         "http://localhost:3000/support" ||
                       window.location.href ===
-                        "https://librum-reader.com/support"
+                        "https://librumreader.com/support"
                         ? { color: color }
                         : bg === "light"
                         ? { color: colorB }
@@ -234,7 +234,7 @@ export const Navbar = () => {
                   <p
                     style={
                       window.location.href === "http://localhost:3000/news" ||
-                      window.location.href === "https://librum-reader.com/news"
+                      window.location.href === "https://librumreader.com/news"
                         ? { color: color }
                         : bg === "light"
                         ? { color: colorB }
@@ -258,7 +258,7 @@ export const Navbar = () => {
                         window.location.href ===
                           "http://localhost:3000/profile" ||
                         window.location.href ===
-                          "https://librum-reader.com/profile"
+                          "https://librumreader.com/profile"
                           ? { color: color }
                           : bg === "light"
                           ? { color: colorB }
@@ -280,7 +280,7 @@ export const Navbar = () => {
                         window.location.href ===
                           "http://localhost:3000/about" ||
                         window.location.href ===
-                          "https://librum-reader.com/about"
+                          "https://librumreader.com/about"
                           ? { color: color }
                           : bg === "light"
                           ? { color: colorB }
@@ -320,7 +320,7 @@ export const Navbar = () => {
                           window.location.href ===
                             "http://localhost:3000/about" ||
                           window.location.href ===
-                            "https://librum-reader.com/about"
+                            "https://librumreader.com/about"
                             ? { color: color }
                             : bg === "light"
                             ? { color: colorB }

@@ -5,9 +5,7 @@
   bottom: 0;
   width: 100%;
 }
-.footer-container {
-  margin-top: 100px;
-}
+
 .footer-upper {
   display: flex;
   flex-direction: column;

@@ -13,6 +13,7 @@ import { Article } from "./Pages/Article/Article";
 import ScrollToTop from "./Components/ScrollToTop/ScrollToTop";
 import { PrivacyPolicy } from "./Pages/PrivacyPolicy/PrivacyPolicy";
 import { TermsOfService } from "./Pages/TermsOfService/TermsOfService";
+import { WhyTiers } from "./Pages/WhyTiers/WhyTiers";
 import { NotFound } from "./Pages/NotFound/NotFound";
 import { Test } from "./Components/Test/Test";
 import { ProfilePage } from "./Components/Profile/ProfilePage";
@@ -43,6 +44,7 @@ function App() {
               <Route path="/profile" element={<Profile />} />
               <Route path="/privacypolicy" element={<PrivacyPolicy />} />
               <Route path="/termsofservice" element={<TermsOfService />} />
+              <Route path="/whyTiers" element={<WhyTiers />} />
               <Route path="/test" element={<Test />} />
               <Route path="*" element={<NotFound />} />
             </Routes>

@@ -61,7 +61,7 @@ npm start
 
 ## License
 
-The Librum website is licensed under the [MIT License](LICENSE).
+The Librum website is licensed under the [GPL-3 License](LICENSE).
 
 <br>
 

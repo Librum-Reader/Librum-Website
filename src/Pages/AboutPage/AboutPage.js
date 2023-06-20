@@ -24,13 +24,13 @@ export const AboutPage = () => {
       style={
         bg === "light"
           ? {
-              backgroundColor: "white",
-              color: "var(--color-primary)",
-            }
+            backgroundColor: "white",
+            color: "var(--color-primary)",
+          }
           : {
-              backgroundColor: "#282c34",
-              color: "var(--color-primary)",
-            }
+            backgroundColor: "#282c34",
+            color: "var(--color-primary)",
+          }
       }
       className="container"
     >
@@ -47,8 +47,8 @@ export const AboutPage = () => {
                   bg === "light"
                     ? { color: "var(--color-primary0)" }
                     : {
-                        color: "white",
-                      }
+                      color: "white",
+                    }
                 }
               >
                 Librum is an application, designed to make reading as enjoyable
@@ -67,8 +67,8 @@ export const AboutPage = () => {
                   bg === "light"
                     ? { color: "var(--color-primary0)" }
                     : {
-                        color: "white",
-                      }
+                      color: "white",
+                    }
                 }
               >
                 Librum also provides free access to over 60,000 books, custom
@@ -96,8 +96,8 @@ export const AboutPage = () => {
                     bg === "light"
                       ? { color: "var(--color-primary0)" }
                       : {
-                          color: "white",
-                        }
+                        color: "white",
+                      }
                   }
                 >
                   Librum separates itself from any other reader by combining
@@ -124,8 +124,8 @@ export const AboutPage = () => {
                     bg === "light"
                       ? { color: "var(--color-primary0)" }
                       : {
-                          color: "white",
-                        }
+                        color: "white",
+                      }
                   }
                 >
                   <li>

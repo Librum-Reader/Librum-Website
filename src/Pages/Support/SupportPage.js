@@ -78,7 +78,6 @@ export const SupportPage = ({ message, anchor, cards }) => {
           </div>
         </div>
       </div>
-
       <Form />
     </div>
   );

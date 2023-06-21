@@ -1,70 +1,81 @@
-# Getting Started with Create React App
+# Librum Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Untitled](https://github.com/Librum-Reader/Librum-Website/assets/69865187/ecb5e40d-dd60-4cd5-baff-54904da39dfe)
 
-## Available Scripts
 
-In the project directory, you can run:
+Welcome to the official website of Librum, a powerful and intuitive application for managing your personal online library and reading your books. This repository contains the source code and assets for the Librum website, where you can learn more about the application, its features, and how to get started.
 
-### `npm start`
+<br>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## About Librum
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Librum is a comprehensive library management application designed to simplify the organization and tracking of your book collection that makes it possible for you to read your books from any device. With Librum, you can effortlessly manage your own online library, track reading progress, read your books, and use tools to make your reading more productive.
 
-### `npm test`
+<br>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Visit the Website
 
-### `npm run build`
+To explore the Librum website, please visit https://librumreader.com.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<br>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Contributing
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+We appreciate contributions to the Librum website that improve its content, design, or functionality. To contribute, follow these guidelines:
 
-### `npm run eject`
+1. Fork the repository.
+2. Preferably create a new branch for your feature or improvement.
+3. Make the necessary changes and commit them.
+4. Push your branch to your forked repository.
+5. Submit a pull request with a detailed description of your changes.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<br>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Local Development
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+If you would like to run the Librum website locally on your machine, follow the instructions below:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1. Clone the repository:
+```bash
+git clone https://github.com/Librum-Reader/Librum-Website.git
+```
 
-## Learn More
+2. Navigate to the project directory:
+```bash
+cd Librum-Website
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+3. Install the dependencies:
+```bash
+npm install
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+4. Start the development server:
+```bash
+npm start
+```
 
-### Code Splitting
+5. Open your browser and visit `http://localhost:3000` to view the Librum website.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+<br>
 
-### Analyzing the Bundle Size
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+The Librum website is licensed under the [GPL-3 License](LICENSE).
 
-### Making a Progressive Web App
+<br>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Contact
 
-### Advanced Configuration
+For any inquiries or support regarding the Librum website, please contact us at help@librumreader.com
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+<br>
 
-### Deployment
+## Acknowledgments
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+We would like to express our gratitude to the following technologies and resources used in developing the Librum website:
 
-### `npm run build` fails to minify
+- [React](https://reactjs.org) - JavaScript library for building user interfaces.
+- [Create React App](https://create-react-app.dev) - Set up a modern web app by running one command.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Thank you for your interest in Librum!

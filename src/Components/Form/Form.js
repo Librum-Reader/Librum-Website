@@ -122,7 +122,7 @@ export const Form = () => {
 
   return (
     <div
-      style={{ margin: "100px auto 0", paddingBottom: "100px" }}
+      // style={{ margin: "100px auto 0", paddingBottom: "100px" }}
       className="support-page-contact"
     >
       <div className="support-page-contact-form">
@@ -134,8 +134,8 @@ export const Form = () => {
               bg === "light"
                 ? { color: "var(--color-primary0)" }
                 : {
-                    color: "white",
-                  }
+                  color: "white",
+                }
             }
           >
             Send us a message today
@@ -213,9 +213,9 @@ export const Form = () => {
           </div>
         </form>
       </div>
-      <div className="support-page-contact-image">
+      {/* <div className="support-page-contact-image">
         <img src={pic} alt="" />
-      </div>
+      </div> */}
     </div>
   );
 };

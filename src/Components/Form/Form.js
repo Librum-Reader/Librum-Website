@@ -16,40 +16,18 @@ export const Form = () => {
   const name = useRef();
   const email = useRef();
   const message = useRef();
-  //const captchaRef = useRef();
-
-  const [validToken, setValidToken] = useState({});
-  const [recaptcha, setRecaptcha] = useState("");
+  const [recaptcha, setRecaptcha] = useState({});
 
   const verifyToken = async (token) => {
-    let APIResponse = [];
-
     try {
-      /*  let response = await Axios.post(
-        `https://www.google.com/recaptcha/api/siteverify`,
-        {
-          reCAPTCHA_TOKEN: token,
-          Secret_Key: process.env.REACT_APP_reCAPTCHA_SITE_KEY,
-        }
-      ); */
-      let response = await fetch(
-        `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.REACT_APP_reCAPTCHA_SECRET_KEY}&response=${token}`,
+      await fetch(
+        `https://librum-dev.azurewebsites.net/api/recaptchaVerify?userToken=${token}`,
         {
           method: "POST",
-          headers: {
-            Accept: "application/json; charset=utf-8",
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Methods": "*",
-            "Content-Type": "application/x-www-form-urlencoded; charset=utf-8",
-            /*
-            "Access-Control-Request-Headers": "x-custom-header",
-            */
-          },
         }
-      );
-      console.log(response);
-      //APIResponse.push(response);
-      return APIResponse;
+      )
+        .then((res) => res.json())
+        .then((data) => setRecaptcha(data));
     } catch (error) {
       console.log(error);
     }
@@ -57,48 +35,30 @@ export const Form = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    /*  const values = {
-      name: name.current.value,
-      email: email.current.value,
-      details: message.current.value,
-      captcha: captchaRef.current.getValue(),
-    };
-    await submitForm(values);
 
-    name.current.value = "";
-    email.current.value = "";
-    message.current.value = ""; */
+    //console.log(recaptcha.score);
 
-    /* let token = captchaRef.current.getValue();
-    captchaRef.current.reset(); */
-    //console.log(token);
-
-    if (recaptcha) {
-      let tokenValid = await verifyToken(recaptcha);
-      console.log("Valid token=>", tokenValid);
-      setValidToken(tokenValid);
-
-      if (tokenValid === true) {
-        /* console.log("verified");
+    try {
+      if (recaptcha.success === true) {
+        console.log("verified");
         const values = {
           name: name.current.value,
           email: email.current.value,
           details: message.current.value,
         };
-        await submitForm(values); */
+        await submitForm(values);
 
         name.current.value = "";
         email.current.value = "";
         message.current.value = "";
-      } else {
-        console.log("not verified");
       }
+    } catch (error) {
+      console.log("not verified");
+      console.log(error);
     }
   };
 
   const { executeRecaptcha } = useGoogleReCaptcha();
-
-  // Create an event handler so you can call the verification on button click event or form submit
   const handleReCaptchaVerify = useCallback(async () => {
     if (!executeRecaptcha) {
       console.log("Execute recaptcha not yet available");
@@ -108,17 +68,13 @@ export const Form = () => {
     const token = await executeRecaptcha("SupportPage");
     console.log("Token", token);
     // Do whatever you want with the token
+    await verifyToken(token);
   }, [executeRecaptcha]);
 
   // You can use useEffect to trigger the verification as soon as the component being loaded
   useEffect(() => {
     handleReCaptchaVerify();
   }, [handleReCaptchaVerify]);
-
-  const onChange = (value) => {
-    console.log("Captcha value:", value);
-    setRecaptcha(value);
-  };
 
   return (
     <div
@@ -128,14 +84,14 @@ export const Form = () => {
       <div className="support-page-contact-form">
         <h2>Contact Us</h2>
 
-        <form onSubmit={handleReCaptchaVerify}>
+        <form onSubmit={handleSubmit} onChange={handleReCaptchaVerify}>
           <p
             style={
               bg === "light"
                 ? { color: "var(--color-primary0)" }
                 : {
-                  color: "white",
-                }
+                    color: "white",
+                  }
             }
           >
             Send us a message today

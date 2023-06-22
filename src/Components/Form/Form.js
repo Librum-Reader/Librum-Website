@@ -85,20 +85,32 @@ export const Form = () => {
       className="support-page-contact"
     >
       <div className="support-page-contact-form">
-        <h2>Contact Us</h2>
+        <h2>Send Us a Message</h2>
 
         <form onSubmit={handleReCaptchaVerify}>
-          <p
-            style={
-              bg === "light"
-                ? { color: "var(--color-primary0)" }
-                : {
-                    color: "white",
-                  }
-            }
-          >
-            Send us a message today
-          </p>
+          <div class="form-subtitle">
+            <p
+              style={{
+                color: `${bg === "light" ? "var(--color-primary0)" : "white"}`,
+                width: "100%",
+                textAlign: "center",
+                fontSize: "1.2rem",
+                fontWeight: "500",
+                marginBottom: "2rem",
+              }}
+            >
+              Please feel free to reach out through our email{" "}
+              <a
+                href="mailto:help@librumreader.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                help@librumreader.com
+              </a>{" "}
+              if you have any questions, we are 100% responsive and reply
+              quickly!
+            </p>
+          </div>
           <div className="form-div">
             <p
               style={
@@ -113,10 +125,16 @@ export const Form = () => {
               Name
             </p>
             <input
-              style={bg === "light" ? { color: "black" } : { color: "white" }}
               type="text"
               placeholder="Enter your Name"
               ref={name}
+              className={`${
+                bg === "dark" ? "field-focus-dark" : "field-focus-light"
+              }`}
+              style={{
+                color: `${bg === "dark" ? "aliceblue" : "#393E48"}`,
+                backgroundColor: `${bg === "dark" ? "#393E48" : "aliceblue"}`,
+              }}
             />
           </div>
           <div className="form-div">
@@ -134,10 +152,16 @@ export const Form = () => {
               Email
             </p>
             <input
-              style={bg === "light" ? { color: "black" } : { color: "white" }}
               type="text"
               placeholder="Enter your email address"
               ref={email}
+              className={`${
+                bg === "dark" ? "field-focus-dark" : "field-focus-light"
+              }`}
+              style={{
+                color: `${bg === "dark" ? "aliceblue" : "#393E48"}`,
+                backgroundColor: `${bg === "dark" ? "#393E48" : "aliceblue"}`,
+              }}
               required
             />
           </div>
@@ -156,14 +180,20 @@ export const Form = () => {
               Message
             </p>
             <textarea
-              style={bg === "light" ? { color: "black" } : { color: "white" }}
+              style={{
+                color: `${bg === "dark" ? "aliceblue" : "#393E48"}`,
+                backgroundColor: `${bg === "dark" ? "#393E48" : "aliceblue"}`,
+              }}
               type="text"
               placeholder="Enter Message"
               ref={message}
+              className={`${
+                bg === "dark" ? "field-focus-dark" : "field-focus-light"
+              }`}
               required
             />
           </div>
-          <div>
+          <div className="btn-container">
             <button
               className="btn btn-secondary"
               type="submit"

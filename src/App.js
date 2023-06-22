@@ -23,7 +23,7 @@ function App() {
   return (
     <SiteContextProvider>
       <GoogleReCaptchaProvider
-        reCaptchaKey={6LcCs7UmAAAAAMyOwTpzSJp-Xc65HtMumO8pHYUg}
+        reCaptchaKey="6LcCs7UmAAAAAMyOwTpzSJp-Xc65HtMumO8pHYUg"
       >
         <div className="App">
           <Router>

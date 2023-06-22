@@ -8,7 +8,6 @@ import pic from "./message.svg";
 import "./Form.css";
 import { useState } from "react";
 import { useCallback } from "react";
-import { useEffect } from "react";
 
 export const Form = () => {
   const { bg } = useContext(SiteContext);
@@ -16,7 +15,9 @@ export const Form = () => {
   const name = useRef();
   const email = useRef();
   const message = useRef();
-  const [recaptcha, setRecaptcha] = useState({});
+  const [captchaError, setCaptchaError] = useState("");
+  const { executeRecaptcha } = useGoogleReCaptcha();
+  const recaptchaRef = useRef(null);
 
   const verifyToken = async (token) => {
     try {
@@ -27,24 +28,25 @@ export const Form = () => {
         }
       )
         .then((res) => res.json())
-        .then((data) => setRecaptcha(data));
+        .then((data) => {
+          return (recaptchaRef.current = data);
+        });
     } catch (error) {
       console.log(error);
     }
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    //console.log(recaptcha.score);
+  const handleSubmit = async (e, token) => {
+    e?.preventDefault();
+    await verifyToken(token);
 
     try {
-      if (recaptcha.success === true) {
+      if (recaptchaRef.current.success === true) {
         console.log("verified");
         const values = {
           name: name.current.value,
           email: email.current.value,
-          details: message.current.value,
+          message: message.current.value,
         };
         await submitForm(values);
 
@@ -58,23 +60,24 @@ export const Form = () => {
     }
   };
 
-  const { executeRecaptcha } = useGoogleReCaptcha();
-  const handleReCaptchaVerify = useCallback(async () => {
-    if (!executeRecaptcha) {
-      console.log("Execute recaptcha not yet available");
-      return;
-    }
+  const handleReCaptchaVerify = useCallback(
+    async (e) => {
+      e?.preventDefault();
+      try {
+        if (!executeRecaptcha) {
+          console.log("Execute recaptcha not yet available");
+          throw new Error("Execute recaptcha not yet available");
+        }
 
-    const token = await executeRecaptcha("SupportPage");
-    console.log("Token", token);
-    // Do whatever you want with the token
-    await verifyToken(token);
-  }, [executeRecaptcha]);
-
-  // You can use useEffect to trigger the verification as soon as the component being loaded
-  useEffect(() => {
-    handleReCaptchaVerify();
-  }, [handleReCaptchaVerify]);
+        const token = await executeRecaptcha("SupportPage");
+        await handleSubmit(e, token);
+      } catch (error) {
+        console.log(error);
+        setCaptchaError(error);
+      }
+    },
+    [executeRecaptcha]
+  );
 
   return (
     <div
@@ -84,7 +87,7 @@ export const Form = () => {
       <div className="support-page-contact-form">
         <h2>Contact Us</h2>
 
-        <form onSubmit={handleSubmit} onChange={handleReCaptchaVerify}>
+        <form onSubmit={handleReCaptchaVerify}>
           <p
             style={
               bg === "light"
@@ -135,6 +138,7 @@ export const Form = () => {
               type="text"
               placeholder="Enter your email address"
               ref={email}
+              required
             />
           </div>
           <div className="form-div">
@@ -156,6 +160,7 @@ export const Form = () => {
               type="text"
               placeholder="Enter Message"
               ref={message}
+              required
             />
           </div>
           <div>

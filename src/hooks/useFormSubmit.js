@@ -6,10 +6,9 @@ const useFormSubmit = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const submitForm = async (values) => {
-    //help@librumreader.com
     setIsLoading(true);
 
-    await fetch("https://formsubmit.co/ajax/davidfco.pozo@gmail.com", {
+    await fetch("https://formsubmit.co/ajax/help@librumreader.com", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

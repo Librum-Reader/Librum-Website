@@ -22,7 +22,9 @@ import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
 function App() {
   return (
     <SiteContextProvider>
-      <GoogleReCaptchaProvider reCaptchaKey="6LcCs7UmAAAAAMyOwTpzSJp-Xc65HtMumO8pHYUg">
+      <GoogleReCaptchaProvider
+        reCaptchaKey={process.env.REACT_APP_reCAPTCHA_SITE_KEY}
+      >
         <div className="App">
           <Router>
             <Navbar />
@@ -46,7 +48,7 @@ function App() {
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/privacypolicy" element={<PrivacyPolicy />} />
                 <Route path="/termsofservice" element={<TermsOfService />} />
-              <Route path="/whyTiers" element={<WhyTiers />} />
+                <Route path="/whyTiers" element={<WhyTiers />} />
                 <Route path="/test" element={<Test />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>

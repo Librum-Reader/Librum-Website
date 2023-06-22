@@ -85,6 +85,7 @@ export const Form = () => {
       className="support-page-contact"
     >
       <div className="support-page-contact-form">
+<<<<<<< HEAD
         <h2>Send Us a Message</h2>
 
         <form onSubmit={handleReCaptchaVerify}>
@@ -111,6 +112,22 @@ export const Form = () => {
               quickly!
             </p>
           </div>
+=======
+        <h2>Contact Us</h2>
+
+        <form onSubmit={handleReCaptchaVerify}>
+          <p
+            style={
+              bg === "light"
+                ? { color: "var(--color-primary0)" }
+                : {
+                    color: "white",
+                  }
+            }
+          >
+            Send us a message today
+          </p>
+>>>>>>> a08e4d097b550fc1cf44ed4b8435a660ced983bb
           <div className="form-div">
             <p
               style={
@@ -125,6 +142,7 @@ export const Form = () => {
               Name
             </p>
             <input
+<<<<<<< HEAD
               type="text"
               placeholder="Enter your Name"
               ref={name}
@@ -135,6 +153,12 @@ export const Form = () => {
                 color: `${bg === "dark" ? "aliceblue" : "#393E48"}`,
                 backgroundColor: `${bg === "dark" ? "#393E48" : "aliceblue"}`,
               }}
+=======
+              style={bg === "light" ? { color: "black" } : { color: "white" }}
+              type="text"
+              placeholder="Enter your Name"
+              ref={name}
+>>>>>>> a08e4d097b550fc1cf44ed4b8435a660ced983bb
             />
           </div>
           <div className="form-div">
@@ -152,6 +176,7 @@ export const Form = () => {
               Email
             </p>
             <input
+<<<<<<< HEAD
               type="text"
               placeholder="Enter your email address"
               ref={email}
@@ -162,6 +187,12 @@ export const Form = () => {
                 color: `${bg === "dark" ? "aliceblue" : "#393E48"}`,
                 backgroundColor: `${bg === "dark" ? "#393E48" : "aliceblue"}`,
               }}
+=======
+              style={bg === "light" ? { color: "black" } : { color: "white" }}
+              type="text"
+              placeholder="Enter your email address"
+              ref={email}
+>>>>>>> a08e4d097b550fc1cf44ed4b8435a660ced983bb
               required
             />
           </div>
@@ -180,6 +211,7 @@ export const Form = () => {
               Message
             </p>
             <textarea
+<<<<<<< HEAD
               style={{
                 color: `${bg === "dark" ? "aliceblue" : "#393E48"}`,
                 backgroundColor: `${bg === "dark" ? "#393E48" : "aliceblue"}`,
@@ -194,6 +226,16 @@ export const Form = () => {
             />
           </div>
           <div className="btn-container">
+=======
+              style={bg === "light" ? { color: "black" } : { color: "white" }}
+              type="text"
+              placeholder="Enter Message"
+              ref={message}
+              required
+            />
+          </div>
+          <div>
+>>>>>>> a08e4d097b550fc1cf44ed4b8435a660ced983bb
             <button
               className="btn btn-secondary"
               type="submit"

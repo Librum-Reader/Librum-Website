@@ -28,10 +28,14 @@ form {
 }
 
 .form-subtitle {
-  width: 100%;
+  width: 90%;
   margin-inline: auto;
   display: flex;
   justify-content: center;
+}
+
+.form-subtitle a {
+  color: var(--color-primary);
 }
 
 .form-div {
@@ -47,15 +51,24 @@ form {
 }
 
 .form-div input,
-.form-div input textarea {
+.form-div textarea {
   max-width: 800px;
   border-radius: 0.25em;
   padding: 1.25em;
   color: #343047;
-  border: 1px solid #343047;
   background-color: aliceblue;
   width: 100%;
 }
+
+
+.field-focus-light:focus {
+  border: 1px solid #343047;
+}
+
+.field-focus-dark:focus {
+  border: 1px solid aliceblue;
+}
+
 
 .btn-container {
   display: flex;

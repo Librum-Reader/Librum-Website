@@ -287,7 +287,7 @@ export const LoginForm = () => {
                         }
                       : { border: "none" }
                   }
-                  type="password"
+                  type="text"
                   name="password"
                   value={registerPassword ? registerPassword : ""}
                   placeholder="Enter Your Password"
@@ -310,7 +310,7 @@ export const LoginForm = () => {
                         }
                       : { border: "none" }
                   }
-                  type="password"
+                  type="text"
                   name="password"
                   value={confirmPassword ? confirmPassword : ""}
                   placeholder="Re-Enter Your Password"

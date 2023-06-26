@@ -50,6 +50,10 @@ form {
   width: 100%;
 }
 
+.p-form span {
+  color: #c70000;
+}
+
 .form-div input,
 .form-div textarea {
   max-width: 800px;
@@ -79,10 +83,7 @@ form {
 }
 
 .btn-container button {
+  padding: 1.5em;
+  font-size: 1rem;
   max-width: 16em;
 }
-
-
-/* color: #343047;
-border: 1px solid #343047;
-background-color: aliceblue; */

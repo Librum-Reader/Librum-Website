@@ -149,8 +149,8 @@ export const Form = () => {
               }
               className="p-form"
             >
-              <span>* </span>
               Email
+              <span> *</span>
             </p>
             <input
               type="text"
@@ -178,8 +178,8 @@ export const Form = () => {
               }
               className="p-form"
             >
-              <span>* </span>
               Message
+              <span> *</span>
             </p>
             <textarea
               type="text"

@@ -99,7 +99,7 @@ export const Form = () => {
                 marginBottom: "2rem",
               }}
             >
-              Please feel free to reach out through our email{" "}
+              Please feel free to reach out to us using the form below, or at{" "}
               <a
                 href="mailto:help@librumreader.com"
                 target="_blank"
@@ -149,6 +149,7 @@ export const Form = () => {
               }
               className="p-form"
             >
+              <span>* </span>
               Email
             </p>
             <input
@@ -177,19 +178,20 @@ export const Form = () => {
               }
               className="p-form"
             >
+              <span>* </span>
               Message
             </p>
             <textarea
-              style={{
-                color: `${bg === "dark" ? "aliceblue" : "#393E48"}`,
-                backgroundColor: `${bg === "dark" ? "#393E48" : "aliceblue"}`,
-              }}
               type="text"
-              placeholder="Enter Message"
+              placeholder="Write here..."
               ref={message}
               className={`${
                 bg === "dark" ? "field-focus-dark" : "field-focus-light"
               }`}
+              style={{
+                color: `${bg === "dark" ? "aliceblue" : "#393E48"}`,
+                backgroundColor: `${bg === "dark" ? "#393E48" : "aliceblue"}`,
+              }}
               required
             />
           </div>

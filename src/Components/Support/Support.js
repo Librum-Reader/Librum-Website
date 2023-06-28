@@ -35,7 +35,7 @@ export const Support = () => {
             <i className="fab fa-github"></i>
           </a>
           <a
-            href={"https://www.patreon.com/librum_reader"}
+            href={"https://www.patreon.com/librumreader"}
             target="_blank"
             rel="noopener noreferrer"
           >

@@ -6,7 +6,7 @@ import "./FormSuccess.css";
 
 const FormSuccess = ({ data, error, captchaError }) => {
   const [open, setOpen] = useState(false);
-  const [formSubmitted, setFormSubmitted] = useState(true);
+  const [formSubmitted, setFormSubmitted] = useState(false);
   const { bg } = useContext(SiteContext);
 
   useEffect(() => {

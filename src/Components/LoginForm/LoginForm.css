@@ -22,9 +22,15 @@
 .login-form-logo-square {
   height: 35px;
   width: 35px;
-  background-color: #302c2c;
   border-radius: 5px;
 }
+
+.custom-input {
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+
+
 
 .login-form {
   width: 100%;
@@ -44,7 +50,7 @@
   border: 1px solid crimson;
 }
 .login-register-cta {
-  margin-top: 10px;
+  margin-top: 20px;
   color: var(--color-primary);
 }
 .login-cta-text {
@@ -59,12 +65,8 @@
   margin: 0 auto;
   border-radius: 5px;
 }
-.form-input {
-  text-align: left;
-}
-.form-input input {
-  border: 1px solid #302c2c !important;
-}
+
+
 .login-form input[type="text"] {
   width: 90%;
   max-width: 20rem;
@@ -121,37 +123,114 @@ input[type="password"] {
   padding: 15px 5px;
   font-weight: 700;
   letter-spacing: 1px;
+  justify-content: space-between;
+  
 }
+.reg2 {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 1.2rem; 
+  margin-top:1rem;
+
+  
+  
+}
+
+.form-inputname2 {
+  display:flex;
+  width: 100%;
+  max-width: 400px;
+  
+  font-weight: 700;
+  letter-spacing: 1px;
+  justify-content: space-between;
+  
+  
+}
+
+.form-inputname {
+  display:flex;
+  width: 100%;
+  max-width: 400px;
+  padding: 15px 5px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  justify-content: space-between;
+  
+  
+}
+
+.credentials {
+  font-size: 14px;
+  max-width: 400px;
+ 
+  
+  
+}
+
+
 .form-input input {
   width: 100%;
   text-align: left;
-  margin: 5px 0;
+
   padding: 12px 10px;
   font-family: "Fira Sans", sans-serif;
   border-radius: 3px;
-  border: none;
+ 
+  background-color: transparent;
 }
+
+.log-into-account {
+  color: #888;
+  font-weight: 400;
+  font-family:  sans-serif;
+}
+
 
 .form-input-title {
   text-align: left;
+  
 }
 .reg {
   display: flex;
   gap: 5px;
   justify-content: space-between;
+  margin-top: .5rem;
+  
+}
+
+
+.form-checkbox-login {
+  width: 100%;
+  max-width: 400px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 10px auto;
 }
 .form-checkbox {
   width: 100%;
   max-width: 400px;
   text-align: left;
   display: flex;
+  gap:1rem;
   flex-direction: column;
-  gap: 10px;
-  margin: 20px auto;
+  justify-content: space-between;
+  margin: 10px auto;
 }
 .form-checkbox span {
   cursor: pointer;
 }
+
+.forgot-password {
+  color: #946bde;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+
 .log-form button {
   width: 100%;
   max-width: 290px;
@@ -159,7 +238,9 @@ input[type="password"] {
   margin-top: 20px;
 }
 .checkbox-unit {
-  margin-top: 10px;
+  
+  justify-content: space-between;
+  
 }
 .checkbox-unit input {
   margin-right: 5px;

@@ -64,7 +64,6 @@ form {
   width: 100%;
 }
 
-
 .field-focus-light:focus {
   border: 1px solid #343047;
 }
@@ -72,7 +71,6 @@ form {
 .field-focus-dark:focus {
   border: 1px solid aliceblue;
 }
-
 
 .btn-container {
   display: flex;
@@ -83,7 +81,7 @@ form {
 }
 
 .btn-container button {
-  padding: 1.5em;
+  padding: 0.90em 1em;
   font-size: 1rem;
-  max-width: 16em;
+  max-width: 12em;
 }

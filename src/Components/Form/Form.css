@@ -64,6 +64,7 @@ form {
   width: 100%;
 }
 
+
 .field-focus-light:focus {
   border: 1px solid #343047;
 }
@@ -71,6 +72,7 @@ form {
 .field-focus-dark:focus {
   border: 1px solid aliceblue;
 }
+
 
 .btn-container {
   display: flex;

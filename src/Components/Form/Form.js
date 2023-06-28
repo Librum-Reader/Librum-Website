@@ -1,83 +1,43 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import { SiteContext } from "../../Context/Context";
-import useFormSubmit from "../../hooks/useFormSubmit";
-import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
+import useFormSubmit from "../../Hooks/useFormSubmit";
 
 import pic4 from "../../Pages/Support/pic4.svg";
 import pic from "./message.svg";
 import "./Form.css";
-import { useState } from "react";
-import { useCallback } from "react";
+import { LoadingAnimation } from "../SvgIcons/SvgIcons";
+import FormSuccess from "../FormSuccess/FormSuccess";
 
 export const Form = () => {
   const { bg } = useContext(SiteContext);
-  const { submitForm, isLoading } = useFormSubmit();
+  const { isLoading, res, error, captchaError, handleReCaptchaVerify } =
+    useFormSubmit();
   const name = useRef();
   const email = useRef();
   const message = useRef();
-  const [captchaError, setCaptchaError] = useState("");
-  const { executeRecaptcha } = useGoogleReCaptcha();
-  const recaptchaRef = useRef(null);
 
-  const verifyToken = async (token) => {
-    try {
-      await fetch(
-        `https://librum-dev.azurewebsites.net/api/recaptchaVerify?userToken=${token}`,
-        {
-          method: "POST",
-        }
-      )
-        .then((res) => res.json())
-        .then((data) => {
-          return (recaptchaRef.current = data);
-        });
-    } catch (error) {
-      console.log(error);
-    }
+  const handleSubmit = async (e) => {
+    const values = {
+      name: name.current.value,
+      email: email.current.value,
+      message: message.current.value,
+    };
+
+    const captchaActionName = "FormComponent";
+
+    await handleReCaptchaVerify(e, values, captchaActionName);
   };
 
-  const handleSubmit = async (e, token) => {
-    e?.preventDefault();
-    await verifyToken(token);
-
-    try {
-      if (recaptchaRef.current.success === true) {
-        console.log("verified");
-        const values = {
-          name: name.current.value,
-          email: email.current.value,
-          message: message.current.value,
-        };
-        await submitForm(values);
-
+  useEffect(() => {
+    const resetForm = () => {
+      if (res.success === "true") {
         name.current.value = "";
         email.current.value = "";
         message.current.value = "";
       }
-    } catch (error) {
-      console.log("not verified");
-      console.log(error);
-    }
-  };
-
-  const handleReCaptchaVerify = useCallback(
-    async (e) => {
-      e?.preventDefault();
-      try {
-        if (!executeRecaptcha) {
-          console.log("Execute recaptcha not yet available");
-          throw new Error("Execute recaptcha not yet available");
-        }
-
-        const token = await executeRecaptcha("SupportPage");
-        await handleSubmit(e, token);
-      } catch (error) {
-        console.log(error);
-        setCaptchaError(error);
-      }
-    },
-    [executeRecaptcha]
-  );
+    };
+    resetForm();
+  }, [res]);
 
   return (
     <div
@@ -87,8 +47,8 @@ export const Form = () => {
       <div className="support-page-contact-form">
         <h2>Send Us a Message</h2>
 
-        <form onSubmit={handleReCaptchaVerify}>
-          <div class="form-subtitle">
+        <form onSubmit={handleSubmit}>
+          <div className="form-subtitle">
             <p
               style={{
                 color: `${bg === "light" ? "var(--color-primary0)" : "white"}`,
@@ -201,9 +161,11 @@ export const Form = () => {
               type="submit"
               disabled={isLoading ? true : false}
             >
-              Submit{" "}
+              Submit
             </button>
           </div>
+          {isLoading && <LoadingAnimation />}
+          <FormSuccess data={res} error={error} captchaError={captchaError} />
         </form>
       </div>
       {/* <div className="support-page-contact-image">

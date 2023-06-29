@@ -86,7 +86,7 @@ export const Form = () => {
             </p>
             <input
               type="text"
-              placeholder="Your name"
+              placeholder="Your Name"
               ref={name}
               className={`${
                 bg === "dark" ? "field-focus-dark" : "field-focus-light"
@@ -110,7 +110,7 @@ export const Form = () => {
               className="p-form"
             >
               Email
-              <span> *</span>
+              <span>*</span>
             </p>
             <input
               type="text"
@@ -139,7 +139,7 @@ export const Form = () => {
               className="p-form"
             >
               Message
-              <span> *</span>
+              <span>*</span>
             </p>
             <textarea
               type="text"

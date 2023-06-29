@@ -1,0 +1,10 @@
+.main-container {
+  height: 100vh !important; 
+}
+
+.title {
+  text-align: start;
+  font-size: 4em;
+  margin-bottom: 0.25em;
+}
+

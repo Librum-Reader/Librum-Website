@@ -10,13 +10,13 @@ import { SiteContextProvider } from "./Context/Context";
 import { News } from "./Pages/News/News";
 import { Profile } from "./Pages/Profile/Profile";
 import { Article } from "./Pages/Article/Article";
+import { BlogPage } from "./Pages/BlogPage/BlogPage";
 import ScrollToTop from "./Components/ScrollToTop/ScrollToTop";
 import { PrivacyPolicy } from "./Pages/PrivacyPolicy/PrivacyPolicy";
 import { TermsOfService } from "./Pages/TermsOfService/TermsOfService";
 import { WhyTiers } from "./Pages/WhyTiers/WhyTiers";
 import { NotFound } from "./Pages/NotFound/NotFound";
 import { Test } from "./Components/Test/Test";
-import { ProfilePage } from "./Components/Profile/ProfilePage";
 import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
 
 function App() {
@@ -46,6 +46,7 @@ function App() {
                 <Route path="/News/:title" element={<Article />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/profile" element={<Profile />} />
+                <Route path="/blog-admin" element={<BlogPage />} />
                 <Route path="/privacypolicy" element={<PrivacyPolicy />} />
                 <Route path="/termsofservice" element={<TermsOfService />} />
                 <Route path="/whyTiers" element={<WhyTiers />} />

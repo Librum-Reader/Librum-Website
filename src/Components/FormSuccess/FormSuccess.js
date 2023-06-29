@@ -65,7 +65,7 @@ const FormSuccess = ({ data, error, captchaError }) => {
     >
       <div
         className={`message-box ${
-          bg === "light" ? "light-mode-background" : "dark-mode-background"
+          bg === "dark" ? "dark-mode-background" : "light-mode-background"
         }`}
       >
         {open ? (
@@ -74,7 +74,7 @@ const FormSuccess = ({ data, error, captchaError }) => {
           <GiCancel className="xmark" />
         )}
 
-        <h2>{open ? "Thank you!" : "Sorry!"}</h2>
+        <h2>{open ? "Thank you!" : "We're Sorry!"}</h2>
         <p>
           {open
             ? `Your message had been sent successfully. We will get back to you as soon as possible.`

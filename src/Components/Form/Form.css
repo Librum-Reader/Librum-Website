@@ -1,4 +1,4 @@
-form {
+#form {
   width: 100%;
   margin-inline: auto;
   display: flex;
@@ -12,7 +12,7 @@ form {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 5em 0 5em 0;
+  padding: 2em 0 5em 0;
 }
 
 .support-page-contact-form {

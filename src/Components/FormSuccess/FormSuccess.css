@@ -11,6 +11,7 @@
   top: 0;
   bottom: 0;
   font-family: inherit;
+  background-color: rgba(110, 110, 110, 0.2);
 }
 
 .success-container .message-box {
@@ -33,34 +34,38 @@
 }
 
 .light-mode-background {
-  background-color: #343047;
-  color: aliceblue;
+  color: #282C34;
+  background-color: aliceblue;
 }
 
 .dark-mode-background {
-  background-color: aliceblue;
-  color: #343047;
+  color: aliceblue;
+  background-color: #282C34;
 }
 
 .success-container .message-box h2 {
-  font-size: clamp(1.5rem, 5vw, 2rem);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-family: "Lato", sans-serif;
   /* color: #343047; */
 }
 
 .success-container .message-box p {
-  padding-block: 1em;
-  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  padding-block: 0.5em;
+  font-size: clamp(1rem, 1.5vw, 1.5rem);
   text-align: center;
+  font-weight: 500;
+  font-family: "Lato", sans-serif;
 }
 
 .success-container .message-box button {
-  padding: 0.75em 1em;
+  padding: 0.50em 1em;
   text-decoration: none;
+  margin-top: 2rem;
   border: 1px solid var(--slate);
   border-radius: 4px;
   background-color: transparent;
-  font-family: inherit;
-  font-size: clamp(0.85rem, 2.5vw, 1.5rem);
+  font-family: "Lato", sans-serif;
+  font-size: clamp(0.85rem, 1.3vw, 1.5rem);
   outline: none;
   color: #fcfcfc;
   font-weight: bold;
@@ -79,8 +84,8 @@
 }
 
 .success-container .message-box .xmark {
-  height: 10em;
-  width: 5em;
+  height: 6em;
+  width: 3em;
   color: #CD4D34
 }
 
@@ -97,21 +102,18 @@
 @media (min-width: 768px) {
 
   .success-container .message-box .xmark {
-    height: 12em;
-    width: 6em;
+    height: 8em;
+    width: 4em;
   }
 }
 
 @media (min-width: 900px) {
   .success-container .message-box {
-    max-width: 550px;
+    max-width: 500px;
     max-height: 80vh;
     padding-top: unset;
-    padding-bottom: 1em;
+    padding-bottom: 2em;
     padding-inline: 1em;
   }
 
-  .success-container .message-box img {
-    width: 300px;
-  }
 }

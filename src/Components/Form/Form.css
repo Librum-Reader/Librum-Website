@@ -5,6 +5,7 @@ form {
   flex-direction: column;
   align-items: center;
   padding-inline: 10%;
+  position: relative;
 }
 
 .support-page-contact {

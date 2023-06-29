@@ -24,6 +24,22 @@ const FormSuccess = ({ data, error, captchaError }) => {
     return handleModalOpening();
   }, [data, error, captchaError]);
 
+  useEffect(() => {
+    function handleModalKeyPress(e) {
+      if (e.key === "Escape" || e.key === "Enter") {
+        handleCloseModal(e);
+      }
+    }
+
+    if (formSubmitted || open) {
+      document.addEventListener("keydown", handleModalKeyPress);
+    }
+
+    return () => {
+      document.removeEventListener("keydown", handleModalKeyPress);
+    };
+  }, [formSubmitted, open]);
+
   const handleModalContainerClick = (e) => {
     e.stopPropagation();
     const modalContainer = document.getElementById("success-container");
@@ -34,7 +50,7 @@ const FormSuccess = ({ data, error, captchaError }) => {
     });
   };
 
-  const handleModalButton = (e) => {
+  const handleCloseModal = (e) => {
     e.stopPropagation();
     setFormSubmitted(false);
   };
@@ -66,7 +82,7 @@ const FormSuccess = ({ data, error, captchaError }) => {
         </p>
         <button
           style={{ backgroundColor: `${bgColor}` }}
-          onClick={handleModalButton}
+          onClick={handleCloseModal}
           className="form-success-btn"
           type="button"
         >

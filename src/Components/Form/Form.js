@@ -7,6 +7,7 @@ import "./Form.css";
 import { LoadingAnimation } from "../SvgIcons/SvgIcons";
 import FormSuccess from "../FormSuccess/FormSuccess";
 import useFormSubmit from "../../Hooks/useFormSubmit";
+import { createPortal } from "react-dom";
 
 export const Form = () => {
   const { bg } = useContext(SiteContext);
@@ -47,7 +48,7 @@ export const Form = () => {
       <div className="support-page-contact-form">
         <h2>Send Us a Message</h2>
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} id="form">
           <div className="form-subtitle">
             <p
               style={{
@@ -165,7 +166,17 @@ export const Form = () => {
             </button>
           </div>
           {isLoading && <LoadingAnimation />}
-          <FormSuccess data={res} error={error} captchaError={captchaError} />
+          {typeof res === "object" ||
+            typeof error === "object" ||
+            (typeof captchaError === "object" &&
+              createPortal(
+                <FormSuccess
+                  data={res}
+                  error={error}
+                  captchaError={captchaError}
+                />,
+                document.body
+              ))}
         </form>
       </div>
       {/* <div className="support-page-contact-image">

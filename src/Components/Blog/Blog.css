@@ -1,7 +1,6 @@
 .outer {
   display: flex;
   flex-direction: column;
-  align-items: end;
 }
 
 .blog {
@@ -46,7 +45,8 @@ h1 {
 }
 
 p {
-  text-align: start;
+  text-align: justify;
+  font-weight: 400;
 }
 
 textarea {
@@ -54,10 +54,17 @@ textarea {
   height: 90%;
   padding: 2em;
   border-radius: 1em;
-  border: 1px solid #b0bec5;
+  border: 1px solid whitesmoke;
+  box-shadow: inset;
+  -webkit-box-shadow: -2px 4px 32px -15px rgba(0,0,0,0.54); 
+  box-shadow: -2px 4px 32px -15px rgba(0,0,0,0.54);
 }
 
-.btn {
+.btn-primary {
   margin-top: 1em;
   /* background-color: aqua; */
+}
+
+.button-container {
+  margin: 1.5em 0 1.5em 0;
 }

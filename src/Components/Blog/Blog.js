@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
+import template from './template';
 import './Blog.css';
-// import testImage from "./test.jpg";
 
 const Renderer = () => {
-  const [htmlCode, setHtmlCode] = useState('');
+  const [htmlCode, setHtmlCode] = useState(template);
+  // const [postTemplate, setPostTemplate] = useState(template);
 
   const handleHtmlChange = (event) => {
     setHtmlCode(event.target.value);
@@ -29,7 +30,9 @@ const Renderer = () => {
           />
         </div>
       </div>
-      <button className='btn'>Create Post</button>
+      <div className='button-container'>
+        <button className='btn'>Create Post</button>
+      </div>
     </div>
   );
 }

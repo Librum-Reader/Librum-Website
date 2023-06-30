@@ -9,35 +9,32 @@ const Renderer = () => {
     setHtmlCode(event.target.value);
   }
 
-  const createPost = (e) => {
+  const createPost = (e, htmlCode) => {
     e.preventDefault();
-    console.log("create");
+    const htmlBlob = new Blob([htmlCode], { type: 'text/html' });
     const blogUrl = "https://librum-dev.azurewebsites.net/api/blog";
-    const contentUrl = "https://librum-dev.azurewebsites.net/api/blog/content/eb02d931-df3d-4e86-9dcb-08db7983f63b";
-    const blogData = {
-      Title: "Some Title Here",
-      Introduction: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    }
-    const contentData = new FormData();
-    contentData.append("content", htmlCode);
-
-    const jsonConfig = {
+    const contentUrl = (id) => `https://librum-dev.azurewebsites.net/api/blog/content/${id}`;
+    const config = {
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     };
+    const blogData = {
+      Title: 'Test Blog',
+      Introduction: 'Test Introduction',
+    };
+    const formData = new FormData();
+    formData.append('file', htmlBlob, 'file.txt');
     const multidataConfig = {
       headers: {
-        'Content-Disposition': 'form-data; name="file"; filename="file.txt"',
         'Content-Type': 'multipart/form-data',
       },
     }
-    axios.post(blogUrl, blogData, jsonConfig)
-      .then(() => {
-        axios.post(contentUrl, contentData, multidataConfig)
+    axios.post(blogUrl, blogData, config)
+      .then((res) => {
+        axios.post(contentUrl(res.data.id), formData, multidataConfig)
           .catch((err) => console.log(err));
-      })
-      .catch((err) => console.log(err));
+      }).catch((err) => console.log(err));
   };
 
   return (
@@ -63,7 +60,7 @@ const Renderer = () => {
       <div className='button-container'>
         <button
           className='btn'
-          onClick={(e) => createPost(e)}
+          onClick={(e) => createPost(e, htmlCode)}
         >
           Create Post
         </button>

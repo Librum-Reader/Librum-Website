@@ -32,7 +32,7 @@ const Renderer = () => {
     }
     axios.post(blogUrl, blogData, config)
       .then((res) => {
-        axios.post(contentUrl(res.data.id), formData, multidataConfig)
+        axios.post(contentUrl(res.data), formData, multidataConfig)
           .catch((err) => console.log(err));
       }).catch((err) => console.log(err));
   };

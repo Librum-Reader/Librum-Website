@@ -1,6 +1,7 @@
 .outer {
   display: flex;
   flex-direction: column;
+  padding: 0;
 }
 
 .blog {
@@ -35,7 +36,7 @@
   flex-direction: column;
   justify-content: start;
   align-items: start;
-  padding: 2em 0 2em 0;
+  padding: 1em 1em 1em 0;
   overflow-y: auto;
 }
 

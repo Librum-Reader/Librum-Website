@@ -49,16 +49,17 @@
   /* color: #343047; */
 }
 
-.success-container .message-box p {
+.success-container .message-box pre {
   padding-block: 0.5em;
   font-size: clamp(0.60rem, 1.1vw, 1.1rem);
   text-align: center;
   font-weight: 500;
   font-family: "Lato", sans-serif;
+  text-align: center;
 }
 
 .success-container .message-box button {
-  padding: 0.70em 1.2em;
+  padding: 0.50em 1.4em;
   text-decoration: none;
   margin-top: 2rem;
   border: 1px solid var(--slate);
@@ -69,6 +70,8 @@
   outline: none;
   color: #fcfcfc;
   font-weight: bold;
+  width: 6rem;
+
 }
 
 .success-container .message-box button:hover {
@@ -105,11 +108,15 @@
 
 @media (min-width: 900px) {
   .success-container .message-box {
-    max-width: 425px;
+    max-width: 450px;
     max-height: 80vh;
     padding-top: unset;
     padding-bottom: 2em;
     padding-inline: 1em;
+  }
+
+  .success-container .message-box button {
+    width: 8rem;
   }
 
 }

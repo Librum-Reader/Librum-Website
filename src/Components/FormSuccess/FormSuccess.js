@@ -75,11 +75,11 @@ const FormSuccess = ({ data, error, captchaError }) => {
         )}
 
         <h2>{open ? "Thank you!" : "We're Sorry!"}</h2>
-        <p>
+        <pre>
           {open
-            ? `Your message had been sent successfully. We will get back to you as soon as possible.`
+            ? `Your message had been sent successfully!\nWe will get back to you as soon as possible.`
             : "Something went wrong. Please try again"}
-        </p>
+        </pre>
         <button
           style={{ backgroundColor: `${bgColor}` }}
           onClick={handleCloseModal}

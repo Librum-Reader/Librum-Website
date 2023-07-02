@@ -71,11 +71,11 @@ const useFormSubmit = () => {
           }),
         })
           .then((response) => response.json())
-          .then((data) => {
-            if (data?.success === false) {
+          .then(async (data) => {
+            if ((await data?.success) !== "true") {
               throw new Error("Something went wrong!");
             }
-            return setRes(data.success);
+            setRes(data.success);
           });
       }
     } catch (err) {

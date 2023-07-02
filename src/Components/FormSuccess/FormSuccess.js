@@ -13,7 +13,7 @@ const FormSuccess = ({ data, error, captchaError }) => {
     const handleModalOpening = () => {
       if (data === "true") {
         setOpen(true);
-        setFormSubmitted(true);
+        return setFormSubmitted(true);
       } else if (
         typeof error === "object" ||
         typeof captchaError === "object"
@@ -46,6 +46,7 @@ const FormSuccess = ({ data, error, captchaError }) => {
     modalContainer?.addEventListener("click", (e) => {
       if (e.target === modalContainer) {
         setFormSubmitted(false);
+        setOpen(false);
       }
     });
   };
@@ -53,6 +54,7 @@ const FormSuccess = ({ data, error, captchaError }) => {
   const handleCloseModal = (e) => {
     e.stopPropagation();
     setFormSubmitted(false);
+    setOpen(false);
   };
 
   const bgColor = open ? "#946bde" : "#CD4D34";

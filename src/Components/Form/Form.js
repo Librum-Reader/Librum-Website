@@ -166,17 +166,17 @@ export const Form = () => {
             </button>
           </div>
           {isLoading && <LoadingAnimation />}
-          {typeof res === "object" ||
+          {(typeof res === "object" ||
             typeof error === "object" ||
-            (typeof captchaError === "object" &&
-              createPortal(
-                <FormSuccess
-                  data={res}
-                  error={error}
-                  captchaError={captchaError}
-                />,
-                document.body
-              ))}
+            typeof captchaError === "object") &&
+            createPortal(
+              <FormSuccess
+                data={res}
+                error={error}
+                captchaError={captchaError}
+              />,
+              document.body
+            )}
         </form>
       </div>
       {/* <div className="support-page-contact-image">

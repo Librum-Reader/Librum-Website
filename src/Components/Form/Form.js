@@ -11,8 +11,14 @@ import { createPortal } from "react-dom";
 
 export const Form = () => {
   const { bg } = useContext(SiteContext);
-  const { isLoading, res, error, captchaError, handleReCaptchaVerify } =
-    useFormSubmit();
+  const {
+    isLoading,
+    res,
+    error,
+    captchaError,
+    handleReCaptchaVerify,
+    resetStates,
+  } = useFormSubmit();
   const name = useRef();
   const email = useRef();
   const message = useRef();
@@ -30,13 +36,12 @@ export const Form = () => {
   };
 
   useEffect(() => {
-    console.log(typeof res.success);
-    console.log(res.success);
     const resetForm = () => {
-      if (res.success === "true") {
+      if (res === "true") {
         name.current.value = "";
         email.current.value = "";
         message.current.value = "";
+        resetStates();
       }
     };
     resetForm();

@@ -23,13 +23,15 @@ export const Form = () => {
       email: email.current.value,
       message: message.current.value,
     };
-    
+
     const captchaActionName = "FormComponent";
 
     await handleReCaptchaVerify(e, values, captchaActionName);
   };
 
   useEffect(() => {
+    console.log(typeof res.success);
+    console.log(res.success);
     const resetForm = () => {
       if (res.success === "true") {
         name.current.value = "";

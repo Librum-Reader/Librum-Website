@@ -1,0 +1,26 @@
+.loading-indicator {
+  display: flex;
+  position: absolute;
+  transition: all 0.3s;
+  margin-block: auto;
+  top: 0;
+  bottom: 0;
+  animation-fill-mode: both;
+  animation-duration: 1000ms;
+  animation-delay: 0ms;
+  animation-iteration-count: 1;
+  opacity: 1;
+  animation: fade 0.3s ease-in-out;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+    transform: none;
+  }
+
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}

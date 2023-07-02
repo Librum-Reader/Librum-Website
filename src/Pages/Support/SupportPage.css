@@ -294,6 +294,7 @@
 }
 
 .support-page-contact-form textarea {
+  border: 1px solid grey;
   padding: 10px 15px;
   min-height: 200px;
   background-color: rgba(128, 128, 128, 0.281);

@@ -1,17 +1,18 @@
-form {
+#form {
   width: 100%;
   margin-inline: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-inline: 10%;
+  position: relative;
 }
 
 .support-page-contact {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 5em 0 5em 0;
+  padding: 2em 0 5em 0;
 }
 
 .support-page-contact-form {
@@ -50,6 +51,10 @@ form {
   width: 100%;
 }
 
+.p-form span {
+  color: #c70000;
+}
+
 .form-div input,
 .form-div textarea {
   max-width: 800px;
@@ -79,10 +84,7 @@ form {
 }
 
 .btn-container button {
-  max-width: 16em;
+  padding: 0.90em 1em;
+  font-size: 1rem;
+  max-width: 12em;
 }
-
-
-/* color: #343047;
-border: 1px solid #343047;
-background-color: aliceblue; */

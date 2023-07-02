@@ -45,6 +45,12 @@ const useFormSubmit = () => {
     [executeRecaptcha]
   );
 
+  const resetStates = () => {
+    setRes("");
+    setError("");
+    setCaptchaError("");
+  };
+
   const submitForm = async (e, token, values) => {
     e.preventDefault();
     setIsLoading(true);
@@ -66,10 +72,10 @@ const useFormSubmit = () => {
         })
           .then((response) => response.json())
           .then((data) => {
-            if (data?.success === false) {
+            if (data?.success === "false") {
               throw new Error("Something went wrong!");
             }
-            return setRes(data);
+            return setRes(data.success);
           });
       }
     } catch (err) {
@@ -84,6 +90,7 @@ const useFormSubmit = () => {
     captchaError,
     isLoading,
     handleReCaptchaVerify,
+    resetStates,
   };
 };
 

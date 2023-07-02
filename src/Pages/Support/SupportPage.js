@@ -35,20 +35,21 @@ export const SupportPage = ({ message, anchor, cards }) => {
       style={
         bg === "light"
           ? {
-              backgroundColor: "white",
-              color: "var(--color-primary)",
-              paddingBottom: "100px;",
-            }
+            backgroundColor: "white",
+            color: "var(--color-primary)",
+            paddingBottom: "100px;",
+          }
           : {
-              backgroundColor: "#282c34",
-              color: "var(--color-primary)",
-              paddingBottom: "100px",
-            }
+            backgroundColor: "#282c34",
+            color: "var(--color-primary)",
+            paddingBottom: "100px",
+          }
       }
       className="container"
     >
       <Form />
       <div className="supportPage-container">
+
         <SupportWays pics={[reason3, reason1, reason2]} cards={cards} />
       </div>
     </div>

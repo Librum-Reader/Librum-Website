@@ -1,44 +1,83 @@
-import React, { useContext, useEffect, useRef } from "react";
+import React, { useContext, useRef } from "react";
 import { SiteContext } from "../../Context/Context";
+import useFormSubmit from "../../hooks/useFormSubmit";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 
 import pic4 from "../../Pages/Support/pic4.svg";
 import pic from "./message.svg";
 import "./Form.css";
-import { LoadingAnimation } from "../SvgIcons/SvgIcons";
-import FormSuccess from "../FormSuccess/FormSuccess";
-import useFormSubmit from "../../Hooks/useFormSubmit";
-import { createPortal } from "react-dom";
+import { useState } from "react";
+import { useCallback } from "react";
 
 export const Form = () => {
   const { bg } = useContext(SiteContext);
-  const { isLoading, res, error, captchaError, handleReCaptchaVerify } =
-    useFormSubmit();
+  const { submitForm, isLoading } = useFormSubmit();
   const name = useRef();
   const email = useRef();
   const message = useRef();
+  const [captchaError, setCaptchaError] = useState("");
+  const { executeRecaptcha } = useGoogleReCaptcha();
+  const recaptchaRef = useRef(null);
 
-  const handleSubmit = async (e) => {
-    const values = {
-      name: name.current.value,
-      email: email.current.value,
-      message: message.current.value,
-    };
-
-    const captchaActionName = "FormComponent";
-
-    await handleReCaptchaVerify(e, values, captchaActionName);
+  const verifyToken = async (token) => {
+    try {
+      await fetch(
+        `https://librum-dev.azurewebsites.net/api/recaptchaVerify?userToken=${token}`,
+        {
+          method: "POST",
+        }
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          return (recaptchaRef.current = data);
+        });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  useEffect(() => {
-    const resetForm = () => {
-      if (res.success === "true") {
+  const handleSubmit = async (e, token) => {
+    e?.preventDefault();
+    await verifyToken(token);
+
+    try {
+      if (recaptchaRef.current.success === true) {
+        console.log("verified");
+        const values = {
+          name: name.current.value,
+          email: email.current.value,
+          message: message.current.value,
+        };
+        await submitForm(values);
+
         name.current.value = "";
         email.current.value = "";
         message.current.value = "";
       }
-    };
-    resetForm();
-  }, [res]);
+    } catch (error) {
+      console.log("not verified");
+      console.log(error);
+    }
+  };
+
+  const handleReCaptchaVerify = useCallback(
+    async (e) => {
+      e?.preventDefault();
+      try {
+        if (!executeRecaptcha) {
+          console.log("Execute recaptcha not yet available");
+          throw new Error("Execute recaptcha not yet available");
+        }
+
+        const token = await executeRecaptcha("SupportPage");
+        await handleSubmit(e, token);
+      } catch (error) {
+        console.log(error);
+        setCaptchaError(error);
+      }
+    },
+    [executeRecaptcha]
+  );
 
   return (
     <div
@@ -48,8 +87,8 @@ export const Form = () => {
       <div className="support-page-contact-form">
         <h2>Send Us a Message</h2>
 
-        <form onSubmit={handleSubmit} id="form">
-          <div className="form-subtitle">
+        <form onSubmit={handleReCaptchaVerify}>
+          <div class="form-subtitle">
             <p
               style={{
                 color: `${bg === "light" ? "var(--color-primary0)" : "white"}`,
@@ -60,7 +99,7 @@ export const Form = () => {
                 marginBottom: "2rem",
               }}
             >
-              Please feel free to reach out to us using the form below, or at{" "}
+              Please feel free to reach out through our email{" "}
               <a
                 href="mailto:help@librumreader.com"
                 target="_blank"
@@ -87,7 +126,7 @@ export const Form = () => {
             </p>
             <input
               type="text"
-              placeholder="Your Name"
+              placeholder="Enter your Name"
               ref={name}
               className={`${
                 bg === "dark" ? "field-focus-dark" : "field-focus-light"
@@ -111,11 +150,10 @@ export const Form = () => {
               className="p-form"
             >
               Email
-              <span>*</span>
             </p>
             <input
               type="text"
-              placeholder="Your Email"
+              placeholder="Enter your email address"
               ref={email}
               className={`${
                 bg === "dark" ? "field-focus-dark" : "field-focus-light"
@@ -140,19 +178,18 @@ export const Form = () => {
               className="p-form"
             >
               Message
-              <span>*</span>
             </p>
             <textarea
-              type="text"
-              placeholder="I need help with..."
-              ref={message}
-              className={`${
-                bg === "dark" ? "field-focus-dark" : "field-focus-light"
-              }`}
               style={{
                 color: `${bg === "dark" ? "aliceblue" : "#393E48"}`,
                 backgroundColor: `${bg === "dark" ? "#393E48" : "aliceblue"}`,
               }}
+              type="text"
+              placeholder="Enter Message"
+              ref={message}
+              className={`${
+                bg === "dark" ? "field-focus-dark" : "field-focus-light"
+              }`}
               required
             />
           </div>
@@ -162,21 +199,9 @@ export const Form = () => {
               type="submit"
               disabled={isLoading ? true : false}
             >
-              Submit
+              Submit{" "}
             </button>
           </div>
-          {isLoading && <LoadingAnimation />}
-          {typeof res === "object" ||
-            typeof error === "object" ||
-            (typeof captchaError === "object" &&
-              createPortal(
-                <FormSuccess
-                  data={res}
-                  error={error}
-                  captchaError={captchaError}
-                />,
-                document.body
-              ))}
         </form>
       </div>
       {/* <div className="support-page-contact-image">

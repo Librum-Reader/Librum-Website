@@ -8,3 +8,35 @@
   margin-bottom: 0.25em;
 }
 
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.t-introduction {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: start;
+  align-items: start;
+  padding: 0;
+  gap: 1em;
+}
+
+.formtitle {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  width: 50%;
+}
+
+.formtitle label {
+  margin-bottom: 0.25em;
+  color: #52525B
+}
+
+.formtitle input {
+  margin-bottom: 0.25em;
+  padding: 0.25em;
+  width: 100%;
+}

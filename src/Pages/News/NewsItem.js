@@ -43,7 +43,7 @@ const NewsItem = ({ bg, newslogo, item, index }) => {
             {item.introduction}
           </p>
         </div>
-        <Link to={"/news/" + item.id}>
+        <Link to={"/news/" + item.title}>
           <button className="btn btn-secondary">Read More</button>
         </Link>
       </div>

@@ -22,7 +22,7 @@ const FormSuccess = ({ data, error, captchaError }) => {
       }
     };
     return handleModalOpening();
-  }, [data, error, captchaError, formSubmitted]);
+  }, [data, error, captchaError]);
 
   useEffect(() => {
     function handleModalKeyPress(e) {

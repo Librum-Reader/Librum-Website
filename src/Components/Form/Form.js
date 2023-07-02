@@ -28,7 +28,6 @@ export const Form = () => {
 
     await handleReCaptchaVerify(e, values, captchaActionName);
   };
-
   useEffect(() => {
     const resetForm = () => {
       if (res.success === "true") {
@@ -166,7 +165,7 @@ export const Form = () => {
             </button>
           </div>
           {isLoading && <LoadingAnimation />}
-          {(typeof res === "object" ||
+          {(res.success === "true" ||
             typeof error === "object" ||
             typeof captchaError === "object") &&
             createPortal(

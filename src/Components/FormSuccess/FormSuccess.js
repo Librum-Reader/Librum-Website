@@ -11,7 +11,7 @@ const FormSuccess = ({ data, error, captchaError }) => {
 
   useEffect(() => {
     const handleModalOpening = () => {
-      if (data.success === "true") {
+      if (data === "true") {
         setOpen(true);
         setFormSubmitted(true);
       } else if (
@@ -22,7 +22,7 @@ const FormSuccess = ({ data, error, captchaError }) => {
       }
     };
     return handleModalOpening();
-  }, [data, error, captchaError]);
+  }, [data, error, captchaError, formSubmitted]);
 
   useEffect(() => {
     function handleModalKeyPress(e) {

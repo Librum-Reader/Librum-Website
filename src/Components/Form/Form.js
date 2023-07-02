@@ -23,7 +23,7 @@ export const Form = () => {
       email: email.current.value,
       message: message.current.value,
     };
-
+    
     const captchaActionName = "FormComponent";
 
     await handleReCaptchaVerify(e, values, captchaActionName);

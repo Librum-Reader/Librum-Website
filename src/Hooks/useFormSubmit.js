@@ -72,7 +72,7 @@ const useFormSubmit = () => {
         })
           .then((response) => response.json())
           .then((data) => {
-            if (data?.success === "false") {
+            if (data?.success === false) {
               throw new Error("Something went wrong!");
             }
             return setRes(data.success);

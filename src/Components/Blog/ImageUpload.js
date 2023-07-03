@@ -3,12 +3,9 @@ import React, { useState } from 'react';
 const ImageUpload = () => {
   const [selectedImage, setSelectedImage] = useState(null);
 
-  const handleImageUpload = (event) => {
-    setSelectedImage(URL.createObjectURL(event.target.files[0]));
-    console.log(selectedImage)
-  };
 
   const handleUpload = () => {
+    // sent to api
     console.log('Image uploaded:', selectedImage);
   };
 

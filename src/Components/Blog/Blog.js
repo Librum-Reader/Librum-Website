@@ -6,23 +6,24 @@ import './Blog.css';
 const Renderer = () => {
   const [htmlCode, setHtmlCode] = useState(template);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [title, setTitle] = useState('');
+  const [intro, setIntro] = useState('');
   const handleHtmlChange = (event) => {
     setHtmlCode(event.target.value);
   };
   const regex1 = /\{\{image1\}\}/;
   const regex2 = /\{\{image2\}\}/;
-  const regexvalues = [regex1, regex2];
+  // const regexvalues = [regex1, regex2];
   const handleImageUpload = (event) => {
-    const imageUrls = [];
-    const files = event.target.files;
+    setSelectedImage(event.target.files);
 
-    for (let i = 0; i < files.length; i++) {
-      imageUrls.push(URL.createObjectURL(files[i]));
-    }
+    // for (let i = 0; i < files.length; i++) {
+    //   imageUrls.push(URL.createObjectURL(files[i]));
+    // }
 
-    for (let i = 0; i < imageUrls.length; i++) {
-      setHtmlCode((prev) => prev.replace(regexvalues[i], imageUrls[i]));
-    }
+    // for (let i = 0; i < imageUrls.length; i++) {
+    //   setHtmlCode((prev) => prev.replace(regexvalues[i], imageUrls[i]));
+    // }
   };
 
 
@@ -58,8 +59,23 @@ const Renderer = () => {
     console.log("change");
   }, [htmlCode]);
 
+  const createCover = (e) => {
+    e.preventDefault();
+    const coverUrl = "https://librum-dev.azurewebsites.net/api/blog/cover/f6fd141c-47de-43a4-6dec-08db7998709d";
+    const imageData = new FormData();
+    imageData.append('cover_image', selectedImage[0]);
+    const multidataConfig = {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    }
+    axios.post(coverUrl, imageData, multidataConfig).then((res) => {
+      console.log(res);
+    }
+    ).catch((err) => console.log(err));
+  };
 
-  console.log(selectedImage);
+  // console.log(selectedImage);
 
   return (
     <>
@@ -67,11 +83,11 @@ const Renderer = () => {
         <form className='t-introduction'>
           <div className='formtitle'>
             <label htmlFor="title">Title</label>
-            <input type="text" placeholder="Add a title..." />
+            <input type="text" placeholder="Add a title..." onChange={(e) => setTitle(e.target.value)} />
           </div>
           <div className='formtitle'>
             <label htmlFor="introduction">Introduction</label>
-            <input type="textarea" placeholder="Add a brief introduction" />
+            <input type="textarea" placeholder="Add a brief introduction" onChange={(e) => setIntro(e.target.value)} />
           </div>
         </form>
         <input
@@ -81,10 +97,14 @@ const Renderer = () => {
           accept="image/jpeg, image/png, image/jpg"
           onChange={(e) => {
             handleImageUpload(e);
-            console.log("inside handleImageUpload");
           }}
         />
-      </div >
+        <button
+          onClick={createCover}
+        >
+          Test Cover
+        </button>
+      </div>
       <form className='outer'>
         <div className='blog'>
           <div className='html'>

@@ -166,8 +166,8 @@ export const Form = () => {
             </button>
           </div>
           {isLoading && <LoadingAnimation />}
-          {(typeof res === "object" 
-            typeof error === "object" 
+          {(typeof res === "object" ||
+            typeof error === "object" ||
             typeof captchaError === "object") &&
             createPortal(
               <FormSuccess

@@ -27,6 +27,12 @@ export const LoginForm = () => {
     return emailRegex.test(email);
   }
 
+  const token = localStorage.getItem("token");
+
+  if (token) {
+    navigate("/profile");
+  }
+
   const register = async () => {
     if (displayName === "") {
       setErrorMessage("Please Enter your name");

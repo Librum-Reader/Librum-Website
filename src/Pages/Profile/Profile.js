@@ -2,14 +2,12 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import { SiteContext } from "../../Context/Context";
 import "./Profile.css";
 import img1 from "../AboutPage/about2.png";
-import { getAuth, updateProfile } from "firebase/auth";
+import axios from "axios";
+
 import { useNavigate } from "react-router-dom";
-import { addDoc, collection, getDocs } from "firebase/firestore";
-import { db } from "../../firebase-config";
-import { async } from "@firebase/util";
+
 import { getDate } from "../../Assets/js/Functions";
 export const Profile = () => {
-  const auth = getAuth();
   const navigate = useNavigate();
   const name = useRef("");
   const photo = useRef("");
@@ -20,83 +18,19 @@ export const Profile = () => {
   const [bugList, setBugList] = useState([]);
   const [view, setView] = useState("");
 
-  const bugCollectionRef = collection(db, "bugs");
+  const { user, bg, setBg, fetchUserData, fetchBookData } =
+    useContext(SiteContext);
 
-  useEffect(() => {
-    const getBugs = async () => {
-      const data = await getDocs(bugCollectionRef);
+  const token = localStorage.getItem("token");
 
-      setBugList(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    };
-
-    getBugs();
-  }, []);
-
-  const createBugReport = async () => {
-    if (title === "" || text === "") {
-      alert("please enter both fields");
-      return;
-    }
-    try {
-      const newBug = await addDoc(bugCollectionRef, {
-        title,
-        text,
-        status: "in review",
-        date: getDate(),
-        author: {
-          name: auth.currentUser.displayName,
-          id: auth.currentUser.uid,
-        },
-      });
-
-      const getBugs = async () => {
-        const data = await getDocs(bugCollectionRef);
-
-        setBugList(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-      };
-
-      getBugs();
-      setText("");
-      setTitle("");
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const onSubmit = async () => {
-    if (name.current.valueOf === "" && photo.current.valueOf === "") {
-      alert("please enter fields");
-    }
-
-    if (name.current.valueOf !== "") {
-      updateProfile(auth.currentUser, {
-        photoURL: photo.current.value,
-      });
-    }
-
-    if (photo.current.valueOf !== "") {
-      updateProfile(auth.currentUser, {
-        photoURL: photo.current.value,
-      });
-    }
-
-    updateProfile(auth.currentUser, {
-      displayName: name.current.value,
-      photoURL: photo.current.value,
-    })
-      .then(() => {
-        console.log(auth.currentUser);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  const { user, bg, setBg } = useContext(SiteContext);
-
-  if (!user) {
+  if (!token) {
     navigate("/");
   }
+
+  useEffect(() => {
+    fetchUserData(token);
+    fetchBookData(token);
+  }, []);
 
   return (
     <div
@@ -127,7 +61,7 @@ export const Profile = () => {
                     }
               }
             >
-              Hello {auth.currentUser.displayName}
+              Hello James
             </h1>
             <p
               style={
@@ -301,7 +235,7 @@ export const Profile = () => {
                 <div className="buttons-section">
                   <button
                     onClick={() => {
-                      createBugReport();
+                      console.log("clicked");
                     }}
                     className="btn btn-secondary"
                   >
@@ -322,7 +256,7 @@ export const Profile = () => {
           {view === "settings" && (
             <div className="profile-page-settings">
               {" "}
-              Hello {user?.displayName}
+              Hello James
               <div className="profile-page-avatar">
                 <img src={user.photoURL} alt="avatar" />
               </div>
@@ -334,7 +268,7 @@ export const Profile = () => {
               />
               <button
                 onClick={() => {
-                  onSubmit();
+                  console.log("clicked");
                 }}
                 className="btn btn-secondary"
               >

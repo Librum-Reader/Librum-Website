@@ -16,8 +16,17 @@ export const Navbar = () => {
   const colorA = "white";
 
   const colorB = "black";
-  const { user, setUser, logout, mode, bg, setBg, selected, setSelected } =
-    useContext(SiteContext);
+  const {
+    user,
+    setUser,
+    logout,
+    mode,
+    bg,
+    setBg,
+    selected,
+    setSelected,
+    token,
+  } = useContext(SiteContext);
   // const [bg, setBg] = useState("dark");
   return (
     <div
@@ -293,7 +302,7 @@ export const Navbar = () => {
                 )}
               </li>
 
-              {!user ? (
+              {!token ? (
                 <li>
                   <Link
                     to={"./login"}
@@ -327,7 +336,17 @@ export const Navbar = () => {
                             : { color: colorA }
                         }
                       >
-                        <i className="fas fa-door-open"></i>
+                        {/* <i className="fas fa-door-open">
+                          <small>signout</small>
+                        </i> */}
+                        <button
+                          className="btn btn-primary"
+                          onClick={() => {
+                            localStorage.removeItem("token");
+                          }}
+                        >
+                          Logout
+                        </button>
                       </p>
                     </Link>
                   </li>

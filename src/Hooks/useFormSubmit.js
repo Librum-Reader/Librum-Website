@@ -75,7 +75,7 @@ const useFormSubmit = () => {
             if ((await data?.success) !== "true") {
               throw new Error("Something went wrong!");
             }
-            setRes(data.success);
+            setRes(data?.success);
           });
       }
     } catch (err) {

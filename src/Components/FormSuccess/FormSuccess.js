@@ -12,9 +12,11 @@ const FormSuccess = ({ data, error, captchaError }) => {
 
   useUpdateEffect(() => {
     const handleModalOpening = () => {
+      console.log("Data From FormSuccess before if===>", data);
       if (data === "true") {
+        console.log("Data From FormSuccess after if===>", data);
         setOpen(true);
-        return setFormSubmitted(true);
+        setFormSubmitted(true);
       } else if (
         typeof error === "object" ||
         typeof captchaError === "object"

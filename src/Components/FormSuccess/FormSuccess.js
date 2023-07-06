@@ -3,13 +3,14 @@ import { SiteContext } from "../../Context/Context";
 import { BsCheckCircle } from "react-icons/bs";
 import { GiCancel } from "react-icons/gi";
 import "./FormSuccess.css";
+import useUpdateEffect from "../../Hooks/useUpdateEffect";
 
 const FormSuccess = ({ data, error, captchaError }) => {
   const [open, setOpen] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const { bg } = useContext(SiteContext);
 
-  useEffect(() => {
+  useUpdateEffect(() => {
     const handleModalOpening = () => {
       if (data === "true") {
         setOpen(true);
@@ -22,7 +23,7 @@ const FormSuccess = ({ data, error, captchaError }) => {
       }
     };
     return handleModalOpening();
-  }, [data, error, captchaError]);
+  }, [data]);
 
   useEffect(() => {
     function handleModalKeyPress(e) {

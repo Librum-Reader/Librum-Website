@@ -24,6 +24,7 @@ export const Form = () => {
   const message = useRef();
 
   const handleSubmit = async (e) => {
+    resetStates();
     const values = {
       name: name.current.value,
       email: email.current.value,
@@ -41,7 +42,6 @@ export const Form = () => {
         name.current.value = "";
         email.current.value = "";
         message.current.value = "";
-        resetStates();
       }
     };
     resetForm();

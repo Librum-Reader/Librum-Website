@@ -38,7 +38,6 @@ export const Form = () => {
 
   useEffect(() => {
     const resetForm = () => {
-      console.log("is res true?", res === "true");
       if (res === "true") {
         name.current.value = "";
         email.current.value = "";

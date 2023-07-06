@@ -45,11 +45,16 @@ const useFormSubmit = () => {
     [executeRecaptcha]
   );
 
+  const resetStates = () => {
+    setRes("");
+    setError("");
+    setCaptchaError("");
+  };
+
   const submitForm = async (e, token, values) => {
     e.preventDefault();
     setIsLoading(true);
     await verifyToken(token);
-
     try {
       if (recaptchaRef.current?.success === true) {
         await fetch("https://formsubmit.co/ajax/help@librumreader.com", {
@@ -65,11 +70,11 @@ const useFormSubmit = () => {
           }),
         })
           .then((response) => response.json())
-          .then((data) => {
-            if (data?.success === false) {
+          .then(async (data) => {
+            if ((await data?.success) !== "true") {
               throw new Error("Something went wrong!");
             }
-            return setRes(data);
+            setRes(data?.success);
           });
       }
     } catch (err) {
@@ -84,6 +89,7 @@ const useFormSubmit = () => {
     captchaError,
     isLoading,
     handleReCaptchaVerify,
+    resetStates,
   };
 };
 

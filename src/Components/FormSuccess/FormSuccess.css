@@ -71,7 +71,7 @@
   color: #fcfcfc;
   font-weight: bold;
   width: 6rem;
-
+  cursor: pointer;
 }
 
 .success-container .message-box button:hover {

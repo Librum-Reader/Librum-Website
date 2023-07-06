@@ -3,15 +3,16 @@ import { SiteContext } from "../../Context/Context";
 import { BsCheckCircle } from "react-icons/bs";
 import { GiCancel } from "react-icons/gi";
 import "./FormSuccess.css";
+import useUpdateEffect from "../../Hooks/useUpdateEffect";
 
 const FormSuccess = ({ data, error, captchaError }) => {
   const [open, setOpen] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const { bg } = useContext(SiteContext);
 
-  useEffect(() => {
+  useUpdateEffect(() => {
     const handleModalOpening = () => {
-      if (data.success === "true") {
+      if (data === "true") {
         setOpen(true);
         setFormSubmitted(true);
       } else if (
@@ -22,7 +23,7 @@ const FormSuccess = ({ data, error, captchaError }) => {
       }
     };
     return handleModalOpening();
-  }, [data, error, captchaError]);
+  }, [data]);
 
   useEffect(() => {
     function handleModalKeyPress(e) {
@@ -46,6 +47,7 @@ const FormSuccess = ({ data, error, captchaError }) => {
     modalContainer?.addEventListener("click", (e) => {
       if (e.target === modalContainer) {
         setFormSubmitted(false);
+        setOpen(false);
       }
     });
   };
@@ -53,6 +55,7 @@ const FormSuccess = ({ data, error, captchaError }) => {
   const handleCloseModal = (e) => {
     e.stopPropagation();
     setFormSubmitted(false);
+    setOpen(false);
   };
 
   const bgColor = open ? "#946bde" : "#CD4D34";

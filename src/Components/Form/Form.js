@@ -11,13 +11,20 @@ import { createPortal } from "react-dom";
 
 export const Form = () => {
   const { bg } = useContext(SiteContext);
-  const { isLoading, res, error, captchaError, handleReCaptchaVerify } =
-    useFormSubmit();
+  const {
+    isLoading,
+    res,
+    error,
+    captchaError,
+    handleReCaptchaVerify,
+    resetStates,
+  } = useFormSubmit();
   const name = useRef();
   const email = useRef();
   const message = useRef();
 
   const handleSubmit = async (e) => {
+    resetStates();
     const values = {
       name: name.current.value,
       email: email.current.value,
@@ -31,7 +38,7 @@ export const Form = () => {
 
   useEffect(() => {
     const resetForm = () => {
-      if (res.success === "true") {
+      if (res === "true") {
         name.current.value = "";
         email.current.value = "";
         message.current.value = "";
@@ -166,17 +173,14 @@ export const Form = () => {
             </button>
           </div>
           {isLoading && <LoadingAnimation />}
-          {(typeof res === "object" ||
-            typeof error === "object" ||
-            typeof captchaError === "object") &&
-            createPortal(
-              <FormSuccess
-                data={res}
-                error={error}
-                captchaError={captchaError}
-              />,
-              document.body
-            )}
+          {createPortal(
+            <FormSuccess
+              data={res}
+              error={error}
+              captchaError={captchaError}
+            />,
+            document.body
+          )}
         </form>
       </div>
       {/* <div className="support-page-contact-image">

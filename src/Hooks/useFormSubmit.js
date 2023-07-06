@@ -19,6 +19,7 @@ const useFormSubmit = () => {
       )
         .then((res) => res.json())
         .then((data) => {
+          console.log("Data from verifyToken==>", data);
           if (data?.success === false) {
             throw new Error("Something went wrong!");
           }
@@ -55,7 +56,7 @@ const useFormSubmit = () => {
     e.preventDefault();
     setIsLoading(true);
     await verifyToken(token);
-
+    console.log("recaptchaRef==>", recaptchaRef.current?.success);
     try {
       if (recaptchaRef.current?.success === true) {
         await fetch("https://formsubmit.co/ajax/help@librumreader.com", {
@@ -72,6 +73,7 @@ const useFormSubmit = () => {
         })
           .then((response) => response.json())
           .then(async (data) => {
+            console.log("Data from submit form==>", data);
             if ((await data?.success) !== "true") {
               throw new Error("Something went wrong!");
             }

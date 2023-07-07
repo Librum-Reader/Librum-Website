@@ -98,18 +98,20 @@ const Template = () => (
     <h3 className="tos-subtitle">8. Limitations and exclusions of liability</h3>
 
     <ol>
-      <li>8.1 Nothing in these terms and conditions will:</li>
-      <ol type="a">
-        <li>limit or exclude any liability for death or personal injury resulting from negligence;</li>
-        <li>limit or exclude any liability for fraud or fraudulent misrepresentation;</li>
-        <li>limit any liabilities in any way that is not permitted under applicable law; or</li>
-        <li>exclude any liabilities that may not be excluded under applicable law.</li>
-      </ol>
-      <li>8.2 The limitations and exclusions of liability set out in this Section 9 and elsewhere in these terms and conditions:</li>
-      <ol type="a">
-        <li>are subject to Section 8.1; and</li>
-        <li>govern all liabilities arising under these terms and conditions or relating to the subject matter of these terms and conditions, including liabilities arising in contract, in tort (including negligence) and for breach of statutory duty, except to the extent expressly provided otherwise in these terms and conditions.</li>
-      </ol>
+      <li>8.1 Nothing in these terms and conditions will:
+        <ol className="innerlist">
+          <li>limit or exclude any liability for death or personal injury resulting from negligence;</li>
+          <li>limit or exclude any liability for fraud or fraudulent misrepresentation;</li>
+          <li>limit any liabilities in any way that is not permitted under applicable law; or</li>
+          <li>exclude any liabilities that may not be excluded under applicable law.</li>
+        </ol>
+      </li>
+      <li>8.2 The limitations and exclusions of liability set out in this Section 9 and elsewhere in these terms and conditions:
+        <ol className="innerlist">
+          <li>are subject to Section 8.1; and</li>
+          <li>govern all liabilities arising under these terms and conditions or relating to the subject matter of these terms and conditions, including liabilities arising in contract, in tort (including negligence) and for breach of statutory duty, except to the extent expressly provided otherwise in these terms and conditions.</li>
+        </ol>
+      </li>
       <li>8.3 We will not be liable to you in respect of any losses arising out of any event or events beyond our reasonable control.</li>
       <li>8.4 We will not be liable to you in respect of any business losses, including (without limitation) loss of or damage to profits, income, revenue, use, production, anticipated savings, business, contracts, commercial opportunities or goodwill.</li>
       <li>8.5 We will not be liable to you in respect of any loss or corruption of any data, database or software.</li>
@@ -158,7 +160,7 @@ const Template = () => (
       <li>14.1 These terms and conditions shall constitute the entire agreement between you and us in relation to the use and access of our website and shall supersede all previous agreements between you and us.</li>
     </ol>
 
-    <h3>15. Law and jurisdiction</h3>
+    <h3 className="tos-subtitle">15. Law and jurisdiction</h3>
 
     <ol>
       <li>15.1 These terms and conditions shall be governed by and construed in accordance with the laws of Germany.</li>
@@ -182,12 +184,13 @@ const Template = () => (
     <ol>
       <li>18.1 This website is owned and operated by the Librum-Reader company.</li>
       <li>18.2 Our registered office is at Kirchenkamp 2, 50226, Frechen in Germany.</li>
-      <li>18.3 You can contact us:</li>
-      <ol type="a">
-        <li>by post, using the postal address given above;</li>
-        <li>using our website contact form;</li>
-        <li>by email, using the email address published on our website from time to time - <a href="mailto:contact@librumreader.com">contact@librumreader.com</a>.</li>
-      </ol>
+      <li>18.3 You can contact us:
+        <ol className="innerlist">
+          <li>by post, using the postal address given above;</li>
+          <li>using our website contact form;</li>
+          <li>by email, using the email address published on our website from time to time - <a href="mailto:contact@librumreader.com">contact@librumreader.com</a>.</li>
+        </ol>
+      </li>
     </ol>
 
     <p>Effective Date: 06.07.2023</p>

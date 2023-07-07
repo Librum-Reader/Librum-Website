@@ -4,6 +4,8 @@ import Lottie from "lottie-web";
 import "./Showcase.css";
 import { SiteContext } from "../../Context/Context";
 import { CountUP } from "../CountUp/CountUp";
+import { AiFillGithub } from "react-icons/ai";
+import { DiLinux } from "react-icons/di";
 
 export const Showcase = ({ image1 }) => {
   const { bg, setBg } = useContext(SiteContext);
@@ -33,8 +35,8 @@ export const Showcase = ({ image1 }) => {
               bg === "light"
                 ? { color: "var(--color-primary0)" }
                 : {
-                  color: "white",
-                }
+                    color: "white",
+                  }
             }
           >
             A clean and simple way to read your books on any device, without
@@ -42,9 +44,13 @@ export const Showcase = ({ image1 }) => {
           </p>
         </div>
         <div className="info-section-button">
-          <button className="btn btn-secondary">Download </button>
-          <button className="btn btn-primary">
-            <a href="#ft-services">Learn More</a>{" "}
+          <button className="btn btn-secondary btn-sc">
+            <DiLinux size="1.5rem" />
+            <p>Download</p>
+          </button>
+          <button className="btn btn-primary btn-sc">
+            <AiFillGithub size="1.5rem" />
+            <a href="#ft-services">GitHub</a>{" "}
           </button>
         </div>
       </div>

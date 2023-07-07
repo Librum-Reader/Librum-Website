@@ -59,6 +59,12 @@
 .sm {
   display: none;
 }
+
+.btn-sc {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
 @media screen and (max-width: 900px) {
   .showcase-container {
     grid-template-columns: 1fr;

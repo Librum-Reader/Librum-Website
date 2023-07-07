@@ -28,10 +28,14 @@
   list-style-position: inside;
 } */
 
-.innerlist>li {
+.innerlist > li {
   list-style: latin-in-brackets;
   list-style-position: inside;
   margin-left: 1em;
+}
+
+.main-template > ol {
+  line-height:  1.5em;;
 }
 
 @counter-style latin-in-brackets {

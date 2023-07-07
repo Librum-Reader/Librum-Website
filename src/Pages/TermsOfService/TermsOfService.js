@@ -12,12 +12,12 @@ const TermsOfService = (props) => {
       bg === "light"
         ? {
           backgroundColor: "white",
-          color: "var(--color-primary)",
+          color: "var(--color-primary0)",
           paddingBottom: "100px;",
         }
         : {
           backgroundColor: "#282c34",
-          color: "var(--color-primary)",
+          color: "white",
           paddingBottom: "100px",
         }
     }

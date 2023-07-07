@@ -16,17 +16,16 @@ const Template = () => (
 
     <h3 className="tos-subtitle">2. Interpretation</h3>
 
-
-
-    <ol type="a">
-      <li>2.1 In these terms and conditions:</li>
-      <li>"we" means Librum-Reader Company (and "us" and "our" should be construed accordingly);</li>
-      <li>"you" means user or prospective user under these terms and conditions (and "your" should be construed accordingly);</li>
-      <li>"ebooks" means those ebooks that are available through our services; and</li>
-      <li>"your ebooks" means any such ebooks that you have downloaded or uploaded through our website and application and in your Librum library (including any enhanced or upgraded version of the ebooks that we may make available to you from time to time).</li>
+    <ol >
+      <li>2.1 In these terms and conditions:
+        <ol className="innerlist">
+          <li>"we" means Librum-Reader Company (and "us" and "our" should be construed accordingly);</li>
+          <li>"you" means user or prospective user under these terms and conditions (and "your" should be construed accordingly);</li>
+          <li>"ebooks" means those ebooks that are available through our services; and</li>
+          <li>"your ebooks" means any such ebooks that you have downloaded or uploaded through our website and application and in your Librum library (including any enhanced or upgraded version of the ebooks that we may make available to you from time to time).</li>
+        </ol>
+      </li>
     </ol>
-
-
 
     <h3 className="tos-subtitle">3. Access process</h3>
 
@@ -54,18 +53,20 @@ const Template = () => (
     <ol>
       <li>6.1 The user shall upload their books in a readable and downloadable format such as pdf, epub or Txt.</li>
       <li>6.2 Subject to your access and uploading of your books and compliance with these terms and conditions, we grant to you a worldwide, non-expiring, non-exclusive, non-transferable license to make any use of your ebooks permitted by Section 6.3, providing that you must not in any circumstances make any use of your ebooks that is prohibited by Section 6.4.</li>
-      <li>6.3 The "permitted uses" of your ebooks are:</li>
-      <ol type="a">
-        <li>Uploading a copy of your ebooks;</li>
-        <li>Making, storing, and viewing copies of your ebooks on only one account;</li>
-      </ol>
-      <li>6.4 The "prohibited uses" of your downloads are:</li>
-      <ol type="a">
-        <li>the editing, modification, adaptation, or alteration of any ebook (or part thereof), and the creation of any derivative work incorporating any download which might affect the daily working of the website or the application (or part thereof);</li>
-        <li>the use of any ebook (or part thereof) in any way that is unlawful or in breach of any person's legal rights under any applicable law, or in any way that is offensive, indecent, discriminatory or otherwise objectionable;</li>
-        <li>any prohibited commercial use of any ebook (or part thereof); and</li>
-        <li>the circumvention or removal of, or any attempt to circumvent or remove, the technological measures applied to any ebook for the purpose of preventing unauthorized use.</li>
-      </ol>
+      <li>6.3 The "permitted uses" of your ebooks are:
+        <ol className="innerlist">
+          <li>Uploading a copy of your ebooks;</li>
+          <li>Making, storing, and viewing copies of your ebooks on only one account;</li>
+        </ol>
+      </li>
+      <li>6.4 The "prohibited uses" of your downloads are:
+        <ol className="innerlist">
+          <li>the editing, modification, adaptation, or alteration of any ebook (or part thereof), and the creation of any derivative work incorporating any download which might affect the daily working of the website or the application (or part thereof);</li>
+          <li>the use of any ebook (or part thereof) in any way that is unlawful or in breach of any person's legal rights under any applicable law, or in any way that is offensive, indecent, discriminatory or otherwise objectionable;</li>
+          <li>any prohibited commercial use of any ebook (or part thereof); and</li>
+          <li>the circumvention or removal of, or any attempt to circumvent or remove, the technological measures applied to any ebook for the purpose of preventing unauthorized use.</li>
+        </ol>
+      </li>
       <li>6.5 You warrant us that you have access to the necessary computer systems, media systems, software, and network connections to receive and enjoy the benefit of our services.</li>
       <li>6.6 All intellectual property rights and other rights in the ebooks not expressly granted by these terms and conditions are hereby reserved.</li>
       <li>6.7 You must retain, and must not delete, obscure, or remove, copyright notices and other proprietary notices on or in any ebook.</li>
@@ -77,12 +78,13 @@ const Template = () => (
     <h3 className="tos-subtitle">7. Warranties and representations</h3>
 
     <ol>
-      <li>7.1 You warrant and represent to us that:</li>
-      <ol type="1">
-        <li>you are legally capable to use our services;</li>
-        <li>you have full authority, power and capacity to agree to these terms and conditions; and</li>
-        <li>all the information that you provide to us in connection with the creation of your account is true, accurate, complete, current and non-misleading.</li>
-      </ol>
+      <li>7.1 You warrant and represent to us that:
+        <ol className="innerlist">
+          <li>you are legally capable to use our services;</li>
+          <li>you have full authority, power and capacity to agree to these terms and conditions; and</li>
+          <li>all the information that you provide to us in connection with the creation of your account is true, accurate, complete, current and non-misleading.</li>
+        </ol>
+      </li>
       <li>7.2 We warrant to you that:</li>
       <ol type="1">
         <li>your ebooks will be of satisfactory quality;</li>

@@ -28,7 +28,7 @@ export const About = () => {
               <p>
                 We believe that software should be free and open source. All of
                 our software is publicly available for you, feel free to
-                contribute or suggest new features!
+                contribute or suggest new features!"
               </p>
             </div>
           </div>

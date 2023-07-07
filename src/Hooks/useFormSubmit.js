@@ -63,11 +63,7 @@ const useFormSubmit = () => {
             "Content-Type": "application/json",
             Accept: "application/json",
           },
-          body: JSON.stringify({
-            Name: values.name,
-            Email: values.email,
-            Message: values.message,
-          }),
+          body: JSON.stringify(values),
         })
           .then((response) => response.json())
           .then(async (data) => {

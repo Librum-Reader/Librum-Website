@@ -85,12 +85,13 @@ const Template = () => (
           <li>all the information that you provide to us in connection with the creation of your account is true, accurate, complete, current and non-misleading.</li>
         </ol>
       </li>
-      <li>7.2 We warrant to you that:</li>
-      <ol type="1">
-        <li>your ebooks will be of satisfactory quality;</li>
-        <li>your ebooks will be reasonably fit for any purpose that you make known to us under these terms and conditions is made;</li>
-        <li>your ebooks shall be securely stored for consumption and protected from unwarranted access and use.</li>
-      </ol>
+      <li>7.2 We warrant to you that:
+        <ol className="innerlist">
+          <li>your ebooks will be of satisfactory quality;</li>
+          <li>your ebooks will be reasonably fit for any purpose that you make known to us under these terms and conditions is made;</li>
+          <li>your ebooks shall be securely stored for consumption and protected from unwarranted access and use.</li>
+        </ol>
+      </li>
     </ol>
     <li>7.3 All of our warranties and representations relating to ebooks are set out in these terms and conditions. To the maximum extent permitted by applicable law and subject to Section 8.1, all other warranties and representations are expressly excluded.</li>
 

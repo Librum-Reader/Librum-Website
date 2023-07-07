@@ -22,3 +22,21 @@
 .tos-title {
   margin-bottom: 1.5em;
 }
+
+/* .main-template > ol > li {
+  list-style: circle;
+  list-style-position: inside;
+} */
+
+.innerlist>li {
+  list-style: latin-in-brackets;
+  list-style-position: inside;
+  margin-left: 1em;
+}
+
+@counter-style latin-in-brackets {
+  system: fixed;
+  suffix: " ";
+  symbols: "(a)" "(b)" "(c)" "(d)" "(e)" "(f)" "(g)" "(h)" "(i)" "(j)";
+  ;
+}

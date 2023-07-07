@@ -3,12 +3,11 @@ import { Template } from "./Template";
 import { useContext } from "react";
 import { SiteContext } from "../../Context/Context";
 
-
 const TermsOfService = (props) => {
   const { bg } = useContext(SiteContext)
   
   return (
-    < div className="container" style={
+    <div className="container" style={
       bg === "light"
         ? {
           backgroundColor: "white",

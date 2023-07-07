@@ -12,7 +12,7 @@ const PrivacyPolicy = (props) => {
         ? {
           backgroundColor: "white",
           color: "var(--color-primary0)",
-          paddingBottom: "100px;",
+          paddingBottom: "100px",
         }
         : {
           backgroundColor: "#282c34",

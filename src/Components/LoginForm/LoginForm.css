@@ -22,16 +22,13 @@
 .login-form-logo-square {
   height: 35px;
   width: 35px;
+  background-color: #302c2c;
   border-radius: 5px;
 }
 
-.custom-input {
-  padding-top: 10px !important;
-  padding-bottom: 10px !important;
+.Log-into-your{
+  color:#888;
 }
-
-
-
 .login-form {
   width: 100%;
   max-width: 800px;
@@ -49,6 +46,15 @@
   animation: pop-down 800ms ease-in-out;
   border: 1px solid crimson;
 }
+.log-form-header{
+  padding-bottom: 20px;
+}
+.pass-wrapper {
+  position: relative;
+  display: flex;
+  margin-bottom: 14px;
+}
+
 .login-register-cta {
   margin-top: 20px;
   color: var(--color-primary);
@@ -67,6 +73,17 @@
 }
 
 
+.form-input > div:first-child {
+  color: #aaa; /* Set the font color to #aaa */
+}
+
+.form-input input {
+  border: 1px solid rgb(170, 170, 170) !important;
+  background: transparent;
+  color: #aaa;
+  font-size: 14px
+  
+}
 .login-form input[type="text"] {
   width: 90%;
   max-width: 20rem;
@@ -93,6 +110,8 @@ input[type="password"] {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+
 
   /* border: 2px solid red; */
 }
@@ -117,134 +136,138 @@ input[type="password"] {
   background-color: #302c2c;
   color: white;
 }
+
 .form-input {
+  text-align: left;
   width: 100%;
   max-width: 400px;
-  padding: 15px 5px;
+  padding: 10px 0px;
   font-weight: 700;
   letter-spacing: 1px;
-  justify-content: space-between;
-  
 }
-.reg2 {
-  display: flex;
-  gap: 5px;
-  margin-bottom: 1.2rem; 
-  margin-top:1rem;
-
-  
-  
-}
-
-.form-inputname2 {
-  display:flex;
-  width: 100%;
-  max-width: 400px;
-  
-  font-weight: 700;
-  letter-spacing: 1px;
-  justify-content: space-between;
-  
-  
-}
-
-.form-inputname {
-  display:flex;
-  width: 100%;
-  max-width: 400px;
-  padding: 15px 5px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  justify-content: space-between;
-  
-  
-}
-
-.credentials {
-  font-size: 14px;
-  max-width: 400px;
- 
-  
-  
-}
-
-
-.form-input input {
+.form-input-input { 
   width: 100%;
   text-align: left;
-
-  padding: 12px 10px;
+  
+  padding-top: 2px ;
+  padding-bottom: 12px ;
   font-family: "Fira Sans", sans-serif;
   border-radius: 3px;
- 
-  background-color: transparent;
+  border: none;
+  position: relative;
+  display: inline-block;
 }
 
-.log-into-account {
-  color: #888;
-  font-weight: 400;
-  font-family:  sans-serif;
+.icon{
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-62%);
+  cursor: pointer;
 }
-
 
 .form-input-title {
-  text-align: left;
-  
+  color: #aaa;
+  font-size: 16px;
 }
 .reg {
   display: flex;
-  gap: 5px;
+  gap: 35px;
   justify-content: space-between;
-  margin-top: .5rem;
-  
-}
-
-
-.form-checkbox-login {
-  width: 100%;
-  max-width: 400px;
-  text-align: left;
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  justify-content: space-between;
-  margin: 10px auto;
 }
 .form-checkbox {
   width: 100%;
   max-width: 400px;
   text-align: left;
   display: flex;
-  gap:1rem;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-between;
-  margin: 10px auto;
+  gap: 10px;
+  padding-bottom: 30px;
 }
+
 .form-checkbox span {
   cursor: pointer;
 }
 
 .forgot-password {
-  color: #946bde;
-  cursor: pointer;
-  text-decoration: none;
+ margin-top: 5px;
+
 }
-
-
 .log-form button {
   width: 100%;
   max-width: 290px;
   padding: 15px 5px;
   margin-top: 20px;
 }
+
 .checkbox-unit {
   
-  justify-content: space-between;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+
+INPUT[type=checkbox]:focus {
+  outline: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+INPUT[type=checkbox] {
+  background-color: rgb(40, 44, 52);
+  border: 1px solid rgb(170, 170, 170);
+  border-radius: 2px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 17px;
+  height: 17px;
+  cursor: pointer;
+  position: relative;
+  top: 5px;
+  margin-bottom: 3px;
+  margin-left: 0px;
+  margin-right: 3px;
+}
+
+.light INPUT[type=checkbox] {
+  background-color: #fff;
+  border-color: #ccc;
+  border-radius: 2px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 17px;
+  height: 17px;
+  cursor: pointer;
+  position: relative;
+  top: 5px;
+  margin-bottom: 3px;
+  margin-left: 0px;
+  margin-right: 3px;
+}
+
+INPUT[type=checkbox]:checked {
+  background-color: #409fd6;
+  background: #409fd6 url("data:image/gif;base64,R0lGODlhCwAKAIABAP////3cnSH5BAEKAAEALAAAAAALAAoAAAIUjH+AC73WHIsw0UCjglraO20PNhYAOw==") 3px 3px no-repeat;
+}
+
+.light INPUT[type=checkbox]:checked {
+  background-color: #409fd6;
+  background: #409fd6 url("data:image/gif;base64,R0lGODlhCwAKAIABAP////3cnSH5BAEKAAEALAAAAAALAAoAAAIUjH+AC73WHIsw0UCjglraO20PNhYAOw==") 3px 3px no-repeat;
+}
+
+
+.span-unit {
+  color:#888;
+  font-family: 'Lato', sans-serif;
+  text-decoration: none;
   
 }
-.checkbox-unit input {
-  margin-right: 5px;
-}
+
+
+
+
+
 .log-form p {
   margin: 15px 0;
   max-width: 400px;
@@ -270,3 +293,46 @@ input[type="password"] {
     transform: translateY(0%);
   }
 }
+
+.form-checkbox-register {
+  width: 100%;
+  max-width: 400px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+  padding-bottom: 30px;
+  color: #aaa;
+}
+.btn-login2 {
+  border: 1px solid grey;
+  color: white;
+  background-color: #946bde;
+  padding:15px 25px;
+  width: 100%;
+  font-weight: 700;
+  max-width: 400px !important;
+  max-height: 4rem;
+  font-size: 14px;
+  font-family:  "Fira Sans", sans-serif;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  
+}
+
+
+
+/*.form-input input{
+  width: 100%;
+  text-align: left;
+  padding-top: 2px ;
+  padding-bottom: 12px ;
+  font-family: "Fira Sans", sans-serif;
+  border-radius: 3px;
+  border: none;
+  position: relative;
+  display: inline-block;
+}*/

@@ -1,32 +1,14 @@
 import React, { useContext, useState } from "react";
 import "./LoginForm.css";
-import InputAdornment from '@mui/material/InputAdornment';
-import IconButton from '@mui/material/IconButton';
-import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
-import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
+import { FaEyeSlash, FaEye } from 'react-icons/fa'
 
 
-
-
-import {
-  
-  TextField,
-  Box,
-  FormControlLabel,
-  
-  Checkbox,
-  Link, 
-  
-  
-  
-} from "@mui/material";
 
 import axios from "axios";
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate, } from "react-router-dom";
 
 import { SiteContext } from "../../Context/Context";
-
 export const LoginForm = () => {
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
@@ -37,28 +19,13 @@ export const LoginForm = () => {
   const [loginEmail, setloginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [regLogState, setRegLogState] = useState(true);
-  const [remember, setRemember] = useState(false);
+  const [remember, setRemember] = useState(true);
   const navigate = useNavigate();
   const { user, setUser, bg } = useContext(SiteContext);
   const [showPassword, setShowPassword] = useState(false);
-  const [showRegisterPassword, setShowRegisterPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [rememberUpdates, setRememberUpdates] = useState(false);
- 
-  const [validEmailError, setValidEmailError] = useState(false);
-  const [validNameError, setValidNameError]= useState(false);
-  const [validLastNameError, setValidLastNameError] = useState(false);
-  const[validConfirmPassword, setValidConfirmPassword]= useState(false);
-  const [acceptTerms, setAcceptTerms] = useState(false);
-  const [validAcceptTerms, setValidAcceptTerms] = useState(false);
+  const [showPassword1, setShowPassword1] = useState(false);
+  const [showPassword2, setShowPassword2] = useState(false);
 
-  const handleToggleAcceptTerms = () => {
-    setAcceptTerms(!acceptTerms);
-    setValidAcceptTerms(false);
-  };
-
-
-  
 
   function isValidEmail(email) {
     // Email validation regular expression
@@ -66,53 +33,33 @@ export const LoginForm = () => {
 
     return emailRegex.test(email);
   }
-  const handleToggleRegisterPassword = () => {
-    setShowRegisterPassword(!showRegisterPassword);
+
+  const token = localStorage.getItem("token");
+
+  if (token) {
+    navigate("/profile");
+  }
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
   };
 
-  const handleToggleConfirmPassword = () => {
-    setShowConfirmPassword(!showConfirmPassword);
-  };
- 
   const register = async () => {
-
-    setValidLastNameError(false)
-    setValidNameError(false)
-    setValidEmailError(false)
-    setValidConfirmPassword(false)
-
-    if (!acceptTerms) {
-      setErrorMessage("Please accept the terms and conditions");
-      setValidAcceptTerms(true);
-      return;
-    }
-    
-
     if (displayName === "") {
-      setErrorMessage("Please Enter your name")
-      setValidNameError(true);
+      setErrorMessage("Please Enter your name");
       return;
     }
-
-    if (lastName === "") {
-      setErrorMessage("Please Enter your name")
-      setValidLastNameError(true);
-      return;
-    }
-
     if (registerEmail === "" || !isValidEmail(registerEmail)) {
       setErrorMessage("Please Enter a valid Email Address");
-      setValidEmailError(true);
       return;
     }
 
-    if (registerPassword.length < 6) {
+    if (registerPassword.length > 6) {
       setErrorMessage("Password should be at least 6 characters");
     }
 
     if (registerPassword !== confirmPassword) {
       setErrorMessage("Passwords don't match");
-      setValidConfirmPassword(true);
       return;
     }
     const url = "https://librum-dev.azurewebsites.net/api/register";
@@ -187,165 +134,65 @@ export const LoginForm = () => {
             }
           >
             <div className="login-form-logo">
-             <div className="login-form-logo-square" style={{ backgroundColor: bg === "light" ? "white" : "#302c2c" }}></div>
+              <div className="login-form-logo-square" style={{ backgroundColor: bg === "light" ? "white" : "#302c2c" }}></div>
             </div>
             <div className="log-form-header">
-              <h2>Welcome back!</h2>
-              <small className="log-into-account">Log into your account</small>
+              <h1 style={{ marginBottom: '5px' }}>Welcome back!</h1>
+              <medium style={{ color: "#888" }}>Log into your account</medium>
             </div>
 
-           
-            <Box sx={{marginTop: "3rem"}}> 
-              
-              <TextField
-                type="Email"
+            <div className="form-input">
+              <div style={{ color: "#aaa", fontFamily: "'Lato', sans-serif", cursor: "default" ,color: bg === "light" ? "black" : "#aaa" }}>Email</div>
+              <div className="form-input-input">
+                <input
+                  type="email"
+                  
+                  value={loginEmail ? loginEmail : ""}
+                  name="Email"
+                  onChange={(e) => {
+                    setloginEmail(e.target.value);
+                  }}
+                  style={{ width: "100%", padding: "12px 10px", fontSize: "16px", borderRadius: "5px", }}
+                />
+
+
+              </div>
+            </div>
+
+            <div className="form-input">
+              <div style={{ color: "#aaa", fontFamily: "'Lato', sans-serif", cursor: "default" ,color: bg === "light" ? "black" : "#aaa" }}>Password</div>
+              <div className="form-input-input">
+                <div className="icon" onClick={() => setShowPassword(!showPassword)}>
+                    {showPassword ? <FaEye/>: <FaEyeSlash/>}
+                </div>
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  value={loginPassword ? loginPassword : ''}
+                  onChange={(e) => {
+                    setLoginPassword(e.target.value);
+                  }}
+                  style={{ width: "100%", padding: "12px 10px", fontSize: "16px", borderRadius: "5px", }}
+                />
                 
-                label="Email"
-                variant="outlined"
-                size="small"
-                value={loginEmail ? loginEmail : ""}
-                name="Email"
-                onChange={(e) => {
-                  setloginEmail(e.target.value);
-                }}
-                sx={{
-                  width: "100%",
-                  
-                  maxWidth: "400px",
-                  marginBottom: "0.5rem",
-                  
-                  background: "transparent",
-                  borderColor: "#ccc", 
-                  color: "#aaa", 
-                  "& .MuiInputLabel-outlined": {
-                    color: "#aaa !important",
-                  },
-                  "& .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "#ccc",
-                  },
-                  "& .MuiOutlinedInput-input": {
-                    color: "#aaa", 
-                    
-                    
-                  },
-                  
-                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "#946bde",
-                    
-                  },
-                  "& .MuiInputLabel-outlined": {
-                    color: bg === "light" ? "black !important" : "#aaa !important",
-                  },
-                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                    borderColor: bg === "light" ? "#946bde" : "#ccc",
-                  },
-                 
-                }}
-                inputProps={{
-                  style: {
-                    color: "#aaa", 
-                  },
-                }}
-              />
-              
-              <TextField
-                label="Password"
-                type={showPassword ? 'text' : 'password'}
-                variant="outlined"
-                size="small"
-                value={loginPassword ? loginPassword : ""}
-                name="password"
-                onChange={(e) => {
-                  setLoginPassword(e.target.value);
-                }}
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <IconButton
-                        onClick={() => setShowPassword(!showPassword)}
-                        onMouseDown={(e) => e.preventDefault()}
-                        edge="end"
-                        style={{ color: bg === "light" ? "black" : "#aaa" }}
-                        
-                        sx={{
-                          
-                          
-                          transform: 'translateY(-17%)',
+              </div>
+            </div>
 
-                          
-                        }}
-                      >
-                        {showPassword ? <VisibilityOffOutlinedIcon /> : <VisibilityOutlinedIcon />}
-                      </IconButton>
-                    </InputAdornment>
-                  ),
+            <div className={`form-checkbox ${bg === "light" ? "light" : ""}`}>
+              <div className="checkbox-unit">
+                <input type="checkbox" />
+                <span className="span-unit"style={{ color: "#aaa", fontFamily: "'Lato', sans-serif", cursor: "default" ,color: bg === "light" ? "black" : "#aaa" }}>Remember me</span>
+              </div>
+              <span
+                className="forgot-password"
+                style={{
+                  color: "#946bde",
+                  fontFamily: "'Lato', sans-serif"
                 }}
-                sx={{
-                  width: "100%",
-                  marginTop: "2rem",
-                  maxWidth: "400px",
-                  marginBottom: "0.5rem",
-                  background: "transparent",
-                  size:"small",
-                  borderColor: "#ccc", // Set a lighter border color
-                  color: "#aaa", // Set a lighter label text color
-                  "& .MuiInputLabel-outlined": {
-                    color: "#aaa !important", // Set a lighter label outline color
-                  },
-                  "& .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "#ccc",
-                  },
-                  "& .MuiOutlinedInput-input": {
-                    color: "#aaa", // Set a lighter input text color
-                  },
-                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "#946bde",
-                  },
-                  "& .MuiInputLabel-outlined": {
-                    color: bg === "light" ? "black !important" : "#aaa !important",
-                  },
-                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                    borderColor: bg === "light" ? "#946bde" : "#ccc",
-                  },
-                  "& .MuiOutlinedInput-input": {
-                    color: "#aaa", // Set a lighter input text color
-                    
-                  },
-                }}
-                inputProps={{
-                  style: {
-                    color: "#aaa", // Set a lighter input text color
-                  },
-                }}
-              />
-            </Box>
-             
-            <div className="form-checkbox-login">
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    checked={remember}
-                    onChange={() => setRemember(!remember)}
-                    style={{ color: "#aaa" }}
-                  />
-                }
-                label={
-                  <span style={{ color: "#aaa", fontFamily: "'Lato', sans-serif",color: bg === "light" ? "black" : "#aaa", }}>
-                    Remember me
-                  </span>
-                }
-              />
-
-              <Link
-                href="#"
-                underline="none"
-                style={{ color: "#946bde", fontFamily: "'Lato', sans-serif" }}
               >
                 Forgot password?
-              </Link>
+              </span>
             </div>
 
-            
             <button
               onClick={() => {
                 login();
@@ -354,6 +201,8 @@ export const LoginForm = () => {
             >
               <span className="">L{`ogin`}</span>
             </button>
+
+             
           </div>
 
           <div className="login-register-cta">
@@ -369,10 +218,9 @@ export const LoginForm = () => {
               Register{" "}
             </span>
           </div>
-
         </div>
       ) : (
-        <div className="form-container login-form-container">
+        <div className="form-container">
           <div
             className="log-form"
             style={
@@ -389,382 +237,158 @@ export const LoginForm = () => {
           >
             <div className="log-form-header">
               <div className="login-form-logo">
-              <div className="login-form-logo-square" style={{ backgroundColor: bg === "light" ? "white" : "#302c2c" }}></div>
+                <div className="login-form-logo-square"style={{ backgroundColor: bg === "light" ? "white" : "#302c2c" }}></div>
               </div>
               <h2>Welcome</h2>
-              <p className="credentials" style={{ color: "grey" }}>
-                Your credentials are only used to authenticate yourself.  
-                Everything will be stored in a secure database
+              <p className="Log-into-your">
+                Your credentials are only used to authenticate yourself Your
+                credentials will be stored in a secure database
               </p>
             </div>
 
-            
-             
-            <div className="form-inputname2 reg2">       
-                
-                <TextField
-                  type="text"
-                  label="First Name"
-                  variant="outlined"
-                  value={displayName ? displayName : ""}
-                  name="first-name"
-                  size="small"
-                  error={validNameError}
-                  onChange={(e) => {
-                    setdisplayName(e.target.value);
-                  }}
-                  sx={{
-                    width: "100%",
-                    maxWidth: "175px",
-                    margin: "5px 0",
-                    
-                    
-                    background: "transparent",
-                    borderColor: "#ccc", 
-                    color: "#aaa", 
-                    "& .MuiInputLabel-outlined": {
-                      color: bg === "light" ? "black !important" : "#aaa !important", 
-                    },
-                    "& .MuiOutlinedInput-notchedOutline": {
-                      borderColor: "#ccc",
-                    },
-                    "& .MuiOutlinedInput-input": {
-                      color: "#aaa", 
-                    },
-                    "& .MuiOutlinedInput-input": {
-                      color: "#aaa", 
-                      
-                      
-                    },
-                    "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                      borderColor: "#946bde",
-                    },
-                  }}
-                  inputProps={{
-                    style: {
-                      color: "#aaa", 
-                    },
-                  }}
-                />
-
-                  
-                
-             
-
-              
-                
-                <TextField
+            <div className="form-input reg">
+              <div className="reg-form-name">
+                {" "}
+                <div className="form-input-title" style={{ color: "#aaa", fontFamily: "'Lato', sans-serif", cursor: "default" ,color: bg === "light" ? "black" : "#aaa" }}>First name</div>
+                <div className="form-input-input">
+                  <input
+                    style={
+                      errorMessage === "Please Enter your name"
+                        ? {
+                            border: "2px solid crimson",
+                          }
+                        : { border: "none" }
+                    }
                     type="text"
-                    name="Last-name"
-                    value={lastName ? lastName : ""}
-                    size="small"
-                    label="Last Name"
-                    variant="outlined"
-                    error={validLastNameError}
+                    name="first-name"
+                    value={displayName ? displayName : ""}
                     
+                    onChange={(e) => {
+                      setdisplayName(e.target.value);
+                    }}
+                    style={{ width: "100%", padding: "12px 10px", fontSize: "16px", borderRadius: "5px", }}
+                  />
+                </div>
+              </div>
+
+              <div className="reg-form-name">
+                {" "}
+                <div className="form-input-title"style={{ color: "#aaa", fontFamily: "'Lato', sans-serif", cursor: "default" ,color: bg === "light" ? "black" : "#aaa" }}>Last name</div>
+                <div className="form-input-input">
+                  <input
+                    type="text"
+                    name="last-name"
+                    value={lastName ? lastName : ""}
                     
                     onChange={(e) => {
                       setLastName(e.target.value);
                     }}
-                    sx={{
-                      width: "100%",
-                      
-                      maxWidth: "175px",
-                      margin: "5px 0",
-                      
-                      
-                      background: "transparent",
-                      borderColor: "#ccc", 
-                      color: "#aaa", 
-                      "& .MuiInputLabel-outlined": {
-                        color: bg === "light" ? "black !important" : "#aaa !important",
-                      },
-                      "& .MuiOutlinedInput-notchedOutline": {
-                        borderColor: "#ccc",
-                      },
-                      "& .MuiOutlinedInput-input": {
-                        color: "#aaa", // Set a lighter input text color
-                      },
-                      "& .MuiOutlinedInput-input": {
-                        color: "#aaa", // Set a lighter input text color
-                        
-                      },
-                      "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                        borderColor: "#946bde",
-                      },
-                    }}
-                    inputProps={{
-                      style: {
-                        color: "#aaa", // Set a lighter input text color
-                      },
-                    }}
-                />
-            </div>          
-                  
-                
-              
-           
-
-
-
-            <Box>
-              <TextField
-                type="Email"
-                size="small"
-                label="Email"
-                variant="outlined"
-                value={registerEmail ? registerEmail : ""}
-                name="Email"
-                error={validEmailError} // Set the error prop based on validEmailError
-                onChange={(e) => {
-                  setRegisterEmail(e.target.value);
-                }}
-                sx={{
-                  width: "100%",
-                  maxWidth: "400px",
-                  marginBottom: "",
-                  background: "transparent",
-                  color: "#aaa",
-                  "& .MuiInputLabel-outlined": {
-                    color: bg === "light" ? "black !important" : "#aaa !important",
-                  },
-                  "& .MuiOutlinedInput-notchedOutline": {
-                    borderColor: validEmailError ? "red" : "#ccc", // Apply red border when validEmailError is true
-                  },
-                  "& .MuiOutlinedInput-input": {
-                    color: "#aaa",
-                  },
-                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "#946bde",
-                  },
-                }}
-                inputProps={{
-                  style: {
-                    color: "#aaa",
-                  },
-                }}
-              />
-
-              
-              
-              
-                
-              
-            
-
-            
-              <TextField
-                label="Password"
-                size="small"
-                type={showRegisterPassword ? "text" : "password"}
-                variant="outlined"
-                value={registerPassword ? registerPassword : ""}
-                name="password"
-                onChange={(e) => {
-                  setRegisterPassword(e.target.value);
-                }}
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <IconButton
-                        onClick={handleToggleRegisterPassword}
-                        onMouseDown={(e) => e.preventDefault()}
-                        edge="end"
-                        style={{ color: bg === "light" ? "black" : "#aaa" }}
-                        
-                        sx={{
-                          
-                          
-                          transform: 'translateY(-17%)',
-
-                          
-                        }}
-                      >
-                        {showRegisterPassword ? (
-                          <VisibilityOffOutlinedIcon />
-                        ) : (
-                          <VisibilityOutlinedIcon />
-                        )}
-                            </IconButton>
-                          </InputAdornment>
-                        ),
-                        }}
-                sx={{
-                  width: "100%",
-                  marginTop: "1.5rem",
-                  maxWidth: "400px",
-                  
-                  background: "transparent",
-                  borderColor: "#ccc",
-                  color: "#aaa", 
-                  "& .MuiInputLabel-outlined": {
-                    color: bg === "light" ? "black !important" : "#aaa !important",
-                  },
-                  "& .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "#ccc",
-                  },
-                  "& .MuiOutlinedInput-input": {
-                    color: "#aaa", 
-                  },
-                  "& .MuiOutlinedInput-input": {
-                    color: "#aaa", 
-                    
-                  },
-                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "#946bde",
-                  },
-                }}
-                inputProps={{
-                  style: {
-                    color: "#aaa", 
-                  },
-                }}
-              />
-              <TextField
-                label="Confirmation Password"
-                type={showConfirmPassword ? 'text' :  'password'}
-                
-                variant="outlined"
-                size="small"
-                value={confirmPassword ? confirmPassword : ""}
-                name="password"
-                error={validConfirmPassword}
-                
-                onChange={(e) => {
-                  setConfirmPassword(e.target.value);
-                }}
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <IconButton
-                        onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                        onMouseDown={(e) => e.preventDefault()}
-                        edge="end"
-                        style={{ color: bg === "light" ? "black" : "#aaa" }}
-                        
-                        sx={{
-                          
-                          
-                          transform: 'translateY(-17%)',
-
-                          
-                        }}
-                      >
-                          {showConfirmPassword ? (
-                          <VisibilityOffOutlinedIcon />
-                        ) : (
-                          <VisibilityOutlinedIcon />
-                        )}
-                            </IconButton>
-                    </InputAdornment>
-                  ),
-                }}
-                sx={{
-                  width: "100%",
-                  marginTop: "1.5rem",
-                  maxWidth: "400px",
-                  marginBottom: "0rem",
-                  background: "transparent",
-                  borderColor:
-                    errorMessage === "Passwords don't match" ? "crimson" : "#ccc",
-                  color: "#aaa",
-                  "& .MuiInputLabel-outlined": {
-                    color: bg === "light" ? "black !important" : "#aaa !important",
-                  },
-                  "& .MuiOutlinedInput-notchedOutline": {
-                    borderColor:
-                      errorMessage === "Passwords don't match" ? "crimson" : "#ccc",
-                  },
-                  "& .MuiOutlinedInput-input": {
-                    color: "#aaa",
-                  },
-                  "& .MuiOutlinedInput-input": {
-                    color: "#aaa", // Set a lighter input text color
-                    
-                  },
-                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "#946bde",
-                  },
-                }}
-                inputProps={{
-                  style: {
-                    color: "#aaa",
-                  },
-                }}
-              />
-              <div className="form-error">{errorMessage}</div>
-            
-              
-                  
-                  
-                
-            </Box>
-
-            
-
-            <div className="form-checkbox">
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    checked={rememberUpdates}
-                    onChange={() => setRememberUpdates(!rememberUpdates)}
-                    sx={{
-                      color: '#aaa',
-                      '& .MuiSvgIcon-root': {
-                        marginTop: "-6px",
-                      },
-                    }}
+                    style={{ width: "100%", padding: "12px 10px", fontSize: "16px", borderRadius: "5px", }}
                   />
-                }
-                label={
-                  <span
-                    style={{
-                      color: '#aaa',
-                      fontFamily: "'Lato', sans-serif",
-                      color: bg === 'light' ? 'black' : '#aaa',
-                    }}
-                  >
-                    Keep updated about improved features and upcoming improvements.
-                  </span>
-                }
-                sx={{
-                  alignItems: 'flex-start',
-                }}
-              />        
-
-             
-
-
-
-
-
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    checked={acceptTerms}
-                    onChange={handleToggleAcceptTerms}
-                    
-                    sx={{
-                      color: '#aaa',
-                      '& .MuiSvgIcon-root': {
-                        marginTop: '-21px',
-                      },
-                    }}
-                    style={{ color: validAcceptTerms ? "red" : "#aaa",
-                     }}
-                  />
-                }
-                label={
-                  <span style={{ color: "#aaa", fontFamily: "'Lato', sans-serif", cursor: "default" ,color: bg === "light" ? "black" : "#aaa" }}>
-                    I accept the&nbsp;
-                    <a href="/terms" style={{ color: "var(--color-primary)" }}>Terms of Service</a>
-                    &nbsp;and the&nbsp;
-                    <a href="/privacy" style={{ color: "var(--color-primary)" }}> privacy policy</a>.
-                  </span>
-                }
-              />
+                </div>
+              </div>
             </div>
 
+            <div className="form-input">
+              <div className="form-input-title"style={{ color: "#aaa", fontFamily: "'Lato', sans-serif", cursor: "default" ,color: bg === "light" ? "black" : "#aaa" }}>Email</div>
+              <div className="form-input-input">
+                <input
+                  style={
+                    errorMessage === "Please Enter a valid Email Address"
+                      ? {
+                          border: "2px solid crimson",
+                        }
+                      : { border: "none" }
+                  }
+                  type="text"
+                  name="name"
+                  value={registerEmail ? registerEmail : ""}
+                  
+                  onChange={(e) => {
+                    setRegisterEmail(e.target.value);
+                  }}
+                  style={{ width: "100%", padding: "12px 10px", fontSize: "16px", borderRadius: "5px", }}
+                />
+              </div>
+            </div>
+
+            <div className="form-input">
+              <div className="form-input-title" style={{ color: "#aaa", fontFamily: "'Lato', sans-serif", cursor: "default" ,color: bg === "light" ? "black" : "#aaa" }}>Password </div>
+              <div className="form-input-input">
+                <div className="icon" onClick={() => setShowPassword1(!showPassword1)}>
+                  {showPassword1 ? <FaEye/>: <FaEyeSlash/>}
+                </div>
+                <input
+                  style={
+                    errorMessage === "Passwords don't match"
+                      ? {
+                          border: "2px solid crimson",
+                        }
+                      : { border: "none" }
+                  }
+                  type="password"
+                  name="password"
+                  value={registerPassword ? registerPassword : ""}
+                  
+                  onChange={(e) => {
+                    setRegisterPassword(e.target.value);
+                  }}
+                  className="form-input-title"
+                  style={{ width: "100%", padding: "12px 10px", fontSize: "16px", borderRadius: "5px", }}
+                />
+              </div>
+            </div>
+
+            <div className="form-input">
+              <div className="form-input-title"style={{ color: "#aaa", fontFamily: "'Lato', sans-serif", cursor: "default" ,color: bg === "light" ? "black" : "#aaa" }}>Confirm password</div>
+              <div className="form-input-input">
+                <div className="icon" onClick={() => setShowPassword2(!showPassword2)}>
+                  {showPassword2 ? <FaEye/>: <FaEyeSlash/>}
+                </div>
+                <input
+                  style={
+                    errorMessage === "Passwords don't match"
+                      ? {
+                          border: "2px solid crimson",
+                        }
+                      : { border: "none" }
+                  }
+                  type="password"
+                  name="password"
+                  value={confirmPassword ? confirmPassword : ""}
+                  
+                  onChange={(e) => {
+                    setConfirmPassword(e.target.value);
+                  }}
+                  style={{ width: "100%", padding: "12px 10px", fontSize: "16px", borderRadius: "5px", }}
+                />
+              </div>
+
+              <div className="form-error">{errorMessage}</div>
+            </div>
+
+            <div className={`form-checkbox-register ${bg === "light" ? "light" : ""}`}>
+              <div className="checkbox-unit">
+                {" "}
+                <input type="checkbox" /> <span
+
+                style={{ color: "#aaa", fontFamily: "'Lato', sans-serif", cursor: "default" ,color: bg === "light" ? "black" : "#aaa" }}
+                
+                
+                >Stay informed about new features and improvements. </span> 
+              </div>
+              <div className="checkbox-unit">
+                {" "}
+                <input type="checkbox" /> <span style={{ color: "#aaa", fontFamily: "'Lato', sans-serif", cursor: "default" ,color: bg === "light" ? "black" : "#aaa" }}>
+                    I accept the&nbsp;
+                    <a href="/terms" style={{ color: "var(--color-primary1)" }}>Terms of Service</a>
+                    &nbsp;and the&nbsp;
+                    <a href="/privacy" style={{ color: "var(--color-primary1" }}> privacy policy.</a>
+                  </span>
+              </div>
+
+              
+            </div>
 
             <button
               className=" btn-login2"
@@ -774,24 +398,22 @@ export const LoginForm = () => {
             >
               <span className="">L{`et's start`}</span>
             </button>
-
           </div>
           <div className="login-register-cta">
-                {" "}
-                Already have an account?{" "}
-                <span
-                  onClick={() => {
-                    setRegLogState(true);
-                  }}
-                  style={{  cursor: "pointer" }}
-                >
-                  {" "}Login{" "}
-                </span>
+            {" "}
+            Already have an account?{" "}
+            <span
+              onClick={() => {
+              setRegLogState(true);
+              }}
+              style={{  cursor: "pointer" }}
+              >
+              {" "}Login{" "}
+            </span>
                 
           </div>
         </div>
       )}
-      
     </div>
   );
 };

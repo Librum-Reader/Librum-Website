@@ -13,3 +13,8 @@
   color: var(--color-primary1);
 
 }
+
+.main-template >h3 {
+  margin: 1.0em 0px 0.5em 2em;
+
+}

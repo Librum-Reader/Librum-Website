@@ -24,14 +24,16 @@ export const Form = () => {
   const message = useRef();
 
   const handleSubmit = async (e) => {
+    const pathName = document?.location.pathname.slice(1);
     resetStates();
     const values = {
-      name: name.current.value,
-      email: email.current.value,
-      message: message.current.value,
+      Origin: pathName,
+      Name: name.current.value,
+      Email: email.current.value,
+      Message: message.current.value,
     };
 
-    const captchaActionName = "FormComponent";
+    const captchaActionName = pathName;
 
     await handleReCaptchaVerify(e, values, captchaActionName);
   };

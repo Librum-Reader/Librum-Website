@@ -1,6 +1,10 @@
-.main-container {
+/* .main-container {
+
+} */
+
+.main-template {
+  margin: 0px;
   padding: 5em 8.5em 5em 8.5em;
-  min-height: 200vh;
 
 }
 

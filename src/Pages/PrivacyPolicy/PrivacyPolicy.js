@@ -1,13 +1,31 @@
+import { useContext } from "react";
 import "./PrivacyPolicy.css";
 import Template from "./Template";
+import { SiteContext } from "../../Context/Context";
 
-const PrivacyPolicy = (props) => (
-  <div className="main-container">
-    <h1 className="title">Privacy Policy</h1>
-    <h3 className="sub-title">Last Updated Jul 14th, 2023 </h3>
-    <p className="effective-date">Effective Date: On official release (Not Yet)</p>
-    <Template meta={props} />
-  </div>
-);
+const PrivacyPolicy = (props) => {
+  const { bg } = useContext(SiteContext)
+
+  return (
+    <div className="container" style={
+      bg === "light"
+        ? {
+          backgroundColor: "white",
+          color: "var(--color-primary0)",
+          paddingBottom: "100px;",
+        }
+        : {
+          backgroundColor: "#282c34",
+          color: "white",
+          paddingBottom: "100px",
+        }
+    }>
+      
+      <Template meta={props} />
+    </div>
+  );
+}
+
+
 
 export { PrivacyPolicy };

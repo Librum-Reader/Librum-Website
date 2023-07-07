@@ -1,11 +1,15 @@
 .main-template {
   margin: 0px;
   padding: 5em 8.5em 5em 8.5em;
-
 }
 
 .title {
   font-size: 3em;
   color: black;
   text-align: start;
+}
+
+.main-template a {
+  color: var(--color-primary1);
+
 }

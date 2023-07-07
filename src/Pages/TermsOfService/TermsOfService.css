@@ -14,7 +14,11 @@
 
 }
 
-.main-template >h3 {
-  margin: 1.0em 0px 0.5em 2em;
+.tos-subtitle {
+  margin: 2em 0px 0.5em 1.5em;
 
+}
+
+.tos-title {
+  margin-bottom: 1.5em;
 }

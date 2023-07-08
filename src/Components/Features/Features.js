@@ -78,9 +78,9 @@ export const Features = () => {
             <strong>Why</strong> Librum?
           </h2>
         </div>
-        <Fade>
+        <div className="alternate-wrapper">
           <Alternate />
-        </Fade>
+        </div>
       </div>
     </div>
   );

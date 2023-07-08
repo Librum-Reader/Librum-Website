@@ -6,6 +6,7 @@ import { SiteContext } from "../../Context/Context";
 import { CountUP } from "../CountUp/CountUp";
 import { AiFillGithub } from "react-icons/ai";
 import { DiLinux } from "react-icons/di";
+import { FaLinux } from "react-icons/fa";
 
 export const Showcase = ({ image1 }) => {
   const { bg, setBg } = useContext(SiteContext);
@@ -45,7 +46,7 @@ export const Showcase = ({ image1 }) => {
         </div>
         <div className="info-section-button">
           <button className="btn btn-secondary btn-sc">
-            <DiLinux size="1.5rem" />
+            <FaLinux size="1.5rem" style={{ color: "var(--color-primary0)" }} />
             <p>Download</p>
           </button>
           <button className="btn btn-primary btn-sc">

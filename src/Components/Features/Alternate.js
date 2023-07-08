@@ -1,6 +1,8 @@
 import devices from "./devices.png";
 import reading from "./reading.png";
 import offline from "./offline.png";
+import { Fade } from "react-reveal";
+
 import { SiteContext } from "../../Context/Context";
 import React, { useContext, useState, useEffect } from "react";
 
@@ -38,32 +40,33 @@ const Alternate = () => {
     <>
       {data.map((block, index) => {
         return (
-          <div
-            className={
-              index % 2 === 0
-                ? "features-blurb-container-even"
-                : "features-blurb-container"
-            }
-          >
-            <div className="features-blurb-text">
-              <h2 style={{ color: "#2b2c5c" }}>{block.title}</h2>
-              <p
-                style={
-                  bg === "light"
-                    ? { color: "var(--color-primary0)" }
-                    : {
-                        color: "white",
-                      }
-                }
-                className="features-blurb-p"
-              >
-                {block.text}
-              </p>
+          <Fade>
+            <div
+              className={
+                index % 2 === 0
+                  ? "features-blurb-container shadow-even"
+                  : "features-blurb-container-odd shadow"
+              }
+            >
+              <div className="features-blurb-text">
+                <h2>{block.title}</h2>
+                <p
+                  style={
+                    bg === "light"
+                      ? { color: "var(--color-primary0)" }
+                      : {
+                          color: "white",
+                        }
+                  }
+                >
+                  {block.text}
+                </p>
+              </div>
+              <div className="features-blurb-image">
+                <img src={block.image} />
+              </div>
             </div>
-            <div className="features-blurb-image">
-              <img src={block.image} />
-            </div>
-          </div>
+          </Fade>
         );
       })}
     </>

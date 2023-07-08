@@ -138,11 +138,11 @@ export const LoginForm = () => {
             </div>
             <div className="log-form-header">
               <h1 style={{ marginBottom: '5px' }}>Welcome back!</h1>
-              <medium style={{ color: "#888" }}>Log into your account</medium>
+              <medium style={{  color: bg === "light" ? "black" : "#CBCBCB" }}>Log into your account</medium>
             </div>
 
             <div className="form-input">
-              <div style={{ color: "#aaa", fontFamily: "'Lato', sans-serif", cursor: "default" ,color: bg === "light" ? "black" : "#aaa" }}>Email</div>
+              <div style={{  fontFamily: "'Lato', sans-serif", cursor: "default" ,color: bg === "light" ? "black" : "#CBCBCB" }}>Email</div>
               <div className="form-input-input">
                 <input
                   type="email"
@@ -152,7 +152,7 @@ export const LoginForm = () => {
                   onChange={(e) => {
                     setloginEmail(e.target.value);
                   }}
-                  style={{ width: "100%", padding: "12px 10px", fontSize: "16px", borderRadius: "5px", }}
+                  style={{ width: "100%", padding: "12px 10px", fontSize: "14px", borderRadius: "5px", }}
                 />
 
 
@@ -160,10 +160,10 @@ export const LoginForm = () => {
             </div>
 
             <div className="form-input">
-              <div style={{ color: "#aaa", fontFamily: "'Lato', sans-serif", cursor: "default" ,color: bg === "light" ? "black" : "#aaa" }}>Password</div>
+              <div style={{ fontFamily: "'Lato', sans-serif", cursor: "default" ,color: bg === "light" ? "black" : "#CBCBCB" }}>Password</div>
               <div className="form-input-input">
                 <div className="icon" onClick={() => setShowPassword(!showPassword)}>
-                    {showPassword ? <FaEye/>: <FaEyeSlash/>}
+                    {showPassword ? <FaEyeSlash/>:<FaEye/>}
                 </div>
                 <input
                   type={showPassword ? 'text' : 'password'}
@@ -171,7 +171,7 @@ export const LoginForm = () => {
                   onChange={(e) => {
                     setLoginPassword(e.target.value);
                   }}
-                  style={{ width: "100%", padding: "12px 10px", fontSize: "16px", borderRadius: "5px", }}
+                  style={{ width: "100%", padding: "12px 10px", fontSize: "14px", borderRadius: "5px", }}
                 />
                 
               </div>
@@ -180,7 +180,7 @@ export const LoginForm = () => {
             <div className={`form-checkbox ${bg === "light" ? "light" : ""}`}>
               <div className="checkbox-unit">
                 <input type="checkbox" />
-                <span className="span-unit"style={{ color: "#aaa", fontFamily: "'Lato', sans-serif", cursor: "default" ,color: bg === "light" ? "black" : "#aaa" }}>Remember me</span>
+                <span className="span-unit"style={{  fontFamily: "'Lato', sans-serif", cursor: "default" ,color: bg === "light" ? "black" : "#CBCBCB" }}>Remember me</span>
               </div>
               <span
                 className="forgot-password"
@@ -206,8 +206,7 @@ export const LoginForm = () => {
           </div>
 
           <div className="login-register-cta">
-            {" "}
-            Don't have an account? {" "}
+           
             <span
               className="login-cta-text"
               onClick={() => {
@@ -215,7 +214,8 @@ export const LoginForm = () => {
               }}
               
             >
-              Register{" "}
+              {" "}
+              Don't have an account? {" "}Register{" "}
             </span>
           </div>
         </div>
@@ -240,7 +240,7 @@ export const LoginForm = () => {
                 <div className="login-form-logo-square"style={{ backgroundColor: bg === "light" ? "white" : "#302c2c" }}></div>
               </div>
               <h2>Welcome</h2>
-              <p className="Log-into-your">
+              <p className="Log-into-your" style={{  color: bg === "light" ? "black" : "#CBCBCB" }}>
                 Your credentials are only used to authenticate yourself Your
                 credentials will be stored in a secure database
               </p>
@@ -249,7 +249,7 @@ export const LoginForm = () => {
             <div className="form-input reg">
               <div className="reg-form-name">
                 {" "}
-                <div className="form-input-title" style={{ color: "#aaa", fontFamily: "'Lato', sans-serif", cursor: "default" ,color: bg === "light" ? "black" : "#aaa" }}>First name</div>
+                <div className="form-input-title" style={{ color: "#CBCBCB", fontFamily: "'Lato', sans-serif", cursor: "default" ,color: bg === "light" ? "black" : "#CBCBCB" }}>First name</div>
                 <div className="form-input-input">
                   <input
                     style={
@@ -266,14 +266,17 @@ export const LoginForm = () => {
                     onChange={(e) => {
                       setdisplayName(e.target.value);
                     }}
-                    style={{ width: "100%", padding: "12px 10px", fontSize: "16px", borderRadius: "5px", }}
+                    style={{ width: "100%", padding: "12px 10px", fontSize: "14px", borderRadius: "5px", }}
                   />
                 </div>
               </div>
 
               <div className="reg-form-name">
                 {" "}
-                <div className="form-input-title"style={{ color: "#aaa", fontFamily: "'Lato', sans-serif", cursor: "default" ,color: bg === "light" ? "black" : "#aaa" }}>Last name</div>
+                <div className="form-input-title" style={{ color: "#CBCBCB", fontFamily: "'Lato', sans-serif", cursor: "default" ,color: bg === "light" ? "black" : "#CBCBCB" }}>
+                  Last name
+                </div>
+
                 <div className="form-input-input">
                   <input
                     type="text"
@@ -283,14 +286,14 @@ export const LoginForm = () => {
                     onChange={(e) => {
                       setLastName(e.target.value);
                     }}
-                    style={{ width: "100%", padding: "12px 10px", fontSize: "16px", borderRadius: "5px", }}
+                    style={{ width: "100%", padding: "12px 10px", fontSize: "14px", borderRadius: "5px", }}
                   />
                 </div>
               </div>
             </div>
 
             <div className="form-input">
-              <div className="form-input-title"style={{ color: "#aaa", fontFamily: "'Lato', sans-serif", cursor: "default" ,color: bg === "light" ? "black" : "#aaa" }}>Email</div>
+              <div className="form-input-title"style={{  fontFamily: "'Lato', sans-serif", cursor: "default" ,color: bg === "light" ? "black" : "#CBCBCB" }}>Email</div>
               <div className="form-input-input">
                 <input
                   style={
@@ -307,16 +310,16 @@ export const LoginForm = () => {
                   onChange={(e) => {
                     setRegisterEmail(e.target.value);
                   }}
-                  style={{ width: "100%", padding: "12px 10px", fontSize: "16px", borderRadius: "5px", }}
+                  style={{ width: "100%", padding: "12px 10px", fontSize: "14px", borderRadius: "5px", }}
                 />
               </div>
             </div>
 
             <div className="form-input">
-              <div className="form-input-title" style={{ color: "#aaa", fontFamily: "'Lato', sans-serif", cursor: "default" ,color: bg === "light" ? "black" : "#aaa" }}>Password </div>
+              <div className="form-input-title" style={{  fontFamily: "'Lato', sans-serif", cursor: "default" ,color: bg === "light" ? "black" : "#CBCBCB" }}>Password </div>
               <div className="form-input-input">
                 <div className="icon" onClick={() => setShowPassword1(!showPassword1)}>
-                  {showPassword1 ? <FaEye/>: <FaEyeSlash/>}
+                  {showPassword1 ? <FaEyeSlash/>:<FaEye/>}
                 </div>
                 <input
                   style={
@@ -334,16 +337,16 @@ export const LoginForm = () => {
                     setRegisterPassword(e.target.value);
                   }}
                   className="form-input-title"
-                  style={{ width: "100%", padding: "12px 10px", fontSize: "16px", borderRadius: "5px", }}
+                  style={{ width: "100%", padding: "12px 10px", fontSize: "14px", borderRadius: "5px", }}
                 />
               </div>
             </div>
 
             <div className="form-input">
-              <div className="form-input-title"style={{ color: "#aaa", fontFamily: "'Lato', sans-serif", cursor: "default" ,color: bg === "light" ? "black" : "#aaa" }}>Confirm password</div>
+              <div className="form-input-title"style={{  fontFamily: "'Lato', sans-serif", cursor: "default" ,color: bg === "light" ? "black" : "#CBCBCB" }}>Confirm password</div>
               <div className="form-input-input">
                 <div className="icon" onClick={() => setShowPassword2(!showPassword2)}>
-                  {showPassword2 ? <FaEye/>: <FaEyeSlash/>}
+                  {showPassword2 ? <FaEyeSlash/>:<FaEye/>}
                 </div>
                 <input
                   style={
@@ -360,7 +363,7 @@ export const LoginForm = () => {
                   onChange={(e) => {
                     setConfirmPassword(e.target.value);
                   }}
-                  style={{ width: "100%", padding: "12px 10px", fontSize: "16px", borderRadius: "5px", }}
+                  style={{ width: "100%", padding: "12px 10px", fontSize: "14px", borderRadius: "5px", }}
                 />
               </div>
 
@@ -372,20 +375,21 @@ export const LoginForm = () => {
                 {" "}
                 <input type="checkbox" /> <span
 
-                style={{ color: "#aaa", fontFamily: "'Lato', sans-serif", cursor: "default" ,color: bg === "light" ? "black" : "#aaa" }}
+                style={{ fontFamily: "'Lato', sans-serif", cursor: "default" ,color: bg === "light" ? "black" : "#CBCBCB" }}
                 
                 
                 >Stay informed about new features and improvements. </span> 
               </div>
               <div className="checkbox-unit">
-                {" "}
-                <input type="checkbox" /> <span style={{ color: "#aaa", fontFamily: "'Lato', sans-serif", cursor: "default" ,color: bg === "light" ? "black" : "#aaa" }}>
-                    I accept the&nbsp;
-                    <a href="/terms" style={{ color: "var(--color-primary1)" }}>Terms of Service</a>
-                    &nbsp;and the&nbsp;
-                    <a href="/privacy" style={{ color: "var(--color-primary1" }}> privacy policy.</a>
-                  </span>
+                <input type="checkbox" /> 
+                <span style={{ color: "#CBCBCB", fontFamily: "'Lato', sans-serif", cursor: "default", color: bg === "light" ? "black" : "#CBCBCB" }}>
+                  I accept the&nbsp;
+                  <a href="/termsofservice" style={{ color: "var(--color-primary1)" }}>Terms of Service</a>
+                  &nbsp;and the&nbsp;
+                  <a href="/privacypolicy" style={{ color: "var(--color-primary1)" }}>Privacy Policy</a>.
+                </span>
               </div>
+
 
               
             </div>
@@ -400,15 +404,15 @@ export const LoginForm = () => {
             </button>
           </div>
           <div className="login-register-cta">
-            {" "}
-            Already have an account?{" "}
+            
             <span
               onClick={() => {
               setRegLogState(true);
               }}
               style={{  cursor: "pointer" }}
               >
-              {" "}Login{" "}
+              {" "}
+              Already have an account?{" "}{" "}Login{" "}
             </span>
                 
           </div>

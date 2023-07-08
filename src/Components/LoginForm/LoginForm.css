@@ -27,7 +27,7 @@
 }
 
 .Log-into-your{
-  color:#888;
+  color: #cbcbcb;
 }
 .login-form {
   width: 100%;
@@ -74,13 +74,13 @@
 
 
 .form-input > div:first-child {
-  color: #aaa; /* Set the font color to #aaa */
+  color: #CBCBCB; /* Set the font color to #aaa */
 }
 
 .form-input input {
   border: 1px solid rgb(170, 170, 170) !important;
   background: transparent;
-  color: #aaa;
+  color: #CBCBCB;
   font-size: 14px
   
 }
@@ -167,9 +167,15 @@ input[type="password"] {
 }
 
 .form-input-title {
-  color: #aaa;
-  font-size: 16px;
+  color: #CBCBCB;
+  font-size: 14px;
+  
 }
+
+.form-input input{
+  height: 41.77px;
+}
+
 .reg {
   display: flex;
   gap: 35px;
@@ -303,7 +309,7 @@ INPUT[type=checkbox]:checked {
   justify-content: space-between;
   gap: 10px;
   padding-bottom: 30px;
-  color: #aaa;
+  color: #CBCBCB;
 }
 .btn-login2 {
   border: 1px solid grey;

@@ -40,8 +40,8 @@ export const Showcase = ({ image1 }) => {
                   }
             }
           >
-            A clean and simple way to read your books on any device, without
-            worrying about cross-platform synchronization.
+            A clean and simple way to read your books on any device and build
+            your own online library
           </p>
         </div>
         <div className="info-section-button">

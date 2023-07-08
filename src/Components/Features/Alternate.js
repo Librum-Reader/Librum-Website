@@ -20,18 +20,18 @@ const Alternate = () => {
 
   const data = [
     {
-      title: "Cross Device",
-      text: "With Librum, all of your books will be readily available for you, no matter which device you are on",
+      title: "Available Everywhere",
+      text: "Read on any device, anytime, anywhere. Librum is designed to run on any device and operating system, no matter if its your phone, tablet, PC, or laptop. Enjoy a seamless reading experience everywhere",
       image: devices,
     },
     {
-      title: "Read on any OS",
-      text: "You can always count on a great reading experience with Librum, on your phone, laptop, or tablet",
+      title: "Simple",
+      text: "Your books are automatically synced to the cloud, so you can access them at any time through a simple and modern interface",
       image: reading,
     },
     {
-      title: "Offline Available",
-      text: "No need for a live connection, you can use Librum without the internet",
+      title: "Powerful",
+      text: "Librum offers lightning-fast performance, the ability to customize the application to make it look and feel as you want, and many tools to boost your productivity",
       image: offline,
     },
   ];

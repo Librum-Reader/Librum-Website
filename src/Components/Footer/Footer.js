@@ -20,9 +20,10 @@ export const Footer = ({ image }) => {
   } = useFormSubmit();
   const emailRef = useRef();
   const messageRef = useRef();
+  let url = document?.location.pathname.slice(1);
+  let pathName = url.length > 0 ? url : "home";
 
   const handleSubmit = async (e) => {
-    const pathName = document?.location.pathname.slice(1);
     resetStates();
     const values = {
       Origin: pathName,

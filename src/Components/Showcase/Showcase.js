@@ -49,10 +49,16 @@ export const Showcase = ({ image1 }) => {
             <FaLinux size="1.5rem" style={{ color: "var(--color-primary0)" }} />
             <p>Download</p>
           </button>
-          <button className="btn btn-primary btn-sc">
-            <AiFillGithub size="1.5rem" />
-            <a href="#ft-services">GitHub</a>{" "}
-          </button>
+          <a
+            href={"https://github.com/Librum-Reader/Librum"}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <button className="btn btn-primary btn-sc">
+              <AiFillGithub size="1.5rem" />
+              GitHub
+            </button>
+          </a>
         </div>
       </div>
       <div className="image lg" ref={container}>

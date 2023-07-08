@@ -48,25 +48,21 @@
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
-  padding: 2rem 4rem;
-  gap: 6rem;
+  padding: 2rem 1rem;
+  gap: 8rem;
 }
 
 .features-blurb-container-odd {
   display: flex;
   justify-content: space-between;
-  padding: 2rem 4rem;
-  gap: 6rem;
+  padding: 2rem 1rem;
+  gap: 8rem;
 }
 
 .features-blurb-text {
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
-
-.features-blurb-text p {
-  letter-spacing: 4px;
 }
 
 .features-blurb-text h2 {

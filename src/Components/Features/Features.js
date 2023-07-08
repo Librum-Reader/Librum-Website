@@ -73,11 +73,6 @@ export const Features = () => {
       </div>
 
       <div className="features-lg-container">
-        <div className="features-center">
-          <h2 className="features-heading">
-            <strong>Why</strong> Librum?
-          </h2>
-        </div>
         <div className="alternate-wrapper">
           <Alternate />
         </div>

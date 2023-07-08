@@ -1,0 +1,23 @@
+.disclaimer-container {
+  background-color: rgb(40, 44, 52);
+  padding: 5em 8.5em;
+}
+
+.disclaimer-title {
+  color: #946bde;
+  font-size: 2.5em;
+}
+
+.disclaimer-text {
+  color: white;
+}
+
+.disclaimer-container,
+.disclaimer-title {
+  text-align: start;
+}
+
+.disclaimer-title,
+.disclaimer-text {
+  margin-bottom: 1em;
+}

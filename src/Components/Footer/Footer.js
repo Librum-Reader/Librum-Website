@@ -153,16 +153,6 @@ export const Footer = ({ image }) => {
           >
             <li>News</li>
           </Link>
-          <Link
-            style={bg === "light" ? { color: "crimson" } : { color: "white" }}
-            to={"/about"}
-            onClick={() => {
-              setSelected(4);
-            }}
-          >
-            {" "}
-            <li>About</li>
-          </Link>
         </ul>
         <div
           style={bg === "light" ? { color: "crimson" } : { color: "white" }}

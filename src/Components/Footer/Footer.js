@@ -1,12 +1,11 @@
 import React, { useContext, useEffect, useRef } from "react";
-import "./Footer.css";
-import image1 from "../Navbar/ereader1.png";
-import { Link } from "react-router-dom";
+import { createPortal } from "react-dom";
 import { SiteContext } from "../../Context/Context";
 import useFormSubmit from "../../Hooks/useFormSubmit";
-import { createPortal } from "react-dom";
 import FormSuccess from "../FormSuccess/FormSuccess";
+import image1 from "../Navbar/ereader1.png";
 import { LoadingAnimation } from "../SvgIcons/SvgIcons";
+import "./Footer.css";
 
 export const Footer = ({ image }) => {
   const { bg, setBg, setSelected } = useContext(SiteContext);
@@ -134,26 +133,13 @@ export const Footer = ({ image }) => {
           </h3>
         </div>
 
-        <ul>
-          <Link
-            style={bg === "light" ? { color: "crimson" } : { color: "white" }}
-            to={"/support"}
-            onClick={() => {
-              setSelected(2);
-            }}
+        <div>
+          <p 
+            style={{paddingTop: "22px", fontSize: "15px"}}
           >
-            <li>Support</li>
-          </Link>
-          <Link
-            style={bg === "light" ? { color: "crimson" } : { color: "white" }}
-            to={"/news"}
-            onClick={() => {
-              setSelected(3);
-            }}
-          >
-            <li>News</li>
-          </Link>
-        </ul>
+            © 2023 Librum-Reader, All rights reserved
+          </p>
+        </div>
         <div
           style={bg === "light" ? { color: "crimson" } : { color: "white" }}
           className="footer-social"

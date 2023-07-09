@@ -4,7 +4,7 @@ import offline from "./offline.png";
 import { Fade } from "react-reveal";
 
 import { SiteContext } from "../../Context/Context";
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 
 const Alternate = () => {
   const { bg, setBg } = useContext(SiteContext);
@@ -21,7 +21,7 @@ const Alternate = () => {
   const data = [
     {
       title: "Available Everywhere",
-      text: "Read on any device, anytime, anywhere. Librum is designed to run on any device and operating system, no matter if its your phone, tablet, PC, or laptop. Enjoy a seamless reading experience everywhere",
+      text: "Read on any device, anytime, anywhere. Librum is designed to run on any device and operating system, no matter if its your phone, tablet, PC, or laptop",
       image: devices,
     },
     {
@@ -33,6 +33,11 @@ const Alternate = () => {
       title: "Powerful",
       text: "Librum offers lightning-fast performance, the ability to customize the application to make it look and feel as you want, and many tools to boost your productivity",
       image: offline,
+    },
+    {
+      title: "Free Books",
+      text: "Explore our free online store, download books in just 2 clicks and start enjoying your reading journey right away",
+      image: reading,
     },
   ];
 

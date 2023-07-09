@@ -3,9 +3,11 @@
   height: fit-content;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  background-color: #282c34 !important;
   /* border: 1px solid crimson; */
   padding: 0 15px;
 }
+
 .info-section {
   height: 100%;
 

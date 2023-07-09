@@ -43,10 +43,6 @@ export const LoginForm = () => {
       return;
     }
 
-    if (registerPassword.length > 6) {
-      setErrorMessage("Password should be at least 6 characters");
-    }
-
     if (registerPassword !== confirmPassword) {
       setErrorMessage("Passwords don't match");
       return;

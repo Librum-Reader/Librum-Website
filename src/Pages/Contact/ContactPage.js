@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef } from "react";
-import "./SupportPage.css";
+import "./ContactPage.css";
 
 import reason1 from "./reasons1.png";
 import reason2 from "./reasons2.png";
@@ -15,7 +15,7 @@ import { Link } from "react-router-dom";
 import { SiteContext } from "../../Context/Context";
 import { SupportWays } from "../../Components/Support/SupportWays";
 
-export const SupportPage = ({ message, anchor, cards }) => {
+export const ContactPage = ({ message, anchor, cards }) => {
   const { bg, setBg } = useContext(SiteContext);
 
   useEffect(() => {
@@ -48,9 +48,9 @@ export const SupportPage = ({ message, anchor, cards }) => {
       className="container"
     >
       <Form />
-      <div className="supportPage-container">
+      {/* <div className="contactPage-container">
         <SupportWays pics={[reason3, reason1, reason2]} cards={cards} />
-      </div>
+      </div> */}
     </div>
   );
 };

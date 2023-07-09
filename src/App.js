@@ -1,9 +1,8 @@
 import "./App.css";
 import { Homepage } from "./Pages/Homepage/Homepage";
-import { AboutPage } from "./Pages/AboutPage/AboutPage";
 import { Navbar } from "./Components/Navbar/Navbar";
 import { Footer } from "./Components/Footer/Footer";
-import { SupportPage } from "./Pages/Support/SupportPage";
+import { ContactPage } from "./Pages/Contact/ContactPage";
 import { LoginPage } from "./Pages/LoginPage/LoginPage";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { SiteContextProvider } from "./Context/Context";
@@ -18,29 +17,22 @@ import { NotFound } from "./Pages/NotFound/NotFound";
 import { Test } from "./Components/Test/Test";
 import { ProfilePage } from "./Components/Profile/ProfilePage";
 import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
+import { Disclaimer } from "./Components/Disclaimer/Disclaimer";
+import { Cookies } from "./Components/Cookies/Cookies";
 
 function App() {
   return (
     <SiteContextProvider>
-      <GoogleReCaptchaProvider
-        reCaptchaKey={process.env.REACT_APP_reCAPTCHA_SITE_KEY}
-      >
+      <GoogleReCaptchaProvider reCaptchaKey={process.env.REACT_APP_reCAPTCHA_SITE_KEY}>
         <div className="App">
           <Router>
             <Navbar />
             <ScrollToTop>
               <Routes>
                 <Route path="/" element={<Homepage />} />
-                <Route path="/about" element={<AboutPage />} />
                 <Route
-                  path="/support"
-                  element={
-                    <SupportPage
-                      message={" NEED HELP?"}
-                      anchor={"Ways to support us"}
-                      cards={true}
-                    />
-                  }
+                  path="/contact"
+                  element={<ContactPage message={" NEED HELP?"} anchor={"Ways to support us"} cards={true} />}
                 />
                 <Route path="/News" element={<News />} />
                 <Route path="/News/:title" element={<Article />} />
@@ -48,6 +40,8 @@ function App() {
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/privacypolicy" element={<PrivacyPolicy />} />
                 <Route path="/termsofservice" element={<TermsOfService />} />
+                <Route path="/disclaimer" element={<Disclaimer />} />
+                <Route path="/cookies" element={<Cookies />} />
                 <Route path="/whyTiers" element={<WhyTiers />} />
                 <Route path="/test" element={<Test />} />
                 <Route path="*" element={<NotFound />} />

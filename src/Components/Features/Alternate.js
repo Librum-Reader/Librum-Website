@@ -22,7 +22,7 @@ const Alternate = () => {
   const data = [
     {
       title: "Available Everywhere",
-      text: "Read on any device, anytime, anywhere. Librum is designed to run on any device and operating system, no matter if its your phone, tablet, PC, or laptop",
+      text: "Read on any device, anytime, anywhere. Librum installs in just two clicks, and is designed to run on any device and operating system, no matter if its your phone, tablet, PC, or laptop",
       image: devices,
     },
     {
@@ -31,13 +31,13 @@ const Alternate = () => {
       image: reading,
     },
     {
-      title: "Powerful",
-      text: "Librum offers lightning-fast performance, the ability to customize the application to make it look and feel as you want, and many tools to boost your productivity",
+      title: "Powerful and Secure",
+      text: "Librum offers lightning-fast performance, small file-size, quick updates, the ability to customize the application to make it look and feel as you want, and many tools to boost your productivity",
       image: offline,
     },
     {
       title: "Free Books",
-      text: "Explore our free online store, download books in just 2 clicks and start enjoying your reading journey right away",
+      text: "Explore our free online store with access to over 60,000 books. Download books in just 2 clicks and start enjoying your reading journey right away",
       image: books,
     },
   ];
@@ -50,8 +50,8 @@ const Alternate = () => {
             <div
               className={
                 index % 2 === 0
-                  ? "features-blurb-container shadow-even"
-                  : "features-blurb-container-odd shadow"
+                  ? "features-blurb-container"
+                  : "features-blurb-container-odd"
               }
             >
               <div className="features-blurb-text">
@@ -68,7 +68,7 @@ const Alternate = () => {
                   {block.text}
                 </p>
               </div>
-              <div className="features-blurb-image">
+              <div className="features-blurb-image shadow">
                 <img src={block.image} />
               </div>
             </div>

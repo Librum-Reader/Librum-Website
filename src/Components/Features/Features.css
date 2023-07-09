@@ -49,14 +49,14 @@
   flex-direction: row-reverse;
   justify-content: space-between;
   padding: 2rem 0;
-  gap: 14rem;
+  gap: 20rem;
 }
 
 .features-blurb-container-odd {
   display: flex;
   justify-content: space-between;
   padding: 2rem;
-  gap: 14rem;
+  gap: 20rem;
 }
 
 .features-blurb-text {
@@ -79,14 +79,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  filter: drop-shadow(-150px 150px 60px hsla(240, 72%, 76%, 0.24));
+  /* filter: drop-shadow(100px 100px 60px hsla(240, 72%, 76%, 0.24)); */
 }
 
 .shadow-even {
   display: flex;
   align-items: center;
   justify-content: center;
-  filter: drop-shadow(100px 100px 60px hsla(240, 72%, 76%, 0.24));
+  /* filter: drop-shadow(100px 100px 60px hsla(240, 72%, 76%, 0.24)); */
 }
 
 .features-blurb-image img {

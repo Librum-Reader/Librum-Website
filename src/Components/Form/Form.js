@@ -69,7 +69,7 @@ export const Form = () => {
                 marginBottom: "2rem",
               }}
             >
-              Reach out through our email{" "}
+              Reach us through the form below, or at{" "}
               <a
                 href="mailto:help@librumreader.com"
                 target="_blank"

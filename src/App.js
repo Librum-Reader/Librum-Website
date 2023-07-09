@@ -2,7 +2,7 @@ import "./App.css";
 import { Homepage } from "./Pages/Homepage/Homepage";
 import { Navbar } from "./Components/Navbar/Navbar";
 import { Footer } from "./Components/Footer/Footer";
-import { SupportPage } from "./Pages/Support/SupportPage";
+import { ContactPage } from "./Pages/Contact/ContactPage";
 import { LoginPage } from "./Pages/LoginPage/LoginPage";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { SiteContextProvider } from "./Context/Context";
@@ -31,8 +31,8 @@ function App() {
               <Routes>
                 <Route path="/" element={<Homepage />} />
                 <Route
-                  path="/support"
-                  element={<SupportPage message={" NEED HELP?"} anchor={"Ways to support us"} cards={true} />}
+                  path="/contact"
+                  element={<ContactPage message={" NEED HELP?"} anchor={"Ways to support us"} cards={true} />}
                 />
                 <Route path="/News" element={<News />} />
                 <Route path="/News/:title" element={<Article />} />

@@ -40,14 +40,6 @@ export const Menu = ({ setShow }) => {
             <li>News</li>
           </Link>
           <Link
-            to={"./about"}
-            onClick={() => {
-              setShow(false);
-            }}
-          >
-            <li>About</li>
-          </Link>
-          <Link
             to={"./login"}
             onClick={() => {
               setShow(false);

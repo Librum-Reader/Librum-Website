@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useRef } from "react";
 import { SiteContext } from "../../Context/Context";
 
-import pic4 from "../../Pages/Support/pic4.svg";
+import pic4 from "../../Pages/Contact/pic4.svg";
 import pic from "./message.svg";
 import "./Form.css";
 import { LoadingAnimation } from "../SvgIcons/SvgIcons";
@@ -24,14 +24,16 @@ export const Form = () => {
   const message = useRef();
 
   const handleSubmit = async (e) => {
+    const pathName = document?.location.pathname.slice(1);
     resetStates();
     const values = {
-      name: name.current.value,
-      email: email.current.value,
-      message: message.current.value,
+      Origin: pathName,
+      Name: name.current.value,
+      Email: email.current.value,
+      Message: message.current.value,
     };
 
-    const captchaActionName = "FormComponent";
+    const captchaActionName = pathName;
 
     await handleReCaptchaVerify(e, values, captchaActionName);
   };
@@ -53,7 +55,7 @@ export const Form = () => {
       className="support-page-contact"
     >
       <div className="support-page-contact-form">
-        <h2>Send Us a Message</h2>
+        <h2>Need help?</h2>
 
         <form onSubmit={handleSubmit} id="form">
           <div className="form-subtitle">
@@ -67,7 +69,7 @@ export const Form = () => {
                 marginBottom: "2rem",
               }}
             >
-              Please feel free to reach out to us using the form below, or at{" "}
+              Reach us through the form below, or at{" "}
               <a
                 href="mailto:help@librumreader.com"
                 target="_blank"
@@ -75,7 +77,7 @@ export const Form = () => {
               >
                 help@librumreader.com
               </a>{" "}
-              if you have any questions, we are 100% responsive and reply
+              if you have any questions, <br/>we are 100% responsive and reply
               quickly!
             </p>
           </div>

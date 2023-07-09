@@ -212,7 +212,7 @@ export const Navbar = () => {
               </li>
               <li>
                 <Link
-                  to={"./support"}
+                  to={"./contact"}
                   onClick={() => {
                     setSelected(2);
                   }}
@@ -220,16 +220,16 @@ export const Navbar = () => {
                   <p
                     style={
                       window.location.href ===
-                        "http://localhost:3000/support" ||
+                        "http://localhost:3000/contact" ||
                       window.location.href ===
-                        "https://librumreader.com/support"
+                        "https://librumreader.com/contact"
                         ? { color: color }
                         : bg === "light"
                         ? { color: colorB }
                         : { color: colorA }
                     }
                   >
-                    Support
+                    Contact
                   </p>
                 </Link>
               </li>
@@ -255,7 +255,7 @@ export const Navbar = () => {
                 </Link>
               </li>
               <li>
-                {user ? (
+                {user && (
                   <Link
                     to={"./profile"}
                     onClick={() => {
@@ -275,28 +275,6 @@ export const Navbar = () => {
                       }
                     >
                       Account
-                    </p>
-                  </Link>
-                ) : (
-                  <Link
-                    to={"./about"}
-                    onClick={() => {
-                      setSelected(4);
-                    }}
-                  >
-                    <p
-                      style={
-                        window.location.href ===
-                          "http://localhost:3000/about" ||
-                        window.location.href ===
-                          "https://librumreader.com/about"
-                          ? { color: color }
-                          : bg === "light"
-                          ? { color: colorB }
-                          : { color: colorA }
-                      }
-                    >
-                      About
                     </p>
                   </Link>
                 )}
@@ -327,9 +305,9 @@ export const Navbar = () => {
                       <p
                         style={
                           window.location.href ===
-                            "http://localhost:3000/about" ||
+                            "http://localhost:3000/login" ||
                           window.location.href ===
-                            "https://librumreader.com/about"
+                            "https://librumreader.com/login"
                             ? { color: color }
                             : bg === "light"
                             ? { color: colorB }

@@ -1,6 +1,7 @@
 import devices from "./devices.png";
 import reading from "./reading.png";
 import offline from "./offline.png";
+import books from "./books.png";
 import { Fade } from "react-reveal";
 
 import { SiteContext } from "../../Context/Context";
@@ -37,7 +38,7 @@ const Alternate = () => {
     {
       title: "Free Books",
       text: "Explore our free online store, download books in just 2 clicks and start enjoying your reading journey right away",
-      image: reading,
+      image: books,
     },
   ];
 

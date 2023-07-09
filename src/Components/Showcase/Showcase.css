@@ -66,6 +66,11 @@
   display: flex;
   gap: 2rem;
   align-items: center;
+  z-index: 99999;
+}
+
+.sc-link {
+  z-index: 9999;
 }
 @media screen and (max-width: 900px) {
   .showcase-container {

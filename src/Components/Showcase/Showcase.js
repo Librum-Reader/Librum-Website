@@ -57,6 +57,7 @@ export const Showcase = ({ image1 }) => {
               href={"https://github.com/Librum-Reader/Librum"}
               target="_blank"
               rel="noopener noreferrer"
+              className="sc-link"
             >
               <button className="btn btn-primary btn-sc">
                 <AiFillGithub size="1.5rem" />

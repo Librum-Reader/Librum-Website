@@ -33,7 +33,7 @@ export const Homepage = () => {
           bg === "light"
             ? { backgroundColor: "white", color: "var(--color-primary)" }
             : {
-                backgroundColor: "#3e4757",
+                backgroundColor: "transparent",
                 color: "var(--color-primary)",
               }
         }

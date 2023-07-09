@@ -1,9 +1,11 @@
 .showcase-container {
+  max-width: 1300px;
+  margin: 0 auto;
   margin-top: 0px;
   height: fit-content;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  background-color: #282c34 !important;
+  background-color: #3e4757 !important;
   /* border: 1px solid crimson; */
   padding: 0 15px;
 }

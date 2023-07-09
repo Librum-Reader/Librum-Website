@@ -33,7 +33,7 @@ export const Homepage = () => {
           bg === "light"
             ? { backgroundColor: "white", color: "var(--color-primary)" }
             : {
-                backgroundColor: "transparent",
+                backgroundColor: "#3e4757",
                 color: "var(--color-primary)",
               }
         }
@@ -47,7 +47,7 @@ export const Homepage = () => {
           bg === "light"
             ? { backgroundColor: "white", color: "var(--color-primary)" }
             : {
-                backgroundColor: "#3e4757",
+                backgroundColor: "#282c34",
                 color: "var(--color-primary)",
               }
         }

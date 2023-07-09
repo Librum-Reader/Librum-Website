@@ -38,7 +38,7 @@ export const Navbar = () => {
               color: "var(--color-primary)",
             }
           : {
-              backgroundColor: "#282c34",
+              backgroundColor: "#3e4757",
               color: "white",
             }
       }

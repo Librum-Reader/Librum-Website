@@ -72,12 +72,12 @@ html {
 }
 
 .test-container {
-  max-width: 1300px;
+  /* max-width: 1300px; */
   /* margin: 0 auto; */
   min-height: 50vh;
   /* max-width: var(--max-width); */
   margin: 0 auto;
-  background-color: transparent;
+  background-color: #282c34;
   transition: var(--transition);
   color: #256eff;
 }

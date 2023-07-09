@@ -212,7 +212,7 @@ export const Navbar = () => {
               </li>
               <li>
                 <Link
-                  to={"./support"}
+                  to={"./contact"}
                   onClick={() => {
                     setSelected(2);
                   }}
@@ -220,16 +220,16 @@ export const Navbar = () => {
                   <p
                     style={
                       window.location.href ===
-                        "http://localhost:3000/support" ||
+                        "http://localhost:3000/contact" ||
                       window.location.href ===
-                        "https://librumreader.com/support"
+                        "https://librumreader.com/contact"
                         ? { color: color }
                         : bg === "light"
                         ? { color: colorB }
                         : { color: colorA }
                     }
                   >
-                    Support
+                    Contact
                   </p>
                 </Link>
               </li>

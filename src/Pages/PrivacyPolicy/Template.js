@@ -187,7 +187,7 @@ const Template = () => (
 
     <p>If you have any questions about this Privacy Policy, You can contact us:</p>
 
-    <p>By email: help@librumreader.com</p>
+    <p>By email: <a href="mailto:help@librumreader.com" target="_blank" rel="noopener noreferrer">help@librumreader.com</a></p>
 
   </div >
 );

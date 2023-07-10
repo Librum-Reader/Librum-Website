@@ -1,6 +1,6 @@
 const Template = () => (
   <div className="main-template">
-    <h1 className="title legal-text-title">Privacy Policy</h1>
+    <h1 className="title legal-text-title">PRIVACY POLICY</h1>
 
     <p>Last updated: June 10, 2023</p>
     <p>This Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your information
@@ -9,12 +9,12 @@ const Template = () => (
       use of information in accordance with this Privacy Policy.</p>
     <h2 className="legal-text-subtitle">Interpretation and Definitions</h2>
 
-    <h3 className="legal-text-sec-subtitle">Interpretation</h3>
+    <h3 className="legal-text-sec-subtitle indent-on-subtitle">Interpretation</h3>
     <ul>
       <li>The words of which the initial letter is capitalized have meanings defined under the following conditions. The
         following definitions shall have the same meaning regardless of whether they appear in singular or in plural.</li>
     </ul>
-    <h3 className="legal-text-sec-subtitle">Definitions</h3>
+    <h3 className="legal-text-sec-subtitle indent-on-subtitle">Definitions</h3>
     <ul>
       <li><strong>Account</strong> means a unique account created for You to access our Service or parts of our Service.</li>
       <li><strong>Affiliate</strong> means an entity that controls, is controlled by or is under common control with a
@@ -37,22 +37,24 @@ const Template = () => (
       <li><strong>You</strong> means the individual accessing or using the Service, or the company, or other legal entity
         on behalf of which such individual is accessing or using the Service, as applicable.</li>
     </ul>
-    <h2>Collecting and Using Your Personal Data</h2>
+    <h2 className="legal-text-subtitle">Collecting and Using Your Personal Data</h2>
 
-    <h3 className="legal-text-sec-subtitle">Types of Data Collected</h3>
-    <ul>
-      <li><strong>Personal Data</strong></li>
-    </ul>
+    <h3 className="legal-text-sec-subtitle indent-on-subtitle">Types of Data Collected</h3>
+
+    <h4>Personal Data</h4>
+
+
     <p>While using Our Service, We may ask You to provide Us with certain personally identifiable information that can be
       used to contact or identify You. Personally identifiable information may include, but is not limited to:</p>
-    <ul>
+    <ul className="innerlist">
       <li>Email address</li>
       <li>First name and last name</li>
       <li>Usage Data</li>
       <li>Banking details in case of In-app purchase feature</li>
       <li>All of your existing information on Social Media if you Sign-up through such platforms</li>
     </ul>
-    <h3 className="legal-text-sec-subtitle">Usage Data</h3>
+    <h4>Usage Data</h4>
+
     <p>Usage Data is collected automatically when using the Service.</p>
     <p>Usage Data may include information such as Your Device's Internet Protocol address (e.g. IP address), browser type,
       browser version, the pages of our Service that You visit, the time and date of Your visit, the time spent on those
@@ -63,10 +65,11 @@ const Template = () => (
       identifiers and other diagnostic data.</p>
     <p>We may also collect information that Your browser sends whenever You visit our Service or when You access the
       Service by or through a mobile device.</p>
-    <h2>Use of Your Personal Data</h2>
+
+    <h3 className="legal-text-sec-subtitle indent-on-subtitle">Use of Your Personal Data</h3>
 
     <p>The Company may use Personal Data for the following purposes:</p>
-    <ul>
+    <ul className="innerlist">
       <li>To provide and maintain our Service, including to monitor the usage of our Service.</li>
       <li>To manage Your Account: to manage Your registration as a user of the Service. The Personal Data You provide can
         give You access to different functionalities of the Service that are available to You as a registered user.</li>
@@ -88,7 +91,7 @@ const Template = () => (
       <li>For other purposes: We may use Your information for other purposes, such as data analysis, identifying usage trends, determining the effectiveness of our promotional campaigns and to evaluate and improve our Service, products, services, marketing, and your experience.</li>
     </ul>
     <p>We may share Your personal information in the following situations:</p>
-    <ul>
+    <ul className="innerlist">
       <li>With Service Providers: We may share Your personal information with Service Providers to monitor and analyze the
         use of our Service, to contact You. It also includes that SSL banking service for safe transactions and to protect
         your banking details.</li>
@@ -104,7 +107,7 @@ const Template = () => (
         users, such information may be viewed by all users and may be publicly distributed outside.</li>
       <li>With Your consent: We may disclose Your personal information for any other purpose with Your consent.</li>
     </ul>
-    <h2>Retention of Your Personal Data</h2>
+    <h3 className="legal-text-sec-subtitle indent-on-subtitle">Retention of Your Personal Data</h3>
 
     <p>The Company will retain Your Personal Data only for as long as is necessary for the purposes set out in this Privacy
       Policy. We will retain and use Your Personal Data to the extent necessary to comply with our legal obligations (for
@@ -113,7 +116,7 @@ const Template = () => (
     <p>The Company will also retain Usage Data for internal analysis purposes. Usage Data is generally retained for a
       shorter period of time, except when this data is used to strengthen the security or to improve the functionality of
       Our Service, or We are legally obligated to retain this data for longer time Periods.</p>
-    <h2>Transfer of Your Personal Data</h2>
+    <h3 className="legal-text-sec-subtitle indent-on-subtitle">Transfer of Your Personal Data</h3>
 
     <p>Your information, including Personal Data, is processed at the Company's operating offices and in any other places
       where the parties involved in the processing are located. It means that this information may be transferred to — and
@@ -124,7 +127,7 @@ const Template = () => (
     <p>The Company will take all steps reasonably necessary to ensure that Your data is treated securely and in accordance
       with this Privacy Policy and no transfer of Your Personal Data will take place to an organization or a country
       unless there are adequate controls in place including the security of Your data and other personal information.</p>
-    <h2>Security of Your data</h2>
+    <h2 className="legal-text-subtitle">Security of Your data</h2>
 
     <p>The security of Your Personal Data is important to Us, but remember that no method of transmission over the Internet,
       or method of electronic storage is 100% secure.</p>
@@ -134,13 +137,13 @@ const Template = () => (
       act in accordance with our instructions while processing your personal data.</p>
     <p>When we are legally obligated to do so, we will notify you and any relevant regulator of a breach and will have
       procedures in place to deal with any suspected personal data breach.</p>
-    <h2>Disclosure of your Data</h2>
+    <h2 className="legal-text-subtitle">Disclosure of your Data</h2>
 
     <p>We use several third-party services from Microsoft Corporation, Google LLC, and AWS. We send the data necessary to
       these third-party services to improve the user experience. One example of this is Google’s reCAPTCHA 3, that we use
       to provide simple and straightforward actions on our website and the application, without the need for constant “I’m
       not a computer” puzzles.</p>
-    <h2>Delete Your Personal Data</h2>
+    <h2 className="legal-text-subtitle">Delete Your Personal Data</h2>
 
     <p>You have the right to delete or request that We assist in deleting the Personal Data that We have collected about
       You.</p>
@@ -150,42 +153,42 @@ const Template = () => (
       request access to, correct, or delete any personal information that You have provided to Us.</p>
     <p>Please note, however, that We may need to retain certain information when we have a legal obligation or lawful basis
       to do so.</p>
-    <h2>Business Transactions</h2>
+    <h2 className="legal-text-subtitle">Business Transactions</h2>
 
     <p>If the Company is involved in a merger, acquisition, or asset sale, Your Personal Data may be transferred. We will
       provide notice before Your Personal Data is transferred and becomes subject to a different Privacy Policy.</p>
-    <h2>Law enforcement</h2>
+    <h2 className="legal-text-subtitle">Law enforcement</h2>
 
     <p>Under certain circumstances, the Company may be required to disclose Your Personal Data if required to do so by law
       or in response to valid requests by public authorities (e.g. a court or a government agency).</p>
-    <h2>Other legal requirements</h2>
+    <h2 className="legal-text-subtitle">Other legal requirements</h2>
 
     <p>The Company may disclose Your Personal Data in the good faith belief that such action is necessary to:</p>
-    <ul>
+    <ul className="innerlist">
       <li>Comply with a legal obligation</li>
       <li>Protect and defend the rights or property of the Company</li>
       <li>Prevent or investigate possible wrongdoing in connection with the Service</li>
       <li>Protect the personal safety of Users of the Service or the public</li>
       <li>Protect against legal liability</li>
     </ul>
-    <h2>Opting Out of the App Service</h2>
+    <h2 className="legal-text-subtitle">Opting Out of the App Service</h2>
 
     <p>You have the option to opt out of several services that we provide, such as collectingusage data to display statistics, newsletters sent by email, and similar. If the website or application does not provide a way to opt out of optional services we provide, send us an email, and we will assist you.</p>
-    <h2>Children's Privacy</h2>
+    <h2 className="legal-text-subtitle">Children's Privacy</h2>
 
     <p>Our Service does not address anyone under the age of 13. We do not knowingly collect personally identifiable information from anyone under the age of 13. If You are a parent or guardian and You are aware that Your child has provided Us with Personal Data, please contact Us. If We become aware that We have collected Personal Data from anyone under the age of 13 without verification of parental consent, We take steps to remove that information from Our servers. If We need to rely on consent as a legal basis for processing Your information and Your country requires consent from a parent, We may require Your parent's consent before We collect and use that information.</p>
-    <h2>Links to Other Websites</h2>
+    <h2 className="legal-text-subtitle">Links to Other Websites</h2>
 
     <p>Our Service may contain links to other websites that are not operated by Us. If You click on a third-party link, You will be directed to that third party's site. We strongly advise You to review the Privacy Policy of every site You visit. We have no control over and assume no responsibility for the content, privacy policies, or practices of any third-party sites or services.</p>
-    <h2>Changes to this Privacy Policy</h2>
+    <h2 className="legal-text-subtitle">Changes to this Privacy Policy</h2>
 
     <p>We may update Our Privacy Policy sometimes. We will notify You of any changes by posting the new Privacy Policy on this page. We will let You know via email and/or a prominent notice on Our Service, prior to the change becoming effective and update the "Last updated" date at the top of this Privacy Policy. You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.</p>
-    <h2>Contact Us</h2>
+    <h2 className="legal-text-subtitle">Contact Us</h2>
 
     <p>If you have any questions about this Privacy Policy, You can contact us:</p>
-    <ul>
-      <li>By email: help@librumreader.com</li>
-    </ul>
+
+    <p>By email: help@librumreader.com</p>
+
   </div >
 );
 

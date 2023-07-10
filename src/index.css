@@ -320,19 +320,26 @@ html {
 
 }
 
-.tos-subtitle {
+/* additional css classes for terms of service, privacy policy page
+  to be used for disclaimer and cookies
+*/
+.legal-text-sec-subtitle {
   margin: 2em 0px 0.5em 1.5em;
 
 }
 
-.tos-title {
-  margin-bottom: 1.5em;
+.indent-on-subtitle {
+  margin-left: 2.5em;
 }
 
-/* .main-template > ol > li {
-  list-style: circle;
-  list-style-position: inside;
-} */
+.legal-text-subtitle {
+  margin: 2em 0px 0.5em 1.0em;
+
+}
+
+.legal-text-title {
+  margin-bottom: 1.5em;
+}
 
 .innerlist > li {
   list-style: latin-in-brackets;
@@ -340,7 +347,7 @@ html {
   margin-left: 1em;
 }
 
-.main-template > ol {
+.main-template > ol, ul, p {
   line-height:  1.5em;;
 }
 

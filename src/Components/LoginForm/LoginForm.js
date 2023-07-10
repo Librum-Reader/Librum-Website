@@ -4,8 +4,10 @@ import "./LoginForm.css";
 import axios from "axios";
 
 import { useNavigate } from "react-router-dom";
+import RegisterModal from "../RegisterModal/RegisterModal";
 
 import { SiteContext } from "../../Context/Context";
+
 export const LoginForm = () => {
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
@@ -16,15 +18,9 @@ export const LoginForm = () => {
   const [loginEmail, setloginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [regLogState, setRegLogState] = useState(true);
+  const [openPopup, setOpenPopup] = useState(false);
   const navigate = useNavigate();
   const { user, setUser, bg } = useContext(SiteContext);
-
-  function isValidEmail(email) {
-    // Email validation regular expression
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    return emailRegex.test(email);
-  }
 
   const token = localStorage.getItem("token");
 
@@ -33,15 +29,6 @@ export const LoginForm = () => {
   }
 
   const register = async () => {
-    if (displayName === "") {
-      setErrorMessage("Please Enter your name");
-      return;
-    }
-    if (registerEmail === "" || !isValidEmail(registerEmail)) {
-      setErrorMessage("Please Enter a valid Email Address");
-      return;
-    }
-
     if (registerPassword !== confirmPassword) {
       setErrorMessage("Passwords don't match");
       return;
@@ -67,6 +54,9 @@ export const LoginForm = () => {
       console.log("Registration successful!");
       setRegisterEmail("");
       setRegisterPassword("");
+
+      //handle modal logic when user registers
+      handleRegisterModal();
     } catch (error) {
       console.error("Error during registration:", error);
     }
@@ -98,6 +88,16 @@ export const LoginForm = () => {
     } catch (error) {
       console.error(error);
     }
+  };
+
+  const handleRegisterModal = () => {
+    setOpenPopup(true);
+    return (
+      <RegisterModal
+        openPopup={openPopup}
+        setOpenPopup={setOpenPopup}
+      ></RegisterModal>
+    );
   };
   return (
     <div className="container">

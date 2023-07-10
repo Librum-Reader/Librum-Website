@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import "./LoginForm.css";
 
 import axios from "axios";
@@ -22,12 +22,13 @@ export const LoginForm = () => {
   const navigate = useNavigate();
   const { user, setUser, bg } = useContext(SiteContext);
 
+  /* 
   const token = localStorage.getItem("token");
 
   if (token) {
     navigate("/profile");
   }
-
+ */
   const register = async () => {
     if (registerPassword !== confirmPassword) {
       setErrorMessage("Passwords don't match");
@@ -56,33 +57,31 @@ export const LoginForm = () => {
       setRegisterPassword("");
 
       //handle modal logic when user registers
-      handleRegisterModal();
+      //handleRegisterModal();
     } catch (error) {
       console.error("Error during registration:", error);
     }
   };
 
   const login = async () => {
-    const token = localStorage.getItem("token");
-    console.log("clicked");
+    //console.log("clicked login");
     // setLoading(true);
-    const data = {
-      Email: loginEmail,
-      Password: loginPassword,
-    };
 
-    const headers = {
-      "X-Version": "1.0",
-      Authorization: `Bearer ${token}`,
-    };
+    // const headers = {
+    //   "X-Version": "1.0",
+    //   Authorization: `Bearer ${token}`,
+    // };
 
     try {
+      const data = {
+        Email: loginEmail,
+        Password: loginPassword,
+      };
       const response = await axios.post(
         "https://librum-dev.azurewebsites.net/api/login",
-        data,
-        { headers }
+        data
       );
-      console.log(response.data);
+      //console.log(response.data);
       localStorage.setItem("token", response.data);
       navigate("/profile");
     } catch (error) {
@@ -90,7 +89,7 @@ export const LoginForm = () => {
     }
   };
 
-  const handleRegisterModal = () => {
+  /*  const handleRegisterModal = () => {
     setOpenPopup(true);
     return (
       <RegisterModal
@@ -98,7 +97,7 @@ export const LoginForm = () => {
         setOpenPopup={setOpenPopup}
       ></RegisterModal>
     );
-  };
+  }; */
   return (
     <div className="container">
       {regLogState ? (

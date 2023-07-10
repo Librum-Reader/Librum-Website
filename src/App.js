@@ -17,8 +17,8 @@ import { NotFound } from "./Pages/NotFound/NotFound";
 import { Test } from "./Components/Test/Test";
 import { ProfilePage } from "./Components/Profile/ProfilePage";
 import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
-import { Disclaimer } from "./Components/Disclaimer/Disclaimer";
-import { Cookies } from "./Components/Cookies/Cookies";
+import { Disclaimer } from "./Pages/Disclaimer/Disclaimer";
+import { Cookies } from "./Pages/Cookies/Cookies";
 
 function App() {
   return (

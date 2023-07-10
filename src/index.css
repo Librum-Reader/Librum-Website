@@ -352,7 +352,7 @@ html {
   line-height:  1.5em;;
 }
 .last-updated {
-  margin: 0.6em 0px 3.2em 0em;
+  margin: 0.1em 0px 3.2em 0em;
 }
 
 @counter-style latin-in-brackets {

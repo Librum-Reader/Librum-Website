@@ -137,12 +137,12 @@ export const Footer = ({ image }) => {
         <ul>
           <Link
             style={bg === "light" ? { color: "crimson" } : { color: "white" }}
-            to={"/support"}
+            to={"/contact"}
             onClick={() => {
               setSelected(2);
             }}
           >
-            <li>Support</li>
+            <li>Contact</li>
           </Link>
           <Link
             style={bg === "light" ? { color: "crimson" } : { color: "white" }}

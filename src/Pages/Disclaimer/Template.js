@@ -1,7 +1,7 @@
 const Template = () => {
     return (
         <div className="main-template">
-            <h1 className="title legal-text-title">Disclaimer - Librum App</h1>
+            <h1 className="title legal-text-title">DISCLAIMER</h1>
 
             <p>Last Updated: 10th July 2023</p>
             <p>Please carefully read this disclaimer before using Librum (the "Application" and "Website"). Your use of the

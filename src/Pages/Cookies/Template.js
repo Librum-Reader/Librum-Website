@@ -2,7 +2,7 @@ const Template = () => {
     return (
         <div className="main-template">
 
-            <h1 className="title legal-text-title">Cookies Policy - Librum App</h1>
+            <h1 className="title legal-text-title">COOKIES POLICY</h1>
 
             <p>Last Updated: 10th July 2023</p>
             <p>What cookies are and how we use them are described in this cookies policy. You should read this policy to learn

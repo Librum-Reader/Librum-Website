@@ -26,9 +26,11 @@ const Navbar = () => {
             CONTACT
           </Button>
         </Link>
-        <Button colorScheme="teal" variant="ghost">
-          NEWS
-        </Button>
+        <Link href="/news">
+          <Button colorScheme="teal" variant="ghost">
+            NEWS
+          </Button>
+        </Link>
         <Button colorScheme="teal" variant="solid">
           LOGIN
         </Button>

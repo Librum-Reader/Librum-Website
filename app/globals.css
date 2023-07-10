@@ -27,6 +27,11 @@ body {
   background-color: #282c34;
 }
 
+.news-image {
+  width: 300px;
+  height: auto;
+}
+
 .image {
   height: 700px;
   padding: 20px;

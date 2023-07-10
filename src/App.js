@@ -14,6 +14,7 @@ import { PrivacyPolicy } from "./Pages/PrivacyPolicy/PrivacyPolicy";
 import { TermsOfService } from "./Pages/TermsOfService/TermsOfService";
 import { WhyTiers } from "./Pages/WhyTiers/WhyTiers";
 import { NotFound } from "./Pages/NotFound/NotFound";
+import { ImpressumPage } from "./Pages/ImpressumPage/ImpressumPage";
 import { Test } from "./Components/Test/Test";
 import { ProfilePage } from "./Components/Profile/ProfilePage";
 import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
@@ -23,7 +24,9 @@ import { Cookies } from "./Components/Cookies/Cookies";
 function App() {
   return (
     <SiteContextProvider>
-      <GoogleReCaptchaProvider reCaptchaKey={process.env.REACT_APP_reCAPTCHA_SITE_KEY}>
+      <GoogleReCaptchaProvider
+        reCaptchaKey={process.env.REACT_APP_reCAPTCHA_SITE_KEY}
+      >
         <div className="App">
           <Router>
             <Navbar />
@@ -32,10 +35,17 @@ function App() {
                 <Route path="/" element={<Homepage />} />
                 <Route
                   path="/contact"
-                  element={<ContactPage message={" NEED HELP?"} anchor={"Ways to support us"} cards={true} />}
+                  element={
+                    <ContactPage
+                      message={" NEED HELP?"}
+                      anchor={"Ways to support us"}
+                      cards={true}
+                    />
+                  }
                 />
                 <Route path="/News" element={<News />} />
                 <Route path="/News/:title" element={<Article />} />
+                <Route path="/impressum" element={<ImpressumPage />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/privacypolicy" element={<PrivacyPolicy />} />

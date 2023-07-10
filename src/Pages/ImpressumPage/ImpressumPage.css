@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@100;300;400;500;600;700&display=swap");
+
+.impressum-page {
+  min-height: 100vh;
+  background-color: transparent;
+  padding: 100px 0 50px;
+  text-align: left;
+  margin: 0 auto;
+  max-width: 1300px;
+  width: 400px;
+}
+
+.impressum-page h1 {
+  color: var(--color-primary);
+  font-family: "Ropa Sans", "san-serif";
+  margin-bottom: 50px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.impressum-page-text {
+  text-align: left;
+  line-height: 1.8em;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+}

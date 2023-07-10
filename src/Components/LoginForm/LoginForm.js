@@ -92,11 +92,7 @@ export const LoginForm = () => {
     };
 
     try {
-      const response = await axios.post(
-        "https://librum-dev.azurewebsites.net/api/login",
-        data,
-        { headers }
-      );
+      const response = await axios.post("https://librum-dev.azurewebsites.net/api/login", data, { headers });
       console.log(response.data);
       localStorage.setItem("token", response.data);
       navigate("/profile");
@@ -214,8 +210,8 @@ export const LoginForm = () => {
               </div>
               <h2>Welcome</h2>
               <p>
-                Your credentials are only used to authenticate yourself Your
-                credentials will be stored in a secure database
+                Your credentials are only used to authenticate yourself Your credentials will be stored in a secure
+                database
               </p>
             </div>
 
@@ -332,13 +328,11 @@ export const LoginForm = () => {
             <div className="form-checkbox">
               <div className="checkbox-unit">
                 {" "}
-                <input type="checkbox" /> Keep updated about improved features
-                and upcoming improvements.
+                <input type="checkbox" /> Keep updated about improved features and upcoming improvements.
               </div>
               <div className="checkbox-unit">
                 {" "}
-                <input type="checkbox" /> I accept the terms and conditions and
-                the privacy policy
+                <input type="checkbox" /> I accept the terms and conditions and the privacy policy
               </div>
 
               <div className="checkbox-unit">

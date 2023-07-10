@@ -19,7 +19,7 @@ import { ProfilePage } from "./Components/Profile/ProfilePage";
 import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
 import { Disclaimer } from "./Components/Disclaimer/Disclaimer";
 import { Cookies } from "./Components/Cookies/Cookies";
-
+import { EmailConfirmatonPopup } from "./Components/EmailConfirmationPopup/EmailConfirmatonPopup";
 function App() {
   return (
     <SiteContextProvider>
@@ -44,6 +44,7 @@ function App() {
                 <Route path="/cookies" element={<Cookies />} />
                 <Route path="/whyTiers" element={<WhyTiers />} />
                 <Route path="/test" element={<Test />} />
+                <Route path="/email-popup" element={<EmailConfirmatonPopup />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </ScrollToTop>

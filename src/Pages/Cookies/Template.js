@@ -4,7 +4,7 @@ const Template = () => {
 
             <h1 className="title legal-text-title">COOKIES POLICY</h1>
 
-            <p>Last Updated: 10th July 2023</p>
+            <p className="last-updated">Last Updated: 10th July 2023</p>
             <h2 className="legal-text-subtitle">Interpretation and Definitions</h2>
 
             <h3 className="legal-text-sec-subtitle indent-on-subtitle">Interpretation</h3>
@@ -89,14 +89,14 @@ const Template = () => {
                 <li>For the Firefox web browser, please visit this page from Mozilla: <a href="https://support.mozilla.org/en-US/kb/delete-cookies-remove-info-websites-stored">https://support.mozilla.org/en-US/kb/delete-cookies-remove-info-websites-stored</a></li>
             </ul>
             <p>Disabling all cookies does not prevent browsing/app through the service. You can also disable mobile app analytics from your mobile device's settings screen.</p>
-            <p>Information about other tracking technologies, like web beacons:</p>
+            <h2 className="legal-text-subtitle">Information about other tracking technologies, like web beacons:</h2>
             <p>Cookies are not the only method for identifying or tracking website visitors. On occasion, we might also employ other related technologies, such as web beacons (also known as "tracking pixels" or "clear gifs"). These tiny graphics files contain a unique identifier that enables us to recognize when someone has visited our Websites or opened an email including them.</p>
             <p>This enables us to track user movement from one page of a website to another, send cookies to your computer or device, determine whether you arrived there via a third-party website, enhance the website's functionality, and assess the efficacy of email marketing campaigns. These technologies frequently rely on cookies to operate effectively. Therefore, disabling cookies will make them less functional.</p>
-            <p>Cookies and Personal data protection:</p>
+            <h2 className="legal-text-subtitle">Cookies and Personal data protection:</h2>
             <p>Some cookies may process personal data, such as when a user's name or email address is used to identify the user (for example, as a registered user), when an IP address is used to identify and track a user, or when a user is identified by a unique identifier (for example, an advertising ID) to distinguish and track a user. For additional information, please check the Privacy Policy.</p>
-            <p>Changes to the Cookies Policy:</p>
+            <h2 className="legal-text-subtitle">Changes to the Cookies Policy:</h2>
             <p>This Cookies Policy may be modified at any time if new laws become effective or if the type of cookies being used changes. We always mention the updation date for our policy; therefore, please check coming back to check it.</p>
-            <p>Contact Us:</p>
+            <h2 className="legal-text-subtitle">Contact Us:</h2>
             <p>For more details and queries, you can contact us at <a href="mailto:help@librumreader.com">help@librumreader.com</a>.</p>
 
         </div>

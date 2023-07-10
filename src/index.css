@@ -320,6 +320,11 @@ html {
 
 }
 
+.main-template {
+  margin: 0px;
+  padding: 5em 8.5em 5em 8.5em;
+}
+
 /* additional css classes for terms of service, privacy policy page
   to be used for disclaimer and cookies
 */
@@ -337,10 +342,6 @@ html {
 
 }
 
-.legal-text-title {
-  margin-bottom: 1.5em;
-}
-
 .innerlist > li {
   list-style: latin-in-brackets;
   list-style-position: inside;
@@ -349,6 +350,9 @@ html {
 
 .main-template > ol, ul, p {
   line-height:  1.5em;;
+}
+.last-updated {
+  margin: 0.6em 0px 3.2em 0em;
 }
 
 @counter-style latin-in-brackets {

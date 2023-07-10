@@ -6,7 +6,6 @@ import { Template } from "./Template";
 export function Cookies(props) {
   const { bg } = useContext(SiteContext);
 
-
   return (
     <div className="container" style={
       bg === "light"

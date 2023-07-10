@@ -2,6 +2,7 @@ const Template = () => (
   <div className="main-template">
 
     <h1 className="title legal-text-title">TERMS OF SERVICE</h1>
+    <p className="last-updated">Last Updated: 10th July 2023</p>
 
     <h3 className="legal-text-sec-subtitle">1. Introduction</h3>
 

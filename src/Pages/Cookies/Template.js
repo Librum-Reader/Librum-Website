@@ -5,12 +5,6 @@ const Template = () => {
             <h1 className="title legal-text-title">COOKIES POLICY</h1>
 
             <p>Last Updated: 10th July 2023</p>
-            <p>What cookies are and how we use them are described in this cookies policy. You should read this policy to learn
-                about the types of cookies we use, the data we gather via cookies, and how we utilize that data.</p>
-            <p>Although personal information that we maintain about You may be connected to the data stored in and obtained via
-                Cookies, cookies themselves normally do not contain any information that directly identifies a user. See our Privacy
-                Policy for more details on how we use, safeguard, and store your personal data. We don't keep sensitive personal
-                data in the cookies we use, including account passwords or mailing addresses.</p>
             <h2 className="legal-text-subtitle">Interpretation and Definitions</h2>
 
             <h3 className="legal-text-sec-subtitle indent-on-subtitle">Interpretation</h3>

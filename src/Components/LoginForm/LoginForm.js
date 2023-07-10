@@ -16,7 +16,6 @@ export const LoginForm = () => {
   const [loginEmail, setloginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [regLogState, setRegLogState] = useState(true);
-  const [remember, setRemember] = useState(true);
   const navigate = useNavigate();
   const { user, setUser, bg } = useContext(SiteContext);
 

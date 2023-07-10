@@ -7,7 +7,7 @@ body {
   font-family: "Lato", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: white;
+  background-color: #282c34;
 }
 
 /* code {
@@ -70,6 +70,29 @@ html {
   transition: var(--transition);
   color: #256eff;
 }
+
+.test-container {
+  /* max-width: 1300px; */
+  /* margin: 0 auto; */
+  min-height: 50vh;
+  /* max-width: var(--max-width); */
+  margin: 0 auto;
+  background-color: #282c34;
+  transition: var(--transition);
+  color: #256eff;
+}
+
+.wave {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: -20rem;
+}
+
+.test-container-features {
+  position: relative;
+}
+
 .container > div {
   max-width: 1300px;
   margin: 0 auto;

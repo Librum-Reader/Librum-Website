@@ -9,6 +9,7 @@
   border-radius: 10px;
   /* box-shadow: 0px 15px 15px rgba(46, 104, 229, 0.4); */
   width: 95%;
+  margin-bottom: 9.5rem !important;
 }
 .about-container h1 {
   color: white;

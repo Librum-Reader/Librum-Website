@@ -2,7 +2,7 @@
   padding: 55px;
 
   /* border: 1px solid purple; */
-  margin: 50px 0;
+  padding-bottom: 9.5rem;
 }
 .support-container h2 {
   color: var(--color-primary);

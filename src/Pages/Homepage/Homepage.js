@@ -9,6 +9,7 @@ import { Attributes } from "../../Components/Attributes/Attributes";
 import { CountUP } from "../../Components/CountUp/CountUp";
 import { Circles } from "../../Components/CirclePercent/Circles";
 import { SiteContext } from "../../Context/Context";
+import wave from "./wave.svg";
 // import { auth } from "../../firebase-config";
 // import Example from "../../Components/Tabs/Tabs";
 
@@ -26,24 +27,38 @@ export const Homepage = () => {
   }, []);
 
   return (
-    <div
-      style={
-        bg === "light"
-          ? { backgroundColor: "white", color: "var(--color-primary)" }
-          : {
-              backgroundColor: "#282c34",
-              color: "var(--color-primary)",
-            }
-      }
-      className="container"
-    >
-      {/* Hello {auth.currentUser.email} */}
-      <Showcase image1={image1} />
-      <Attributes />
-      <Features />
-      <Circles />
-      <About />
-      <Support />
-    </div>
+    <>
+      <div
+        style={
+          bg === "light"
+            ? { backgroundColor: "white", color: "var(--color-primary)" }
+            : {
+                backgroundColor: "#3e4757",
+                color: "var(--color-primary)",
+              }
+        }
+        className="test-container"
+      >
+        {/* Hello {auth.currentUser.email} */}
+        <Showcase image1={image1} />
+      </div>
+      <div
+        style={
+          bg === "light"
+            ? { backgroundColor: "white", color: "var(--color-primary)" }
+            : {
+                backgroundColor: "#282c34",
+                color: "var(--color-primary)",
+              }
+        }
+        className="test-container-features"
+      >
+        <img src={wave} className="wave" />
+        <Features />
+        <Circles />
+        <About />
+        <Support />
+      </div>
+    </>
   );
 };

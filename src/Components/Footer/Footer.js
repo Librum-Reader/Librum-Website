@@ -124,28 +124,33 @@ export const Footer = ({ image }) => {
       </div>
 
       <div className="footer-lower">
-        <div className="footer-lower-label">
-          <img src={image1} alt="" />
-          <h3
-            style={bg === "light" ? { color: "crimson" } : { color: "white" }}
-          >
-            Librum
-          </h3>
+        <div className="footer-left">
+          <div className="footer-lower-label">
+            <img src={image1} alt="" />
+            <h3
+              style={bg === "light" ? { color: "crimson" } : { color: "white" }}
+            >
+              Librum
+            </h3>
+          </div>
         </div>
 
-        <div>
+        <div style={{textAlign: 'center'}}>
           <p 
             style={{paddingTop: "22px", fontSize: "15px"}}
           >
             © 2023 Librum-Reader, All rights reserved
           </p>
         </div>
-        <div
-          style={bg === "light" ? { color: "crimson" } : { color: "white" }}
-          className="footer-social"
-        >
-          <i className="fa fa-facebook" aria-hidden="true"></i>
-          <i className="fa fa-twitter-square" aria-hidden="true"></i>
+        
+        <div className="footer-right">
+          <div
+            style={bg === "light" ? { color: "crimson" } : { color: "white" }}
+            className="footer-social"
+          >
+            <i className="fa fa-facebook" aria-hidden="true"></i>
+            <i className="fa fa-twitter-square" aria-hidden="true"></i>
+          </div>
         </div>
       </div>
     </div>

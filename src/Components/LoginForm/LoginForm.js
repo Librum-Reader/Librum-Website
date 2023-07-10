@@ -142,36 +142,47 @@ export const LoginForm = () => {
             </div>
 
             <div className="form-input">
-              <div style={{  fontFamily: "'Lato', sans-serif", cursor: "default" ,color: bg === "light" ? "black" : "#CBCBCB" }}>Email</div>
+              <div className="form-input-title" style={{ fontFamily: "'Lato', sans-serif", cursor: "default", color: bg === "light" ? "black" : "#CBCBCB" }}>
+                Email
+              </div>
               <div className="form-input-input">
                 <input
                   type="email"
-                  
                   value={loginEmail ? loginEmail : ""}
                   name="Email"
                   onChange={(e) => {
                     setloginEmail(e.target.value);
                   }}
-                  style={{ width: "100%", padding: "12px 10px", fontSize: "14px", borderRadius: "5px", }}
+                  style={{
+                   
+                    color: bg === "light" ? "black" : "#CBCBCB",
+                    outline: bg=== "light" ? "#DCDCE4":"#48484D",
+                    borderColor: bg=== "light" ? "#DCDCE4":"#48484D",
+                    
+                  }}
                 />
-
-
               </div>
+            
+
             </div>
 
             <div className="form-input">
-              <div style={{ fontFamily: "'Lato', sans-serif", cursor: "default" ,color: bg === "light" ? "black" : "#CBCBCB" }}>Password</div>
+              <div className= "form-input-title"  style={{fontFamily: "'Lato', sans-serif", color: bg === "light" ? "black" : "#CBCBCB" }}>Password</div>
               <div className="form-input-input">
-                <div className="icon" onClick={() => setShowPassword(!showPassword)}>
+                <div className="icon" style={{ color: bg === "light" ? "black" : "#CBCBCB" }} onClick={() => setShowPassword(!showPassword)}>
                     {showPassword ? <FaEyeSlash/>:<FaEye/>}
                 </div>
-                <input
+                <input 
                   type={showPassword ? 'text' : 'password'}
                   value={loginPassword ? loginPassword : ''}
                   onChange={(e) => {
                     setLoginPassword(e.target.value);
                   }}
-                  style={{ width: "100%", padding: "12px 10px", fontSize: "14px", borderRadius: "5px", }}
+                  style={{
+                    color: bg === "light" ? "black" : "#CBCBCB",
+                    outline: bg=== "light" ? "#DCDCE4":"#48484D",
+                    borderColor: bg=== "light" ? "#DCDCE4":"#48484D",
+                  }}
                 />
                 
               </div>
@@ -180,7 +191,7 @@ export const LoginForm = () => {
             <div className={`form-checkbox ${bg === "light" ? "light" : ""}`}>
               <div className="checkbox-unit">
                 <input type="checkbox" />
-                <span className="span-unit"style={{  fontFamily: "'Lato', sans-serif", cursor: "default" ,color: bg === "light" ? "black" : "#CBCBCB" }}>Remember me</span>
+                <span className="span-unit" style={{ fontFamily: "'Lato', sans-serif", cursor: "default", color: bg === "light" ? "black" : "#CBCBCB" }}>Remember me</span>
               </div>
               <span
                 className="forgot-password"
@@ -193,13 +204,14 @@ export const LoginForm = () => {
               </span>
             </div>
 
+
             <button
               onClick={() => {
                 login();
               }}
               className=" btn-login"
             >
-              <span className="">L{`ogin`}</span>
+              <span className="buttonspan">L{`ogin`}</span>
             </button>
 
              
@@ -240,7 +252,7 @@ export const LoginForm = () => {
                 <div className="login-form-logo-square"style={{ backgroundColor: bg === "light" ? "white" : "#302c2c" }}></div>
               </div>
               <h2>Welcome</h2>
-              <p className="Log-into-your" style={{  color: bg === "light" ? "black" : "#CBCBCB" }}>
+              <p  style={{  color: bg === "light" ? "black" : "#CBCBCB" }}>
                 Your credentials are only used to authenticate yourself Your
                 credentials will be stored in a secure database
               </p>
@@ -249,31 +261,27 @@ export const LoginForm = () => {
             <div className="form-input reg">
               <div className="reg-form-name">
                 {" "}
-                <div className="form-input-title" style={{ color: "#CBCBCB", fontFamily: "'Lato', sans-serif", cursor: "default" ,color: bg === "light" ? "black" : "#CBCBCB" }}>First name</div>
+                <div className="form-input-title" style={{ fontFamily: "'Lato', sans-serif",color: bg === "light" ? "black" : "#CBCBCB" }}>First name</div>
                 <div className="form-input-input">
-                  <input
-                    style={
-                      errorMessage === "Please Enter your name"
-                        ? {
-                            border: "2px solid crimson",
-                          }
-                        : { border: "none" }
-                    }
-                    type="text"
-                    name="first-name"
-                    value={displayName ? displayName : ""}
-                    
-                    onChange={(e) => {
-                      setdisplayName(e.target.value);
-                    }}
-                    style={{ width: "100%", padding: "12px 10px", fontSize: "14px", borderRadius: "5px", }}
-                  />
+                <input
+                  style={{
+                    borderColor: bg === "light" ? "#DCDCE4" : "#48484D",
+                    color: bg === "light" ? "#CBCBCB" : "rgb(72,72,70)",
+                  }}
+                  type="text"
+                  name="first-name"
+                  value={displayName ? displayName : ""}
+                  onChange={(e) => {
+                    setdisplayName(e.target.value);
+                  }}
+                />
+
                 </div>
               </div>
 
               <div className="reg-form-name">
                 {" "}
-                <div className="form-input-title" style={{ color: "#CBCBCB", fontFamily: "'Lato', sans-serif", cursor: "default" ,color: bg === "light" ? "black" : "#CBCBCB" }}>
+                <div className="form-input-title" style={{ fontFamily: "'Lato', sans-serif",color: bg === "light" ? "black" : "#CBCBCB" }}>
                   Last name
                 </div>
 
@@ -286,39 +294,39 @@ export const LoginForm = () => {
                     onChange={(e) => {
                       setLastName(e.target.value);
                     }}
-                    style={{ width: "100%", padding: "12px 10px", fontSize: "14px", borderRadius: "5px", }}
+                    style={{
+                      color: bg === "light" ? "#DCDCE4" : "#48484D",
+                    }}
                   />
                 </div>
               </div>
             </div>
 
             <div className="form-input">
-              <div className="form-input-title"style={{  fontFamily: "'Lato', sans-serif", cursor: "default" ,color: bg === "light" ? "black" : "#CBCBCB" }}>Email</div>
-              <div className="form-input-input">
-                <input
-                  style={
-                    errorMessage === "Please Enter a valid Email Address"
-                      ? {
-                          border: "2px solid crimson",
-                        }
-                      : { border: "none" }
-                  }
-                  type="text"
-                  name="name"
-                  value={registerEmail ? registerEmail : ""}
-                  
-                  onChange={(e) => {
-                    setRegisterEmail(e.target.value);
-                  }}
-                  style={{ width: "100%", padding: "12px 10px", fontSize: "14px", borderRadius: "5px", }}
-                />
-              </div>
+            <div
+              className="form-input-title"
+              style={{
+                fontFamily: "'Lato', sans-serif",
+                color: bg === 'light' ? 'black' : '#CBCBCB',
+              }}
+            >
+              Email
             </div>
+            <div className="form-input-input">
+              <input
+                type="text"
+                name="name"
+                style={{
+                  color: bg === 'light' ? '#DCDCE4' : '#48484D',
+                }}
+              />
+            </div>
+          </div>
 
             <div className="form-input">
-              <div className="form-input-title" style={{  fontFamily: "'Lato', sans-serif", cursor: "default" ,color: bg === "light" ? "black" : "#CBCBCB" }}>Password </div>
+              <div className="form-input-title" style={{ fontFamily: "'Lato', sans-serif",color: bg === "light" ? "black" : "#CBCBCB" }}>Password </div>
               <div className="form-input-input">
-                <div className="icon" onClick={() => setShowPassword1(!showPassword1)}>
+                <div className="icon" style={{ color: bg === "light" ? "black" : "#CBCBCB" }} onClick={() => setShowPassword1(!showPassword1)}>
                   {showPassword1 ? <FaEyeSlash/>:<FaEye/>}
                 </div>
                 <input
@@ -337,15 +345,17 @@ export const LoginForm = () => {
                     setRegisterPassword(e.target.value);
                   }}
                   className="form-input-title"
-                  style={{ width: "100%", padding: "12px 10px", fontSize: "14px", borderRadius: "5px", }}
+                  style={{
+                    color: bg === "light" ? "#DCDCE4" : "#48484D",
+                  }}
                 />
               </div>
             </div>
 
             <div className="form-input">
-              <div className="form-input-title"style={{  fontFamily: "'Lato', sans-serif", cursor: "default" ,color: bg === "light" ? "black" : "#CBCBCB" }}>Confirm password</div>
+              <div className="form-input-title" style={{ fontFamily: "'Lato', sans-serif",color: bg === "light" ? "black" : "#CBCBCB" }}>Confirm password</div>
               <div className="form-input-input">
-                <div className="icon" onClick={() => setShowPassword2(!showPassword2)}>
+                <div className="icon" style={{ color: bg === "light" ? "black" : "#CBCBCB" }}  onClick={() => setShowPassword2(!showPassword2)}>
                   {showPassword2 ? <FaEyeSlash/>:<FaEye/>}
                 </div>
                 <input
@@ -363,7 +373,9 @@ export const LoginForm = () => {
                   onChange={(e) => {
                     setConfirmPassword(e.target.value);
                   }}
-                  style={{ width: "100%", padding: "12px 10px", fontSize: "14px", borderRadius: "5px", }}
+                  style={{
+                    color: bg === "light" ? "#DCDCE4" : "#48484D",
+                  }}
                 />
               </div>
 
@@ -395,7 +407,7 @@ export const LoginForm = () => {
             </div>
 
             <button
-              className=" btn-login2"
+              className="btn-login2"
               onClick={() => {
                 register();
               }}

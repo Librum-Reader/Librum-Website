@@ -26,9 +26,7 @@
   border-radius: 5px;
 }
 
-.Log-into-your{
-  color: #cbcbcb;
-}
+
 .login-form {
   width: 100%;
   max-width: 800px;
@@ -41,8 +39,8 @@
   height: 400px;
 
   font-family: "Fira Sans", sans-serif;
-  color: white;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.4);
+  
+  
   animation: pop-down 800ms ease-in-out;
   border: 1px solid crimson;
 }
@@ -62,25 +60,14 @@
 .login-cta-text {
   cursor: pointer;
 }
-.login-form > div {
-  background-color: white;
-  padding: 5px;
-  color: grey;
-  width: 80%;
-  max-width: 35rem;
-  margin: 0 auto;
-  border-radius: 5px;
-}
 
 
-.form-input > div:first-child {
-  color: #CBCBCB; /* Set the font color to #aaa */
-}
+
 
 .form-input input {
-  border: 1px solid rgb(170, 170, 170) !important;
+  border: 1px solid ;
   background: transparent;
-  color: #CBCBCB;
+  
   font-size: 14px
   
 }
@@ -92,8 +79,7 @@
   padding: 0 6px;
   font-size: 14px;
   margin-left: 8px;
-  background-color: #302c2c !important;
-  /* border: 2px solid crimson; */
+  border: 1px solid var(--input-border-light);
 }
 input[type="password"] {
   font-family: Verdana;
@@ -141,19 +127,17 @@ input[type="password"] {
   text-align: left;
   width: 100%;
   max-width: 400px;
-  padding: 10px 0px;
+  padding: 7px 0px;
   font-weight: 700;
   letter-spacing: 1px;
 }
 .form-input-input { 
+
   width: 100%;
   text-align: left;
-  
-  padding-top: 2px ;
-  padding-bottom: 12px ;
   font-family: "Fira Sans", sans-serif;
-  border-radius: 3px;
-  border: none;
+  border-radius: 5px;
+  border: 2px;
   position: relative;
   display: inline-block;
 }
@@ -162,19 +146,29 @@ input[type="password"] {
   position: absolute;
   top: 50%;
   right: 1rem;
-  transform: translateY(-62%);
+  transform: translateY(-40%);
   cursor: pointer;
 }
+
 
 .form-input-title {
   color: #CBCBCB;
   font-size: 14px;
   
+  
 }
 
-.form-input input{
+.form-input input {
+  width: 100%;
+  padding: 12px 10px;
+  font-size: 14px;
   height: 41.77px;
+  border-radius: 5px;
+  
 }
+
+
+
 
 .reg {
   display: flex;
@@ -220,7 +214,7 @@ INPUT[type=checkbox]:focus {
 
 INPUT[type=checkbox] {
   background-color: rgb(40, 44, 52);
-  border: 1px solid rgb(170, 170, 170);
+  border: 1px solid #48484D;
   border-radius: 2px;
   appearance: none;
   -webkit-appearance: none;
@@ -237,7 +231,7 @@ INPUT[type=checkbox] {
 
 .light INPUT[type=checkbox] {
   background-color: #fff;
-  border-color: #ccc;
+  border-color: #DCDCE4;
   border-radius: 2px;
   appearance: none;
   -webkit-appearance: none;
@@ -253,13 +247,13 @@ INPUT[type=checkbox] {
 }
 
 INPUT[type=checkbox]:checked {
-  background-color: #409fd6;
-  background: #409fd6 url("data:image/gif;base64,R0lGODlhCwAKAIABAP////3cnSH5BAEKAAEALAAAAAALAAoAAAIUjH+AC73WHIsw0UCjglraO20PNhYAOw==") 3px 3px no-repeat;
+  background-color: #946bde;
+  background: #946bde url("data:image/gif;base64,R0lGODlhCwAKAIABAP////3cnSH5BAEKAAEALAAAAAALAAoAAAIUjH+AC73WHIsw0UCjglraO20PNhYAOw==") 3px 3px no-repeat;
 }
 
 .light INPUT[type=checkbox]:checked {
-  background-color: #409fd6;
-  background: #409fd6 url("data:image/gif;base64,R0lGODlhCwAKAIABAP////3cnSH5BAEKAAEALAAAAAALAAoAAAIUjH+AC73WHIsw0UCjglraO20PNhYAOw==") 3px 3px no-repeat;
+  background-color: #946bde;
+  background: #946bde url("data:image/gif;base64,R0lGODlhCwAKAIABAP////3cnSH5BAEKAAEALAAAAAALAAoAAAIUjH+AC73WHIsw0UCjglraO20PNhYAOw==") 3px 3px no-repeat;
 }
 
 
@@ -268,6 +262,10 @@ INPUT[type=checkbox]:checked {
   font-family: 'Lato', sans-serif;
   text-decoration: none;
   
+}
+
+.buttonspan{
+  align-items: center;
 }
 
 
@@ -300,6 +298,7 @@ INPUT[type=checkbox]:checked {
   }
 }
 
+
 .form-checkbox-register {
   width: 100%;
   max-width: 400px;
@@ -307,7 +306,7 @@ INPUT[type=checkbox]:checked {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 10px;
+  gap: 15px;
   padding-bottom: 30px;
   color: #CBCBCB;
 }
@@ -319,7 +318,7 @@ INPUT[type=checkbox]:checked {
   width: 100%;
   font-weight: 700;
   max-width: 400px !important;
-  max-height: 4rem;
+  height:45px;
   font-size: 14px;
   font-family:  "Fira Sans", sans-serif;
   border-radius: 5px;

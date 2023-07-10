@@ -1,0 +1,5 @@
+const Template = () => {
+
+}
+
+export { Template }

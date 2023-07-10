@@ -2,7 +2,7 @@ const Template = () => (
   <div className="main-template">
     <h1 className="title legal-text-title">PRIVACY POLICY</h1>
 
-    <p  className="last-updated">Last updated: June 10, 2023</p>
+    <p  className="last-updated">Last Updated: 10th July 2023</p>
     
     <h2 className="legal-text-subtitle">Interpretation and Definitions</h2>
 

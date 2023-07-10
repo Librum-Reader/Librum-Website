@@ -144,13 +144,6 @@ export const Footer = ({ image }) => {
         </div>
         
         <div className="footer-right">
-          <div
-            style={bg === "light" ? { color: "crimson" } : { color: "white" }}
-            className="footer-social"
-          >
-            <i className="fa fa-facebook" aria-hidden="true"></i>
-            <i className="fa fa-twitter-square" aria-hidden="true"></i>
-          </div>
         </div>
       </div>
     </div>

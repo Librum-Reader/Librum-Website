@@ -1,12 +1,11 @@
 import React, { useContext, useEffect, useRef } from "react";
-import "./Footer.css";
-import image1 from "../Navbar/ereader1.png";
-import { Link } from "react-router-dom";
+import { createPortal } from "react-dom";
 import { SiteContext } from "../../Context/Context";
 import useFormSubmit from "../../Hooks/useFormSubmit";
-import { createPortal } from "react-dom";
 import FormSuccess from "../FormSuccess/FormSuccess";
+import image1 from "../Navbar/ereader1.png";
 import { LoadingAnimation } from "../SvgIcons/SvgIcons";
+import "./Footer.css";
 
 export const Footer = ({ image }) => {
   const { bg, setBg, setSelected } = useContext(SiteContext);
@@ -125,50 +124,26 @@ export const Footer = ({ image }) => {
       </div>
 
       <div className="footer-lower">
-        <div className="footer-lower-label">
-          <img src={image1} alt="" />
-          <h3
-            style={bg === "light" ? { color: "crimson" } : { color: "white" }}
-          >
-            Librum
-          </h3>
+        <div className="footer-left">
+          <div className="footer-lower-label">
+            <img src={image1} alt="" />
+            <h3
+              style={bg === "light" ? { color: "crimson" } : { color: "white" }}
+            >
+              Librum
+            </h3>
+          </div>
         </div>
 
-        <ul>
-          <Link
-            style={bg === "light" ? { color: "crimson" } : { color: "white" }}
-            to={"/contact"}
-            onClick={() => {
-              setSelected(2);
-            }}
+        <div style={{textAlign: 'center'}}>
+          <p 
+            style={{paddingTop: "22px", fontSize: "15px"}}
           >
-            <li>Contact</li>
-          </Link>
-          <Link
-            style={bg === "light" ? { color: "crimson" } : { color: "white" }}
-            to={"/impressum"}
-            onClick={() => {
-              setSelected(4);
-            }}
-          >
-            <li>About us</li>
-          </Link>
-          <Link
-            style={bg === "light" ? { color: "crimson" } : { color: "white" }}
-            to={"/news"}
-            onClick={() => {
-              setSelected(3);
-            }}
-          >
-            <li>News</li>
-          </Link>
-        </ul>
-        <div
-          style={bg === "light" ? { color: "crimson" } : { color: "white" }}
-          className="footer-social"
-        >
-          <i className="fa fa-facebook" aria-hidden="true"></i>
-          <i className="fa fa-twitter-square" aria-hidden="true"></i>
+            © 2023 Librum-Reader, All rights reserved
+          </p>
+        </div>
+        
+        <div className="footer-right">
         </div>
       </div>
     </div>

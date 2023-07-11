@@ -1,26 +1,41 @@
 "use client";
-import { Flex, Heading, Image, Text, Button } from "@chakra-ui/react";
+import {
+	Flex,
+	Heading,
+	Image,
+	Text,
+	Button,
+	VStack,
+	Card,
+	CardBody,
+} from "@chakra-ui/react";
 
-const NewsItems = () => {
-  return (
-    <Flex maxW="1300px" gap="4rem" align="center">
-      <Image src="/news/news.svg" className="news-image" />
-      <Flex direction="column" gap="1rem">
-        <Heading as="h2" color="#946bde">
-          Welcome to the Librum-Reading Blog
-        </Heading>
-        <Text color="red" fontWeight="bold">
-          October 25 2022
-        </Text>
-        <Text color="white">
-          Welcome to our blog page. Here you will find the latest news and
-          updates for Librum-Reader. If you would like to share an article or
-          announce an event you are organizing, feel free to contact us.
-        </Text>
-        <Button alignSelf="self-start">Read More</Button>
-      </Flex>
-    </Flex>
-  );
+const NewsItems = (props) => {
+	return (
+		<Card bgColor="gray.700" borderRadius="3xl">
+			<CardBody>
+				<Flex maxW="1300px" gap="4rem" align="center">
+					<Image
+						alt="news item illustration"
+						src="/news/news.svg"
+						className="news-image"
+					/>
+					<VStack direction="column" spacing={2} align="flex-start">
+						<Heading size="lg" color="#946bde">
+							{props.title}
+						</Heading>
+						<Text color="red" fontWeight="bold">
+							{props.date}
+						</Text>
+						<Text color="white">{props.body}</Text>
+						<Button mt={2} alignSelf="self-start">
+							Read More
+						</Button>
+					</VStack>
+				</Flex>
+			</CardBody>
+		</Card>
+	);
 };
 
 export default NewsItems;

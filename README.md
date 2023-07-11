@@ -1,34 +1,84 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Librum Website
 
-## Getting Started
+![Untitled](https://github.com/Librum-Reader/Librum-Website/assets/69865187/ecb5e40d-dd60-4cd5-baff-54904da39dfe)
 
-First, run the development server:
+Welcome to the official website of Librum, a powerful and intuitive application for managing your personal online library and reading your books. This repository contains the source code and assets for the Librum website, where you can learn more about the application, its features, and how to get started.
+
+<br>
+
+## About Librum
+
+Librum is a comprehensive library management application designed to simplify the organization and tracking of your book collection that makes it possible for you to read your books from any device. With Librum, you can effortlessly manage your own online library, track reading progress, read your books, and use tools to make your reading more productive.
+
+<br>
+
+## Visit the Website
+
+To explore the Librum website, please visit https://librumreader.com.
+
+<br>
+
+## Contributing
+
+We appreciate contributions to the Librum website that improve its content, design, or functionality. To contribute, follow these guidelines:
+
+1. Fork the repository.
+2. Preferably create a new branch for your feature or improvement.
+3. Make the necessary changes and commit them.
+4. Push your branch to your forked repository.
+5. Submit a pull request with a detailed description of your changes.
+
+<br>
+
+## Local Development
+
+If you would like to run the Librum website locally on your machine, follow the instructions below:
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/Librum-Reader/Librum-Website.git
+```
+
+2. Navigate to the project directory:
+
+```bash
+cd Librum-Website
+```
+
+3. Install the dependencies:
+
+```bash
+npm install
+```
+
+4. Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5. Open your browser and visit `http://localhost:3000` to view the Librum website.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+<br>
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## License
 
-## Learn More
+The Librum website is licensed under the [GPL-3 License](LICENSE).
 
-To learn more about Next.js, take a look at the following resources:
+<br>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Contact
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+For any inquiries or support regarding the Librum website, please contact us at help@librumreader.com
 
-## Deploy on Vercel
+<br>
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Acknowledgments
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+We would like to express our gratitude to the following technologies and resources used in developing the Librum website:
+
+- [React](https://reactjs.org) - JavaScript library for building user interfaces.
+- [Create React App](https://create-react-app.dev) - Set up a modern web app by running one command.
+
+Thank you for your interest in Librum!

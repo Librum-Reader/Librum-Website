@@ -22,9 +22,7 @@ const Showcase = () => {
 		<Flex direction="column" align="center">
 			<Flex align="center" maxW="1300px">
 				<VStack align="flex-start" spacing={4}>
-					<Heading size="2xl" as="h1">
-						A Simple and Free E-Book Reader
-					</Heading>
+					<Heading size="2xl">A Simple and Free E-Book Reader</Heading>
 					<Text fontSize="xl">
 						A clean and simple way to read your books on any device and build
 						your own online library

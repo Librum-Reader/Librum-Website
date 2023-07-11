@@ -21,7 +21,7 @@ const NewsItems = (props) => {
 						className="news-image"
 					/>
 					<VStack direction="column" spacing={2} align="flex-start">
-						<Heading as="h3" size="lg" color="#946bde">
+						<Heading size="lg" color="#946bde">
 							{props.title}
 						</Heading>
 						<Text color="red" fontWeight="bold">

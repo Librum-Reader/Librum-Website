@@ -19,7 +19,7 @@ const Template = () => (
         to vote for election of directors or other managing authority.</li>
       <li><strong>Application</strong> refers to Librum, the software program provided by the Company.</li>
       <li><strong>Company</strong> (referred to as either "the Company", "We", "Us" or "Our" in this Agreement) refers to
-        asdasdsa, Kirchenkamp 99, 50226.</li>
+        Librum-Reader, Kirchenkamp 2, 50226.</li>
       <li><strong>Country</strong> refers to: Nordrhein-Westfalen, Germany</li>
       <li><strong>Device</strong> means any device that can access the Service such as a computer, a cellphone or a digital
         tablet.</li>

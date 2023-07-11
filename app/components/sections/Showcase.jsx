@@ -1,6 +1,6 @@
 "use client";
 import "../../globals.css";
-import { Flex, Heading, Text, Box, Button } from "@chakra-ui/react";
+import { Flex, Heading, Text, Box, Button, VStack } from "@chakra-ui/react";
 import Lottie from "lottie-web";
 import { useContext, useEffect, useRef } from "react";
 import Features from "./Features";
@@ -21,23 +21,21 @@ const Showcase = () => {
 	return (
 		<Flex direction="column" align="center">
 			<Flex align="center" maxW="1300px">
-				<Box>
-					<Heading as="h1" mb="2rem">
+				<VStack align="flex-start" spacing={4}>
+					<Heading size="2xl" as="h1">
 						A Simple and Free E-Book Reader
 					</Heading>
-					<Text mb="2rem">
+					<Text fontSize="xl">
 						A clean and simple way to read your books on any device and build
 						your own online library
 					</Text>
-					<Flex direction="column" gap="1.5rem">
-						<Button w="250px" alignSelf="flex-start">
-							Download
-						</Button>
-						<Button w="250px" alignSelf="flex-start">
-							GitHub
-						</Button>
-					</Flex>
-				</Box>
+					<Button w="250px" alignSelf="flex-start">
+						Download
+					</Button>
+					<Button w="250px" alignSelf="flex-start">
+						GitHub
+					</Button>
+				</VStack>
 				<Box>
 					<div className="image lg" ref={container}>
 						{/* <img src={image1} alt="" /> */}

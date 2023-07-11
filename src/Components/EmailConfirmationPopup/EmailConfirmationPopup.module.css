@@ -32,6 +32,7 @@
 
 .popupIcon {
   width: 200px;
+  margin-bottom: 5px;
 }
 
 .modalBody > h3 {
@@ -39,11 +40,11 @@
 }
 
 .modalDescription {
-  margin-top: 10px;
+  margin-top: 15px;
 }
 
 .modalFooter {
-  margin-top: 20px;
+  margin-top: 25px;
 }
 
 .modalFooter > button {

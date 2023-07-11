@@ -104,7 +104,7 @@ const LoginButton = (props) => {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["register"] });
       onCloseRegister();
-      router.push("/profile");
+      onOpenLogin();
     },
   });
 

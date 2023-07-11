@@ -13,7 +13,7 @@ const navLinks = [
 		text: "CONTACT",
 	},
 	{
-		href: "/",
+		href: "/news",
 		text: "NEWS",
 	},
 ];

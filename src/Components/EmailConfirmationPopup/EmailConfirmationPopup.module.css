@@ -9,7 +9,8 @@
 
 .modalContent {
   height: 400px;
-  width: 400px;
+  max-width: 1080px;
+  width: 80%;
   background-color: #343047;
   padding: 20px;
   border-radius: 4px;
@@ -47,21 +48,17 @@
   margin-top: 25px;
 }
 
-.modalFooter > button {
+.confirmationBtn {
   background-color: #946bde;
   padding: 10px;
   border: none;
   border-radius: 5px;
   color: white;
+  cursor: pointer;
 }
 
-.exitButton {
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 15px;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  color: white;
+@media screen and (min-width: 800px) {
+  .modelText:last-child {
+    display: block;
+  }
 }

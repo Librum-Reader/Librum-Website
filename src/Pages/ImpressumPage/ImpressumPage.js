@@ -16,10 +16,6 @@ export const ImpressumPage = () => {
     }
   }, []);
 
-  const colorA = "white";
-
-  const colorB = "black";
-
   return (
     <div
       style={
@@ -36,38 +32,53 @@ export const ImpressumPage = () => {
       className="container"
     >
       <div className="impressum-page">
-        <h1>About Us</h1>
-        <div
-          className="impressum-page-text"
-          style={
-            bg === "light"
-              ? { color: "var(--color-primary0)" }
-              : {
-                  color: "white",
-                }
-          }
-        >
-          Librum-Reader
-          <br />
-          Kirchenkamp 2 50226, Frechen Germany
-          <br />
-          Owner: David Lazarescu
-          <br />
-          E-Mail:{" "}
-          <a
-            href="mailto:help@librumreader.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ color: "var(--color-primary)" }}
+        <div className="impressum-page-column-container">
+          <h2>About Us</h2>
+          <div
+            className="impressum-page-text"
+            style={
+              bg === "light"
+                ? { color: "var(--color-primary0)" }
+                : {
+                    color: "white",
+                  }
+            }
           >
-            contact@librumreader.com
-          </a>{" "}
-          <br />
-          Internet:
-          <Link to="/" style={{ color: "var(--color-primary)" }}>
-            {" "}
-            https://librumreader.com
-          </Link>
+            Librum-Reader
+            <br />
+            Kirchenkamp 2, 50226, Frechen Germany
+          </div>
+        </div>
+        <div className="impressum-page-column-container">
+          <h2>Contact</h2>
+          <div
+            className="impressum-page-text"
+            style={
+              bg === "light"
+                ? { color: "var(--color-primary0)" }
+                : {
+                    color: "white",
+                  }
+            }
+          >
+            Owner: David Lazarescu
+            <br />
+            E-Mail:{" "}
+            <a
+              href="mailto:help@librumreader.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: "var(--color-primary)" }}
+            >
+              contact@librumreader.com
+            </a>{" "}
+            <br />
+            Internet:
+            <Link to="/" style={{ color: "var(--color-primary)" }}>
+              {" "}
+              https://librumreader.com
+            </Link>
+          </div>
         </div>
       </div>
     </div>

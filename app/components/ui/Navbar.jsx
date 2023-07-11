@@ -1,7 +1,8 @@
 "use client";
 import React from "react";
-import { Box, Flex, Spacer, Button, Image } from "@chakra-ui/react";
+import { Flex, Spacer, Button, Image } from "@chakra-ui/react";
 import Link from "next/link";
+import LoginButton from "../ui/LoginButton";
 
 const navLinks = [
 	{
@@ -44,9 +45,7 @@ const Navbar = () => {
 			<Spacer />
 			<Flex gap="2rem">
 				{navLinkComponents}
-				<Button colorScheme="teal" variant="solid">
-					LOGIN
-				</Button>
+				<LoginButton />
 			</Flex>
 		</Flex>
 	);

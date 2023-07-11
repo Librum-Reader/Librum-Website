@@ -6,18 +6,12 @@ import launch from "./launch.svg";
 
 export const Article = () => {
   let { title } = useParams();
-  console.log(title);
-
   const { bg, setBg } = useContext(SiteContext);
 
   useEffect(() => {
     if (localStorage.getItem("Theme")) {
       let theme = JSON.parse(localStorage.getItem("Theme"));
-
-      console.log(theme);
-
       setBg(theme);
-
       return;
     }
   }, []);
@@ -28,9 +22,9 @@ export const Article = () => {
         bg === "light"
           ? { backgroundColor: "white", color: "var(--color-primary)" }
           : {
-              backgroundColor: "#282c34",
-              color: "var(--color-primary)",
-            }
+            backgroundColor: "#282c34",
+            color: "var(--color-primary)",
+          }
       }
       className="news-article-page"
     >
@@ -42,11 +36,11 @@ export const Article = () => {
               style={
                 title === "welcome"
                   ? {
-                      backgroundImage: `url(${launch})`,
-                    }
+                    backgroundImage: `url(${launch})`,
+                  }
                   : {
-                      backgroundImage: `url(${launch})`,
-                    }
+                    backgroundImage: `url(${launch})`,
+                  }
               }
             ></div>
             <div className="newspage-links">
@@ -91,8 +85,8 @@ export const Article = () => {
                   bg === "light"
                     ? { color: "var(--color-primary0)" }
                     : {
-                        color: "white",
-                      }
+                      color: "white",
+                    }
                 }
               >
                 Welcome to our news page. Here you will find the latest news and
@@ -109,8 +103,8 @@ export const Article = () => {
                   bg === "light"
                     ? { color: "var(--color-primary0)" }
                     : {
-                        color: "white",
-                      }
+                      color: "white",
+                    }
                 }
               >
                 So, as you can tell, the beta version of the website is live.

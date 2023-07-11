@@ -1,29 +1,48 @@
 "use client";
 import React from "react";
-import { Box, Flex, Spacer, Button } from "@chakra-ui/react";
+import { Box, Flex, Spacer, Button, Image } from "@chakra-ui/react";
 import Link from "next/link";
+
+const navLinks = [
+	{
+		href: "/",
+		text: "HOME",
+	},
+	{
+		href: "/contact",
+		text: "CONTACT",
+	},
+	{
+		href: "/",
+		text: "NEWS",
+	},
+];
+
+const navLinkComponents = navLinks.map((link, index) => {
+	return (
+		<Link key={index} href={link.href}>
+			<Button colorScheme="gray" variant="ghost">
+				{link.text}
+			</Button>
+		</Link>
+	);
+});
 
 const Navbar = () => {
 	return (
-		<Flex pt="2rem" w="100%" pl={4} pr={4} justify="center" className="navbar">
-			<Box>Librum</Box>
+		<Flex
+			pt={4}
+			w="100%"
+			pl={4}
+			pr={4}
+			justifyContent="center"
+			alignItems="center"
+			className="navbar"
+		>
+			<Image alt="librum logo" src="ereader1.png" />
 			<Spacer />
 			<Flex gap="2rem">
-				<Link href="/">
-					<Button colorScheme="teal" variant="ghost">
-						HOME
-					</Button>
-				</Link>
-				<Link href="/contact">
-					<Button colorScheme="teal" variant="ghost">
-						CONTACT
-					</Button>
-				</Link>
-				<Link href="/news">
-					<Button colorScheme="teal" variant="ghost">
-						NEWS
-					</Button>
-				</Link>
+				{navLinkComponents}
 				<Button colorScheme="teal" variant="solid">
 					LOGIN
 				</Button>

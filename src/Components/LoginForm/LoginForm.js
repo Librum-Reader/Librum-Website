@@ -4,7 +4,6 @@ import "./LoginForm.css";
 import axios from "axios";
 
 import { useNavigate } from "react-router-dom";
-import RegisterModal from "../RegisterModal/RegisterModal";
 
 import { SiteContext } from "../../Context/Context";
 
@@ -18,17 +17,10 @@ export const LoginForm = () => {
   const [loginEmail, setloginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [regLogState, setRegLogState] = useState(true);
-  const [openPopup, setOpenPopup] = useState(false);
+
   const navigate = useNavigate();
   const { user, setUser, bg } = useContext(SiteContext);
 
-  /* 
-  const token = localStorage.getItem("token");
-
-  if (token) {
-    navigate("/profile");
-  }
- */
   const register = async () => {
     if (registerPassword !== confirmPassword) {
       setErrorMessage("Passwords don't match");
@@ -42,36 +34,13 @@ export const LoginForm = () => {
       Password: registerPassword,
     };
     try {
-      const headers = {
-        "X-Version": "1.0",
-      };
-      const response = await axios.post(url, data, {
-        headers,
-      });
-
-      console.log(response.data);
-
-      // Registration successful
-      console.log("Registration successful!");
-      setRegisterEmail("");
-      setRegisterPassword("");
-
-      //handle modal logic when user registers
-      //handleRegisterModal();
+      await axios.post(url, data);
     } catch (error) {
       console.error("Error during registration:", error);
     }
   };
 
   const login = async () => {
-    //console.log("clicked login");
-    // setLoading(true);
-
-    // const headers = {
-    //   "X-Version": "1.0",
-    //   Authorization: `Bearer ${token}`,
-    // };
-
     try {
       const data = {
         Email: loginEmail,
@@ -81,7 +50,7 @@ export const LoginForm = () => {
         "https://librum-dev.azurewebsites.net/api/login",
         data
       );
-      //console.log(response.data);
+      console.log(response.data);
       localStorage.setItem("token", response.data);
       navigate("/profile");
     } catch (error) {
@@ -89,15 +58,6 @@ export const LoginForm = () => {
     }
   };
 
-  /*  const handleRegisterModal = () => {
-    setOpenPopup(true);
-    return (
-      <RegisterModal
-        openPopup={openPopup}
-        setOpenPopup={setOpenPopup}
-      ></RegisterModal>
-    );
-  }; */
   return (
     <div className="container">
       {regLogState ? (
@@ -161,12 +121,7 @@ export const LoginForm = () => {
                 <input type="checkbox" /> Remember me
               </div>
             </div>
-            <button
-              onClick={() => {
-                login();
-              }}
-              className="btn btn-login"
-            >
+            <button onClick={login} className="btn btn-login">
               Log in
             </button>
           </div>
@@ -319,10 +274,7 @@ export const LoginForm = () => {
                   }}
                 />
               </div>
-
-              <div className="form-error">{errorMessage}</div>
             </div>
-
             <div className="form-checkbox">
               <div className="checkbox-unit">
                 {" "}
@@ -350,12 +302,7 @@ export const LoginForm = () => {
               </div>
             </div>
 
-            <button
-              className="btn btn-login"
-              onClick={() => {
-                register();
-              }}
-            >
+            <button className="btn btn-login" onClick={register}>
               Lets get started
             </button>
           </div>

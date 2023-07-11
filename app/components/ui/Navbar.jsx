@@ -38,6 +38,7 @@ const Navbar = () => {
 			justifyContent="center"
 			alignItems="center"
 			className="navbar"
+			pb={4}
 		>
 			<Image alt="librum logo" src="ereader1.png" />
 			<Spacer />

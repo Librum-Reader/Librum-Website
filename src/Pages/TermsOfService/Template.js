@@ -1,9 +1,10 @@
 const Template = () => (
   <div className="main-template">
 
-    <h1 className="title tos-title">TERMS OF SERVICE</h1>
+    <h1 className="title legal-text-title">TERMS OF SERVICE</h1>
+    <p className="last-updated">Last Updated: 10th July 2023</p>
 
-    <h3 className="tos-subtitle">1. Introduction</h3>
+    <h3 className="legal-text-sec-subtitle">1. Introduction</h3>
 
     <ol>
       <li>1.1 These terms and conditions shall govern the accessibility, uploading, storage, supply of downloadable ebooks through our website <a href="https://librumreader.com/"> https://librumreader.com/ </a> and application and the use of those ebooks.</li>
@@ -14,7 +15,7 @@ const Template = () => (
       <li>1.5 We may change these terms and conditions at any time without notice. Your continued use of our website and the application after any changes to these terms and conditions will constitute your acceptance of those changes.</li>
     </ol>
 
-    <h3 className="tos-subtitle">2. Interpretation</h3>
+    <h3 className="legal-text-sec-subtitle">2. Interpretation</h3>
 
     <ol >
       <li>2.1 In these terms and conditions:
@@ -27,7 +28,7 @@ const Template = () => (
       </li>
     </ol>
 
-    <h3 className="tos-subtitle">3. Access process</h3>
+    <h3 className="legal-text-sec-subtitle">3. Access process</h3>
 
     <ol>
       <li>3.1 The access of ebooks on our website and application constitutes an "invitation to treat" rather than a contractual offer.</li>
@@ -35,20 +36,20 @@ const Template = () => (
       <li>3.3 To enter into a contract through our website to access or upload downloadable ebooks from us, the following steps must be taken: you must create an account; you must provide the data required to process the order: name and surname, email address, country of residence; you must consent to the terms of this document and our privacy policy; and you shall get a confirmation email of account creation.</li>
     </ol>
 
-    <h3 className="tos-subtitle">4. Prices</h3>
+    <h3 className="legal-text-sec-subtitle">4. Prices</h3>
 
     <ol>
       <li>4.1 Use of the software is free. We make use of platforms that provide free, non-copyrighted books, which we can offer for free through our application.</li>
       <li>4.2 However, for users who need more storage, the prices shall be quoted on the website and in the application with the different tiers. For users who pay, they enjoy a number of benefits such as premium features which are listed on the website and in the application as well.</li>
     </ol>
 
-    <h3 className="tos-subtitle">5. Payments</h3>
+    <h3 className="legal-text-sec-subtitle">5. Payments</h3>
 
     <ol>
       <li>5.1 Payments may be made by any of the permitted methods specified on our website from time to time.</li>
     </ol>
 
-    <h3 className="tos-subtitle">6. Licensing of ebooks</h3>
+    <h3 className="legal-text-sec-subtitle">6. Licensing of ebooks</h3>
 
     <ol>
       <li>6.1 The user shall upload their books in a readable and downloadable format such as pdf, epub or Txt.</li>
@@ -75,7 +76,7 @@ const Template = () => (
       <li>6.10 You may terminate the license in this Section 6 by deleting your account or subscription to use our software.</li>
     </ol>
 
-    <h3 className="tos-subtitle">7. Warranties and representations</h3>
+    <h3 className="legal-text-sec-subtitle">7. Warranties and representations</h3>
 
     <ol>
       <li>7.1 You warrant and represent to us that:
@@ -95,7 +96,7 @@ const Template = () => (
     </ol>
     <li>7.3 All of our warranties and representations relating to ebooks are set out in these terms and conditions. To the maximum extent permitted by applicable law and subject to Section 8.1, all other warranties and representations are expressly excluded.</li>
 
-    <h3 className="tos-subtitle">8. Limitations and exclusions of liability</h3>
+    <h3 className="legal-text-sec-subtitle">8. Limitations and exclusions of liability</h3>
 
     <ol>
       <li>8.1 Nothing in these terms and conditions will:
@@ -119,55 +120,55 @@ const Template = () => (
       <li>8.7 You accept that we have an interest in limiting the personal liability of our employees and, having regard to that interest, you acknowledge that we are a limited liability entity; you agree that you will not bring any claim personally against our employees in respect of any losses you suffer in connection with the use of our website or these terms and conditions (this will not, of course, limit or exclude the liability of the limited liability entity itself for the acts and omissions of our employees).</li>
     </ol>
 
-    <h3 className="tos-subtitle">9. Variation</h3>
+    <h3 className="legal-text-sec-subtitle">9. Variation</h3>
 
     <ol>
       <li>9.1 We may revise these terms and conditions from time to time by publishing a new version on our website.</li>
       <li>9.2 A revision of these terms and conditions will apply to your use of our website and software.</li>
     </ol>
 
-    <h3 className="tos-subtitle">10. Assignment</h3>
+    <h3 className="legal-text-sec-subtitle">10. Assignment</h3>
 
     <ol>
       <li>10.1 You hereby agree that we may assign, transfer, sub-contract or otherwise deal with our rights and/or obligations under these terms and conditions – providing, if you are a consumer, that such action does not serve to reduce the guarantees benefiting you under these terms and conditions.</li>
       <li>10.2 You may not without our prior written consent assign, transfer, sub-contract or otherwise deal with any of your rights and/or obligations under these terms and conditions.</li>
     </ol>
 
-    <h3 className="tos-subtitle">11. No waivers</h3>
+    <h3 className="legal-text-sec-subtitle">11. No waivers</h3>
 
     <ol>
       <li>11.1 No breach of any provision of a contract under these terms and conditions will be waived except with the express written consent of the party not in breach.</li>
       <li>11.2 No waiver of any breach of any provision under these terms and conditions shall be construed as a further or continuing waiver of any other breach of that provision or any breach of any other provision.</li>
     </ol>
 
-    <h3 className="tos-subtitle">12. Severability</h3>
+    <h3 className="legal-text-sec-subtitle">12. Severability</h3>
 
     <ol>
       <li>12.1 If a provision of these terms and conditions is determined by any court or other competent authority to be unlawful and/or unenforceable, the other provisions will continue in effect.</li>
       <li>12.2 If any unlawful and/or unenforceable provision of these terms and conditions would be lawful or enforceable if part of it were deleted, that part will be deemed to be deleted, and the rest of the provision will continue in effect.</li>
     </ol>
 
-    <h3 className="tos-subtitle">13. Third party rights</h3>
+    <h3 className="legal-text-sec-subtitle">13. Third party rights</h3>
 
     <ol>
       <li>13.1 These terms and conditions are to our benefit and your benefit and are not intended to benefit or be enforceable by any third party.</li>
       <li>13.2 The exercise of the parties' rights under these terms and conditions is not subject to the consent of any third party.</li>
     </ol>
 
-    <h3 className="tos-subtitle">14. Entire agreement</h3>
+    <h3 className="legal-text-sec-subtitle">14. Entire agreement</h3>
 
     <ol>
       <li>14.1 These terms and conditions shall constitute the entire agreement between you and us in relation to the use and access of our website and shall supersede all previous agreements between you and us.</li>
     </ol>
 
-    <h3 className="tos-subtitle">15. Law and jurisdiction</h3>
+    <h3 className="legal-text-sec-subtitle">15. Law and jurisdiction</h3>
 
     <ol>
       <li>15.1 These terms and conditions shall be governed by and construed in accordance with the laws of Germany.</li>
       <li>15.2 Any disputes relating to these terms and conditions shall be subject to the non-exclusive jurisdiction of the courts of Germany.</li>
     </ol>
 
-    <h3 className="tos-subtitle">16. Statutory and regulatory disclosures</h3>
+    <h3 className="legal-text-sec-subtitle">16. Statutory and regulatory disclosures</h3>
 
     <ol>
       <li>16.1 We will not file a copy of these terms and conditions specifically in relation to each user or customer and, if we update these terms and conditions, the version to which you originally agreed will no longer be available on our website. We recommend that you consider saving a copy of these terms and conditions for future reference.</li>
@@ -175,11 +176,11 @@ const Template = () => (
       <li>16.3 The website of the European Union's online dispute resolution platform is available at <a href="https://webgate.ec.europa.eu/odr/main">https://webgate.ec.europa.eu/odr/main</a>. The online dispute resolution platform may be used for resolving disputes.</li>
     </ol>
 
-    <h3 className="tos-subtitle">17. Disclaimer</h3>
+    <h3 className="legal-text-sec-subtitle">17. Disclaimer</h3>
 
     <p>The ebooks on our website and application are provided on an "as is" basis. We make no warranties or representations about the accuracy or completeness of the information contained in theebooks.</p>
 
-    <h3 className="tos-subtitle">18. Our details</h3>
+    <h3 className="legal-text-sec-subtitle">18. Our details</h3>
 
     <ol>
       <li>18.1 This website is owned and operated by the Librum-Reader company.</li>

@@ -6,6 +6,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 import { SiteContext } from "../../Context/Context";
+import RegistrationModal from "../RegistrationModal/RegistrationModal";
 
 export const LoginForm = () => {
   const [registerEmail, setRegisterEmail] = useState("");
@@ -17,6 +18,7 @@ export const LoginForm = () => {
   const [loginEmail, setloginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [regLogState, setRegLogState] = useState(true);
+  const [showModal, setShowModal] = useState(false);
 
   const navigate = useNavigate();
   const { user, setUser, bg } = useContext(SiteContext);
@@ -35,6 +37,8 @@ export const LoginForm = () => {
     };
     try {
       await axios.post(url, data);
+      //registration successful, show modal
+      setShowModal(true);
     } catch (error) {
       console.error("Error during registration:", error);
     }
@@ -50,7 +54,6 @@ export const LoginForm = () => {
         "https://librum-dev.azurewebsites.net/api/login",
         data
       );
-      console.log(response.data);
       localStorage.setItem("token", response.data);
       navigate("/profile");
     } catch (error) {
@@ -167,7 +170,6 @@ export const LoginForm = () => {
                 credentials will be stored in a secure database
               </p>
             </div>
-
             <div className="form-input reg">
               <div className="reg-form-name">
                 {" "}
@@ -208,7 +210,6 @@ export const LoginForm = () => {
                 </div>
               </div>
             </div>
-
             <div className="form-input">
               <div className="form-input-title">Email</div>
               <div className="form-input-input">
@@ -230,7 +231,6 @@ export const LoginForm = () => {
                 />
               </div>
             </div>
-
             <div className="form-input">
               <div className="form-input-title">Password </div>
               <div className="form-input-input">
@@ -253,7 +253,6 @@ export const LoginForm = () => {
                 />
               </div>
             </div>
-
             <div className="form-input">
               <div className="form-input-title">Confirm Password</div>
               <div className="form-input-input">
@@ -301,10 +300,15 @@ export const LoginForm = () => {
                 to login
               </div>
             </div>
-
             <button className="btn btn-login" onClick={register}>
               Lets get started
             </button>
+            {showModal && (
+              <RegistrationModal
+                setOpen={setShowModal}
+                email={registerEmail}
+              ></RegistrationModal>
+            )}
           </div>
         </div>
       )}

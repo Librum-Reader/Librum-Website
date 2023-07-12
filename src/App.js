@@ -23,7 +23,9 @@ import { Cookies } from "./Components/Cookies/Cookies";
 function App() {
   return (
     <SiteContextProvider>
-      <GoogleReCaptchaProvider reCaptchaKey={process.env.REACT_APP_reCAPTCHA_SITE_KEY}>
+      <GoogleReCaptchaProvider
+        reCaptchaKey={process.env.REACT_APP_reCAPTCHA_SITE_KEY}
+      >
         <div className="App">
           <Router>
             <Navbar />
@@ -32,7 +34,13 @@ function App() {
                 <Route path="/" element={<Homepage />} />
                 <Route
                   path="/contact"
-                  element={<ContactPage message={" NEED HELP?"} anchor={"Ways to support us"} cards={true} />}
+                  element={
+                    <ContactPage
+                      message={" NEED HELP?"}
+                      anchor={"Ways to support us"}
+                      cards={true}
+                    />
+                  }
                 />
                 <Route path="/News" element={<News />} />
                 <Route path="/News/:title" element={<Article />} />

@@ -1,22 +1,41 @@
+@import "../../index.css";
+
+.modalBackground {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .modalContainer {
+    width: 400px;
+    height: 200px;
+    position: fixed;
+    border-radius: 12px;
+    background-color: rgb(46, 42, 42);
+    box-shadow: white;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
 }
 
-.modalBody {
+.header {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 10px;
 }
 
-.title {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.header .checkMark {
+    color: #43C467
+}
+
+.header h2 {
+    color: white;
 }
 
 .body {
@@ -26,9 +45,33 @@
     justify-content: center;
 }
 
-.footer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.body p{
+    color: white;
+    text-align: center;
+    padding-block: 0.5em;
+    font-size: clamp(0.60rem, 1.1vw, 1.1rem);
+    font-weight: 500;
+    font-family: "Lato", sans-serif;
+}
+
+.body button{
+    border: 1px solid var(--slate);
+    border-radius: 4px;
+    background-color: transparent;
+    font-family: "Lato", sans-serif;
+    font-size: clamp(0.60rem, 1.1vw, 1.2rem);
+    outline: none;
+    color: #fcfcfc;
+    font-weight: bold;
+    width: 6rem;
+    cursor: pointer;
+    background-color: #946bde
+}
+
+.body button:hover{
+    transition: all 0.3s ease-in-out;
+    background-color: #94b0da;
+    box-shadow: 0px 15px 20px rgba(46, 104, 229, 0.4);
+    color: var(--color-primary0);
+    transform: translateY(-7px);
 }

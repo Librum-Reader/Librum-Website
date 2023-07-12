@@ -1,3 +1,5 @@
+import jwt_decode from "jwt-decode";
+
 export const userLogin = async (data) => {
   try {
     console.log(data);
@@ -15,7 +17,9 @@ export const userLogin = async (data) => {
     );
 
     const result = await response.json();
+
     localStorage.setItem("token", result);
+
     console.log(result);
 
     return result;

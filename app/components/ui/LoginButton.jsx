@@ -18,6 +18,7 @@ import {
   Text,
   Box,
   Flex,
+  useToast,
 } from "@chakra-ui/react";
 
 import { BeatLoader } from "react-spinners";
@@ -34,9 +35,16 @@ import {
   QueryClientProvider,
 } from "@tanstack/react-query";
 
+import { updateUser } from "../../features/user/userSlice";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux/";
+
 import { userLogin, userRegistration } from "../../utils/apiFunctions";
 
 const LoginButton = (props) => {
+  // Notifications for successful login or errors
+  const toast = useToast();
+
   // Page redirection
   const router = useRouter();
 
@@ -71,6 +79,19 @@ const LoginButton = (props) => {
   const handleEmail = (event) => setEmail(event.target.value);
   const handlePassword = (event) => setPassword(event.target.value);
 
+  // Redux functions for storing user info after login
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.value);
+
+  const setUser = () => {
+    dispatch(
+      updateUser({
+        email: email,
+        isLoggedIn: true,
+      })
+    );
+  };
+
   // User registration state setters
   const handleRegFName = (event) => setRegisterFirstName(event.target.value);
   const handleRegLName = (event) => setRegisterLastName(event.target.value);
@@ -84,9 +105,26 @@ const LoginButton = (props) => {
     mutationFn: userLogin,
     onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ["login"] });
-      setToken(data);
-      onCloseLogin();
-      router.push("/profile");
+      if (data.code === 1) {
+        toast({
+          title: "Uh oh...",
+          description: "You've entered the wrong email or password.",
+          status: "error",
+          duration: 9000,
+          isClosable: true,
+        });
+      } else {
+        toast({
+          title: "Welcome!",
+          description: "You have been logged in. Enjoy.",
+          status: "success",
+          duration: 9000,
+          isClosable: true,
+        });
+        setToken(data);
+        onCloseLogin();
+        router.push("/profile");
+      }
     },
   });
 
@@ -134,7 +172,6 @@ const LoginButton = (props) => {
       >
         {token ? "LOGOUT" : "LOGIN"}
       </Button>
-
       {/* Login Modal */}
       <Modal
         isCentered
@@ -210,7 +247,6 @@ const LoginButton = (props) => {
           </ModalFooter>
         </ModalContent>
       </Modal>
-
       {/* Register Modal */}
       <Modal
         isCentered

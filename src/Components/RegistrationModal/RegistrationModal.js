@@ -19,6 +19,8 @@ export default function RegistrationModal(props) {
           //makes this component unmount which then clears interval from the return
           props.setOpen(false);
           navigate("/login");
+        } else {
+          console.log("not confirmed");
         }
       } catch (error) {
         console.error(error);

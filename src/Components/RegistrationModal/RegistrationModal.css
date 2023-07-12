@@ -10,8 +10,8 @@
 }
 
 .modalContainer {
-    width: 400px;
-    height: 200px;
+    width: 425px;
+    height: 250px;
     position: fixed;
     border-radius: 12px;
     background-color: rgb(46, 42, 42);

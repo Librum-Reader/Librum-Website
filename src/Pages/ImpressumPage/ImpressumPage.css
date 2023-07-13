@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@100;300;400;500;600;700&display=swap");
+
+.impressum-page {
+  min-height: 100vh;
+  background-color: transparent;
+  padding: 100px 0 50px;
+  text-align: left;
+  margin: 0 auto;
+  max-width: 1300px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: left;
+  padding-left: 15px;
+}
+
+.impressum-page-column-container {
+  max-width: 400px;
+}
+
+.impressum-page .impressum-page-column-container h2 {
+  color: var(--color-primary);
+  font-family: "Ropa Sans", "san-serif";
+  margin-bottom: 25px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  font-size: 2.5em;
+  text-align: left;
+}
+
+.impressum-page-text {
+  text-align: left;
+  line-height: 1.8em;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+  font-size: 1em;
+  width: 100%;
+  padding: 0 0 80px 0px;
+}

@@ -77,7 +77,7 @@ const UserProfile = () => {
             <TabPanel>
               <Flex direction="column" gap="1rem">
                 <Flex gap="1rem">
-                  <Card w="30%">
+                  <Card w="30%" borderRadius="sm">
                     <CardHeader>
                       <Text fontSize="xs">YOUR TIER</Text>
                     </CardHeader>
@@ -96,7 +96,7 @@ const UserProfile = () => {
                       </Flex>
                     </CardBody>
                   </Card>
-                  <Card w="70%">
+                  <Card w="70%" borderRadius="sm">
                     <CardHeader>
                       <Text fontSize="xs">USED STORAGE</Text>
                     </CardHeader>
@@ -120,7 +120,7 @@ const UserProfile = () => {
                   </Card>
                 </Flex>
                 <Flex gap="1rem">
-                  <Card w="30%">
+                  <Card w="30%" borderRadius="sm">
                     <CardHeader>
                       <Text fontSize="xs">YOUR BOOKS</Text>
                     </CardHeader>

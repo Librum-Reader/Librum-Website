@@ -18,6 +18,7 @@ import {
   Text,
   Box,
   Flex,
+  useToast,
 } from "@chakra-ui/react";
 
 import { BeatLoader } from "react-spinners";
@@ -34,9 +35,24 @@ import {
   QueryClientProvider,
 } from "@tanstack/react-query";
 
+import { updateUser } from "../../features/user/userSlice";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux/";
+
 import { userLogin, userRegistration } from "../../utils/apiFunctions";
 
+import { useCookies } from "react-cookie";
+
 const LoginButton = (props) => {
+  // Cookie bullshit to work around the fact that the authentication for the website is being handled by an external API.
+  // We are using react-cookies to set a cookie containing the JWT received from the external API. Then, the existence of
+  // this cookie is checked by the middleware function (defined in middleware.js). If JWT does not exist in cookies, then
+  // the user is redirected back to home if they try to access the /profile page.
+  const [cookies, setCookie, removeCookie] = useCookies(["user"]);
+
+  // Notifications for successful login or errors
+  const toast = useToast();
+
   // Page redirection
   const router = useRouter();
 
@@ -71,6 +87,19 @@ const LoginButton = (props) => {
   const handleEmail = (event) => setEmail(event.target.value);
   const handlePassword = (event) => setPassword(event.target.value);
 
+  // Redux functions for storing user info after login
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.value);
+
+  const setUser = () => {
+    dispatch(
+      updateUser({
+        email: email,
+        isLoggedIn: true,
+      })
+    );
+  };
+
   // User registration state setters
   const handleRegFName = (event) => setRegisterFirstName(event.target.value);
   const handleRegLName = (event) => setRegisterLastName(event.target.value);
@@ -80,13 +109,38 @@ const LoginButton = (props) => {
   // API handling - Login
   const queryClient = useQueryClient();
 
+  const setCookieHandler = (data) => {
+    setCookie("token", data, {
+      path: "/",
+    });
+  };
+
   const login = useMutation({
     mutationFn: userLogin,
     onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ["login"] });
-      setToken(data);
-      onCloseLogin();
-      router.push("/profile");
+      if (data.code === 1) {
+        toast({
+          title: "Uh oh...",
+          description: "You've entered the wrong email or password.",
+          status: "error",
+          duration: 9000,
+          isClosable: true,
+        });
+      } else {
+        toast({
+          title: "Welcome!",
+          description: "You have been logged in. Enjoy.",
+          status: "success",
+          duration: 9000,
+          isClosable: true,
+        });
+        setToken(data);
+        setUser();
+        setCookieHandler(data);
+        onCloseLogin();
+        router.push("/profile");
+      }
     },
   });
 
@@ -110,9 +164,10 @@ const LoginButton = (props) => {
 
   // Logout function
   const logOut = () => {
-    console.log("logging out");
     localStorage.removeItem("token");
     setToken(null);
+    removeCookie("token");
+    router.push("/");
   };
 
   // Register modal logic
@@ -134,7 +189,6 @@ const LoginButton = (props) => {
       >
         {token ? "LOGOUT" : "LOGIN"}
       </Button>
-
       {/* Login Modal */}
       <Modal
         isCentered
@@ -210,7 +264,6 @@ const LoginButton = (props) => {
           </ModalFooter>
         </ModalContent>
       </Modal>
-
       {/* Register Modal */}
       <Modal
         isCentered

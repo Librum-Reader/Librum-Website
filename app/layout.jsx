@@ -9,6 +9,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { create } from "domain";
 import { store } from "./store";
 import { Provider } from "react-redux";
+import { CookiesProvider } from "react-cookie";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,6 +22,9 @@ const theme = extendTheme({
   fonts: {
     body: lato,
   },
+  dialog: {
+    borderRadius: "md",
+  },
 });
 
 const queryClient = new QueryClient();
@@ -31,12 +35,14 @@ export default function RootLayout({ children }) {
       <body>
         <Provider store={store}>
           <QueryClientProvider client={queryClient}>
-            <ChakraProvider>
-              <Container>
-                <Navbar />
-                {children}
-              </Container>
-            </ChakraProvider>
+            <CookiesProvider>
+              <ChakraProvider>
+                <Container>
+                  <Navbar />
+                  {children}
+                </Container>
+              </ChakraProvider>
+            </CookiesProvider>
           </QueryClientProvider>
         </Provider>
       </body>

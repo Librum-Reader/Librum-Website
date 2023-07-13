@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { useSelector } from "react-redux";
 
 import { Flex, VStack, Heading, Box } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
@@ -8,6 +9,8 @@ import { useState, useEffect } from "react";
 const UserProfile = () => {
   const [token, setToken] = useState(null);
   const router = useRouter();
+
+  const isLoggedIn = useSelector((state) => state.user.value);
 
   useEffect(() => {
     const token = localStorage.getItem("token");

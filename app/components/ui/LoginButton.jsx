@@ -41,7 +41,15 @@ import { useSelector } from "react-redux/";
 
 import { userLogin, userRegistration } from "../../utils/apiFunctions";
 
+import { useCookies } from "react-cookie";
+
 const LoginButton = (props) => {
+  // Cookie bullshit to work around the fact that the authentication for the website is being handled by an external API.
+  // We are using react-cookies to set a cookie containing the JWT received from the external API. Then, the existence of
+  // this cookie is checked by the middleware function (defined in middleware.js). If JWT does not exist in cookies, then
+  // the user is redirected back to home if they try to access the /profile page.
+  const [cookies, setCookie, removeCookie] = useCookies(["user"]);
+
   // Notifications for successful login or errors
   const toast = useToast();
 
@@ -101,6 +109,12 @@ const LoginButton = (props) => {
   // API handling - Login
   const queryClient = useQueryClient();
 
+  const setCookieHandler = (data) => {
+    setCookie("token", data, {
+      path: "/",
+    });
+  };
+
   const login = useMutation({
     mutationFn: userLogin,
     onSuccess: (data) => {
@@ -122,6 +136,8 @@ const LoginButton = (props) => {
           isClosable: true,
         });
         setToken(data);
+        setUser();
+        setCookieHandler(data);
         onCloseLogin();
         router.push("/profile");
       }
@@ -148,9 +164,9 @@ const LoginButton = (props) => {
 
   // Logout function
   const logOut = () => {
-    console.log("logging out");
     localStorage.removeItem("token");
     setToken(null);
+    removeCookie("token");
   };
 
   // Register modal logic

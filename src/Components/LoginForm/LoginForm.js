@@ -37,6 +37,7 @@ export const LoginForm = () => {
     };
     try {
       await axios.post(url, data);
+      clearRegisterInfo();
       //registration successful, show modal
       setShowModal(true);
     } catch (error) {
@@ -59,6 +60,15 @@ export const LoginForm = () => {
     } catch (error) {
       console.error(error);
     }
+  };
+
+  //user registered successfully, clear "past" info
+  const clearRegisterInfo = () => {
+    setdisplayName("");
+    setLastName("");
+    setRegisterEmail("");
+    setRegisterPassword("");
+    setConfirmPassword("");
   };
 
   return (

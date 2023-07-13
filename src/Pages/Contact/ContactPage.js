@@ -11,7 +11,6 @@ import supportLight from "./supportLight.png";
 import { Form } from "../../Components/Form/Form";
 
 import { Link } from "react-router-dom";
-
 import { SiteContext } from "../../Context/Context";
 import { SupportWays } from "../../Components/Support/SupportWays";
 
@@ -21,8 +20,6 @@ export const ContactPage = ({ message, anchor, cards }) => {
   useEffect(() => {
     if (localStorage.getItem("Theme")) {
       let theme = JSON.parse(localStorage.getItem("Theme"));
-
-      console.log(theme);
 
       setBg(theme);
 

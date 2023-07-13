@@ -9,7 +9,6 @@ export default function RegistrationModal(props) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    document.body.style.overflow = "hidden";
     async function confirmEmail() {
       try {
         const confirmEmailRes = await axios.get(
@@ -29,7 +28,6 @@ export default function RegistrationModal(props) {
 
     return () => {
       clearInterval(intervalId);
-      document.body.style.overflow = "auto";
     };
   }, []);
 

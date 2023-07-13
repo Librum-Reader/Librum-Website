@@ -60,3 +60,7 @@ body {
   width: 450px;
   height: auto;
 }
+
+.tab-icon {
+  padding: 0.5rem;
+}

@@ -167,6 +167,7 @@ const LoginButton = (props) => {
     localStorage.removeItem("token");
     setToken(null);
     removeCookie("token");
+    router.push("/");
   };
 
   // Register modal logic

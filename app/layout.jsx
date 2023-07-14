@@ -10,6 +10,7 @@ import { create } from "domain";
 import { store } from "./store";
 import { Provider } from "react-redux";
 import { CookiesProvider } from "react-cookie";
+import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -33,18 +34,22 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <Provider store={store}>
-          <QueryClientProvider client={queryClient}>
-            <CookiesProvider>
-              <ChakraProvider>
-                <Container>
-                  <Navbar />
-                  {children}
-                </Container>
-              </ChakraProvider>
-            </CookiesProvider>
-          </QueryClientProvider>
-        </Provider>
+        <GoogleReCaptchaProvider
+          reCaptchaKey={process.env.REACT_APP_reCAPTCHA_SITE_KEY}
+        >
+          <Provider store={store}>
+            <QueryClientProvider client={queryClient}>
+              <CookiesProvider>
+                <ChakraProvider>
+                  <Container>
+                    <Navbar />
+                    {children}
+                  </Container>
+                </ChakraProvider>
+              </CookiesProvider>
+            </QueryClientProvider>
+          </Provider>
+        </GoogleReCaptchaProvider>
       </body>
     </html>
   );

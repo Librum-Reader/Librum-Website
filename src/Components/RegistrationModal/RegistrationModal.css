@@ -10,7 +10,7 @@
 }
 
 .modalContainer {
-    height: 330px;
+    height: 320px;
     width: 25.5%;
     border-radius: 10px;
     background-color: rgb(32, 35, 42);
@@ -44,31 +44,12 @@
 }
 
 .body p{
-    color: rgb(194, 228, 255);
+    color:rgb(194, 228, 255);
     font-weight: 500;
     text-align: center;
-    font-size: clamp(.6rem,1.1vw,1.1rem);
+    font-size: clamp(.6rem,0.87vw,1.1rem);
     font-family: "Lato", sans-serif;
-    word-wrap: break-word}
-
-.body button{
-    border: 1px solid var(--slate);
-    border-radius: 4px;
-    background-color: #946bde;
-    font-family: "Lato", sans-serif;
-    font-size: clamp(0.50rem, 0.9vw, 1.2rem);
-    outline: none;
-    color: #fcfcfc;
-    font-weight: bold;
-    width: 8rem;
-    line-height: 19px;
-    cursor: pointer;
+    position: relative;
+    top: 30px;
 }
-
-.body button:hover{
-    transition: all 0.3s ease-in-out;
-    background-color: #94b0da;
-    box-shadow: 0px 15px 20px rgba(46, 104, 229, 0.4);
-    color: var(--color-primary0);
-    transform: translateY(-7px);
-}
+ 

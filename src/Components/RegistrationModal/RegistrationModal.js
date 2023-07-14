@@ -37,6 +37,7 @@ export default function RegistrationModal(props) {
     props.setOpen(false);
     navigate("/login");
   };
+
   return (
     <div className="modalBackground">
       <div className="modalContainer">
@@ -46,8 +47,8 @@ export default function RegistrationModal(props) {
         </div>
         <div className="body">
           <p>
-            Your message has been sent successfully! We will get back to you as
-            soon as possible.
+            Your message has been sent successfully! <br />
+            We will get back to you as soon as possible.
           </p>
           <button onClick={cancelModal}>Ok!</button>
         </div>

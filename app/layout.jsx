@@ -11,6 +11,7 @@ import { store } from "./store";
 import { Provider } from "react-redux";
 import { CookiesProvider } from "react-cookie";
 import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
+import { useSelector } from "react-redux";
 
 const inter = Inter({ subsets: ["latin"] });
 

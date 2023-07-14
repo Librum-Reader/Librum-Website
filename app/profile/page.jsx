@@ -31,6 +31,8 @@ import {
 
 import { useState, useEffect } from "react";
 
+import { fetchUserInfo } from "../utils/apiFunctions";
+
 const UserProfile = () => {
   const [token, setToken] = useState(null);
   const router = useRouter();
@@ -43,6 +45,8 @@ const UserProfile = () => {
       router.push("/");
     }
     setToken(token);
+
+    fetchUserInfo(token);
   }, [token]);
 
   return (

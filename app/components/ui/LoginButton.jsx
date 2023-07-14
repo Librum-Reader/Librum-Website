@@ -94,7 +94,6 @@ const LoginButton = (props) => {
   const setUser = () => {
     dispatch(
       updateUser({
-        email: email,
         isLoggedIn: true,
       })
     );
@@ -109,6 +108,7 @@ const LoginButton = (props) => {
   // API handling - Login
   const queryClient = useQueryClient();
 
+  // This function sets a cookie with the token, which is then checked by the middleware on subsequent requests
   const setCookieHandler = (data) => {
     setCookie("token", data, {
       path: "/",
@@ -144,8 +144,14 @@ const LoginButton = (props) => {
     },
   });
 
+  // Fires every time token state is changed, lets Navbar know whether or not to display Profile link
   useEffect(() => {
     setToken(localStorage.getItem("token"));
+    if (token) {
+      dispatch(updateUser({ isLoggedIn: true }));
+    } else {
+      dispatch(updateUser({ isLoggedIn: false }));
+    }
   }, [token]);
 
   const handleLogin = (userInfo) => {
@@ -167,6 +173,11 @@ const LoginButton = (props) => {
     localStorage.removeItem("token");
     setToken(null);
     removeCookie("token");
+    dispatch(
+      updateUser({
+        isLoggedIn: false,
+      })
+    );
     router.push("/");
   };
 
@@ -179,6 +190,8 @@ const LoginButton = (props) => {
   const handleRegister = (data) => {
     register.mutate(data);
   };
+
+  console.log(user);
 
   return (
     <>

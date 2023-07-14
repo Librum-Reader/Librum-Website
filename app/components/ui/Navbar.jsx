@@ -1,8 +1,10 @@
 "use client";
-import React from "react";
+import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Flex, Spacer, Button, Image } from "@chakra-ui/react";
 import Link from "next/link";
 import LoginButton from "../ui/LoginButton";
+import ProfileButton from "../ui/ProfileButton";
 
 const navLinks = [
   {
@@ -30,6 +32,9 @@ const navLinkComponents = navLinks.map((link, index) => {
 });
 
 const Navbar = () => {
+  // Redux state for keeping track of whether or not the user is logged in
+  const user = useSelector((state) => state.user.value);
+
   return (
     <Flex maxW="1300px" width="100%" mx="auto">
       <Flex
@@ -44,6 +49,7 @@ const Navbar = () => {
         <Spacer />
         <Flex gap="2rem">
           {navLinkComponents}
+          {user.isLoggedIn ? <ProfileButton /> : ""}
           <LoginButton />
         </Flex>
       </Flex>

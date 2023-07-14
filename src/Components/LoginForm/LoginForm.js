@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import "./LoginForm.css";
 
 import axios from "axios";
@@ -6,6 +6,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 import { SiteContext } from "../../Context/Context";
+import RegistrationModal from "../RegistrationModal/RegistrationModal";
+
 export const LoginForm = () => {
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
@@ -16,37 +18,12 @@ export const LoginForm = () => {
   const [loginEmail, setloginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [regLogState, setRegLogState] = useState(true);
-  const [remember, setRemember] = useState(true);
+  const [showModal, setShowModal] = useState(false);
+
   const navigate = useNavigate();
   const { user, setUser, bg } = useContext(SiteContext);
 
-  function isValidEmail(email) {
-    // Email validation regular expression
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    return emailRegex.test(email);
-  }
-
-  const token = localStorage.getItem("token");
-
-  if (token) {
-    navigate("/profile");
-  }
-
   const register = async () => {
-    if (displayName === "") {
-      setErrorMessage("Please Enter your name");
-      return;
-    }
-    if (registerEmail === "" || !isValidEmail(registerEmail)) {
-      setErrorMessage("Please Enter a valid Email Address");
-      return;
-    }
-
-    if (registerPassword.length > 6) {
-      setErrorMessage("Password should be at least 6 characters");
-    }
-
     if (registerPassword !== confirmPassword) {
       setErrorMessage("Passwords don't match");
       return;
@@ -59,51 +36,41 @@ export const LoginForm = () => {
       Password: registerPassword,
     };
     try {
-      const headers = {
-        "X-Version": "1.0",
-      };
-      const response = await axios.post(url, data, {
-        headers,
-      });
-
-      console.log(response.data);
-
-      // Registration successful
-      console.log("Registration successful!");
-      setRegisterEmail("");
-      setRegisterPassword("");
+      await axios.post(url, data);
+      clearRegisterInfo();
+      //registration successful, show modal
+      setShowModal(true);
     } catch (error) {
       console.error("Error during registration:", error);
     }
   };
 
   const login = async () => {
-    const token = localStorage.getItem("token");
-    console.log("clicked");
-    // setLoading(true);
-    const data = {
-      Email: loginEmail,
-      Password: loginPassword,
-    };
-
-    const headers = {
-      "X-Version": "1.0",
-      Authorization: `Bearer ${token}`,
-    };
-
     try {
+      const data = {
+        Email: loginEmail,
+        Password: loginPassword,
+      };
       const response = await axios.post(
         "https://librum-dev.azurewebsites.net/api/login",
-        data,
-        { headers }
+        data
       );
-      console.log(response.data);
       localStorage.setItem("token", response.data);
       navigate("/profile");
     } catch (error) {
       console.error(error);
     }
   };
+
+  //user registered successfully, clear "past" info
+  const clearRegisterInfo = () => {
+    setdisplayName("");
+    setLastName("");
+    setRegisterEmail("");
+    setRegisterPassword("");
+    setConfirmPassword("");
+  };
+
   return (
     <div className="container">
       {regLogState ? (
@@ -167,12 +134,7 @@ export const LoginForm = () => {
                 <input type="checkbox" /> Remember me
               </div>
             </div>
-            <button
-              onClick={() => {
-                login();
-              }}
-              className="btn btn-login"
-            >
+            <button onClick={login} className="btn btn-login">
               Log in
             </button>
           </div>
@@ -218,7 +180,6 @@ export const LoginForm = () => {
                 credentials will be stored in a secure database
               </p>
             </div>
-
             <div className="form-input reg">
               <div className="reg-form-name">
                 {" "}
@@ -259,7 +220,6 @@ export const LoginForm = () => {
                 </div>
               </div>
             </div>
-
             <div className="form-input">
               <div className="form-input-title">Email</div>
               <div className="form-input-input">
@@ -281,7 +241,6 @@ export const LoginForm = () => {
                 />
               </div>
             </div>
-
             <div className="form-input">
               <div className="form-input-title">Password </div>
               <div className="form-input-input">
@@ -304,7 +263,6 @@ export const LoginForm = () => {
                 />
               </div>
             </div>
-
             <div className="form-input">
               <div className="form-input-title">Confirm Password</div>
               <div className="form-input-input">
@@ -325,10 +283,7 @@ export const LoginForm = () => {
                   }}
                 />
               </div>
-
-              <div className="form-error">{errorMessage}</div>
             </div>
-
             <div className="form-checkbox">
               <div className="checkbox-unit">
                 {" "}
@@ -355,15 +310,15 @@ export const LoginForm = () => {
                 to login
               </div>
             </div>
-
-            <button
-              className="btn btn-login"
-              onClick={() => {
-                register();
-              }}
-            >
+            <button className="btn btn-login" onClick={register}>
               Lets get started
             </button>
+            {showModal && (
+              <RegistrationModal
+                setOpen={setShowModal}
+                email={registerEmail}
+              ></RegistrationModal>
+            )}
           </div>
         </div>
       )}

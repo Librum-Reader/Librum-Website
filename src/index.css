@@ -10,11 +10,6 @@ body {
   background-color: white;
 }
 
-/* code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-} */
-
 * {
   margin: 0;
   padding: 0;
@@ -23,7 +18,8 @@ body {
   list-style: none;
   text-decoration: none;
 }
-html {
+
+body {
   scroll-behavior: smooth;
   overflow-y: auto;
 }

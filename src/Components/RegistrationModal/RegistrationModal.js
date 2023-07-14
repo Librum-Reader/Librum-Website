@@ -9,6 +9,7 @@ export default function RegistrationModal(props) {
   const navigate = useNavigate();
 
   useEffect(() => {
+    document.body.style.overflowY = "hidden"; //prevent scrolling (y axis) when modal mounts
     async function confirmEmail() {
       try {
         const confirmEmailRes = await axios.get(
@@ -30,27 +31,25 @@ export default function RegistrationModal(props) {
 
     return () => {
       clearInterval(intervalId);
+      //enable scrolling when modal unmounts
+      document.body.style.scrollBehavior = "smooth";
+      document.body.style.overflowY = "auto";
     };
   }, []);
-
-  const cancelModal = () => {
-    props.setOpen(false);
-    navigate("/login");
-  };
 
   return (
     <div className="modalBackground">
       <div className="modalContainer">
         <div className="header">
           <BsCheckCircle className="checkMark"></BsCheckCircle>
-          <h2>Thank you!</h2>
+          <h2>Confirm Your Email</h2>
         </div>
         <div className="body">
           <p>
-            Your message has been sent successfully! <br />
-            We will get back to you as soon as possible.
+            You're almost ready to go!
+            <br />
+            Confirm your email by clicking the link we sent you.
           </p>
-          <button onClick={cancelModal}>Ok!</button>
         </div>
       </div>
     </div>

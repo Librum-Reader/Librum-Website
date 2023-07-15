@@ -195,11 +195,7 @@ const LoginButton = (props) => {
 
   return (
     <>
-      <Button
-        onClick={token ? logOut : onOpenLogin}
-        colorScheme="teal"
-        variant="solid"
-      >
+      <Button onClick={token ? logOut : onOpenLogin} variant="navButton">
         {token ? "LOGOUT" : "LOGIN"}
       </Button>
       {/* Login Modal */}

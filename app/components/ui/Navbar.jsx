@@ -24,9 +24,7 @@ const navLinks = [
 const navLinkComponents = navLinks.map((link, index) => {
   return (
     <Link key={index} href={link.href}>
-      <Button colorScheme="gray" variant="ghost">
-        {link.text}
-      </Button>
+      <Button variant="navLink">{link.text}</Button>
     </Link>
   );
 });

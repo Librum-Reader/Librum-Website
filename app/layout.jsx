@@ -1,6 +1,5 @@
 "use client";
 import { Inter } from "next/font/google";
-import { Lato } from "next/font/google";
 import Navbar from "./components/ui/Navbar";
 import { ChakraProvider } from "@chakra-ui/react";
 import { extendTheme } from "@chakra-ui/react";
@@ -12,22 +11,10 @@ import { Provider } from "react-redux";
 import { CookiesProvider } from "react-cookie";
 import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
 import { useSelector } from "react-redux";
+import { buttonStyles as Button } from "./styles/buttonStyles";
+import { Providers } from "./providers";
 
 const inter = Inter({ subsets: ["latin"] });
-
-const lato = Lato({
-  subsets: ["latin"],
-  weight: ["100", "300", "400", "700", "900"],
-});
-
-const theme = extendTheme({
-  fonts: {
-    body: lato,
-  },
-  dialog: {
-    borderRadius: "md",
-  },
-});
 
 const queryClient = new QueryClient();
 
@@ -41,12 +28,12 @@ export default function RootLayout({ children }) {
           <Provider store={store}>
             <QueryClientProvider client={queryClient}>
               <CookiesProvider>
-                <ChakraProvider>
+                <Providers>
                   <Container>
                     <Navbar />
                     {children}
                   </Container>
-                </ChakraProvider>
+                </Providers>
               </CookiesProvider>
             </QueryClientProvider>
           </Provider>

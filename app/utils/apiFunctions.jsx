@@ -76,7 +76,7 @@ export const fetchUserInfo = async (data) => {
 
     const result = await response.json();
     console.log(result);
-    return response;
+    return result;
   } catch (error) {
     console.error(error);
   }

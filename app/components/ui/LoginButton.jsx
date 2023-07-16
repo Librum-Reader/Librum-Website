@@ -207,61 +207,53 @@ const LoginButton = (props) => {
       >
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader background="#282c34"> </ModalHeader>
+          <ModalHeader> </ModalHeader>
           <ModalCloseButton />
-          <ModalBody background="#282c34">
+          <ModalBody>
             <Center>
               <Box textAlign="center" mb="1rem">
-                <Heading size="md" color="white" pb=".5rem">
+                <Heading size="md" pb=".5rem">
                   Welcome back!
                 </Heading>
-                <Text fontSize="xs" color="white">
-                  Log into your account
-                </Text>
+                <Text fontSize="xs">Log into your account</Text>
               </Box>
             </Center>
             <FormControl>
-              <FormLabel fontSize="xs" color="white">
-                Email
-              </FormLabel>
+              <FormLabel fontSize="xs">Email</FormLabel>
               <Input
                 value={email}
                 onChange={handleEmail}
                 ref={initialRef}
                 placeholder="Enter Your Email"
                 fontSize="xs"
-                textColor="white"
               />
             </FormControl>
 
             <FormControl mt={4}>
-              <FormLabel fontSize="xs" color="white">
-                Password
-              </FormLabel>
+              <FormLabel fontSize="xs">Password</FormLabel>
               <Input
                 value={password}
                 onChange={handlePassword}
                 placeholder="Enter Your Password"
                 fontSize="xs"
-                textColor="white"
               />
             </FormControl>
           </ModalBody>
 
-          <ModalFooter background="#282c34">
+          <ModalFooter>
             <Box width="100%" textAlign="center">
               <Button
                 onClick={() => {
                   handleLogin({ Email: email, Password: password });
                 }}
-                colorScheme="teal"
+                variant="primary"
                 width="100%"
                 mb="1rem"
               >
                 {login.isLoading ? <BeatLoader /> : "Log In"}
               </Button>
               <Button
-                variant="ghost"
+                variant="secondary"
                 width="100%"
                 onClick={() => {
                   registerAccount();

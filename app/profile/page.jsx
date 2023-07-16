@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
+import { useQuery } from "@tanstack/react-query";
 
 import {
   Flex,
@@ -35,6 +36,7 @@ import { fetchUserInfo } from "../utils/apiFunctions";
 
 const UserProfile = () => {
   const [token, setToken] = useState(null);
+  const [tokenExists, setTokenExists] = useState(false);
   const router = useRouter();
 
   const isLoggedIn = useSelector((state) => state.user.value);
@@ -45,9 +47,22 @@ const UserProfile = () => {
       router.push("/");
     }
     setToken(token);
-
-    fetchUserInfo(token);
+    setTokenExists(true);
+    console.log(token);
   }, [token]);
+
+  const { isLoading, error, data } = useQuery({
+    queryKey: ["user"],
+    queryFn: () => {
+      console.log("query: ", token);
+      return fetchUserInfo(token);
+    },
+    enabled: tokenExists,
+  });
+
+  if (!isLoading) {
+    console.log(data);
+  }
 
   return (
     <Flex background="#282c34" align="center" direction="column" h="100vh">

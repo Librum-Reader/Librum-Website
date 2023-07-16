@@ -3,9 +3,14 @@
 import { CacheProvider } from "@emotion/react";
 import { ChakraProvider } from "@chakra-ui/react";
 import { extendTheme } from "@chakra-ui/react";
+import { modalTheme } from "./styles/modalTheme";
 
 export function Providers({ children }) {
   const theme = extendTheme({
+    fonts: {
+      body: `'Lato', sans-serif`,
+      heading: `'Lato', sans-serif`,
+    },
     components: {
       Button: {
         variants: {
@@ -35,6 +40,12 @@ export function Providers({ children }) {
             textColor: "white",
             fontSize: "sm",
           },
+        },
+      },
+      Modal: modalTheme,
+      Heading: {
+        baseStyle: {
+          textColor: "#47478f",
         },
       },
     },

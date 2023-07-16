@@ -98,8 +98,8 @@ const ContactForm = (props) => {
           handleSubmit(e);
         }}
       >
-        <FormControl alignSelf="flex-start">
-          <VStack spacing={2} align="flex-start">
+        <FormControl>
+          <VStack spacing={2}>
             <FormLabel fontSize="md" color="white">
               Name
             </FormLabel>

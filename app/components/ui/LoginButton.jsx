@@ -94,7 +94,6 @@ const LoginButton = (props) => {
   const setUser = () => {
     dispatch(
       updateUser({
-        email: email,
         isLoggedIn: true,
       })
     );
@@ -109,6 +108,7 @@ const LoginButton = (props) => {
   // API handling - Login
   const queryClient = useQueryClient();
 
+  // This function sets a cookie with the token, which is then checked by the middleware on subsequent requests
   const setCookieHandler = (data) => {
     setCookie("token", data, {
       path: "/",
@@ -144,8 +144,14 @@ const LoginButton = (props) => {
     },
   });
 
+  // Fires every time token state is changed, lets Navbar know whether or not to display Profile link
   useEffect(() => {
     setToken(localStorage.getItem("token"));
+    if (token) {
+      dispatch(updateUser({ isLoggedIn: true }));
+    } else {
+      dispatch(updateUser({ isLoggedIn: false }));
+    }
   }, [token]);
 
   const handleLogin = (userInfo) => {
@@ -167,6 +173,11 @@ const LoginButton = (props) => {
     localStorage.removeItem("token");
     setToken(null);
     removeCookie("token");
+    dispatch(
+      updateUser({
+        isLoggedIn: false,
+      })
+    );
     router.push("/");
   };
 
@@ -180,13 +191,11 @@ const LoginButton = (props) => {
     register.mutate(data);
   };
 
+  console.log(user);
+
   return (
     <>
-      <Button
-        onClick={token ? logOut : onOpenLogin}
-        colorScheme="teal"
-        variant="solid"
-      >
+      <Button onClick={token ? logOut : onOpenLogin} variant="navButton">
         {token ? "LOGOUT" : "LOGIN"}
       </Button>
       {/* Login Modal */}
@@ -198,61 +207,53 @@ const LoginButton = (props) => {
       >
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader background="#282c34"> </ModalHeader>
+          <ModalHeader> </ModalHeader>
           <ModalCloseButton />
-          <ModalBody background="#282c34">
+          <ModalBody>
             <Center>
               <Box textAlign="center" mb="1rem">
-                <Heading size="md" color="white" pb=".5rem">
+                <Heading size="md" pb=".5rem">
                   Welcome back!
                 </Heading>
-                <Text fontSize="xs" color="white">
-                  Log into your account
-                </Text>
+                <Text fontSize="xs">Log into your account</Text>
               </Box>
             </Center>
             <FormControl>
-              <FormLabel fontSize="xs" color="white">
-                Email
-              </FormLabel>
+              <FormLabel fontSize="xs">Email</FormLabel>
               <Input
                 value={email}
                 onChange={handleEmail}
                 ref={initialRef}
                 placeholder="Enter Your Email"
                 fontSize="xs"
-                textColor="white"
               />
             </FormControl>
 
             <FormControl mt={4}>
-              <FormLabel fontSize="xs" color="white">
-                Password
-              </FormLabel>
+              <FormLabel fontSize="xs">Password</FormLabel>
               <Input
                 value={password}
                 onChange={handlePassword}
                 placeholder="Enter Your Password"
                 fontSize="xs"
-                textColor="white"
               />
             </FormControl>
           </ModalBody>
 
-          <ModalFooter background="#282c34">
+          <ModalFooter>
             <Box width="100%" textAlign="center">
               <Button
                 onClick={() => {
                   handleLogin({ Email: email, Password: password });
                 }}
-                colorScheme="teal"
+                variant="primary"
                 width="100%"
                 mb="1rem"
               >
                 {login.isLoading ? <BeatLoader /> : "Log In"}
               </Button>
               <Button
-                variant="ghost"
+                variant="secondary"
                 width="100%"
                 onClick={() => {
                   registerAccount();

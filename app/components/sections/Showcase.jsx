@@ -27,8 +27,12 @@ const Showcase = () => {
             A clean and simple way to read your books on any device and build
             your own online library
           </Text>
-          <Button w="250px">Download</Button>
-          <Button w="250px">GitHub</Button>
+          <Button w="250px" variant="primary">
+            Download
+          </Button>
+          <Button w="250px" variant="secondary">
+            GitHub
+          </Button>
         </VStack>
         <Box>
           <div className="image lg" ref={container}>

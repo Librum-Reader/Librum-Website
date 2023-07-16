@@ -64,3 +64,18 @@ body {
 .tab-icon {
   padding: 0.5rem;
 }
+
+.contact-modal {
+  display: flex !important;
+  transition: 1s ease-in-out;
+}
+
+.contact-success-message {
+  display: flex;
+  transition: 1s ease-in-out;
+}
+
+.closed {
+  display: none !important;
+  transition: 1s ease-in-out;
+}

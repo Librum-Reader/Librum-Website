@@ -62,7 +62,10 @@ const navLinkComponents = navLinks.map((link, index) => {
 
 const Navbar = () => {
   // Redux state for keeping track of whether or not the user is logged in
-  const user = useSelector((state) => state.user.value);
+  const isLoggedIn = useSelector((state) => {
+    return state.user.isLoggedIn;
+  });
+
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const { isOpen: isSlideOpen, onToggle: onSlideToggle } = useDisclosure();
@@ -340,7 +343,7 @@ const Navbar = () => {
             <Button variant="navLink" onClick={onOpen}>
               CONTACT
             </Button>
-            {user.isLoggedIn ? <ProfileButton /> : ""}
+            {isLoggedIn ? <ProfileButton /> : null}
             <LoginButton />
           </Flex>
         </Flex>

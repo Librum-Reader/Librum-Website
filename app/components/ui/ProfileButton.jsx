@@ -5,7 +5,7 @@ const ProfileButton = () => {
   return (
     <Link href="/profile">
       <Button colorScheme="gray" variant="ghost">
-        Profile
+        PROFILE
       </Button>
     </Link>
   );

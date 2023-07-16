@@ -9,6 +9,7 @@ import { SiteContextProvider } from "./Context/Context";
 import { News } from "./Pages/News/News";
 import { Profile } from "./Pages/Profile/Profile";
 import { Article } from "./Pages/Article/Article";
+import RegistrationForm from "./Components/Register/RegistrationForm";
 import ScrollToTop from "./Components/ScrollToTop/ScrollToTop";
 import { PrivacyPolicy } from "./Pages/PrivacyPolicy/PrivacyPolicy";
 import { TermsOfService } from "./Pages/TermsOfService/TermsOfService";
@@ -45,6 +46,7 @@ function App() {
                 <Route path="/News" element={<News />} />
                 <Route path="/News/:title" element={<Article />} />
                 <Route path="/login" element={<LoginPage />} />
+                <Route path="/register" element={<RegistrationForm />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/privacypolicy" element={<PrivacyPolicy />} />
                 <Route path="/termsofservice" element={<TermsOfService />} />

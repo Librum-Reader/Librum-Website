@@ -255,7 +255,7 @@ const Navbar = () => {
                     handleSubmit(e);
                   }}
                 >
-                  <FormControl px="1rem">
+                  <FormControl pl=".5rem">
                     <VStack>
                       <FormLabel
                         fontSize="sm"

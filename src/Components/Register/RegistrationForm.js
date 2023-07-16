@@ -1,3 +1,4 @@
+import "./RegistrationForm.css";
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { SiteContext } from "../../Context/Context";

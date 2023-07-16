@@ -10,6 +10,7 @@ export function Providers({ children }) {
     fonts: {
       body: `'Lato', sans-serif`,
       heading: `'Lato', sans-serif`,
+      text: `'Lato', sans-serif`,
     },
     components: {
       Button: {

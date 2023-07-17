@@ -3,6 +3,7 @@ import Image from "next/image";
 import Showcase from "./components/sections/Showcase";
 import Features from "./components/sections/Features";
 import ComingSoon from "./components/sections/ComingSoon";
+import Contribute from "./components/sections/Contribute";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <Showcase />
       <Features />
       <ComingSoon />
+      <Contribute />
     </>
   );
 }

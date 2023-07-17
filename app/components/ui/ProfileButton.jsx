@@ -4,7 +4,7 @@ import Link from "next/link";
 const ProfileButton = () => {
   return (
     <Link href="/profile">
-      <Button colorScheme="gray" variant="ghost">
+      <Button colorScheme="gray" variant="navLink">
         PROFILE
       </Button>
     </Link>

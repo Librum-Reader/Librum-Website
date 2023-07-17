@@ -35,11 +35,15 @@ import {
   QueryClientProvider,
 } from "@tanstack/react-query";
 
-import { updateUser } from "../../features/user/userSlice";
+import { updateLoggedIn, updateUser } from "../../features/user/userSlice";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux/";
 
-import { userLogin, userRegistration } from "../../utils/apiFunctions";
+import {
+  fetchUserInfo,
+  userLogin,
+  userRegistration,
+} from "../../utils/apiFunctions";
 
 import { useCookies } from "react-cookie";
 
@@ -89,14 +93,11 @@ const LoginButton = (props) => {
 
   // Redux functions for storing user info after login
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user.value);
 
-  const setUser = () => {
-    dispatch(
-      updateUser({
-        isLoggedIn: true,
-      })
-    );
+  const setUser = (token) => {
+    fetchUserInfo(token).then((result) => {
+      dispatch(updateUser(result));
+    });
   };
 
   // User registration state setters
@@ -136,8 +137,9 @@ const LoginButton = (props) => {
           isClosable: true,
         });
         setToken(data);
-        setUser();
+        setUser(data);
         setCookieHandler(data);
+        dispatch(updateLoggedIn(true));
         onCloseLogin();
         router.push("/profile");
       }
@@ -148,11 +150,11 @@ const LoginButton = (props) => {
   useEffect(() => {
     setToken(localStorage.getItem("token"));
     if (token) {
-      dispatch(updateUser({ isLoggedIn: true }));
+      dispatch(updateLoggedIn(true));
     } else {
-      dispatch(updateUser({ isLoggedIn: false }));
+      dispatch(updateLoggedIn(false));
     }
-  }, [token]);
+  }, [token, dispatch]);
 
   const handleLogin = (userInfo) => {
     login.mutate(userInfo);
@@ -173,11 +175,8 @@ const LoginButton = (props) => {
     localStorage.removeItem("token");
     setToken(null);
     removeCookie("token");
-    dispatch(
-      updateUser({
-        isLoggedIn: false,
-      })
-    );
+    dispatch(updateUser({}));
+    dispatch(updateLoggedIn(false));
     router.push("/");
   };
 
@@ -190,8 +189,6 @@ const LoginButton = (props) => {
   const handleRegister = (data) => {
     register.mutate(data);
   };
-
-  console.log(user);
 
   return (
     <>

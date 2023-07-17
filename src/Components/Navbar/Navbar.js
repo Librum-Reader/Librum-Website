@@ -138,7 +138,7 @@ export const Navbar = () => {
               </svg>
             </div>
           )}{" "}
-          {bg === "light" ? (
+         {bg === "light" ? (
             <li
               className="toggle-li"
               onClick={() => {
@@ -148,7 +148,7 @@ export const Navbar = () => {
                 if (bg === "dark") {
                   setBg("light");
                 }
-              }}
+              }} 
             >
               <img src={iconOn} alt="toggle-icon" />
             </li>

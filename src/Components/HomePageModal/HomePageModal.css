@@ -26,12 +26,6 @@
     justify-content: center;
 }
 
-.header .checkMark {
-    height: 8em;
-    width: 4em;
-    color: #43C467
-}
-
 .header h2 {
     color: rgb(194, 228, 255);
     font-family: "Lato", sans-serif;
@@ -53,6 +47,5 @@
     font-family: "Lato", sans-serif;
     position: relative;
     top: 30px;
-    width: 450px;
 }
  

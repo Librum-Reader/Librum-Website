@@ -11,7 +11,7 @@
 
 .modalContainer {
     height: 320px;
-    width: 27.5%;
+    width: 25.5%;
     position: relative;
     top: -75px;
     border-radius: 10px;
@@ -52,6 +52,6 @@
     font-size: clamp(.6rem,0.87vw,1.1rem);
     font-family: "Lato", sans-serif;
     position: relative;
-    top: 30px;
+    top: 45.5px;
 }
  

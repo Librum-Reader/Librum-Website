@@ -9,7 +9,6 @@ import { Attributes } from "../../Components/Attributes/Attributes";
 import { CountUP } from "../../Components/CountUp/CountUp";
 import { Circles } from "../../Components/CirclePercent/Circles";
 import { SiteContext } from "../../Context/Context";
-import HomePageModal from "../../Components/HomePageModal/HomePageModal";
 // import { auth } from "../../firebase-config";
 // import Example from "../../Components/Tabs/Tabs";
 
@@ -40,7 +39,6 @@ export const Homepage = () => {
       }
       className="container"
     >
-      {showModal && <HomePageModal setOpen={setShowModal}></HomePageModal>}
       <Showcase image1={image1} />
       <Attributes />
       <Features />

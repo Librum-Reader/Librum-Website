@@ -32,7 +32,20 @@ export const LoginForm = () => {
   };
   return (
     <div className="container">
-      <div className="form-container login-form-container">
+      <div
+        className="form-container login-form-container"
+        style={
+          bg === "light"
+            ? {
+                backgroundColor: "white",
+                color: "var(--color-primary)",
+              }
+            : {
+                backgroundColor: "#282c34",
+                color: "white",
+              }
+        }
+      >
         <div
           className="log-form"
           style={

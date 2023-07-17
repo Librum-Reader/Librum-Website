@@ -39,7 +39,20 @@ export default function RegistrationForm() {
   };
 
   return (
-    <div className="form-container">
+    <div
+      className="form-container"
+      style={
+        bg === "light"
+          ? {
+              backgroundColor: "white",
+              color: "var(--color-primary)",
+            }
+          : {
+              backgroundColor: "#282c34",
+              color: "white",
+            }
+      }
+    >
       <div
         className="log-form"
         style={

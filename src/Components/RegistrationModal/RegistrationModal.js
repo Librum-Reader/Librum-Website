@@ -48,7 +48,7 @@ export default function RegistrationModal(props) {
           <p>
             You're almost ready to go!
             <br />
-            Confirm your email by clicking the link we sent you.
+            Confirm the email we sent you.
           </p>
         </div>
       </div>

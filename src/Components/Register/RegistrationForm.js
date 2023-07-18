@@ -69,7 +69,20 @@ export default function RegistrationForm() {
       >
         <div className="log-form-header">
           <div className="login-form-logo">
-            <div className="login-form-logo-square"></div>
+            <div
+              className="login-form-logo-square"
+              style={
+                bg === "light"
+                  ? {
+                      backgroundColor: "white",
+                      color: "var(--color-primary)",
+                    }
+                  : {
+                      backgroundColor: "#282c34",
+                      color: "white",
+                    }
+              }
+            ></div>
           </div>
           <h2>Welcome</h2>
           <p>

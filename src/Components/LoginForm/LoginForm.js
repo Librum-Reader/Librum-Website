@@ -61,7 +61,20 @@ export const LoginForm = () => {
           }
         >
           <div className="login-form-logo">
-            <div className="login-form-logo-square"></div>
+            <div
+              className="login-form-logo-square"
+              style={
+                bg === "light"
+                  ? {
+                      backgroundColor: "white",
+                      color: "var(--color-primary)",
+                    }
+                  : {
+                      backgroundColor: "#282c34",
+                      color: "white",
+                    }
+              }
+            ></div>
           </div>
           <div className="log-form-header">
             <h2>Welcome back!</h2>

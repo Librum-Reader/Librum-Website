@@ -56,10 +56,32 @@ export default function RegistrationModal(props) {
       >
         <div className="header">
           <BsCheckCircle className="checkMark"></BsCheckCircle>
-          <h2>Confirm Your Email</h2>
+          <h2
+            style={
+              bg === "light"
+                ? {
+                    color: "black",
+                  }
+                : {
+                    color: "white",
+                  }
+            }
+          >
+            Confirm Your Email
+          </h2>
         </div>
         <div className="body">
-          <p>
+          <p
+            style={
+              bg === "light"
+                ? {
+                    color: "black",
+                  }
+                : {
+                    color: "white",
+                  }
+            }
+          >
             You're almost ready to go!
             <br />
             Confirm the email we sent you.

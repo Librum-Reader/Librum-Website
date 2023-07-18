@@ -1,12 +1,13 @@
 import "./RegistrationModal.css";
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import axios from "axios";
 import { BsCheckCircle } from "react-icons/bs";
-
 import { useNavigate } from "react-router-dom";
+import { SiteContext } from "../../Context/Context";
 
 export default function RegistrationModal(props) {
   const navigate = useNavigate();
+  const { bg } = useContext(SiteContext);
 
   useEffect(() => {
     document.body.style.overflowY = "hidden"; //prevent scrolling (y axis) when modal mounts
@@ -39,7 +40,20 @@ export default function RegistrationModal(props) {
 
   return (
     <div className="modalBackground">
-      <div className="modalContainer">
+      <div
+        className="modalContainer"
+        style={
+          bg === "light"
+            ? {
+                backgroundColor: "white",
+                color: "var(--color-primary)",
+              }
+            : {
+                backgroundColor: "#282c34",
+                color: "white",
+              }
+        }
+      >
         <div className="header">
           <BsCheckCircle className="checkMark"></BsCheckCircle>
           <h2>Confirm Your Email</h2>

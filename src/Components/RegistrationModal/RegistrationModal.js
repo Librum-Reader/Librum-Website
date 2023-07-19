@@ -56,6 +56,7 @@ export default function RegistrationModal(props) {
       >
         <div className="header">
           <BsCheckCircle className="checkMark"></BsCheckCircle>
+          <br />
           <h2
             style={
               bg === "light"

@@ -1,7 +1,5 @@
 import "./HomePageModal.css";
 import { useEffect, useContext } from "react";
-import axios from "axios";
-import { BsCheckCircle } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { SiteContext } from "../../Context/Context";
 
@@ -20,9 +18,9 @@ export default function HomePageModal(props) {
   }, []);
 
   return (
-    <div className="modalBackground">
+    <div className="modal-background">
       <div
-        className="modalContainer"
+        className="modal-container"
         style={
           bg === "light"
             ? {
@@ -35,7 +33,7 @@ export default function HomePageModal(props) {
               }
         }
       >
-        <div className="header">
+        <div className="modal-head">
           <h2
             style={
               bg === "light"
@@ -50,7 +48,7 @@ export default function HomePageModal(props) {
             In Development
           </h2>
         </div>
-        <div className="body">
+        <div className="modal-body">
           <p
             className="developText"
             style={
@@ -69,7 +67,7 @@ export default function HomePageModal(props) {
           <br />
           <br />
           <p
-            className="agreementText"
+            className="agreeText"
             style={
               bg === "light"
                 ? {
@@ -86,6 +84,7 @@ export default function HomePageModal(props) {
             <a href="/privacypolicy">Privacy Policy</a>
           </p>
           <button
+            onClick={() => props.setOpen(false)}
             style={
               bg === "light"
                 ? {

@@ -10,7 +10,7 @@
 }
 
 .modalContainer {
-    height: 303px;
+    height: 265px;
     width: 25.5%;
     position: relative;
     top: -60px;
@@ -29,6 +29,15 @@
     color: rgb(194, 228, 255);
     font-family: "Lato", sans-serif;
     font-size: clamp(.8rem, 2vw, 1.4rem);
+    position: relative;
+    top: 15px;
+}
+
+.checkMark {
+    color: #43C467;
+    font-size: 60px;
+    position: relative;
+    top: 15px;
 }
 
 .body {
@@ -46,6 +55,6 @@
     font-size: clamp(.6rem,0.87vw,1.1rem);
     font-family: "Lato", sans-serif;
     position: relative;
-    top: 25px;
+    top: 35px;
 }
  

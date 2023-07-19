@@ -1,10 +1,8 @@
 import "./HomePageModal.css";
 import { useEffect, useContext } from "react";
-import { useNavigate } from "react-router-dom";
 import { SiteContext } from "../../Context/Context";
 
 export default function HomePageModal(props) {
-  const navigate = useNavigate();
   const { bg } = useContext(SiteContext);
 
   useEffect(() => {
@@ -24,7 +22,7 @@ export default function HomePageModal(props) {
         style={
           bg === "light"
             ? {
-                backgroundColor: "darkgray",
+                backgroundColor: "white",
                 color: "var(--color-primary)",
               }
             : {
@@ -79,20 +77,60 @@ export default function HomePageModal(props) {
             }
           >
             By continuing you agree to our{" "}
-            <a href="/termsofservice">Terms of Service</a>,{" "}
-            <a href="/cookies">Cookies Policy</a> and{" "}
-            <a href="/privacypolicy">Privacy Policy</a>
+            <a
+              style={
+                bg === "light"
+                  ? {
+                      color: "#3d5bb6",
+                    }
+                  : {
+                      color: "#946bde",
+                    }
+              }
+              href="/termsofservice"
+            >
+              Terms of Service
+            </a>
+            ,{" "}
+            <a
+              style={
+                bg === "light"
+                  ? {
+                      color: "#3d5bb6",
+                    }
+                  : {
+                      color: "#946bde",
+                    }
+              }
+              href="/cookies"
+            >
+              Cookies Policy
+            </a>{" "}
+            and{" "}
+            <a
+              style={
+                bg === "light"
+                  ? {
+                      color: "#3d5bb6",
+                    }
+                  : {
+                      color: "#946bde",
+                    }
+              }
+              href="/privacypolicy"
+            >
+              Privacy Policy
+            </a>
           </p>
           <button
             onClick={() => props.setOpen(false)}
             style={
               bg === "light"
                 ? {
-                    backgroundColor: "black",
+                    backgroundColor: "#946bde",
                     color: "white",
                   }
                 : {
-                    backgroundColor: "",
                     color: "black",
                   }
             }

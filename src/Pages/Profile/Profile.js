@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { SiteContext } from "../../Context/Context";
 import "./Profile.css";
-import img1 from "./about2.png"
+import img1 from "./about2.png";
 import axios from "axios";
 
 import { useNavigate } from "react-router-dom";

@@ -56,7 +56,6 @@ export const Form = () => {
     >
       <div className="support-page-contact-form">
         <h2>Need help?</h2>
-
         <form onSubmit={handleSubmit} id="form">
           <div className="form-subtitle">
             <p
@@ -77,8 +76,8 @@ export const Form = () => {
               >
                 help@librumreader.com
               </a>{" "}
-              if you have any questions, <br/>we are 100% responsive and reply
-              quickly!
+              if you have any questions, <br />
+              we are 100% responsive and reply quickly!
             </p>
           </div>
           <div className="form-div">
@@ -184,6 +183,7 @@ export const Form = () => {
             document.body
           )}
         </form>
+        m_david
       </div>
       {/* <div className="support-page-contact-image">
         <img src={pic} alt="" />

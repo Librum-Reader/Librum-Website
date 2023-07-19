@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useLayoutEffect } from "react";
 import "./Homepage.css";
 import image1 from "./image1.svg";
 import { Showcase } from "../../Components/Showcase/Showcase";
@@ -14,8 +14,10 @@ import { SiteContext } from "../../Context/Context";
 
 export const Homepage = () => {
   const { bg, setBg } = useContext(SiteContext);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
+    //setShowModal(true);
     if (localStorage.getItem("Theme")) {
       let theme = JSON.parse(localStorage.getItem("Theme"));
 
@@ -37,7 +39,6 @@ export const Homepage = () => {
       }
       className="container"
     >
-      {/* Hello {auth.currentUser.email} */}
       <Showcase image1={image1} />
       <Attributes />
       <Features />

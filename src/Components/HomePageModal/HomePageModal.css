@@ -3,16 +3,17 @@
     height: 100vh;
     background-color: transparent;
     position: fixed;
+    z-index: 1000;
     display: flex;
     justify-content: center;
 }
 
 .modal-container {
-    height: 290px;
+    height: 300px;
     width: 45%;
     position: absolute;
     top: 10px;
-    left: 530px;
+    left: 590px;
     border-radius: 10px;
     box-shadow: 0 10px 20px 0 rgba(153, 153, 153, 0.25);
 }

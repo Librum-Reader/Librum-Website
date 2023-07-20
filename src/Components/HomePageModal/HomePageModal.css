@@ -11,8 +11,8 @@
     height: 290px;
     width: 45%;
     position: absolute;
-    top: 70px;
-    left: 250px;
+    top: 10px;
+    left: 530px;
     border-radius: 10px;
     box-shadow: 0 10px 20px 0 rgba(153, 153, 153, 0.25);
 }

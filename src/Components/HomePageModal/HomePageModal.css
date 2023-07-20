@@ -9,11 +9,11 @@
 }
 
 .modal-container {
-    height: 350px;
+    height: 325px;
     width: 47.5%;
-    position: absolute;
-    top: 140px;
-    left: 570px;
+    position: relative;
+    top: 150px;
+    left: 265px;
     border-radius: 10px;
     box-shadow: 0 10px 20px 0 rgba(153, 153, 153, 0.25);
 }
@@ -25,18 +25,12 @@
     justify-content: center;
 }
 
-.modal-head .checkMark {
-    height: 8em;
-    width: 4em;
-    color: #43C467
-}
-
 .modal-head h2 {
     color: rgb(194, 228, 255);
     font-family: "Lato", sans-serif;
-    font-size: clamp(.8rem, 4vw, 1.85rem);
+    font-size: clamp(1rem, 5vw, 1.85rem);
     position: relative;
-    top: 30px;
+    top: 40px;
 }
 
 .modal-body {
@@ -66,16 +60,16 @@
     font-size: clamp(.6rem,0.87vw,1.1rem);
     font-family: "Lato", sans-serif;
     position: relative;
-    top: 110px;
+    top: 81px;
     display: block;
     width: 530px;
 }
 
 .modal-body button{
     width: 130px;
-    height: 40px;
+    height: 45px;
     position: relative;
-    top: 117px;
+    top: 100px;
     font-size: larger;
     border:none;
     border-radius: 5px;

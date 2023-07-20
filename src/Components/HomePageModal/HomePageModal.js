@@ -5,16 +5,6 @@ import { SiteContext } from "../../Context/Context";
 export default function HomePageModal(props) {
   const { bg } = useContext(SiteContext);
 
-  useEffect(() => {
-    document.body.style.overflowY = "hidden"; //prevent scrolling (y axis) when modal mounts
-
-    return () => {
-      //enable scrolling when modal unmounts
-      document.body.style.scrollBehavior = "smooth";
-      document.body.style.overflowY = "auto";
-    };
-  }, []);
-
   return (
     <div className="modal-background">
       <div
@@ -81,7 +71,7 @@ export default function HomePageModal(props) {
               style={
                 bg === "light"
                   ? {
-                      color: "#3d5bb6",
+                      color: "#a6413d",
                     }
                   : {
                       color: "#946bde",
@@ -96,7 +86,7 @@ export default function HomePageModal(props) {
               style={
                 bg === "light"
                   ? {
-                      color: "#3d5bb6",
+                      color: "#a6413d",
                     }
                   : {
                       color: "#946bde",
@@ -111,7 +101,7 @@ export default function HomePageModal(props) {
               style={
                 bg === "light"
                   ? {
-                      color: "#3d5bb6",
+                      color: "#a6413d",
                     }
                   : {
                       color: "#946bde",
@@ -131,6 +121,7 @@ export default function HomePageModal(props) {
                     color: "white",
                   }
                 : {
+                    backgroundColor: "#946bde",
                     color: "black",
                   }
             }

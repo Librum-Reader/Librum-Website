@@ -21,9 +21,7 @@ export const Homepage = () => {
     setShowModal(true);
     if (localStorage.getItem("Theme")) {
       let theme = JSON.parse(localStorage.getItem("Theme"));
-
       setBg(theme);
-
       return;
     }
   }, []);

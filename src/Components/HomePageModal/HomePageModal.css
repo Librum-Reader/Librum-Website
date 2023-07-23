@@ -60,7 +60,7 @@
     font-size: clamp(.6rem,0.87vw,1.1rem);
     font-family: "Lato", sans-serif;
     position: relative;
-    top: 81px;
+    top: 64px;
     display: block;
     width: 530px;
 }
@@ -69,7 +69,7 @@
     width: 130px;
     height: 45px;
     position: relative;
-    top: 100px;
+    top: 85px;
     font-size: larger;
     border:none;
     border-radius: 5px;

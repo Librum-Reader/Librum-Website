@@ -29,7 +29,7 @@
 .modal-head h2 {
     color: rgb(194, 228, 255);
     font-family: "Lato", sans-serif;
-    font-size: clamp(2rem, 6vw, 1.85rem);
+    font-size: clamp(2.55rem, 6vw, 1.85rem);
     position: relative;
     top: 40px;
 }
@@ -46,10 +46,10 @@
     color:rgb(194, 228, 255);
     font-weight: 500;
     text-align: center;
-    font-size: clamp(1rem,0.88vw,2.1rem);
+    font-size: clamp(1.10rem,0.88vw,2.1rem);
     font-family: "Lato", sans-serif;
     position: relative;
-    top: 60px;
+    top: 65px;
     display: block;
     width: 530px;
 }
@@ -58,19 +58,19 @@
     color:rgb(194, 228, 255);
     font-weight: 500;
     text-align: center;
-    font-size: clamp(.6rem,0.87vw,1.1rem);
+    font-size: clamp(.03rem,0.87vw,1.1rem);
     font-family: "Lato", sans-serif;
     position: relative;
-    top: 155px;
+    top: 135px;
     display: block;
     width: 530px;
 }
 
 .modal-body button{
-    width: 130px;
-    height: 45px;
+    width: 200px;
+    height: 41px;
     position: relative;
-    top: 130px;
+    top: 125px;
     font-size: larger;
     border:none;
     border-radius: 5px;

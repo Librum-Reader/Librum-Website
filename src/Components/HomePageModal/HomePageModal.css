@@ -9,8 +9,8 @@
 }
 
 .modal-container {
-    height: 325px;
-    width: 47.5%;
+    height: 405px;
+    width: 49.5%;
     position: relative;
     top: 150px;
     left: 265px;
@@ -23,12 +23,13 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding-top: 10px;
 }
 
 .modal-head h2 {
     color: rgb(194, 228, 255);
     font-family: "Lato", sans-serif;
-    font-size: clamp(1rem, 5vw, 1.85rem);
+    font-size: clamp(2rem, 6vw, 1.85rem);
     position: relative;
     top: 40px;
 }
@@ -60,7 +61,7 @@
     font-size: clamp(.6rem,0.87vw,1.1rem);
     font-family: "Lato", sans-serif;
     position: relative;
-    top: 64px;
+    top: 120px;
     display: block;
     width: 530px;
 }
@@ -69,7 +70,7 @@
     width: 130px;
     height: 45px;
     position: relative;
-    top: 85px;
+    top: 100px;
     font-size: larger;
     border:none;
     border-radius: 5px;

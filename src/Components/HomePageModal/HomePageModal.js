@@ -54,6 +54,22 @@ export default function HomePageModal(props) {
           </p>
           <br />
           <br />
+          <button
+            onClick={() => props.setOpen(false)}
+            style={
+              bg === "light"
+                ? {
+                    backgroundColor: "#946bde",
+                    color: "white",
+                  }
+                : {
+                    backgroundColor: "#946bde",
+                    color: "black",
+                  }
+            }
+          >
+            Ok
+          </button>
           <p
             className="agreeText"
             style={
@@ -112,22 +128,6 @@ export default function HomePageModal(props) {
               Privacy Policy
             </a>
           </p>
-          <button
-            onClick={() => props.setOpen(false)}
-            style={
-              bg === "light"
-                ? {
-                    backgroundColor: "#946bde",
-                    color: "white",
-                  }
-                : {
-                    backgroundColor: "#946bde",
-                    color: "black",
-                  }
-            }
-          >
-            Ok
-          </button>
         </div>
       </div>
     </div>

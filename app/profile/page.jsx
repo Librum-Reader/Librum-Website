@@ -70,22 +70,28 @@ const UserProfile = () => {
         <Tabs>
           <TabList>
             <Tab>
-              <AiOutlineUser color="#47478f" />{" "}
-              <Text fontSize="sm" ml=".5rem" textColor="text-default">
-                Account
-              </Text>
+              <Flex>
+                <AiOutlineUser color="#47478f" />
+                <Text fontSize="sm" ml=".5rem" textColor="text-default">
+                  Account
+                </Text>
+              </Flex>
             </Tab>
             <Tab>
-              <AiOutlineCloudServer color="white" />{" "}
-              <Text fontSize="sm" ml=".5rem" textColor="text-default">
-                Storage
-              </Text>
+              <Flex>
+                <AiOutlineCloudServer color="#47478f" />{" "}
+                <Text fontSize="sm" ml=".5rem" textColor="text-default">
+                  Storage
+                </Text>
+              </Flex>
             </Tab>
             <Tab>
-              <AiFillHeart color="text-default" />{" "}
-              <Text fontSize="sm" ml=".5rem" textColor="text-default">
-                Support us
-              </Text>
+              <Flex>
+                <AiFillHeart color="#47478f" />{" "}
+                <Text fontSize="sm" ml=".5rem" textColor="text-default">
+                  Support us
+                </Text>
+              </Flex>
             </Tab>
           </TabList>
 

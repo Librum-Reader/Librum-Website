@@ -50,7 +50,7 @@ export default function HomePageModal(props) {
             }
           >
             This website is still being developed, some things might not work as
-            expected.
+            expected. You can reach us at contact@librumreader.com.
           </p>
           <br />
           <br />

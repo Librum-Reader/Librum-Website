@@ -6,13 +6,49 @@ import { extendTheme } from "@chakra-ui/react";
 import { modalTheme } from "./styles/modalTheme";
 
 export function Providers({ children }) {
+  const tokens = {
+    colors: {
+      light: {
+        "bg-default": "white",
+        "text-default": "#47478f",
+      },
+      dark: {
+        "bg-default": "#282c34",
+        "text-default": "white",
+      },
+    },
+  };
+
+  const semanticTokens = {
+    colors: {
+      "bg-default": {
+        default: tokens.colors.light["bg-default"],
+        _dark: tokens.colors.dark["bg-default"],
+      },
+      "text-default": {
+        default: tokens.colors.light["text-default"],
+        _dark: tokens.colors.dark["text-default"],
+      },
+    },
+  };
+
   const theme = extendTheme({
+    initialColorMode: "light",
+    useSystemColorMode: false,
+    semanticTokens,
     fonts: {
       body: `'Lato', sans-serif`,
       heading: `'Lato', sans-serif`,
       text: `'Lato', sans-serif`,
     },
     components: {
+      Progress: {
+        baseStyle: {
+          filledTrack: {
+            bg: "text-default",
+          },
+        },
+      },
       Button: {
         variants: {
           primary: {

@@ -10,7 +10,7 @@ export function Providers({ children }) {
     colors: {
       light: {
         "bg-default": "white",
-        "text-default": "#47478f",
+        "text-default": "#946BDE",
       },
       dark: {
         "bg-default": "#282c34",
@@ -52,37 +52,42 @@ export function Providers({ children }) {
       Button: {
         variants: {
           primary: {
-            bg: "#47478f",
+            bg: "text-default",
             textColor: "white",
             fontSize: "sm",
             borderRadius: "3px",
           },
           secondary: {
             bg: "transparent",
-            textColor: "#47478f",
+            textColor: "text-default",
             fontSize: "sm",
             borderWidth: "1px",
-            borderColor: "#47478f",
+            borderColor: "text-default",
             borderRadius: "3px",
           },
           navLink: {
             bg: "transparent",
-            fontSize: "sm",
-            textColor: "#47478f",
+            fontSize: "md",
+            textColor: "white",
           },
           navButton: {
-            bg: "#47478f",
+            bg: "text-default",
             borderRadius: "3px",
             paddingX: "20px",
             textColor: "white",
-            fontSize: "sm",
+            fontSize: "md",
           },
         },
       },
       Modal: modalTheme,
       Heading: {
         baseStyle: {
-          textColor: "#47478f",
+          textColor: "text-default",
+        },
+      },
+      Text: {
+        baseStyle: {
+          textColor: "text-default",
         },
       },
     },

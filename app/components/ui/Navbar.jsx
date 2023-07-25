@@ -40,6 +40,7 @@ import ProfileButton from "../ui/ProfileButton";
 import { AiFillMail, AiFillGithub } from "react-icons/ai";
 import { FaPatreon } from "react-icons/fa";
 import ContactForm from "./ContactForm";
+import { usePathname } from "next/navigation";
 
 const navLinks = [
   {
@@ -52,15 +53,19 @@ const navLinks = [
   },
 ];
 
-const navLinkComponents = navLinks.map((link, index) => {
-  return (
-    <Link key={index} href={link.href}>
-      <Button variant="navLink">{link.text}</Button>
-    </Link>
-  );
-});
-
 const Navbar = () => {
+  const path = usePathname();
+
+  const navLinkComponents = navLinks.map((link, index) => {
+    return (
+      <Link key={index} href={link.href}>
+        <Button variant={path == "/" ? "navLinkHome" : "navLink"}>
+          {link.text}
+        </Button>
+      </Link>
+    );
+  });
+
   // Redux state for keeping track of whether or not the user is logged in
   const isLoggedIn = useSelector((state) => {
     return state.user.isLoggedIn;
@@ -340,7 +345,10 @@ const Navbar = () => {
           <Spacer />
           <Flex gap="2rem">
             {navLinkComponents}
-            <Button variant="navLink" onClick={onOpen}>
+            <Button
+              variant={path == "/" ? "navLinkHome" : "navLink"}
+              onClick={onOpen}
+            >
               CONTACT
             </Button>
             {isLoggedIn ? <ProfileButton /> : null}

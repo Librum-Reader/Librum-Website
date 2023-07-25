@@ -11,6 +11,8 @@ export function Providers({ children }) {
       light: {
         "bg-default": "white",
         "text-default": "#946BDE",
+        "nav-home": "white",
+        "nav-purple": "#946BDE",
       },
       dark: {
         "bg-default": "#282c34",
@@ -28,6 +30,12 @@ export function Providers({ children }) {
       "text-default": {
         default: tokens.colors.light["text-default"],
         _dark: tokens.colors.dark["text-default"],
+      },
+      "nav-home": {
+        default: tokens.colors.light["nav-home"],
+      },
+      "nav-purple": {
+        default: tokens.colors.light["nav-purple"],
       },
     },
   };
@@ -65,12 +73,31 @@ export function Providers({ children }) {
             borderColor: "text-default",
             borderRadius: "3px",
           },
-          navLink: {
+          navLinkHome: {
             bg: "transparent",
             fontSize: "md",
             textColor: "white",
           },
+          navLink: {
+            bg: "transparent",
+            fontSize: "md",
+            textColor: "nav-purple",
+          },
+          navButtonHome: {
+            bg: "white",
+            borderRadius: "3px",
+            paddingX: "20px",
+            textColor: "white",
+            fontSize: "md",
+          },
           navButton: {
+            bg: "text-default",
+            borderRadius: "3px",
+            paddingX: "20px",
+            textColor: "nav-purple",
+            fontSize: "md",
+          },
+          loginButton: {
             bg: "text-default",
             borderRadius: "3px",
             paddingX: "20px",

@@ -23,7 +23,7 @@ import {
 
 import { BeatLoader } from "react-spinners";
 
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 
 import { useRef, useState, useEffect } from "react";
 
@@ -48,6 +48,8 @@ import {
 import { useCookies } from "react-cookie";
 
 const LoginButton = (props) => {
+  const path = usePathname();
+
   // Cookie bullshit to work around the fact that the authentication for the website is being handled by an external API.
   // We are using react-cookies to set a cookie containing the JWT received from the external API. Then, the existence of
   // this cookie is checked by the middleware function (defined in middleware.js). If JWT does not exist in cookies, then
@@ -192,7 +194,7 @@ const LoginButton = (props) => {
 
   return (
     <>
-      <Button onClick={token ? logOut : onOpenLogin} variant="navButton">
+      <Button onClick={token ? logOut : onOpenLogin} variant="loginButton">
         {token ? "LOGOUT" : "LOGIN"}
       </Button>
       {/* Login Modal */}

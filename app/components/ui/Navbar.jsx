@@ -156,7 +156,7 @@ const Navbar = () => {
               <Card borderRadius="md" w="800px">
                 <CardBody
                   borderRadius="md"
-                  bgGradient="linear(to-r, #DED3F1, #8253D6 )"
+                  bgGradient="linear(to-r, #37366d, #4e4d8d )"
                 >
                   <Flex
                     direction="column"
@@ -167,31 +167,31 @@ const Navbar = () => {
                       <Heading size="lg" mb=".5rem">
                         Contact Information
                       </Heading>
-                      <Text mb="2rem" fontSize="sm" color="#47478f">
+                      <Text mb="2rem" fontSize="sm" color="text-default">
                         Fill out the form if you have any questions, comments,
                         concerns, or bug reports. Our team is 100% responsive,
                         and we reply quickly! Check out other contact options
                         below:
                       </Text>
                       <Flex alignItems="center" gap=".5rem" mb="1rem" ml="1rem">
-                        <AiFillMail color="#47478f" size={20} />
-                        <Text fontSize="sm" color="#47478f">
+                        <AiFillMail color="#946bde" size={20} />
+                        <Text fontSize="sm" color="text-default">
                           <Link href="mailto:help@librumreader.com">
                             help@librumreader.com
                           </Link>
                         </Text>
                       </Flex>
                       <Flex alignItems="center" gap=".5rem" mb="1rem" ml="1rem">
-                        <AiFillMail color="#47478f" size={20} />
-                        <Text fontSize="sm" color="#47478f">
+                        <AiFillMail color="#946bde" size={20} />
+                        <Text fontSize="sm" color="text-default">
                           <Link href="mailto:contact@librumreader.com">
                             contact@librumreader.com
                           </Link>
                         </Text>
                       </Flex>
                       <Flex alignItems="center" gap=".5rem" mb="1rem" ml="1rem">
-                        <AiFillGithub color="#47478f" size={20} />
-                        <Text fontSize="sm" color="#47478f">
+                        <AiFillGithub color="#946bde" size={20} />
+                        <Text fontSize="sm" color="text-default">
                           <Link
                             href="http://github.com/librum-reader"
                             target="#"

@@ -79,3 +79,17 @@ body {
   display: none !important;
   transition: 1s ease-in-out;
 }
+
+.nav-container-gradient {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    145deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(148, 148, 238, 1) 60%,
+    rgba(0, 0, 0, 1) 100%
+  );
+}
+
+.nav-container {
+  background-image: var(--bg-default);
+}

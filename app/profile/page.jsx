@@ -65,27 +65,33 @@ const UserProfile = () => {
   }
 
   return (
-    <Flex background="#282c34" align="center" direction="column" h="100vh">
+    <Flex background="bg-default" align="center" direction="column" h="100vh">
       <Box w="70%" mt="2rem">
         <Tabs>
           <TabList>
             <Tab>
-              <AiOutlineUser color="white" />{" "}
-              <Text fontSize="sm" ml=".5rem" textColor="white">
-                Account
-              </Text>
+              <Flex>
+                <AiOutlineUser color="#47478f" />
+                <Text fontSize="sm" ml=".5rem" textColor="text-default">
+                  Account
+                </Text>
+              </Flex>
             </Tab>
             <Tab>
-              <AiOutlineCloudServer color="white" />{" "}
-              <Text fontSize="sm" ml=".5rem" textColor="white">
-                Storage
-              </Text>
+              <Flex>
+                <AiOutlineCloudServer color="#47478f" />{" "}
+                <Text fontSize="sm" ml=".5rem" textColor="text-default">
+                  Storage
+                </Text>
+              </Flex>
             </Tab>
             <Tab>
-              <AiFillHeart color="white" />{" "}
-              <Text fontSize="sm" ml=".5rem" textColor="white">
-                Support us
-              </Text>
+              <Flex>
+                <AiFillHeart color="#47478f" />{" "}
+                <Text fontSize="sm" ml=".5rem" textColor="text-default">
+                  Support us
+                </Text>
+              </Flex>
             </Tab>
           </TabList>
 
@@ -98,17 +104,27 @@ const UserProfile = () => {
                 <Flex gap="1rem">
                   <Card w="30%" borderRadius="sm">
                     <CardHeader>
-                      <Text fontSize="xs">YOUR TIER</Text>
+                      <Text fontSize="xs" textColor="text-default">
+                        YOUR TIER
+                      </Text>
                     </CardHeader>
                     <CardBody>
                       <Flex direction="column" align="center">
-                        <Text fontSize="xl">BASIC</Text>
-                        <Text fontSize="4xl" fontWeight="700">
+                        <Text fontSize="xl" textColor="text-default">
+                          BASIC
+                        </Text>
+                        <Text
+                          fontSize="4xl"
+                          fontWeight="700"
+                          textColor="text-default"
+                        >
                           0.2GB
                         </Text>
                         <Flex padding="5px" gap=".5rem" mt="1rem">
-                          <Button size="sm">Upgrade</Button>
-                          <Button size="sm" variant="outline">
+                          <Button size="sm" variant="primary">
+                            Upgrade
+                          </Button>
+                          <Button size="sm" variant="secondary">
                             See why we offer multiple tiers
                           </Button>
                         </Flex>
@@ -117,38 +133,65 @@ const UserProfile = () => {
                   </Card>
                   <Card w="70%" borderRadius="sm">
                     <CardHeader>
-                      <Text fontSize="xs">USED STORAGE</Text>
+                      <Text fontSize="xs" textColor="text-default">
+                        USED STORAGE
+                      </Text>
                     </CardHeader>
                     <CardBody>
                       <Flex>
                         <Flex direction="column" width="100%" align="center">
-                          <Text fontSize="4xl" fontWeight="700">
+                          <Text
+                            fontSize="4xl"
+                            fontWeight="700"
+                            textColor="text-default"
+                          >
                             0.05GB
                           </Text>
-                          <Text fontSize="sm">Used Storage</Text>
+                          <Text fontSize="sm" textColor="text-default">
+                            Used Storage
+                          </Text>
                         </Flex>
                         <Flex direction="column" width="100%" align="center">
-                          <Text fontSize="4xl" fontWeight="700">
+                          <Text
+                            fontSize="4xl"
+                            fontWeight="700"
+                            textColor="text-default"
+                          >
                             0.2GB
                           </Text>
-                          <Text fontSize="sm">Remaining Storage</Text>
+                          <Text fontSize="sm" textColor="text-default">
+                            Remaining Storage
+                          </Text>
                         </Flex>
                       </Flex>
-                      <Progress value={10} mt="2rem" height="25px" />
+                      <Progress
+                        value={10}
+                        mt="2rem"
+                        height="25px"
+                        colorScheme="text-default"
+                      />
                     </CardBody>
                   </Card>
                 </Flex>
                 <Flex gap="1rem">
                   <Card w="30%" borderRadius="sm">
                     <CardHeader>
-                      <Text fontSize="xs">YOUR BOOKS</Text>
+                      <Text fontSize="xs" textColor="text-default">
+                        YOUR BOOKS
+                      </Text>
                     </CardHeader>
                     <CardBody>
                       <Flex direction="column" align="center">
-                        <Text fontSize="4xl" fontWeight="700">
+                        <Text
+                          fontSize="4xl"
+                          fontWeight="700"
+                          textColor="text-default"
+                        >
                           6
                         </Text>
-                        <Text fontSize="sm">Books in your Library</Text>
+                        <Text fontSize="sm" textColor="text-default">
+                          Books in your Library
+                        </Text>
                       </Flex>
                     </CardBody>
                   </Card>

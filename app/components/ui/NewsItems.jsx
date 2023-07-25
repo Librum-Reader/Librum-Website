@@ -12,7 +12,7 @@ import {
 
 const NewsItems = (props) => {
   return (
-    <Card bgColor="gray.700" borderRadius="sm">
+    <Card bgColor="bg-default" borderRadius="sm">
       <CardBody>
         <Flex maxW="1300px" gap="4rem" align="center">
           <Image
@@ -24,11 +24,11 @@ const NewsItems = (props) => {
             <Heading size="lg" color="#946bde">
               {props.title}
             </Heading>
-            <Text color="red" fontWeight="bold">
+            <Text color="red" fontWeight="bold" pl=".5rem">
               {props.date}
             </Text>
-            <Text color="white">{props.body}</Text>
-            <Button mt={2} alignSelf="self-start">
+            <Text color="text-default">{props.body}</Text>
+            <Button mt={2} alignSelf="self-start" variant="primary">
               Read More
             </Button>
           </VStack>

@@ -13,6 +13,7 @@ import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
 import { useSelector } from "react-redux";
 import { buttonStyles as Button } from "./styles/buttonStyles";
 import { Providers } from "./providers";
+import Footer from "./components/sections/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -33,6 +34,7 @@ export default function RootLayout({ children }) {
                   <Container>
                     <Navbar />
                     {children}
+                    <Footer />
                   </Container>
                 </Providers>
               </CookiesProvider>

@@ -4,7 +4,7 @@ import NewsItems from "../components/ui/NewsItems";
 
 const News = () => {
   return (
-    <Flex background="#282c34" align="center" direction="column">
+    <Flex background="bg-default" align="center" direction="column">
       <Box>
         <Heading size="2xl" color="#946bde" mt={24} mb={24}>
           News and Updates

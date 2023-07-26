@@ -86,7 +86,7 @@ export default function RootLayout({ children }) {
                       >
                         <ModalBody alignContent="center">
                           <Flex
-                            w="500px"
+                            w="620px"
                             bg="white"
                             p="2rem"
                             borderRadius="md"
@@ -107,6 +107,7 @@ export default function RootLayout({ children }) {
                               <Link href="/termsofservice">
                                 Terms of service
                               </Link>
+                              -<Link href="/disclaimer">Disclaimer</Link>
                             </Flex>
                             <Flex gap="1rem">
                               <Button

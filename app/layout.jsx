@@ -99,7 +99,7 @@ export default function RootLayout({ children }) {
                             <Text align="center">
                               We use cookies to provide the best possible
                               experience. By clicking continue, you agree to
-                              Librum's policies.
+                              Librum&apos;s policies.
                             </Text>
                             <Flex gap=".5rem">
                               <Link href="/cookies">Cookie policy</Link>-

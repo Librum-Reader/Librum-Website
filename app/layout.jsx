@@ -103,8 +103,8 @@ export default function RootLayout({ children }) {
                               policies:
                             </Text>
                             <Flex gap=".5rem">
-                              <Link href="/cookies">Cookie policy</Link>•
-                              <Link href="/privacypolicy">Privacy policy</Link>•
+                              <Link href="/cookies">Cookie policy</Link>-
+                              <Link href="/privacypolicy">Privacy policy</Link>-
                               <Link href="/termsofservice">
                                 Terms of service
                               </Link>

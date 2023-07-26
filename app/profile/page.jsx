@@ -49,7 +49,7 @@ const UserProfile = () => {
     setToken(token);
     setTokenExists(true);
     console.log(token);
-  }, [token]);
+  }, [token, router]);
 
   const { isLoading, error, data } = useQuery({
     queryKey: ["user"],

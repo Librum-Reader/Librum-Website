@@ -97,10 +97,10 @@ export default function RootLayout({ children }) {
                             <Image src="/cookies.svg" w="300px" h="auto" />
                             <Heading size="lg">We use cookies</Heading>
                             <Text align="center">
-                              Librum's website uses a minimal amount of cookies
-                              to provide you with the best possible experience.
-                              By clicking accept, you agree to the website's
-                              policies:
+                              Librum&apos;s website uses a minimal amount of
+                              cookies to provide you with the best possible
+                              experience. By clicking accept, you agree to the
+                              website&apos;s policies:
                             </Text>
                             <Flex gap=".5rem">
                               <Link href="/cookies">Cookie policy</Link>-

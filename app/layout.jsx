@@ -86,80 +86,42 @@ export default function RootLayout({ children }) {
                       >
                         <ModalBody alignContent="center">
                           <Flex
-                            w="800px"
-                            justify="space-between"
+                            w="500px"
                             bg="white"
                             p=".5rem"
                             borderRadius="md"
                             gap="2rem"
+                            direction="column"
+                            align="center"
                           >
-                            <Card
-                              borderRadius="md"
-                              w="auto"
-                              bgGradient="linear(to-r, #37366d, #4e4d8d )"
-                            >
-                              <CardBody>
-                                <Flex
-                                  direction="column"
-                                  align="center"
-                                  justify="space-between"
-                                  h="100%"
-                                >
-                                  <Heading size="lg">In Development</Heading>
-                                  <Image
-                                    src="/development.svg"
-                                    w="400px"
-                                    h="auto"
-                                  />
-                                </Flex>
-                              </CardBody>
-                            </Card>
-                            <Flex w="100%" direction="column" gap="1.5rem">
-                              <Heading size="md">Welcome!</Heading>
-                              <Text>
-                                Our website and app are currently under very
-                                active development. Because of this, some things
-                                might not work as expected. Should you encounter
-                                any problems, please feel free to contact us at{" "}
-                                <Link href="mailto:help@librumreader.com">
-                                  help@librumreader.com
-                                </Link>
-                              </Text>
-                              <Text>
-                                In addition, this website uses minimal cookies
-                                to keep track of things such as whether or not a
-                                user is currently logged in. By continuing, you
-                                agree to the following policies:
-                              </Text>
-                              <Flex
-                                w="100%"
-                                justifyContent="center"
-                                gap="1.5rem"
+                            <Image src="/cookies.svg" w="300px" h="auto" />
+                            <Heading size="lg">We use cookies</Heading>
+                            <Text align="center">
+                              Librum's website uses a minimal amount of cookies
+                              to provide you with the best possible experience.
+                              By clicking accept, you agree to the website's
+                              policies:
+                            </Text>
+                            <Flex gap=".5rem">
+                              <Link href="/cookies">Cookie policy</Link>•
+                              <Link href="/privacypolicy">Privacy policy</Link>•
+                              <Link href="/termsofservice">
+                                Terms of service
+                              </Link>
+                            </Flex>
+                            <Flex gap=".5rem">
+                              <Button
+                                variant="primary"
+                                onClick={onDisclaimerClose}
                               >
-                                <Link href="/termsofservice">
-                                  Terms of Service
-                                </Link>
-                                <Link href="/cookies">Cookies Policy</Link>
-                                <Link href="/privacypolicy">
-                                  Privacy Policy
-                                </Link>
-                              </Flex>
-                              <Flex justify="flex-end" gap="1rem">
-                                <Button
-                                  variant="primary"
-                                  alignSelf="flex-end"
-                                  onClick={onDisclaimerClose}
-                                >
-                                  Accept and continue
-                                </Button>
-                                <Button
-                                  variant="secondary"
-                                  alignSelf="flex-end"
-                                  onClick={onDisclaimerClose}
-                                >
-                                  Decline
-                                </Button>
-                              </Flex>
+                                Accept and continue
+                              </Button>
+                              <Button
+                                variant="secondary"
+                                onClick={onDisclaimerClose}
+                              >
+                                Decline
+                              </Button>
                             </Flex>
                           </Flex>
                         </ModalBody>

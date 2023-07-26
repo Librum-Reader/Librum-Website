@@ -341,7 +341,12 @@ const Navbar = () => {
           className="navbar"
           pb={4}
         >
-          <Image alt="librum logo" src="ereader1.png" />
+          <Flex align="center" gap="1rem">
+            <Image alt="librum logo" src="ereader1.png" />
+            <Heading size="lg" textColor="white">
+              Librum
+            </Heading>
+          </Flex>
           <Spacer />
           <Flex gap="2rem">
             {navLinkComponents}

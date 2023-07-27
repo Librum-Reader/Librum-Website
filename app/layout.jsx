@@ -88,7 +88,7 @@ export default function RootLayout({ children }) {
                           <Flex
                             w="620px"
                             bg="white"
-                            p="2rem"
+                            p="4rem"
                             borderRadius="md"
                             gap="2rem"
                             direction="column"
@@ -96,7 +96,7 @@ export default function RootLayout({ children }) {
                           >
                             <Image src="/cookies.svg" w="300px" h="auto" />
                             <Heading size="lg">We use cookies</Heading>
-                            <Text align="center">
+                            <Text align="center" w="300px">
                               We use cookies to provide the best possible
                               experience. By clicking continue, you agree to
                               Librum&apos;s policies.

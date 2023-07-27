@@ -12,19 +12,19 @@ import {
 const PrivacyPolicy = (props) => {
   return (
     <VStack mt={8} mb={8} ml={24} mr={24} spacing={4} align="flex-start">
-      <Heading size="2xl" color="purple.400">
+      <Heading size="xl" color="purple.400">
         Privacy Policy
       </Heading>
       <Text>Last Updated: July 26, 2023</Text>
-      <Heading size="lg">Interpretation and Definitions</Heading>
-      <Heading size="md">Interpretation</Heading>
+      <Heading size="md">Interpretation and Definitions</Heading>
+      <Heading size="sm">Interpretation</Heading>
       <Text>
         The words of which the initial letter is capitalized have meanings
         defined under the following conditions. The following definitions shall
         have the same meaning regardless of whether they appear in singular or
         in plural.
       </Text>
-      <Heading size="md">Definitions</Heading>
+      <Heading size="sm">Definitions</Heading>
       <Text>
         Account means a unique account created for You to access our Service or
         parts of our Service.
@@ -69,9 +69,9 @@ const PrivacyPolicy = (props) => {
         from the Service infrastructure itself (for example, the duration of a
         page visit).`}
       </Text>
-      <Heading size="lg">Collecting and Using Your Personal Data</Heading>
-      <Heading size="md">Types of Data Collected</Heading>
-      <Heading size="sm">Personal Data</Heading>
+      <Heading size="md">Collecting and Using Your Personal Data</Heading>
+      <Heading size="sm">Types of Data Collected</Heading>
+      <Heading size="xs">Personal Data</Heading>
       <Text>
         While using Our Service, We may ask You to provide Us with certain
         personally identifiable information that can be used to contact or
@@ -88,7 +88,7 @@ const PrivacyPolicy = (props) => {
           through such platforms
         </ListItem>
       </UnorderedList>
-      <Heading size="sm">Usage Data</Heading>
+      <Heading size="xs">Usage Data</Heading>
       <Text>Usage Data is collected automatically when using the Service.</Text>
       <Text>
         {`Usage Data may include information such as Your Device's Internet
@@ -110,7 +110,7 @@ const PrivacyPolicy = (props) => {
         visit our Service or when You access the Service by or through a mobile
         device.
       </Text>
-      <Heading size="md">Use of Your Personal Data</Heading>
+      <Heading size="sm">Use of Your Personal Data</Heading>
       <Text>The Company may use Personal Data for the following purposes:</Text>
       <UnorderedList>
         <ListItem>
@@ -206,7 +206,7 @@ const PrivacyPolicy = (props) => {
           other purpose with Your consent.
         </ListItem>
       </UnorderedList>
-      <Heading size="md">Retention of Your Personal Data</Heading>
+      <Heading size="sm">Retention of Your Personal Data</Heading>
       <Text>
         The Company will retain Your Personal Data only for as long as is
         necessary for the purposes set out in this Privacy Policy. We will
@@ -222,7 +222,7 @@ const PrivacyPolicy = (props) => {
         functionality of Our Service, or We are legally obligated to retain this
         data for longer time Periods.
       </Text>
-      <Heading size="md">Transfer of Your Personal Data</Heading>
+      <Heading size="sm">Transfer of Your Personal Data</Heading>
       <Text>
         {` Your information, including Personal Data, is processed at the Company's
         operating offices and in any other places where the parties involved in
@@ -242,7 +242,7 @@ const PrivacyPolicy = (props) => {
         a country unless there are adequate controls in place including the
         security of Your data and other personal information.
       </Text>
-      <Heading size="lg">Security of Your data</Heading>
+      <Heading size="md">Security of Your data</Heading>
       <Text>
         The security of Your Personal Data is important to Us, but remember that
         no method of transmission over the Internet, or method of electronic
@@ -262,7 +262,7 @@ const PrivacyPolicy = (props) => {
         relevant regulator of a breach and will have procedures in place to deal
         with any suspected personal data breach.
       </Text>
-      <Heading size="lg">Disclosure of your Data</Heading>
+      <Heading size="md">Disclosure of your Data</Heading>
       <Text>
         {`We use several third-party services from Microsoft Corporation, Google
         LLC, and AWS. We send the data necessary to these third-party services
@@ -271,7 +271,7 @@ const PrivacyPolicy = (props) => {
         on our website and the application, without the need for constant “I’m
         not a computer” puzzles.`}
       </Text>
-      <Heading size="lg">Delete Your Personal Data</Heading>
+      <Heading size="md">Delete Your Personal Data</Heading>
       <Text>
         You have the right to delete or request that We assist in deleting the
         Personal Data that We have collected about You.
@@ -291,20 +291,20 @@ const PrivacyPolicy = (props) => {
         Please note, however, that We may need to retain certain information
         when we have a legal obligation or lawful basis to do so.
       </Text>
-      <Heading size="lg">Business Transactions</Heading>
+      <Heading size="md">Business Transactions</Heading>
       <Text>
         If the Company is involved in a merger, acquisition, or asset sale, Your
         Personal Data may be transferred. We will provide notice before Your
         Personal Data is transferred and becomes subject to a different Privacy
         Policy.
       </Text>
-      <Heading size="lg">Law enforcement</Heading>
+      <Heading size="md">Law enforcement</Heading>
       <Text>
         Under certain circumstances, the Company may be required to disclose
         Your Personal Data if required to do so by law or in response to valid
         requests by public authorities (e.g. a court or a government agency).
       </Text>
-      <Heading size="lg">Other legal requirements</Heading>
+      <Heading size="md">Other legal requirements</Heading>
       <Text>
         The Company may disclose Your Personal Data in the good faith belief
         that such action is necessary to:
@@ -323,7 +323,7 @@ const PrivacyPolicy = (props) => {
         </ListItem>
         <ListItem>Protect against legal liability</ListItem>
       </UnorderedList>
-      <Heading size="lg">Opting Out of the App Service</Heading>
+      <Heading size="md">Opting Out of the App Service</Heading>
       <Text>
         You have the option to opt out of several services that we provide, such
         as collectingusage data to display statistics, newsletters sent by
@@ -331,7 +331,7 @@ const PrivacyPolicy = (props) => {
         to opt out of optional services we provide, send us an email, and we
         will assist you.
       </Text>
-      <Heading size="lg">{`Children's Privacy`}</Heading>
+      <Heading size="md">{`Children's Privacy`}</Heading>
       <Text>
         {`Our Service does not address anyone under the age of 13. We do not
         knowingly collect personally identifiable information from anyone under
@@ -344,7 +344,7 @@ const PrivacyPolicy = (props) => {
         requires consent from a parent, We may require Your parent's consent
         before We collect and use that information.`}
       </Text>
-      <Heading size="lg">Links to Other Websites</Heading>
+      <Heading size="md">Links to Other Websites</Heading>
       <Text>
         {`Our Service may contain links to other websites that are not operated by
         Us. If You click on a third-party link, You will be directed to that
@@ -353,7 +353,7 @@ const PrivacyPolicy = (props) => {
         responsibility for the content, privacy policies, or practices of any
         third-party sites or services.`}
       </Text>
-      <Heading size="lg">Changes to this Privacy Policy</Heading>
+      <Heading size="md">Changes to this Privacy Policy</Heading>
       <Text>
         {`We may update Our Privacy Policy sometimes. We will notify You of any
         changes by posting the new Privacy Policy on this page. We will let You
@@ -363,7 +363,7 @@ const PrivacyPolicy = (props) => {
         periodically for any changes. Changes to this Privacy Policy are
         effective when they are posted on this page.`}
       </Text>
-      <Heading size="lg">Contact Us</Heading>
+      <Heading size="md">Contact Us</Heading>
       <Text>
         If you have any questions about this Privacy Policy, You can contact us:
       </Text>

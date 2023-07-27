@@ -96,18 +96,31 @@ export default function RootLayout({ children }) {
                           >
                             <Image src="/cookies.svg" w="300px" h="auto" />
                             <Heading size="lg">We use cookies</Heading>
-                            <Text align="center" w="450px">
-                              We use cookies to provide the best possible
-                              experience. By clicking continue, you agree to
-                              Librum&apos;s policies.
-                            </Text>
-                            <Flex gap=".5rem">
-                              <Link href="/cookies">Cookie policy</Link>-
-                              <Link href="/privacypolicy">Privacy policy</Link>-
-                              <Link href="/termsofservice">
-                                Terms of service
-                              </Link>
-                              -<Link href="/disclaimer">Disclaimer</Link>
+                            <Flex
+                              gap="2rem"
+                              direction="column"
+                              justify="center"
+                            >
+                              <Text align="center">
+                                We use cookies to provide the best possible
+                                experience. By clicking continue, you agree to
+                                Librum&apos;s policies.
+                              </Text>
+                              <Flex
+                                gap=".5rem"
+                                justify="space-between"
+                                w="100%"
+                              >
+                                <Link href="/cookies">Cookie policy</Link>-
+                                <Link href="/privacypolicy">
+                                  Privacy policy
+                                </Link>
+                                -
+                                <Link href="/termsofservice">
+                                  Terms of service
+                                </Link>
+                                -<Link href="/disclaimer">Disclaimer</Link>
+                              </Flex>
                             </Flex>
                             <Flex gap="1rem">
                               <Button

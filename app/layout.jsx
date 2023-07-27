@@ -96,7 +96,7 @@ export default function RootLayout({ children }) {
                           >
                             <Image src="/cookies.svg" w="300px" h="auto" />
                             <Heading size="lg">We use cookies</Heading>
-                            <Text align="center" w="300px">
+                            <Text align="center" w="450px">
                               We use cookies to provide the best possible
                               experience. By clicking continue, you agree to
                               Librum&apos;s policies.

@@ -94,7 +94,7 @@ export default function RootLayout({ children }) {
                             direction="column"
                             align="center"
                           >
-                            <Image src="/cookies.svg" w="300px" h="auto" />
+                            <Image src="/cookies.svg" w="200px" h="auto" />
                             <Heading size="lg">We use cookies</Heading>
                             <Flex
                               gap="2rem"

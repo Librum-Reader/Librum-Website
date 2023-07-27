@@ -57,6 +57,11 @@ export default function RootLayout({ children }) {
     }
   }, []);
 
+  const closeModalAndSetFirstVisit = () => {
+    localStorage.setItem("firstVisit", "false");
+    onDisclaimerClose();
+  };
+
   return (
     <html lang="en">
       <body>
@@ -125,7 +130,7 @@ export default function RootLayout({ children }) {
                             <Flex gap="1rem">
                               <Button
                                 variant="primary"
-                                onClick={onDisclaimerClose}
+                                onClick={closeModalAndSetFirstVisit}
                               >
                                 Accept and continue
                               </Button>

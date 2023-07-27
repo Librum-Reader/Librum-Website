@@ -1,6 +1,6 @@
 - [x] Add the privacy policy page
 - [ ] Add the disclaimer page
-- [ ] Reduce the font size of the other pages with legal documents, to look exactly like on the official version of the website
+- [x] Reduce the font size of the other pages with legal documents, to look exactly like on the official version of the website
 - [x] Switch the whole theme of the website from the current blue-ish color (#47478f) to purple used on the website (#946BDE)
 - [x] Make the items in the navbar white instead of blue and increase the size of the items a bit (including the logo), to look similar to the official one
 - [ ] Add the theme switch ( @slrbristol said that this is mostly done )

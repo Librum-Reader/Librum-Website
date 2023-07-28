@@ -30,7 +30,7 @@ const Showcase = () => {
           <Button w="250px" variant="primary">
             Download
           </Button>
-          <Button w="250px" variant="secondary">
+          <Button w="250px" variant="showcase">
             GitHub
           </Button>
         </VStack>

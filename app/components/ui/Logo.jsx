@@ -1,11 +1,8 @@
 import React from "react";
+import { Image } from "@chakra-ui/react";
 
 const Logo = () => {
-  return (
-    <div className="logo-outer">
-      <div className="logo-inner"></div>
-    </div>
-  );
+  return <Image src="/logo.svg" />;
 };
 
 export default Logo;

@@ -272,7 +272,7 @@ const Navbar = () => {
                       <FormLabel
                         fontSize="sm"
                         fontWeight="bold"
-                        color="#47478f"
+                        color="text-default"
                         alignSelf="start"
                         m="0"
                       >
@@ -289,7 +289,7 @@ const Navbar = () => {
                       <FormLabel
                         fontSize="sm"
                         fontWeight="bold"
-                        color="#47478f"
+                        color="text-default"
                         alignSelf="start"
                         m="0"
                       >
@@ -307,7 +307,7 @@ const Navbar = () => {
                       <FormLabel
                         fontSize="sm"
                         fontWeight="bold"
-                        color="#47478f"
+                        color="text-default"
                         alignSelf="start"
                         m="0"
                       >
@@ -351,7 +351,7 @@ const Navbar = () => {
           <Flex align="center" gap="1rem">
             {/* <Image alt="librum logo" src="ereader1.png" /> */}
             <Logo />
-            <Heading size="lg" textColor="white">
+            <Heading size="lg" textColor="text-default">
               Librum
             </Heading>
           </Flex>
@@ -359,9 +359,9 @@ const Navbar = () => {
           <Flex gap="2rem">
             <Button variant="link" onClick={toggleColorTheme}>
               {colorMode === "dark" ? (
-                <FaSun color="white" size={20} />
+                <FaSun color={path == "/" ? "white" : "white"} size={20} />
               ) : (
-                <FaMoon color="white" size={20} />
+                <FaMoon color={path == "/" ? "white" : "#946BDE"} size={20} />
               )}
             </Button>
             {navLinkComponents}

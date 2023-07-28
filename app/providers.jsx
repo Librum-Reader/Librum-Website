@@ -15,11 +15,15 @@ export function Providers({ children }) {
         "nav-default": "#946BDE",
         "btn-primary-bg": "#946BDE",
         "btn-secondary-border": "#946BDE",
+        "btn-secondary-text": "white",
+        "heading-default": "#946BDE",
       },
       dark: {
         "bg-default": "#282c34",
         "text-default": "white",
         "nav-default": "white",
+        "heading-default": "#946BDE",
+        "btn-secondary-text": "white",
       },
     },
   };
@@ -46,6 +50,14 @@ export function Providers({ children }) {
       },
       "btn-secondary-border": {
         default: tokens.colors.light["btn-secondary-border"],
+      },
+      "btn-secondary-text": {
+        default: tokens.colors.light["btn-secondary-text"],
+        _dark: tokens.colors.dark["btn-secondary-text"],
+      },
+      "heading-default": {
+        default: tokens.colors.light["heading-default"],
+        _dark: tokens.colors.light["heading-default"],
       },
     },
   };
@@ -77,7 +89,15 @@ export function Providers({ children }) {
           },
           secondary: {
             bg: "transparent",
-            textColor: "text-default",
+            textColor: "btn-secondary-text",
+            fontSize: "sm",
+            borderWidth: "1px",
+            borderColor: "btn-secondary-border",
+            borderRadius: "3px",
+          },
+          showcase: {
+            bg: "transparent",
+            textColor: "white",
             fontSize: "sm",
             borderWidth: "1px",
             borderColor: "btn-secondary-border",
@@ -119,7 +139,7 @@ export function Providers({ children }) {
       Modal: modalTheme,
       Heading: {
         baseStyle: {
-          textColor: "text-default",
+          textColor: "heading-default",
         },
       },
       Text: {

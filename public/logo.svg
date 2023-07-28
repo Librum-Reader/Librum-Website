@@ -1,0 +1,11 @@
+    <svg width="400" height="180">
+      <rect
+        x="50"
+        y="20"
+        rx="6"
+        ry="6"
+        width="45"
+        height="45"
+        style="fill:transparent;stroke:#946BDE;stroke-width:7;opacity:1"
+      />
+    </svg>

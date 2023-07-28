@@ -81,7 +81,6 @@ body {
 }
 
 .nav-container-gradient {
-  background: rgb(2, 0, 36);
   background: linear-gradient(
     145deg,
     rgba(2, 0, 36, 1) 0%,
@@ -91,5 +90,26 @@ body {
 }
 
 .nav-container {
-  background-image: var(--bg-default);
+  background-color: #282c34;
+}
+
+.nav-container-light {
+  background-color: white;
+}
+
+.logo-outer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  background-color: #9c34c2;
+  border-radius: 4px;
+}
+
+.logo-inner {
+  width: 30px;
+  height: 30px;
+  background-color: #16143f;
+  border-radius: 4px;
 }

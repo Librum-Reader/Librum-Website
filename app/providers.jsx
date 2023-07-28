@@ -12,11 +12,14 @@ export function Providers({ children }) {
         "bg-default": "white",
         "text-default": "#946BDE",
         "nav-home": "white",
-        "nav-purple": "#946BDE",
+        "nav-default": "#946BDE",
+        "btn-primary-bg": "#946BDE",
+        "btn-secondary-border": "#946BDE",
       },
       dark: {
         "bg-default": "#282c34",
         "text-default": "white",
+        "nav-default": "white",
       },
     },
   };
@@ -34,8 +37,15 @@ export function Providers({ children }) {
       "nav-home": {
         default: tokens.colors.light["nav-home"],
       },
-      "nav-purple": {
-        default: tokens.colors.light["nav-purple"],
+      "nav-default": {
+        default: tokens.colors.light["nav-default"],
+        _dark: tokens.colors.dark["nav-default"],
+      },
+      "btn-primary-bg": {
+        default: tokens.colors.light["btn-primary-bg"],
+      },
+      "btn-secondary-border": {
+        default: tokens.colors.light["btn-secondary-border"],
       },
     },
   };
@@ -60,7 +70,7 @@ export function Providers({ children }) {
       Button: {
         variants: {
           primary: {
-            bg: "text-default",
+            bg: "btn-primary-bg",
             textColor: "white",
             fontSize: "sm",
             borderRadius: "3px",
@@ -70,7 +80,7 @@ export function Providers({ children }) {
             textColor: "text-default",
             fontSize: "sm",
             borderWidth: "1px",
-            borderColor: "text-default",
+            borderColor: "btn-secondary-border",
             borderRadius: "3px",
           },
           navLinkHome: {
@@ -81,7 +91,7 @@ export function Providers({ children }) {
           navLink: {
             bg: "transparent",
             fontSize: "md",
-            textColor: "nav-purple",
+            textColor: "nav-default",
           },
           navButtonHome: {
             bg: "white",
@@ -98,7 +108,7 @@ export function Providers({ children }) {
             fontSize: "md",
           },
           loginButton: {
-            bg: "text-default",
+            bg: "btn-primary-bg",
             borderRadius: "3px",
             paddingX: "20px",
             textColor: "white",

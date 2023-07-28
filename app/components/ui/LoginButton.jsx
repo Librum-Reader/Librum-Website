@@ -35,6 +35,8 @@ import {
   QueryClientProvider,
 } from "@tanstack/react-query";
 
+import Logo from "./Logo";
+
 import { updateLoggedIn, updateUser } from "../../features/user/userSlice";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux/";
@@ -273,25 +275,23 @@ const LoginButton = (props) => {
       >
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader background="#282c34"> </ModalHeader>
+          <ModalHeader background="bg-default"> </ModalHeader>
           <ModalCloseButton />
-          <ModalBody background="#282c34">
+          <ModalBody background="bg-default">
             <Center>
               <Flex direction="column">
                 <Box textAlign="center" mb="1rem">
-                  <Heading size="md" color="white" pb=".5rem">
+                  <Heading size="md" pb=".5rem">
                     Welcome to Librum
                   </Heading>
-                  <Text fontSize="xs" color="white">
+                  <Text fontSize="xs">
                     Your credentials are only used to authenticate you. Your
                     credentials will be stored in a secure database.
                   </Text>
                 </Box>
                 <Flex gap="1rem" mb="1rem">
                   <FormControl>
-                    <FormLabel fontSize="xs" color="white">
-                      First Name
-                    </FormLabel>
+                    <FormLabel fontSize="xs">First Name</FormLabel>
                     <Input
                       fontSize="xs"
                       textColor="white"
@@ -300,9 +300,7 @@ const LoginButton = (props) => {
                     />
                   </FormControl>
                   <FormControl>
-                    <FormLabel fontSize="xs" color="white">
-                      Last Name
-                    </FormLabel>
+                    <FormLabel fontSize="xs">Last Name</FormLabel>
                     <Input
                       fontSize="xs"
                       textColor="white"
@@ -313,9 +311,7 @@ const LoginButton = (props) => {
                 </Flex>
                 <Box>
                   <FormControl>
-                    <FormLabel fontSize="xs" color="white">
-                      Email
-                    </FormLabel>
+                    <FormLabel fontSize="xs">Email</FormLabel>
                     <Input
                       fontSize="xs"
                       textColor="white"
@@ -324,9 +320,7 @@ const LoginButton = (props) => {
                     />
                   </FormControl>
                   <FormControl mt={4}>
-                    <FormLabel fontSize="xs" color="white">
-                      Password
-                    </FormLabel>
+                    <FormLabel fontSize="xs">Password</FormLabel>
                     <Input
                       fontSize="xs"
                       textColor="white"
@@ -334,12 +328,16 @@ const LoginButton = (props) => {
                       onChange={handleRegPass}
                     />
                   </FormControl>
+                  <FormControl mt={4}>
+                    <FormLabel fontSize="xs">Confirm password</FormLabel>
+                    <Input fontSize="xs" textColor="white" />
+                  </FormControl>
                 </Box>
               </Flex>
             </Center>
           </ModalBody>
 
-          <ModalFooter background="#282c34">
+          <ModalFooter background="bg-default">
             <Box width="100%" textAlign="center">
               <Button
                 onClick={() => {
@@ -350,7 +348,7 @@ const LoginButton = (props) => {
                     Password: registerPassword,
                   });
                 }}
-                colorScheme="teal"
+                variant="primary"
                 width="100%"
                 mb="1rem"
               >

@@ -33,12 +33,14 @@ import {
   Stack,
   Slide,
   Fade,
+  useColorMode,
 } from "@chakra-ui/react";
 import Link from "next/link";
 import LoginButton from "../ui/LoginButton";
+import Logo from "./Logo";
 import ProfileButton from "../ui/ProfileButton";
 import { AiFillMail, AiFillGithub } from "react-icons/ai";
-import { FaPatreon } from "react-icons/fa";
+import { FaMoon, FaSun } from "react-icons/fa";
 import ContactForm from "./ContactForm";
 import { usePathname } from "next/navigation";
 
@@ -55,6 +57,11 @@ const navLinks = [
 
 const Navbar = () => {
   const path = usePathname();
+  const { colorMode, toggleColorMode } = useColorMode();
+
+  const toggleColorTheme = () => {
+    toggleColorMode();
+  };
 
   const navLinkComponents = navLinks.map((link, index) => {
     return (
@@ -152,7 +159,7 @@ const Navbar = () => {
           alignContent="center"
         >
           <ModalBody>
-            <Flex bg="white" p=".5rem" borderRadius="md">
+            <Flex bg="bg-default" p=".5rem" borderRadius="md">
               <Card borderRadius="md" w="800px">
                 <CardBody
                   borderRadius="md"
@@ -342,13 +349,21 @@ const Navbar = () => {
           pb={4}
         >
           <Flex align="center" gap="1rem">
-            <Image alt="librum logo" src="ereader1.png" />
+            {/* <Image alt="librum logo" src="ereader1.png" /> */}
+            <Logo />
             <Heading size="lg" textColor="white">
               Librum
             </Heading>
           </Flex>
           <Spacer />
           <Flex gap="2rem">
+            <Button variant="link" onClick={toggleColorTheme}>
+              {colorMode === "dark" ? (
+                <FaSun color="white" size={20} />
+              ) : (
+                <FaMoon color="white" size={20} />
+              )}
+            </Button>
             {navLinkComponents}
             <Button
               variant={path == "/" ? "navLinkHome" : "navLink"}

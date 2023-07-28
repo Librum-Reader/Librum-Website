@@ -13,6 +13,7 @@ import {
 const Footer = () => {
   return (
     <Flex
+      backgroundColor="bg-default"
       justify="center"
       w="100%"
       flexDirection="column"
@@ -20,7 +21,6 @@ const Footer = () => {
       borderColor="text-default"
       borderStyle="dotted"
       pt="2rem"
-      mt="1rem"
     >
       <VStack backgroundColor="bg-default" pb="1rem">
         <Heading size="lg" mb="1rem">

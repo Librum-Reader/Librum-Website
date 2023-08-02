@@ -192,6 +192,16 @@ const LoginButton = (props) => {
 
   const handleRegister = (data) => {
     register.mutate(data);
+    toast({
+      title: "Account Created.",
+      description:
+        "We've created an account for you and have sent a verification link to your email. Please verify your account.",
+      status: "success",
+      duration: 9000,
+      isClosable: true,
+      colorScheme: "purple",
+    });
+    localStorage.setItem("isVerified", "false");
   };
 
   return (

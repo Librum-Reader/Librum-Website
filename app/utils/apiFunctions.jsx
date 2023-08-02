@@ -81,3 +81,26 @@ export const fetchUserInfo = async (data) => {
     console.error(error);
   }
 };
+
+export const getVerifiedStatus = async (token) => {
+  try {
+    console.log(token);
+    const response = await fetch(
+      "https://librum-dev.azurewebsites.net/api/checkIfEmailConfirmed/",
+      {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        method: "GET",
+      }
+    );
+
+    const result = await response.json();
+    console.log(result);
+    return result;
+  } catch (error) {
+    console.error(error);
+  }
+};

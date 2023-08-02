@@ -41,6 +41,8 @@ const inter = Inter({ subsets: ["latin"] });
 
 const queryClient = new QueryClient();
 
+import { getVerifiedStatus } from "./utils/apiFunctions";
+
 export default function RootLayout({ children }) {
   const [firstVisit, setFirstVisit] = useState(true);
   const {
@@ -56,6 +58,22 @@ export default function RootLayout({ children }) {
       onDisclaimerOpen();
     }
   }, []);
+
+  useEffect(() => {
+    const isVerified = localStorage.getItem("isVerified");
+    const token = localStorage.getItem("token");
+    if (!isVerified && token) {
+      const timer = setTimeout(() => {
+        if (getVerifiedStatus(token)) {
+          localStorage.setItem("isVerified", "true");
+        }
+      }, 1000);
+    }
+
+    return () => {
+      timer.s;
+    };
+  });
 
   const closeModalAndSetFirstVisit = () => {
     localStorage.setItem("firstVisit", "false");

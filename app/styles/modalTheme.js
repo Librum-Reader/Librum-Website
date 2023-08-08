@@ -4,30 +4,14 @@ import { createMultiStyleConfigHelpers } from "@chakra-ui/styled-system";
 const { definePartsStyle, defineMultiStyleConfig } =
   createMultiStyleConfigHelpers(parts.keys);
 
-const baseStyle = definePartsStyle({
-  // define the part you're going to style
-  overlay: {
-    bg: "blackAlpha.200", //change the background
-  },
+const defaultVariant = definePartsStyle({
   dialog: {
     borderRadius: "sm",
-    bg: `white`,
-    textColor: `#47478f`,
-  },
-  footer: {
-    bg: `white`,
-    borderRadius: "sm",
-    textColor: `#47478f`,
-  },
-});
-
-const contact = definePartsStyle({
-  dialog: {
-    bg: "red",
+    bg: "bg-modal-default",
+    textColor: "text-default",
   },
 });
 
 export const modalTheme = defineMultiStyleConfig({
-  baseStyle,
-  contact,
+  variants: { defaultVariant },
 });

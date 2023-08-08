@@ -41,7 +41,7 @@ const Footer = () => {
         />
         <Button variant="primary">Send Message</Button>
       </VStack>
-      <Flex w="100%" align="center" justify="flex-start" gap="1rem" m="1rem">
+      <Flex w="100%" align="center" justify="flex-start" gap="1rem" my="1rem">
         <Image alt="librum logo" src="ereader1.png" />
         <Heading size="md">Librum</Heading>
       </Flex>

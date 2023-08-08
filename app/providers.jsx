@@ -4,6 +4,7 @@ import { CacheProvider } from "@emotion/react";
 import { ChakraProvider } from "@chakra-ui/react";
 import { extendTheme } from "@chakra-ui/react";
 import { modalTheme } from "./styles/modalTheme";
+import { inputTheme } from "./styles/inputTheme";
 
 export function Providers({ children }) {
   const tokens = {
@@ -15,15 +16,21 @@ export function Providers({ children }) {
         "nav-default": "#946BDE",
         "btn-primary-bg": "#946BDE",
         "btn-secondary-border": "#946BDE",
-        "btn-secondary-text": "white",
+        "btn-secondary-text": "#946BDE",
         "heading-default": "#946BDE",
+        "bg-input-default": "white",
+        "border-input-default": "#e2e8f0",
+        "bg-modal-default": "white",
       },
       dark: {
         "bg-default": "#282c34",
         "text-default": "white",
         "nav-default": "white",
         "heading-default": "#946BDE",
-        "btn-secondary-text": "white",
+        "btn-secondary-text": "#946BDE",
+        "bg-input-default": "#282c34",
+        "border-input-default": "gray.600",
+        "bg-modal-default": "#282c34",
       },
     },
   };
@@ -57,7 +64,19 @@ export function Providers({ children }) {
       },
       "heading-default": {
         default: tokens.colors.light["heading-default"],
-        _dark: tokens.colors.light["heading-default"],
+        _dark: tokens.colors.dark["heading-default"],
+      },
+      "bg-input-default": {
+        default: tokens.colors.light["bg-input-default"],
+        _dark: tokens.colors.dark["bg-input-default"],
+      },
+      "border-input-default": {
+        default: tokens.colors.light["border-input-default"],
+        _dark: tokens.colors.dark["border-input-default"],
+      },
+      "bg-modal-default": {
+        default: tokens.colors.light["bg-modal-default"],
+        _dark: tokens.colors.dark["bg-modal-default"],
       },
     },
   };
@@ -136,7 +155,7 @@ export function Providers({ children }) {
           },
         },
       },
-      Modal: modalTheme,
+      Modal: modalTheme, // Modals have to have a variant defined for custom styles to work, a known bug in Chakra
       Heading: {
         baseStyle: {
           textColor: "heading-default",
@@ -144,6 +163,15 @@ export function Providers({ children }) {
       },
       Text: {
         baseStyle: {
+          textColor: "text-default",
+        },
+      },
+      Input: inputTheme, // Same as modal, need a pre-defined variant
+      Textarea: {
+        baseStyle: {
+          bg: "bg-input-default",
+          border: "1px solid",
+          borderColor: "border-input-default",
           textColor: "text-default",
         },
       },

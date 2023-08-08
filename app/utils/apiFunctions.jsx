@@ -82,24 +82,26 @@ export const fetchUserInfo = async (data) => {
   }
 };
 
-export const getVerifiedStatus = async (token) => {
+export const getVerifiedStatus = async (email) => {
   try {
-    console.log(token);
+    // console.log(token);
     const response = await fetch(
-      "https://librum-dev.azurewebsites.net/api/checkIfEmailConfirmed/",
+      `https://librum-dev.azurewebsites.net/api/checkIfEmailConfirmed/${email}`,
       {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
+          // Authorization: `Bearer ${token}`,
         },
         method: "GET",
       }
     );
 
     const result = await response.json();
-    console.log(result);
-    return result;
+    if (result == true) {
+      return true;
+    }
+    // return result;
   } catch (error) {
     console.error(error);
   }

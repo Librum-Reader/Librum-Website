@@ -14,22 +14,22 @@ const Alternate = () => {
     {
       title: "Available Everywhere",
       text: "Read on any device, anytime, anywhere. Librum installs in just two clicks, and is designed to run on any device and operating system, no matter if its your phone, tablet, PC, or laptop",
-      image: "/features/devices.png",
+      image: "/screenshots/login-light.png",
     },
     {
       title: "Simple",
       text: "Your books are automatically synced to the cloud, so you can access them at any time through a simple and modern interface",
-      image: "/features/reading.png",
+      image: "/screenshots/simple-light.png",
     },
     {
       title: "Powerful and Secure",
       text: "Librum offers lightning-fast performance, small file-size, quick updates, the ability to customize the application to make it look and feel as you want, and many tools to boost your productivity",
-      image: "/features/offline.png",
+      image: "/screenshots/customize-dark.png",
     },
     {
       title: "Free Books",
       text: "Explore our free online store with access to over 60,000 books. Download books in just 2 clicks and start enjoying your reading journey right away",
-      image: "/features/books.png",
+      image: "/screenshots/library-light.png",
     },
   ];
 
@@ -45,7 +45,7 @@ const Alternate = () => {
             key={index}
           >
             <Card>
-              <CardBody p="4rem">
+              <CardBody p="1rem">
                 <Image
                   src={block.image}
                   className="features-img"

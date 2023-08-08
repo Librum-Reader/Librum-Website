@@ -19,6 +19,7 @@ import {
   Box,
   Flex,
   useToast,
+  Image,
 } from "@chakra-ui/react";
 
 import { BeatLoader } from "react-spinners";
@@ -45,11 +46,23 @@ import {
   fetchUserInfo,
   userLogin,
   userRegistration,
+  getVerifiedStatus,
 } from "../../utils/apiFunctions";
 
 import { useCookies } from "react-cookie";
 
 const LoginButton = (props) => {
+  // Set this to true after user confirms email to trigger login modal
+  const [isEmailConfirmed, setIsEmailConfirmed] = useState();
+
+  useEffect(() => {
+    if (isEmailConfirmed === true) {
+      console.log("User confirmed email");
+    } else if (isEmailConfirmed === false) {
+      console.log("Email not confirmed");
+    }
+  }, [isEmailConfirmed]);
+
   const path = usePathname();
 
   // Cookie bullshit to work around the fact that the authentication for the website is being handled by an external API.
@@ -87,6 +100,13 @@ const LoginButton = (props) => {
     isOpen: isOpenRegister,
     onOpen: onOpenRegister,
     onClose: onCloseRegister,
+  } = useDisclosure();
+
+  // Modal state for email confirmation modal
+  const {
+    isOpen: isOpenConfirmEmail,
+    onOpen: onOpenConfirmEmail,
+    onClose: onCloseConfirmEmail,
   } = useDisclosure();
 
   const initialRef = useRef(null);
@@ -190,18 +210,39 @@ const LoginButton = (props) => {
     onOpenRegister();
   };
 
+  let emailConfirmationInterval;
+
+  const listenForEmailConfirmation = () => {
+    emailConfirmationInterval = setInterval(() => {
+      confirmEmail(registerEmail);
+    }, 4000);
+  };
+
+  const confirmEmail = async (email) => {
+    const result = await getVerifiedStatus(email);
+    if (result == true) {
+      clearInterval(emailConfirmationInterval);
+      onCloseConfirmEmail();
+      onOpenLogin();
+    }
+  };
+
   const handleRegister = (data) => {
     register.mutate(data);
-    toast({
-      title: "Account Created.",
-      description:
-        "We've created an account for you and have sent a verification link to your email. Please verify your account.",
-      status: "success",
-      duration: 9000,
-      isClosable: true,
-      colorScheme: "purple",
-    });
-    localStorage.setItem("isVerified", "false");
+    // toast({
+    //   title: "Account Created.",
+    //   description:
+    //     "We've created an account for you and have sent a verification link to your email. Please verify your account.",
+    //   status: "success",
+    //   duration: 9000,
+    //   isClosable: true,
+    //   colorScheme: "purple",
+    // });
+    // localStorage.setItem("isVerified", "false");
+    onCloseRegister();
+    setIsEmailConfirmed(false);
+    onOpenConfirmEmail();
+    listenForEmailConfirmation();
   };
 
   return (
@@ -215,6 +256,7 @@ const LoginButton = (props) => {
         initialFocusRef={initialRef}
         isOpen={isOpenLogin}
         onClose={onCloseLogin}
+        variant="defaultVariant"
       >
         <ModalOverlay />
         <ModalContent>
@@ -230,23 +272,29 @@ const LoginButton = (props) => {
               </Box>
             </Center>
             <FormControl>
-              <FormLabel fontSize="xs">Email</FormLabel>
+              <FormLabel fontSize="xs" textColor="text-default">
+                Email
+              </FormLabel>
               <Input
                 value={email}
                 onChange={handleEmail}
                 ref={initialRef}
                 placeholder="Enter Your Email"
                 fontSize="xs"
+                variant="defaultVariant"
               />
             </FormControl>
 
             <FormControl mt={4}>
-              <FormLabel fontSize="xs">Password</FormLabel>
+              <FormLabel fontSize="xs" textColor="text-default">
+                Password
+              </FormLabel>
               <Input
                 value={password}
                 onChange={handlePassword}
                 placeholder="Enter Your Password"
                 fontSize="xs"
+                variant="defaultVariant"
               />
             </FormControl>
           </ModalBody>
@@ -282,6 +330,7 @@ const LoginButton = (props) => {
         initialFocusRef={initialRef}
         isOpen={isOpenRegister}
         onClose={onCloseRegister}
+        variant="defaultVariant"
       >
         <ModalOverlay />
         <ModalContent>
@@ -301,46 +350,56 @@ const LoginButton = (props) => {
                 </Box>
                 <Flex gap="1rem" mb="1rem">
                   <FormControl>
-                    <FormLabel fontSize="xs">First Name</FormLabel>
+                    <FormLabel fontSize="xs" textColor="text-default">
+                      First Name
+                    </FormLabel>
                     <Input
                       fontSize="xs"
-                      textColor="white"
                       value={registerFirstName}
                       onChange={handleRegFName}
+                      variant="defaultVariant"
                     />
                   </FormControl>
                   <FormControl>
-                    <FormLabel fontSize="xs">Last Name</FormLabel>
+                    <FormLabel fontSize="xs" textColor="text-default">
+                      Last Name
+                    </FormLabel>
                     <Input
                       fontSize="xs"
-                      textColor="white"
                       value={registerLastName}
                       onChange={handleRegLName}
+                      variant="defaultVariant"
                     />
                   </FormControl>
                 </Flex>
                 <Box>
                   <FormControl>
-                    <FormLabel fontSize="xs">Email</FormLabel>
+                    <FormLabel fontSize="xs" textColor="text-default">
+                      Email
+                    </FormLabel>
                     <Input
                       fontSize="xs"
-                      textColor="white"
                       value={registerEmail}
                       onChange={handleRegEmail}
+                      variant="defaultVariant"
                     />
                   </FormControl>
                   <FormControl mt={4}>
-                    <FormLabel fontSize="xs">Password</FormLabel>
+                    <FormLabel fontSize="xs" textColor="text-default">
+                      Password
+                    </FormLabel>
                     <Input
                       fontSize="xs"
-                      textColor="white"
                       value={registerPassword}
                       onChange={handleRegPass}
+                      variant="defaultVariant"
                     />
                   </FormControl>
                   <FormControl mt={4}>
-                    <FormLabel fontSize="xs">Confirm password</FormLabel>
-                    <Input fontSize="xs" textColor="white" />
+                    <FormLabel fontSize="xs" textColor="text-default">
+                      Confirm password
+                    </FormLabel>
+                    <Input fontSize="xs" variant="defaultVariant" />
                   </FormControl>
                 </Box>
               </Flex>
@@ -366,6 +425,27 @@ const LoginButton = (props) => {
               </Button>
             </Box>
           </ModalFooter>
+        </ModalContent>
+      </Modal>
+      {/* Confirm Email Modal */}
+      <Modal
+        isCentered
+        initialFocusRef={initialRef}
+        isOpen={isOpenConfirmEmail}
+        onClose={onCloseConfirmEmail}
+      >
+        <ModalOverlay />
+        <ModalContent>
+          <ModalBody background="bg-default" borderRadius="2px">
+            <Flex direction="column" align="center" gap="1rem">
+              <Heading size="md">Email confirmation required</Heading>
+              <Text>
+                We've created an account for you and have sent a verification
+                link to your email. This window will automatically close and you
+                will be logged in after confirming your email.
+              </Text>
+            </Flex>
+          </ModalBody>
         </ModalContent>
       </Modal>
     </>

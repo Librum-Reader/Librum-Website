@@ -59,21 +59,21 @@ export default function RootLayout({ children }) {
     }
   }, []);
 
-  useEffect(() => {
-    const isVerified = localStorage.getItem("isVerified");
-    const token = localStorage.getItem("token");
-    if (!isVerified && token) {
-      const timer = setTimeout(() => {
-        if (getVerifiedStatus(token)) {
-          localStorage.setItem("isVerified", "true");
-        }
-      }, 1000);
-    }
+  // useEffect(() => {
+  //   const isVerified = localStorage.getItem("isVerified");
+  //   const token = localStorage.getItem("token");
+  //   if (!isVerified && token) {
+  //     const timer = setTimeout(() => {
+  //       if (getVerifiedStatus(token)) {
+  //         localStorage.setItem("isVerified", "true");
+  //       }
+  //     }, 1000);
+  //   }
 
-    return () => {
-      timer.s;
-    };
-  });
+  //   return () => {
+  //     timer.s;
+  //   };
+  // });
 
   const closeModalAndSetFirstVisit = () => {
     localStorage.setItem("firstVisit", "false");

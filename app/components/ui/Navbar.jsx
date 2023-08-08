@@ -279,12 +279,12 @@ const Navbar = () => {
                         Name
                       </FormLabel>
                       <Input
-                        bgColor="whitesmoke"
                         value={name}
                         onChange={handleName}
                         alignSelf="flex-start"
                         mb=".5rem"
                         size="sm"
+                        variant="defaultVariant"
                       />
                       <FormLabel
                         fontSize="sm"
@@ -296,13 +296,13 @@ const Navbar = () => {
                         Email address
                       </FormLabel>
                       <Input
-                        bgColor="whitesmoke"
                         value={email}
                         onChange={handleEmail}
                         type="email"
                         alignSelf="flex-start"
                         mb=".5rem"
                         size="sm"
+                        variant="defaultVariant"
                       />
                       <FormLabel
                         fontSize="sm"
@@ -314,12 +314,12 @@ const Navbar = () => {
                         Message
                       </FormLabel>
                       <Textarea
-                        bgColor="whitesmoke"
                         value={message}
                         onChange={handleMessage}
                         placeholder="I need help with..."
                         h="200px"
                         size="sm"
+                        variant="defaultVariant"
                       />
                     </VStack>
                     <Flex w="100%" justifyContent="end">

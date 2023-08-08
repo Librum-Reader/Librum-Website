@@ -189,8 +189,6 @@ const LoginButton = (props) => {
     mutationFn: userRegistration,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["register"] });
-      onCloseRegister();
-      onOpenLogin();
     },
   });
 
@@ -440,9 +438,9 @@ const LoginButton = (props) => {
             <Flex direction="column" align="center" gap="1rem">
               <Heading size="md">Email confirmation required</Heading>
               <Text>
-                We've created an account for you and have sent a verification
-                link to your email. This window will automatically close and you
-                will be logged in after confirming your email.
+                We&apos;ve created an account for you and have sent a
+                verification link to your email. This window will automatically
+                close and you will be logged in after confirming your email.
               </Text>
             </Flex>
           </ModalBody>

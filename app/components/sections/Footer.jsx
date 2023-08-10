@@ -27,21 +27,29 @@ const Footer = () => {
           Have any questions or concerns?
         </Heading>
         <Input
-          bgColor="whitesmoke"
           type="email"
           placeholder="Enter your email address"
           w="32rem"
           mb="1rem"
+          variant="defaultVariant"
         />
         <Textarea
-          bgColor="whitesmoke"
           placeholder="Message"
           w="32rem"
           mb="1rem"
+          variant="defaultVariant"
         />
         <Button variant="primary">Send Message</Button>
       </VStack>
-      <Flex w="100%" align="center" justify="flex-start" gap="1rem" my="1rem">
+      <Flex
+        align="center"
+        justify="flex-start"
+        gap="1rem"
+        my="1rem"
+        mx="auto"
+        maxW="1300px"
+        w="100%"
+      >
         <Image alt="librum logo" src="ereader1.png" />
         <Heading size="md">Librum</Heading>
       </Flex>

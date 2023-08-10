@@ -10,6 +10,7 @@ const defaultVariant = definePartsStyle({
     background: "bg-input-default",
     border: "1px solid",
     borderColor: "border-input-default",
+    size: "sm",
   },
 });
 

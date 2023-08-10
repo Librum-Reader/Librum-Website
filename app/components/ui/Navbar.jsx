@@ -283,7 +283,7 @@ const Navbar = () => {
                         onChange={handleName}
                         alignSelf="flex-start"
                         mb=".5rem"
-                        size="sm"
+                        // size="sm"
                         variant="defaultVariant"
                       />
                       <FormLabel
@@ -301,7 +301,7 @@ const Navbar = () => {
                         type="email"
                         alignSelf="flex-start"
                         mb=".5rem"
-                        size="sm"
+                        // size="sm"
                         variant="defaultVariant"
                       />
                       <FormLabel
@@ -318,7 +318,7 @@ const Navbar = () => {
                         onChange={handleMessage}
                         placeholder="I need help with..."
                         h="200px"
-                        size="sm"
+                        // size="sm"
                         variant="defaultVariant"
                       />
                     </VStack>

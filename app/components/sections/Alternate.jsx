@@ -42,7 +42,7 @@ const Alternate = () => {
     <>
       {data.map((block, index) => {
         return (
-          <FeaturesAnimate>
+          <FeaturesAnimate key={index}>
             <Flex
               mx="auto"
               gap="10rem"

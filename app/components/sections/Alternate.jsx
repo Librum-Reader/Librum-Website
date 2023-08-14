@@ -54,7 +54,11 @@ const Alternate = () => {
                 <CardBody p="1rem">
                   <Image
                     src={block.image}
-                    className="features-img"
+                    className={
+                      index % 2 === 0
+                        ? "features-img shadow-left"
+                        : "features-img shadow-right"
+                    }
                     alt="Illustration"
                   />
                 </CardBody>

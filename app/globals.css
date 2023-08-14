@@ -62,6 +62,18 @@ body {
   height: auto;
 }
 
+.shadow-right {
+  -webkit-box-shadow: -93px 200px 130px 19px rgba(175, 206, 240, 0.075);
+  -moz-box-shadow: -93px 200px 130px 19px rgba(175, 206, 240, 0.075);
+  box-shadow: -93px 200px 130px 19px rgba(175, 206, 240, 0.075);
+}
+
+.shadow-left {
+  -webkit-box-shadow: 93px 200px 130px 19px rgba(175, 206, 240, 0.075);
+  -moz-box-shadow: 93px 200px 130px 19px rgba(175, 206, 240, 0.075);
+  box-shadow: 93px 200px 130px 19px rgba(175, 206, 240, 0.075);
+}
+
 .tab-icon {
   padding: 0.5rem;
 }

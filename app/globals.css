@@ -34,6 +34,7 @@ body {
 
 .image {
   height: 700px;
+  width: 700px;
   padding: 20px;
   border-radius: 5px;
   /* border: 2px solid orange; */

@@ -7,7 +7,12 @@ import {
   VStack,
   Card,
   CardBody,
+  Box,
 } from "@chakra-ui/react";
+
+import { motion, useInView, useAnimation } from "framer-motion";
+import { useRef, useEffect } from "react";
+import FeaturesAnimate from "../ui/FeaturesAnimate";
 
 const Alternate = () => {
   const data = [
@@ -37,28 +42,30 @@ const Alternate = () => {
     <>
       {data.map((block, index) => {
         return (
-          <Flex
-            mx="auto"
-            gap="10rem"
-            direction={index % 2 === 0 ? "row" : "row-reverse"}
-            align="center"
-            key={index}
-          >
-            <Card>
-              <CardBody p="1rem">
-                <Image
-                  src={block.image}
-                  className="features-img"
-                  alt="Illustration"
-                />
-              </CardBody>
-            </Card>
+          <FeaturesAnimate>
+            <Flex
+              mx="auto"
+              gap="10rem"
+              direction={index % 2 === 0 ? "row" : "row-reverse"}
+              align="center"
+              key={index}
+            >
+              <Card>
+                <CardBody p="1rem">
+                  <Image
+                    src={block.image}
+                    className="features-img"
+                    alt="Illustration"
+                  />
+                </CardBody>
+              </Card>
 
-            <VStack spacing={6} align="flex-start">
-              <Heading color="#946bde">{block.title}</Heading>
-              <Text color="text-default">{block.text}</Text>
-            </VStack>
-          </Flex>
+              <VStack spacing={6} align="flex-start">
+                <Heading color="#946bde">{block.title}</Heading>
+                <Text color="text-default">{block.text}</Text>
+              </VStack>
+            </Flex>
+          </FeaturesAnimate>
         );
       })}
     </>

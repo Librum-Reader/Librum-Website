@@ -9,7 +9,6 @@ import {
   useColorMode,
 } from "@chakra-ui/react";
 import React from "react";
-import wave from "../../../public/wave.svg";
 import Alternate from "./Alternate";
 
 const Features = () => {
@@ -18,7 +17,7 @@ const Features = () => {
   return (
     <Flex background="bg-default" className="features-container">
       <Image
-        src={colorMode == "light" ? "/wave-light.svg" : "/wave.svg"}
+        src={colorMode == "light" ? "/wave-light.svg" : "/wave.png"}
         className="wave"
       />
       <Box

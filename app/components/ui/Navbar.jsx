@@ -351,7 +351,10 @@ const Navbar = () => {
           <Flex align="center" gap="1rem">
             {/* <Image alt="librum logo" src="ereader1.png" /> */}
             <Logo />
-            <Heading size="lg" textColor="text-default">
+            <Heading
+              size="lg"
+              textColor={path == "/" ? "white" : "text-default"}
+            >
               Librum
             </Heading>
           </Flex>

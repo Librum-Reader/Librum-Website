@@ -13,7 +13,7 @@
     "@chakra-ui/react": "^2.7.1",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
-    "@fontsource/lato": "^5.0.5",
+    "@fontsource/lato": "^5.0.9",
     "@reduxjs/toolkit": "^1.9.5",
     "@tanstack/react-query": "^4.29.19",
     "@types/node": "20.4.1",

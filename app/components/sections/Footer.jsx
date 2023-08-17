@@ -27,19 +27,19 @@ const Footer = () => {
       pt="7.5rem"
     >
       <VStack backgroundColor="bg-default" pb="1rem">
-        <Heading size="lg" mb="1rem">
+        <Heading size="md" mb="1rem">
           Have any questions or concerns?
         </Heading>
         <Input
           type="email"
           placeholder="Enter your email address"
-          w="32rem"
+          w="24rem"
           mb="1rem"
           variant="defaultVariant"
         />
         <Textarea
           placeholder="Message"
-          w="32rem"
+          w="24rem"
           mb="1rem"
           variant="defaultVariant"
         />

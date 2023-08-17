@@ -1,5 +1,7 @@
 "use client";
 
+import "@fontsource/lato";
+
 import { CacheProvider } from "@emotion/react";
 import { ChakraProvider } from "@chakra-ui/react";
 import { extendTheme } from "@chakra-ui/react";
@@ -99,6 +101,11 @@ export function Providers({ children }) {
         },
       },
       Button: {
+        baseStyle: {
+          fontFamily: `'Lato', sans-serif`,
+          letterSpacing: ".15em",
+          fontWeight: "700",
+        },
         variants: {
           primary: {
             bg: "btn-primary-bg",
@@ -164,6 +171,8 @@ export function Providers({ children }) {
       Text: {
         baseStyle: {
           textColor: "text-default",
+          letterSpacing: "1px",
+          lineHeight: "1.6em",
         },
       },
       Input: inputTheme, // Same as modal, need a pre-defined variant

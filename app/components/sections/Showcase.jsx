@@ -47,7 +47,7 @@ const Showcase = () => {
           transition={{ duration: 0.5, delay: 0.25 }}
         >
           <Heading size="2xl">A Simple and Free E-Book Reader</Heading>
-          <Text fontSize="xl">
+          <Text fontSize="xl" textColor="white">
             A clean and simple way to read your books on any device and build
             your own online library
           </Text>

@@ -24,10 +24,10 @@ const Footer = () => {
       borderTop="1px"
       borderColor="text-default"
       borderStyle="dotted"
-      pt="7.5rem"
+      pt="2rem"
     >
       <VStack backgroundColor="bg-default" pb="1rem">
-        <Heading size="md" mb="1rem">
+        <Heading fontSize="1.5rem" mb="1rem">
           Have any questions or concerns?
         </Heading>
         <Input

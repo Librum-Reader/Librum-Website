@@ -14,7 +14,7 @@ const NotFound = () => {
         <Text fontSize="2em" mb="2rem">
           Whoops! Page not found
         </Text>
-        <Image src="./not_found.svg" w="400px" mb="4rem" />
+        <Image src="/not_found.svg" w="400px" mb="4rem" />
       </Flex>
     </Container>
   );

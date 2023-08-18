@@ -23,7 +23,7 @@ const Container = (props) => {
           ? "nav-container-light"
           : "nav-container-dark"
       }
-      height="100vh"
+      height="100%"
     >
       {props.children}
     </Flex>

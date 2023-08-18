@@ -72,7 +72,7 @@ const Footer = () => {
             mb="1rem"
             variant="defaultVariant"
           />
-          <Button variant="primary" size="lg" height="3.5rem">
+          <Button variant="primary" size="lg" height="2.5rem">
             Send Message
           </Button>
         </VStack>
@@ -83,12 +83,17 @@ const Footer = () => {
               Librum
             </Heading>
           </Flex>
-          <Text alignSelf="end" justifySelf="center">
+          <Text alignSelf="center" justifySelf="center">
             © 2023 Librum-Reader, All rights reserved
           </Text>
-          <Link alignSelf="center" justifySelf="end" onClick={onOpen}>
-            Legal
-          </Link>
+          <Flex justifySelf="end" alignSelf="center" align="center" gap="1rem">
+            <Link href="/impressum" alignSelf="center">
+              Impressum
+            </Link>
+            <Link alignSelf="center" justifySelf="end" onClick={onOpen}>
+              Legal
+            </Link>
+          </Flex>
         </Grid>
       </Flex>
     </>

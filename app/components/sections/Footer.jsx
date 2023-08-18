@@ -28,15 +28,20 @@ const Footer = () => {
 
   return (
     <>
-      <Modal isOpen={isOpen} onClose={onClose} variant="defaultVariant">
+      <Modal
+        isOpen={isOpen}
+        onClose={onClose}
+        variant="defaultVariant"
+        isCentered
+      >
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>Librum Legal Information</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             The following pages provide the various legal information pertaining
-            to Librum:
-            <VStack mt="2rem">
+            to Librum-Reader:
+            <VStack mt="2rem" mb=".5rem">
               <Link href="/disclaimer">Legal Disclaimer</Link>
               <Link href="/privacypolicy">Privacy Policy</Link>
               <Link href="/cookies">Cookies Policy</Link>
@@ -76,9 +81,9 @@ const Footer = () => {
             Send Message
           </Button>
         </VStack>
-        <Grid templateColumns="repeat(3, 1fr)" my="1rem" mx="1rem">
+        <Grid templateColumns="repeat(3, 1fr)" mx="1rem" mt="1rem">
           <Flex align="center" gap="1rem">
-            <Image alt="librum logo" src="ereader1.png" />
+            <Image alt="librum logo" src="ereader1.png" w="30px" />
             <Heading size="md" color="text-default">
               Librum
             </Heading>

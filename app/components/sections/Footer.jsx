@@ -47,8 +47,8 @@ const Footer = () => {
             <Flex direction="column">
               The following pages provide the various legal information
               pertaining to Librum-Reader:
-              <VStack mt=".45rem" align="start">
-                <UnorderedList>
+              <VStack mt="1rem" align="start">
+                <UnorderedList mt="0">
                   <ListItem>
                     <Link href="/disclaimer">Legal Disclaimer</Link>
                   </ListItem>

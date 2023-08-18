@@ -42,6 +42,10 @@ body {
   overflow-y: hidden;
 }
 
+.legal-list {
+  list-style-type: latin-in-brackets;
+}
+
 .features-container {
   position: relative;
 }

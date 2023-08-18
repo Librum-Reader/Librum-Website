@@ -12,6 +12,14 @@ const defaultVariant = definePartsStyle({
   },
 });
 
+const legalVariant = definePartsStyle({
+  dialog: {
+    borderRadius: "lg",
+    bg: "bg-modal-default",
+    textColor: "text-default",
+  },
+});
+
 export const modalTheme = defineMultiStyleConfig({
-  variants: { defaultVariant },
+  variants: { defaultVariant, legalVariant },
 });

@@ -31,22 +31,27 @@ const Footer = () => {
       <Modal
         isOpen={isOpen}
         onClose={onClose}
-        variant="defaultVariant"
+        variant="legalVariant"
         isCentered
+        size="xl"
       >
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Librum-Reader Legal Information</ModalHeader>
+          <ModalHeader px="5rem" pt="4.5rem">
+            Librum-Reader Legal Information
+          </ModalHeader>
           <ModalCloseButton />
-          <ModalBody>
-            The following pages provide the various legal information pertaining
-            to Librum-Reader:
-            <VStack mt="2rem" mb=".5rem">
-              <Link href="/disclaimer">Legal Disclaimer</Link>
-              <Link href="/privacypolicy">Privacy Policy</Link>
-              <Link href="/cookies">Cookies Policy</Link>
-              <Link href="/termsofservice">Terms of Service</Link>
-            </VStack>
+          <ModalBody px="5rem" pb="5rem">
+            <Flex direction="column">
+              The following pages provide the various legal information
+              pertaining to Librum-Reader:
+              <VStack mt="2rem" align="start">
+                <Link href="/disclaimer">Legal Disclaimer</Link>
+                <Link href="/privacypolicy">Privacy Policy</Link>
+                <Link href="/cookies">Cookies Policy</Link>
+                <Link href="/termsofservice">Terms of Service</Link>
+              </VStack>
+            </Flex>
           </ModalBody>
         </ModalContent>
       </Modal>

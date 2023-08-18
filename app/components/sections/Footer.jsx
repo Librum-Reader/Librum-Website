@@ -24,7 +24,7 @@ const Footer = () => {
       borderTop="1px"
       borderColor="text-default"
       borderStyle="dotted"
-      pt="6rem"
+      pt="5.5rem"
     >
       <VStack backgroundColor="bg-default" pb="1rem">
         <Heading fontSize="1.5rem" mb="1rem">
@@ -43,7 +43,9 @@ const Footer = () => {
           mb="1rem"
           variant="defaultVariant"
         />
-        <Button variant="primary">Send Message</Button>
+        <Button variant="primary" size="lg">
+          Send Message
+        </Button>
       </VStack>
       <Grid templateColumns="repeat(3, 1fr)" my="1rem" mx="1rem">
         <Flex align="center" gap="1rem">

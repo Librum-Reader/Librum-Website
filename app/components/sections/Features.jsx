@@ -17,7 +17,7 @@ const Features = () => {
   return (
     <Flex background="bg-default" className="features-container">
       <Image
-        src={colorMode == "light" ? "/wave-light.svg" : "/wave.png"}
+        src={colorMode == "light" ? "/wave-light.svg" : "/wave.svg"}
         className="wave"
       />
       <Box

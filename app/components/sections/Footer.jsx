@@ -21,6 +21,8 @@ import {
   ModalBody,
   ModalCloseButton,
   useDisclosure,
+  UnorderedList,
+  ListItem,
 } from "@chakra-ui/react";
 
 const Footer = () => {
@@ -37,19 +39,29 @@ const Footer = () => {
       >
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader px="5rem" pt="4.5rem">
+          <ModalHeader px="4rem" pt="3.5rem">
             Librum-Reader Legal Information
           </ModalHeader>
           <ModalCloseButton />
-          <ModalBody px="5rem" pb="5rem">
+          <ModalBody px="4rem" pb="3rem">
             <Flex direction="column">
               The following pages provide the various legal information
               pertaining to Librum-Reader:
               <VStack mt="2rem" align="start">
-                <Link href="/disclaimer">Legal Disclaimer</Link>
-                <Link href="/privacypolicy">Privacy Policy</Link>
-                <Link href="/cookies">Cookies Policy</Link>
-                <Link href="/termsofservice">Terms of Service</Link>
+                <UnorderedList>
+                  <ListItem>
+                    <Link href="/disclaimer">Legal Disclaimer</Link>
+                  </ListItem>
+                  <ListItem>
+                    <Link href="/privacypolicy">Privacy Policy</Link>
+                  </ListItem>
+                  <ListItem>
+                    <Link href="/cookies">Cookies Policy</Link>
+                  </ListItem>
+                  <ListItem>
+                    <Link href="/termsofservice">Terms of Service</Link>
+                  </ListItem>
+                </UnorderedList>
               </VStack>
             </Flex>
           </ModalBody>

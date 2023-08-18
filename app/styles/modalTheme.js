@@ -18,6 +18,9 @@ const legalVariant = definePartsStyle({
     bg: "bg-modal-default",
     textColor: "text-default",
   },
+  header: {
+    textColor: "#946BDE",
+  },
 });
 
 export const modalTheme = defineMultiStyleConfig({

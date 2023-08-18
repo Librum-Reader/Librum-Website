@@ -36,7 +36,7 @@ const Footer = () => {
       >
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Librum Legal Information</ModalHeader>
+          <ModalHeader>Librum-Reader Legal Information</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             The following pages provide the various legal information pertaining

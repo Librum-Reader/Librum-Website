@@ -43,7 +43,7 @@ const Footer = () => {
           mb="1rem"
           variant="defaultVariant"
         />
-        <Button variant="primary" size="lg">
+        <Button variant="primary" size="lg" height="3.5rem">
           Send Message
         </Button>
       </VStack>

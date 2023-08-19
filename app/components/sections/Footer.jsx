@@ -75,9 +75,9 @@ const Footer = () => {
         borderTop="1px"
         borderColor="text-default"
         borderStyle="dotted"
-        pt="5.5rem"
+        pt="4.5rem"
       >
-        <VStack backgroundColor="bg-default" mb="5.5rem">
+        <VStack backgroundColor="bg-default" mb="4.5rem">
           <Heading fontSize="1.5rem" mb="1rem">
             Have any questions or concerns?
           </Heading>

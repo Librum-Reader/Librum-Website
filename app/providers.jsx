@@ -28,6 +28,8 @@ export function Providers({ children }) {
         "bg-input-default": "white",
         "border-input-default": "#e2e8f0",
         "bg-modal-default": "white",
+        "legal-text": "black",
+        "legal-title": "#946BDE",
       },
       dark: {
         "bg-default": "#282c34",
@@ -38,6 +40,8 @@ export function Providers({ children }) {
         "bg-input-default": "#282c34",
         "border-input-default": "gray.600",
         "bg-modal-default": "#282c34",
+        "legal-text": "white",
+        "legal-title": "#946BDE",
       },
     },
   };
@@ -84,6 +88,14 @@ export function Providers({ children }) {
       "bg-modal-default": {
         default: tokens.colors.light["bg-modal-default"],
         _dark: tokens.colors.dark["bg-modal-default"],
+      },
+      "legal-text": {
+        default: tokens.colors.light["legal-text"],
+        _dark: tokens.colors.dark["legal-text"],
+      },
+      "legal-title": {
+        default: tokens.colors.light["legal-title"],
+        _dark: tokens.colors.dark["legal-title"],
       },
     },
   };

@@ -11,6 +11,7 @@ const Disclaimer = (props) => {
       px="8.5em"
       py="5em"
       mx="auto"
+      maxW="1300px"
     >
       <Heading fontSize="2.5em">DISCLAIMER</Heading>
       <Text mb="3.2em">Last Updated: July 26, 2023</Text>

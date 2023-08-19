@@ -20,6 +20,7 @@ const Cookies = (props) => {
       px="8.5em"
       py="5em"
       mx="auto"
+      maxW="1300px"
     >
       <Heading fontSize="2.5em">COOKIES POLICY</Heading>
       <Text mb="3.2em">Last Updated: July 12, 2023</Text>

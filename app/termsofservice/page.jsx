@@ -74,20 +74,20 @@ const TOS = (props) => {
       <Text textColor="legal-text">2.1 In these terms and conditions:</Text>
       <UnorderedList styleType="lower-alpha" textColor="legal-text">
         <ListItem ml="1em">
-          "we" means Librum-Reader Company (and "us" and "our" should be
-          construed accordingly);
+          &quot;we&quot; means Librum-Reader Company (and &quot;us&quot; and
+          &quot;our&quot; should be construed accordingly);
         </ListItem>
         <ListItem ml="1em">
-          "you" means user or prospective user under these terms and conditions
-          (and "your" should be construed accordingly);
+          &quot;you&quot; means user or prospective user under these terms and
+          conditions (and "your" should be construed accordingly);
         </ListItem>
         <ListItem ml="1em">
           "ebooks" means those ebooks that are available through our services;
           and
         </ListItem>
         <ListItem ml="1em">
-          "your ebooks" means any such ebooks that you have downloaded or
-          uploaded through our website and application and in your Librum
+          &quot;your ebooks&quot; means any such ebooks that you have downloaded
+          or uploaded through our website and application and in your Librum
           library (including any enhanced or upgraded version of the ebooks that
           we may make available to you from time to time).
         </ListItem>
@@ -104,7 +104,7 @@ const TOS = (props) => {
       <List textColor="legal-text">
         <ListItem>
           3.1 The access of ebooks on our website and application constitutes an
-          "invitation to treat" rather than a contractual offer.
+          &quot;invitation to treat&quot; rather than a contractual offer.
         </ListItem>
         <ListItem>
           3.2 No contract will come into force between you and us unless and
@@ -181,7 +181,7 @@ const TOS = (props) => {
           Section 6.4.
         </ListItem>
         <ListItem>
-          6.3 The "permitted uses" of your ebooks are:
+          6.3 The &quot;permitted uses&quot; of your ebooks are:
           <UnorderedList styleType="lower-alpha" textColor="legal-text">
             <ListItem ml="1em">Uploading a copy of your ebooks;</ListItem>
             <ListItem ml="1em">
@@ -191,7 +191,7 @@ const TOS = (props) => {
           </UnorderedList>
         </ListItem>
         <ListItem>
-          6.4 The "prohibited uses" of your downloads are:
+          6.4 The &quot;prohibited uses&quot; of your downloads are:
           <UnorderedList styleType="lower-alpha" textColor="legal-text">
             <ListItem ml="1em">
               the editing, modification, adaptation, or alteration of any ebook
@@ -201,9 +201,9 @@ const TOS = (props) => {
             </ListItem>
             <ListItem ml="1em">
               the use of any ebook (or part thereof) in any way that is unlawful
-              or in breach of any person's legal rights under any applicable
-              law, or in any way that is offensive, indecent, discriminatory or
-              otherwise objectionable;
+              or in breach of any person&apos;s legal rights under any
+              applicable law, or in any way that is offensive, indecent,
+              discriminatory or otherwise objectionable;
             </ListItem>
             <ListItem ml="1em">
               any prohibited commercial use of any ebook (or part thereof); and
@@ -462,7 +462,7 @@ const TOS = (props) => {
           and are not intended to benefit or be enforceable by any third party.
         </ListItem>
         <ListItem>
-          13.2 The exercise of the parties' rights under these terms and
+          13.2 The exercise of the parties&apos; rights under these terms and
           conditions is not subject to the consent of any third party.
         </ListItem>
       </List>
@@ -524,8 +524,8 @@ const TOS = (props) => {
           only.
         </ListItem>
         <ListItem>
-          16.3 The website of the European Union's online dispute resolution
-          platform is available at{" "}
+          16.3 The website of the European Union&apos;s online dispute
+          resolution platform is available at{" "}
           <Link
             href="https://webgate.ec.europa.eu/odr/main"
             textColor="#946BDE"
@@ -547,9 +547,9 @@ const TOS = (props) => {
       </Heading>
       <List textColor="legal-text">
         <ListItem>
-          The ebooks on our website and application are provided on an "as is"
-          basis. We make no warranties or representations about the accuracy or
-          completeness of the information contained in theebooks.
+          The ebooks on our website and application are provided on an &quot;as
+          is&quot; basis. We make no warranties or representations about the
+          accuracy or completeness of the information contained in theebooks.
         </ListItem>
       </List>
       <Heading

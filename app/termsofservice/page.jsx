@@ -79,11 +79,11 @@ const TOS = (props) => {
         </ListItem>
         <ListItem ml="1em">
           &quot;you&quot; means user or prospective user under these terms and
-          conditions (and "your" should be construed accordingly);
+          conditions (and &quot;your&quot; should be construed accordingly);
         </ListItem>
         <ListItem ml="1em">
-          "ebooks" means those ebooks that are available through our services;
-          and
+          &quot;ebooks&quot; means those ebooks that are available through our
+          services; and
         </ListItem>
         <ListItem ml="1em">
           &quot;your ebooks&quot; means any such ebooks that you have downloaded

@@ -100,7 +100,7 @@ const Footer = () => {
         </VStack>
         <Grid templateColumns="repeat(3, 1fr)" mx="1rem" mb="5px">
           <Flex align="center" gap="1rem">
-            <Image alt="librum logo" src="ereader1.png" w="30px" />
+            <Image alt="librum logo" src="Logo.svg" w="30px" />
             <Heading size="md" color="text-default">
               Librum
             </Heading>

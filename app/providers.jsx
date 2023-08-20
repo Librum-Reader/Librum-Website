@@ -108,6 +108,8 @@ export function Providers({ children }) {
       global: {
         body: {
           bg: "bg-default",
+          letterSpacing: "1px",
+          lineHeight: "1.6em",
         },
       },
     },

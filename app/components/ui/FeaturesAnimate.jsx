@@ -21,7 +21,7 @@ const FeaturesAnimate = ({ children }) => {
         hidden: { opacity: 0, y: 75 },
         visible: { opacity: 1, y: 0 },
       }}
-      transition={{ duration: 0.7, delay: 0.7 }}
+      transition={{ duration: 0.7, delay: 0.25 }}
       initial="hidden"
       animate={mainControls}
     >

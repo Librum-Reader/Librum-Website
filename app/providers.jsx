@@ -12,6 +12,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { extendTheme } from "@chakra-ui/react";
 import { modalTheme } from "./styles/modalTheme";
 import { inputTheme } from "./styles/inputTheme";
+import { drawerTheme } from "./styles/drawerTheme";
 
 export function Providers({ children }) {
   const tokens = {
@@ -189,6 +190,7 @@ export function Providers({ children }) {
         },
       },
       Modal: modalTheme, // Modals have to have a variant defined for custom styles to work, a known bug in Chakra
+      Drawer: drawerTheme,
       Heading: {
         baseStyle: {
           textColor: "heading-default",

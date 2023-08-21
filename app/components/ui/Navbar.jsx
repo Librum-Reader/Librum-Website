@@ -34,13 +34,22 @@ import {
   Slide,
   Fade,
   useColorMode,
+  IconButton,
+  Drawer,
+  DrawerBody,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+  Avatar,
 } from "@chakra-ui/react";
 import Link from "next/link";
 import LoginButton from "../ui/LoginButton";
 import Logo from "./Logo";
 import ProfileButton from "../ui/ProfileButton";
 import { AiFillMail, AiFillGithub } from "react-icons/ai";
-import { FaMoon, FaSun } from "react-icons/fa";
+import { FaBars, FaMoon, FaSun } from "react-icons/fa";
 import ContactForm from "./ContactForm";
 import { usePathname } from "next/navigation";
 
@@ -79,6 +88,11 @@ const Navbar = () => {
   });
 
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const {
+    isOpen: isDrawerOpen,
+    onOpen: onDrawerOpen,
+    onClose: onDrawerClose,
+  } = useDisclosure();
 
   const { isOpen: isSlideOpen, onToggle: onSlideToggle } = useDisclosure();
 
@@ -339,7 +353,7 @@ const Navbar = () => {
           </ModalBody>
         </ModalContent>
       </Modal>
-      <Flex width="100%" px="9rem">
+      <Flex width="100%" px={{ base: ".5rem", md: "9rem" }}>
         <Flex
           pt={4}
           width="100%"
@@ -359,7 +373,7 @@ const Navbar = () => {
             </Heading>
           </Flex>
           <Spacer />
-          <Flex gap="2rem">
+          <Flex gap="2rem" display={{ base: "none", lg: "flex" }}>
             <Button variant="link" onClick={toggleColorTheme}>
               {colorMode === "dark" ? (
                 <FaSun color={path == "/" ? "white" : "white"} size={20} />
@@ -377,8 +391,47 @@ const Navbar = () => {
             {isLoggedIn ? <ProfileButton /> : null}
             <LoginButton />
           </Flex>
+          <IconButton
+            icon={<FaBars />}
+            display={{ base: "flex", md: "none" }}
+            onClick={onDrawerOpen}
+          />
         </Flex>
       </Flex>
+      <Drawer
+        isOpen={isDrawerOpen}
+        placement="right"
+        onClose={onDrawerClose}
+        variant="defaultVariant"
+      >
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerCloseButton />
+          <DrawerHeader>
+            <Button variant="link" onClick={toggleColorTheme}>
+              {colorMode === "dark" ? (
+                <FaSun color={"white"} size={20} />
+              ) : (
+                <FaMoon color={"#946BDE"} size={20} />
+              )}
+            </Button>
+          </DrawerHeader>
+          <DrawerBody>
+            <Flex direction="column" justify="space-between" h="100%" pb="1rem">
+              <Flex direction="column" w="100%" align="end" gap="1rem">
+                <Text>HOME</Text>
+                <Text>NEWS</Text>
+                <Text>CONTACT</Text>
+                <Text>LOGOUT</Text>
+              </Flex>
+              <Flex justify="end" align="center" gap="1rem">
+                <Text>John Doe</Text>
+                <Avatar size="sm" />
+              </Flex>
+            </Flex>
+          </DrawerBody>
+        </DrawerContent>
+      </Drawer>
     </>
   );
 };

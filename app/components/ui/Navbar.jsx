@@ -408,25 +408,23 @@ const Navbar = () => {
         <DrawerContent>
           <DrawerCloseButton />
           <DrawerHeader>
-            <Button variant="link" onClick={toggleColorTheme}>
-              {colorMode === "dark" ? (
-                <FaSun color={"white"} size={20} />
-              ) : (
-                <FaMoon color={"#946BDE"} size={20} />
-              )}
-            </Button>
+            {colorMode === "dark" ? (
+              <FaSun color={"white"} size={20} onClick={toggleColorTheme} />
+            ) : (
+              <FaMoon color={"#946BDE"} size={20} onClick={toggleColorTheme} />
+            )}
           </DrawerHeader>
           <DrawerBody>
             <Flex direction="column" justify="space-between" h="100%" pb="1rem">
-              <Flex direction="column" w="100%" align="end" gap="1rem">
+              <Flex direction="column" w="100%" align="start" gap="1rem">
                 <Text>HOME</Text>
                 <Text>NEWS</Text>
                 <Text>CONTACT</Text>
                 <Text>LOGOUT</Text>
               </Flex>
-              <Flex justify="end" align="center" gap="1rem">
-                <Text>John Doe</Text>
+              <Flex justify="start" align="center" gap="1rem">
                 <Avatar size="sm" />
+                <Text>John Doe</Text>
               </Flex>
             </Flex>
           </DrawerBody>

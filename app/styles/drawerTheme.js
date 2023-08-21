@@ -11,6 +11,9 @@ const defaultVariant = definePartsStyle({
     bg: "bg-modal-default",
     textColor: "text-default",
   },
+  header: {
+    pl: "24px",
+  },
 });
 
 export const drawerTheme = defineMultiStyleConfig({

@@ -19,7 +19,7 @@ export function Providers({ children }) {
     colors: {
       light: {
         "bg-default": "white",
-        "text-default": "#946BDE",
+        "text-default": "black",
         "nav-home": "white",
         "nav-default": "#946BDE",
         "btn-primary-bg": "#946BDE",

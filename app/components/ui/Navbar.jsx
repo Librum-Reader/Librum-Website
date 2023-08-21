@@ -47,6 +47,7 @@ import {
 } from "@chakra-ui/react";
 import Link from "next/link";
 import LoginButton from "../ui/LoginButton";
+import LoginButtonMobile from "../ui/LoginButtonMobile";
 import Logo from "./Logo";
 import MobileNavLogo from "./MobileNavLogo";
 import ProfileButton from "../ui/ProfileButton";
@@ -179,7 +180,11 @@ const Navbar = () => {
         >
           <ModalBody>
             <Flex bg="bg-default" p=".5rem" borderRadius="md">
-              <Card borderRadius="md" w="800px">
+              <Card
+                borderRadius="md"
+                w="800px"
+                display={{ base: "none", md: "block" }}
+              >
                 <CardBody
                   borderRadius="md"
                   bgGradient="linear(to-r, #37366d, #4e4d8d )"
@@ -189,7 +194,11 @@ const Navbar = () => {
                     justifyContent="space-between"
                     height="100%"
                   >
-                    <Box w="auto" h="3ß00px">
+                    <Box
+                      w="auto"
+                      h="3ß00px"
+                      display={{ base: "none", md: "block" }}
+                    >
                       <Heading size="lg" mb=".5rem">
                         Contact Information
                       </Heading>
@@ -235,7 +244,12 @@ const Navbar = () => {
                       ></GridItem>
                       <GridItem>
                         <Center>
-                          <Image src="/contact.png" w="250px" h="auto" />
+                          <Image
+                            src="/contact.png"
+                            w="250px"
+                            h="auto"
+                            display={{ base: "none", md: "block" }}
+                          />
                         </Center>
                       </GridItem>
                     </Grid>
@@ -430,21 +444,27 @@ const Navbar = () => {
                 px="24px"
               >
                 <Flex w="100%" justify="space-between" align="center">
-                  <Text>HOME</Text>
+                  <Link href="/" onClick={onDrawerClose}>
+                    HOME
+                  </Link>
                   <FaAngleRight />
                 </Flex>
                 <Flex w="100%" justify="space-between" align="center">
-                  <Text>NEWS</Text>
+                  <Link href="/news" onClick={onDrawerClose}>
+                    NEWS
+                  </Link>
                   <FaAngleRight />
                 </Flex>
                 <Flex w="100%" justify="space-between" align="center">
-                  <Text>CONTACT</Text>
+                  <Link href="" onClick={onOpen}>
+                    CONTACT
+                  </Link>
                   <FaAngleRight />
                 </Flex>
-                <Flex w="100%" justify="space-between" align="center">
-                  <Text>LOGOUT</Text>
+                {/* <Flex w="100%" justify="space-between" align="center">
+                  <Link href="3">LOGOUT</Link>
                   <FaAngleRight />
-                </Flex>
+                </Flex> */}
               </Flex>
               <Flex direction="column" mt="auto">
                 <Divider />
@@ -456,8 +476,9 @@ const Navbar = () => {
                   pb=".5rem"
                 >
                   <Flex align="center" gap="1rem">
-                    <Avatar size="sm" />
-                    <Text>John Doe</Text>
+                    {/* <Avatar size="sm" />
+                    <Text>John Doe</Text> */}
+                    <LoginButtonMobile />
                   </Flex>
                   {colorMode === "dark" ? (
                     <FaSun

@@ -16,6 +16,7 @@ import {
   ModalBody,
   ModalCloseButton,
   useDisclosure,
+  useColorMode,
 } from "@chakra-ui/react";
 
 import { motion, useInView, useAnimation } from "framer-motion";
@@ -24,6 +25,8 @@ import FeaturesAnimate from "../ui/FeaturesAnimate";
 import MobileFeatureCard from "../ui/MobileFeatureCard";
 
 const Alternate = () => {
+  const { colorMode } = useColorMode();
+
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [modalData, setModalData] = useState("");
 
@@ -34,17 +37,20 @@ const Alternate = () => {
       text2:
         "Your time is too valuable to be wasted on badly designed applications.",
       image: "/screenshots/reading_dark.png",
+      image_light: "/screenshots/reading_light.png",
     },
     {
       title: "Your Own Library",
       text: "Create your own personalized online library that you can access from any device, anytime, anywhere.",
       text2: "Librum automatically saves everything you need to the cloud.",
       image: "/screenshots/library_dark.png",
+      image_light: "/screenshots/library_light.png",
     },
     {
       title: "Fully Customizable",
       text: "Customize Librum to make it look and feel the way you want it to. No app is perfect for everyone right away, but we make it possible for you to make it perfect.",
       image: "/screenshots/settings_dark.png",
+      image_light: "/screenshots/settings_light.png",
     },
   ];
 
@@ -68,7 +74,7 @@ const Alternate = () => {
           {/* </ModalBody> */}
         </ModalContent>
       </Modal>
-      <MobileFeatureCard />
+      {/* <MobileFeatureCard /> */}
       {data.map((block, index) => {
         return (
           <FeaturesAnimate key={index}>
@@ -85,7 +91,7 @@ const Alternate = () => {
               <Card flexBasis="fit-content">
                 <CardBody p="1rem">
                   <Image
-                    src={block.image}
+                    src={colorMode === "dark" ? block.image : block.image_light}
                     className={
                       index % 2 === 0
                         ? "features-img shadow-left"

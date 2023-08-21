@@ -339,7 +339,7 @@ const Navbar = () => {
           </ModalBody>
         </ModalContent>
       </Modal>
-      <Flex width="100%" px="4rem">
+      <Flex width="100%" px="8rem">
         <Flex
           pt={4}
           width="100%"

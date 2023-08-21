@@ -8,13 +8,24 @@ import {
   Card,
   CardBody,
   Box,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
 } from "@chakra-ui/react";
 
 import { motion, useInView, useAnimation } from "framer-motion";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import FeaturesAnimate from "../ui/FeaturesAnimate";
 
 const Alternate = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [modalData, setModalData] = useState("");
+
   const data = [
     {
       title: "Simple",
@@ -38,6 +49,24 @@ const Alternate = () => {
 
   return (
     <>
+      <Modal isOpen={isOpen} onClose={onClose} isCentered>
+        <ModalOverlay />
+        <ModalContent>
+          {/* <ModalCloseButton />
+          <ModalHeader></ModalHeader> */}
+          {/* <ModalBody> */}
+          <Flex
+            alignSelf="center"
+            background="bg-default"
+            padding="1rem"
+            borderRadius="lg"
+            w="1400px"
+          >
+            <Image src={modalData} className="modal-img" />
+          </Flex>
+          {/* </ModalBody> */}
+        </ModalContent>
+      </Modal>
       {data.map((block, index) => {
         return (
           <FeaturesAnimate key={index}>
@@ -58,6 +87,10 @@ const Alternate = () => {
                         : "features-img shadow-right"
                     }
                     alt="Illustration"
+                    onClick={() => {
+                      setModalData(block.image);
+                      onOpen();
+                    }}
                   />
                 </CardBody>
               </Card>

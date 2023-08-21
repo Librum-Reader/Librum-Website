@@ -50,10 +50,6 @@ body {
   position: relative;
 }
 
-.features-items {
-  z-index: 99999;
-}
-
 .wave {
   position: absolute;
   top: 0;
@@ -63,6 +59,15 @@ body {
 }
 
 .features-img {
+  width: 100%;
+  height: auto;
+}
+
+.features-img:hover {
+  cursor: pointer;
+}
+
+.modal-img {
   width: 100%;
   height: auto;
 }

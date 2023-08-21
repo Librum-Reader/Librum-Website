@@ -98,7 +98,11 @@ const Alternate = () => {
                 </CardBody>
               </Card>
 
-              <Flex direction="column" align="flex-start" flexBasis="70%">
+              <Flex
+                direction="column"
+                align={{ base: "center", md: "flex-start" }}
+                flexBasis="70%"
+              >
                 <Heading color="#946bde" mb="1.5rem">
                   {block.title}
                 </Heading>

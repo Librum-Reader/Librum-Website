@@ -13,6 +13,7 @@ const Foss = () => {
       w="100%"
       pb="10rem"
       gap="2rem"
+      px="1rem"
     >
       <Heading size="lg" mb="1rem">
         Free and Open Source

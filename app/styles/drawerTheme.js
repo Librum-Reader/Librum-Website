@@ -12,8 +12,11 @@ const defaultVariant = definePartsStyle({
     textColor: "text-default",
   },
   header: {
-    pl: "24px",
+    // pl: "24px",
+    paddingInlineStart: "0",
+    paddingInlineEnd: "0",
   },
+  body: {},
 });
 
 export const drawerTheme = defineMultiStyleConfig({

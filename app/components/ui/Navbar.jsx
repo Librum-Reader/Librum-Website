@@ -43,6 +43,7 @@ import {
   DrawerContent,
   DrawerCloseButton,
   Avatar,
+  Divider,
 } from "@chakra-ui/react";
 import Link from "next/link";
 import LoginButton from "../ui/LoginButton";
@@ -50,7 +51,8 @@ import Logo from "./Logo";
 import MobileNavLogo from "./MobileNavLogo";
 import ProfileButton from "../ui/ProfileButton";
 import { AiFillMail, AiFillGithub } from "react-icons/ai";
-import { FaBars, FaMoon, FaSun, FaAngleRight } from "react-icons/fa";
+import { FaBars, FaMoon, FaSun, FaAngleRight, FaClose } from "react-icons/fa";
+import { GrClose } from "react-icons/gr";
 import ContactForm from "./ContactForm";
 import { usePathname } from "next/navigation";
 
@@ -407,19 +409,21 @@ const Navbar = () => {
       >
         <DrawerOverlay />
         <DrawerContent>
-          <DrawerCloseButton />
-          <DrawerHeader></DrawerHeader>
+          <DrawerHeader>
+            <Divider />
+            <Flex align="center" gap="1rem" mt="1rem" mb="1rem" px="24px">
+              <MobileNavLogo />
+              <Heading
+                size="lg"
+                textColor={colorMode === "dark" ? "white" : "#946BDE"}
+              >
+                Librum
+              </Heading>
+            </Flex>
+            <Divider />
+          </DrawerHeader>
           <DrawerBody>
             <Flex direction="column" h="100%" pb="1rem">
-              <Flex align="center" gap="1rem" mt="2rem" mb="2rem">
-                <MobileNavLogo />
-                <Heading
-                  size="lg"
-                  textColor={colorMode === "dark" ? "white" : "#946BDE"}
-                >
-                  Librum
-                </Heading>
-              </Flex>
               <Flex direction="column" w="100%" align="start" gap="1rem">
                 <Flex w="100%" justify="space-between" align="center">
                   <Text>HOME</Text>
@@ -438,6 +442,7 @@ const Navbar = () => {
                   <FaAngleRight />
                 </Flex>
               </Flex>
+
               <Flex justify="space-between" align="center" mt="auto">
                 <Flex align="center" gap="1rem">
                   <Avatar size="sm" />

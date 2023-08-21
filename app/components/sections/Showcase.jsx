@@ -62,7 +62,7 @@ const Showcase = () => {
             </Button>
           </VStack>
         </ChakraBox>
-        <Box w="50%">
+        <Box w="50%" align="right">
           {/* <ShowcaseAnimation /> */}
           <div className="image lg" ref={container}>
             {/* <img src={image1} alt="" /> */}

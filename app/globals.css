@@ -42,6 +42,10 @@ body {
   overflow-y: hidden;
 }
 
+.res-theme-icon:hover {
+  cursor: pointer;
+}
+
 .legal-list {
   list-style-type: latin-in-brackets;
 }

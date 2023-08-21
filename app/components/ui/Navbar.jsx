@@ -409,9 +409,19 @@ const Navbar = () => {
           <DrawerCloseButton />
           <DrawerHeader>
             {colorMode === "dark" ? (
-              <FaSun color={"white"} size={20} onClick={toggleColorTheme} />
+              <FaSun
+                color={"white"}
+                size={20}
+                onClick={toggleColorTheme}
+                className="res-theme-icon"
+              />
             ) : (
-              <FaMoon color={"#946BDE"} size={20} onClick={toggleColorTheme} />
+              <FaMoon
+                color={"#946BDE"}
+                size={20}
+                onClick={toggleColorTheme}
+                className="res-theme-icon"
+              />
             )}
           </DrawerHeader>
           <DrawerBody>

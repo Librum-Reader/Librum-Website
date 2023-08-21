@@ -32,8 +32,8 @@ const Showcase = () => {
   const ChakraBox = motion(Box);
 
   return (
-    <Flex direction="column" align="center">
-      <Flex align="center" maxW="1300px">
+    <Flex direction="column" align="center" w="100%">
+      <Flex align="center" px="4rem">
         <ChakraBox
           align="flex-start"
           spacing={4}

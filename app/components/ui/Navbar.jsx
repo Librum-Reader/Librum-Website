@@ -51,7 +51,8 @@ import Logo from "./Logo";
 import MobileNavLogo from "./MobileNavLogo";
 import ProfileButton from "../ui/ProfileButton";
 import { AiFillMail, AiFillGithub } from "react-icons/ai";
-import { FaBars, FaMoon, FaSun, FaAngleRight, FaClose } from "react-icons/fa";
+import { FaBars, FaMoon, FaSun, FaAngleRight } from "react-icons/fa";
+import { FaXmark } from "react-icons/fa6";
 import { GrClose } from "react-icons/gr";
 import ContactForm from "./ContactForm";
 import { usePathname } from "next/navigation";
@@ -411,14 +412,17 @@ const Navbar = () => {
         <DrawerContent>
           <DrawerHeader>
             <Divider />
-            <Flex align="center" gap="1rem" mt="1rem" mb="1rem" px="24px">
-              <MobileNavLogo />
-              <Heading
-                size="lg"
-                textColor={colorMode === "dark" ? "white" : "#946BDE"}
-              >
-                Librum
-              </Heading>
+            <Flex align="center" justify="space-between" pr="24px">
+              <Flex align="center" gap="1rem" mt="1rem" mb="1rem" px="24px">
+                <MobileNavLogo />
+                <Heading
+                  size="lg"
+                  textColor={colorMode === "dark" ? "white" : "#946BDE"}
+                >
+                  Librum
+                </Heading>
+              </Flex>
+              <FaXmark className="res-theme-icon" onClick={onDrawerClose} />
             </Flex>
             <Divider />
           </DrawerHeader>

@@ -49,7 +49,7 @@ import LoginButton from "../ui/LoginButton";
 import Logo from "./Logo";
 import ProfileButton from "../ui/ProfileButton";
 import { AiFillMail, AiFillGithub } from "react-icons/ai";
-import { FaBars, FaMoon, FaSun } from "react-icons/fa";
+import { FaBars, FaMoon, FaSun, FaAngleRight } from "react-icons/fa";
 import ContactForm from "./ContactForm";
 import { usePathname } from "next/navigation";
 
@@ -427,10 +427,22 @@ const Navbar = () => {
           <DrawerBody>
             <Flex direction="column" justify="space-between" h="100%" pb="1rem">
               <Flex direction="column" w="100%" align="start" gap="1rem">
-                <Text>HOME</Text>
-                <Text>NEWS</Text>
-                <Text>CONTACT</Text>
-                <Text>LOGOUT</Text>
+                <Flex w="100%" justify="space-between">
+                  <Text>HOME</Text>
+                  <FaAngleRight />
+                </Flex>
+                <Flex w="100%" justify="space-between">
+                  <Text>NEWS</Text>
+                  <FaAngleRight />
+                </Flex>
+                <Flex w="100%" justify="space-between">
+                  <Text>CONTACT</Text>
+                  <FaAngleRight />
+                </Flex>
+                <Flex w="100%" justify="space-between">
+                  <Text>LOGOUT</Text>
+                  <FaAngleRight />
+                </Flex>
               </Flex>
               <Flex justify="start" align="center" gap="1rem">
                 <Avatar size="sm" />

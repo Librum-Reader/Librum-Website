@@ -21,6 +21,7 @@ import {
 import { motion, useInView, useAnimation } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import FeaturesAnimate from "../ui/FeaturesAnimate";
+import MobileFeatureCard from "../ui/MobileFeatureCard";
 
 const Alternate = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -67,6 +68,7 @@ const Alternate = () => {
           {/* </ModalBody> */}
         </ModalContent>
       </Modal>
+      <MobileFeatureCard />
       {data.map((block, index) => {
         return (
           <FeaturesAnimate key={index}>

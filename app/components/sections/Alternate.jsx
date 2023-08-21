@@ -106,9 +106,19 @@ const Alternate = () => {
                 <Heading color="#946bde" mb="1.5rem">
                   {block.title}
                 </Heading>
-                <Text color="text-default">{block.text}</Text>
+                <Text
+                  color="text-default"
+                  textAlign={{ base: "center", md: "left" }}
+                >
+                  {block.text}
+                </Text>
                 {block.text2 ? (
-                  <Text color="text-default">{block.text2}</Text>
+                  <Text
+                    color="text-default"
+                    textAlign={{ base: "center", md: "left" }}
+                  >
+                    {block.text2}
+                  </Text>
                 ) : null}
               </Flex>
             </Flex>

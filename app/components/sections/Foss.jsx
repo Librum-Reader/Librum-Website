@@ -18,7 +18,7 @@ const Foss = () => {
       <Heading size="lg" mb="1rem">
         Free and Open Source
       </Heading>
-      <Text>
+      <Text textAlign="center">
         Our code is open source so feel free to propose a new feature or
         improvement on it . Also check out our blog for latest updates and
         downloads.

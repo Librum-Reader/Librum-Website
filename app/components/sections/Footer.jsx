@@ -105,7 +105,7 @@ const Footer = () => {
               Librum
             </Heading>
           </Flex>
-          <Text alignSelf="center" justifySelf="center">
+          <Text fontSize="sm" alignSelf="center" justifySelf="center">
             © 2023 Librum-Reader, All rights reserved
           </Text>
           <Flex justifySelf="end" alignSelf="center" align="center" gap="1rem">

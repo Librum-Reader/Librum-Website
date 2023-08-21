@@ -20,8 +20,8 @@ const Features = () => {
         src={colorMode == "light" ? "/wave-light.svg" : "/wave.svg"}
         className="wave"
       />
-      <Box px="8rem" mt="10rem" mb="10rem" className="features-items">
-        <Flex mx="auto" gap="10rem" direction="column">
+      <Box px="9rem" mt="10rem" mb="10rem" className="features-items">
+        <Flex gap="10rem" direction="column" w="100%">
           <Alternate />
         </Flex>
       </Box>

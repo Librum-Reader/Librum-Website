@@ -42,14 +42,13 @@ const Alternate = () => {
         return (
           <FeaturesAnimate key={index}>
             <Flex
-              mx="auto"
-              gap="15rem"
+              // mx="auto"
+              gap="17rem"
               direction={index % 2 === 0 ? "row" : "row-reverse"}
               align="center"
               key={index}
-              mt="-5rem"
             >
-              <Card>
+              <Card flexBasis="fit-content">
                 <CardBody p="1rem">
                   <Image
                     src={block.image}
@@ -63,7 +62,7 @@ const Alternate = () => {
                 </CardBody>
               </Card>
 
-              <Flex direction="column" align="flex-start">
+              <Flex direction="column" align="flex-start" flexBasis="70%">
                 <Heading color="#946bde" mb="1.5rem">
                   {block.title}
                 </Heading>

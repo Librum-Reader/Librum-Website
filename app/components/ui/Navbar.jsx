@@ -426,8 +426,14 @@ const Navbar = () => {
             <Divider />
           </DrawerHeader>
           <DrawerBody>
-            <Flex direction="column" h="100%" pb="1rem">
-              <Flex direction="column" w="100%" align="start" gap="1rem">
+            <Flex direction="column" h="100%">
+              <Flex
+                direction="column"
+                w="100%"
+                align="start"
+                gap="1rem"
+                px="24px"
+              >
                 <Flex w="100%" justify="space-between" align="center">
                   <Text>HOME</Text>
                   <FaAngleRight />
@@ -445,27 +451,35 @@ const Navbar = () => {
                   <FaAngleRight />
                 </Flex>
               </Flex>
-
-              <Flex justify="space-between" align="center" mt="auto">
-                <Flex align="center" gap="1rem">
-                  <Avatar size="sm" />
-                  <Text>John Doe</Text>
+              <Flex direction="column" mt="auto">
+                <Divider />
+                <Flex
+                  justify="space-between"
+                  align="center"
+                  px="24px"
+                  pt="1rem"
+                  pb=".5rem"
+                >
+                  <Flex align="center" gap="1rem">
+                    <Avatar size="sm" />
+                    <Text>John Doe</Text>
+                  </Flex>
+                  {colorMode === "dark" ? (
+                    <FaSun
+                      color={"white"}
+                      size={20}
+                      onClick={toggleColorTheme}
+                      className="res-theme-icon"
+                    />
+                  ) : (
+                    <FaMoon
+                      color={"#946BDE"}
+                      size={20}
+                      onClick={toggleColorTheme}
+                      className="res-theme-icon"
+                    />
+                  )}
                 </Flex>
-                {colorMode === "dark" ? (
-                  <FaSun
-                    color={"white"}
-                    size={20}
-                    onClick={toggleColorTheme}
-                    className="res-theme-icon"
-                  />
-                ) : (
-                  <FaMoon
-                    color={"#946BDE"}
-                    size={20}
-                    onClick={toggleColorTheme}
-                    className="res-theme-icon"
-                  />
-                )}
               </Flex>
             </Flex>
           </DrawerBody>

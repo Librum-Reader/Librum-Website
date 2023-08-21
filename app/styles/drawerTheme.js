@@ -17,7 +17,10 @@ const defaultVariant = definePartsStyle({
     paddingInlineEnd: "0",
     paddingTop: "0",
   },
-  body: {},
+  body: {
+    paddingInlineStart: "0",
+    paddingInlineEnd: "0",
+  },
 });
 
 export const drawerTheme = defineMultiStyleConfig({

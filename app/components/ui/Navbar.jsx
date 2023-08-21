@@ -47,6 +47,7 @@ import {
 import Link from "next/link";
 import LoginButton from "../ui/LoginButton";
 import Logo from "./Logo";
+import MobileNavLogo from "./MobileNavLogo";
 import ProfileButton from "../ui/ProfileButton";
 import { AiFillMail, AiFillGithub } from "react-icons/ai";
 import { FaBars, FaMoon, FaSun, FaAngleRight } from "react-icons/fa";
@@ -407,32 +408,19 @@ const Navbar = () => {
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton />
-          <DrawerHeader>
-            {colorMode === "dark" ? (
-              <FaSun
-                color={"white"}
-                size={20}
-                onClick={toggleColorTheme}
-                className="res-theme-icon"
-              />
-            ) : (
-              <FaMoon
-                color={"#946BDE"}
-                size={20}
-                onClick={toggleColorTheme}
-                className="res-theme-icon"
-              />
-            )}
-          </DrawerHeader>
+          <DrawerHeader></DrawerHeader>
           <DrawerBody>
-            <Flex direction="column" justify="space-between" h="100%" pb="1rem">
-              <Flex
-                direction="column"
-                w="100%"
-                align="start"
-                gap="1rem"
-                mt="4rem"
-              >
+            <Flex direction="column" h="100%" pb="1rem">
+              <Flex align="center" gap="1rem" mt="2rem" mb="2rem">
+                <MobileNavLogo />
+                <Heading
+                  size="lg"
+                  textColor={colorMode === "dark" ? "white" : "#946BDE"}
+                >
+                  Librum
+                </Heading>
+              </Flex>
+              <Flex direction="column" w="100%" align="start" gap="1rem">
                 <Flex w="100%" justify="space-between" align="center">
                   <Text>HOME</Text>
                   <FaAngleRight />
@@ -450,9 +438,26 @@ const Navbar = () => {
                   <FaAngleRight />
                 </Flex>
               </Flex>
-              <Flex justify="start" align="center" gap="1rem">
-                <Avatar size="sm" />
-                <Text>John Doe</Text>
+              <Flex justify="space-between" align="center" mt="auto">
+                <Flex align="center" gap="1rem">
+                  <Avatar size="sm" />
+                  <Text>John Doe</Text>
+                </Flex>
+                {colorMode === "dark" ? (
+                  <FaSun
+                    color={"white"}
+                    size={20}
+                    onClick={toggleColorTheme}
+                    className="res-theme-icon"
+                  />
+                ) : (
+                  <FaMoon
+                    color={"#946BDE"}
+                    size={20}
+                    onClick={toggleColorTheme}
+                    className="res-theme-icon"
+                  />
+                )}
               </Flex>
             </Flex>
           </DrawerBody>

@@ -72,8 +72,11 @@ const Alternate = () => {
           <FeaturesAnimate key={index}>
             <Flex
               // mx="auto"
-              gap="15rem"
-              direction={index % 2 === 0 ? "row" : "row-reverse"}
+              gap={{ base: "2rem", md: "15rem" }}
+              direction={{
+                base: "column",
+                md: index % 2 === 0 ? "row" : "row-reverse",
+              }}
               align="center"
               key={index}
             >

@@ -15,6 +15,7 @@ const defaultVariant = definePartsStyle({
     // pl: "24px",
     paddingInlineStart: "0",
     paddingInlineEnd: "0",
+    paddingTop: "0",
   },
   body: {},
 });

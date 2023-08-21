@@ -19,8 +19,14 @@ const Features = () => {
       <Image
         src={colorMode == "light" ? "/wave-light.svg" : "/wave.svg"}
         className="wave"
+        display={{ base: "none", md: "block" }}
       />
-      <Box px="9rem" mt="10rem" mb="10rem" className="features-items">
+      <Box
+        px={{ base: "1rem", md: "9rem" }}
+        mt={{ base: "1rem", md: "10rem" }}
+        mb={{ base: "6rem", md: "10rem" }}
+        className="features-items"
+      >
         <Flex gap="10rem" direction="column" w="100%">
           <Alternate />
         </Flex>

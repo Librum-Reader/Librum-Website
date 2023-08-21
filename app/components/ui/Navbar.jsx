@@ -411,7 +411,6 @@ const Navbar = () => {
         <DrawerOverlay />
         <DrawerContent>
           <DrawerHeader>
-            <Divider />
             <Flex align="center" justify="space-between" pr="24px">
               <Flex align="center" gap="1rem" mt="1rem" mb="1rem" px="24px">
                 <MobileNavLogo />

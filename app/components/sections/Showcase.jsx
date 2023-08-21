@@ -33,11 +33,16 @@ const Showcase = () => {
 
   return (
     <Flex direction="column" align="center" w="100%">
-      <Flex align="center" px="4rem">
+      <Flex
+        align="center"
+        px="4rem"
+        pt={{ base: "4rem", md: "0" }}
+        pb={{ base: "4rem", md: "0" }}
+      >
         <ChakraBox
           align="flex-start"
           spacing={4}
-          w="50%"
+          w={{ base: "100%", md: "50%" }}
           variants={{
             hidden: { opacity: 0, y: 75 },
             visible: { opacity: 1, y: 0 },
@@ -53,7 +58,12 @@ const Showcase = () => {
             A clean and simple way to read your books on any device and build
             your own online library
           </Text>
-          <VStack align="flex-start" mt="2rem" spacing="6">
+          <VStack
+            align={{ base: "center", md: "flex-start" }}
+            mt="2rem"
+            spacing="6"
+            mb="2rem"
+          >
             <Button w="250px" variant="primary">
               Download
             </Button>
@@ -62,7 +72,7 @@ const Showcase = () => {
             </Button>
           </VStack>
         </ChakraBox>
-        <Box w="50%" align="right">
+        <Box w="50%" align="right" display={{ base: "none", md: "flex" }}>
           {/* <ShowcaseAnimation /> */}
           <div className="image lg" ref={container}>
             {/* <img src={image1} alt="" /> */}

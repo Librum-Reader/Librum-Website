@@ -17,24 +17,19 @@ import FeaturesAnimate from "../ui/FeaturesAnimate";
 const Alternate = () => {
   const data = [
     {
-      title: "Available Everywhere",
-      text: "Read on any device, anytime, anywhere. Librum installs in just two clicks, and is designed to run on any device and operating system, no matter if its your phone, tablet, PC, or laptop",
-      image: "/screenshots/login-light.png",
-    },
-    {
       title: "Simple",
-      text: "Your books are automatically synced to the cloud, so you can access them at any time through a simple and modern interface",
-      image: "/screenshots/simple-light.png",
+      text: "Focus on what actually matters, using a simple and straight forward interface. Your time is too valuable to be wasted on badly designed applications.",
+      image: "/screenshots/reading_dark.png",
     },
     {
-      title: "Powerful and Secure",
-      text: "Librum offers lightning-fast performance, small file-size, quick updates, the ability to customize the application to make it look and feel as you want, and many tools to boost your productivity",
-      image: "/screenshots/customize-dark.png",
+      title: "Your Own Library",
+      text: "Create your own personalized online library that you can access from any device, anytime, anywhere. Librum automatically saves everything you need to the cloud.",
+      image: "/screenshots/library_dark.png",
     },
     {
-      title: "Free Books",
-      text: "Explore our free online store with access to over 60,000 books. Download books in just 2 clicks and start enjoying your reading journey right away",
-      image: "/screenshots/library-light.png",
+      title: "Fully Customizable",
+      text: "Customize Librum to make it look and feel the way you want it to. No app is perfect for everyone right away, but we make it possible for you to make it perfect.",
+      image: "/screenshots/settings_dark.png",
     },
   ];
 
@@ -45,10 +40,11 @@ const Alternate = () => {
           <FeaturesAnimate key={index}>
             <Flex
               mx="auto"
-              gap="14rem"
+              gap="20rem"
               direction={index % 2 === 0 ? "row" : "row-reverse"}
               align="center"
               key={index}
+              mt="-5rem"
             >
               <Card>
                 <CardBody p="1rem">

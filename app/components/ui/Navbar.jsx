@@ -56,6 +56,7 @@ import { FaXmark } from "react-icons/fa6";
 import { GrClose } from "react-icons/gr";
 import ContactForm from "./ContactForm";
 import { usePathname } from "next/navigation";
+import ThemeToggle from "./ThemeToggle";
 
 const navLinks = [
   {
@@ -70,12 +71,12 @@ const navLinks = [
 
 const Navbar = () => {
   const path = usePathname();
+
   const { colorMode, toggleColorMode } = useColorMode();
 
   const toggleColorTheme = () => {
     toggleColorMode();
   };
-
   const navLinkComponents = navLinks.map((link, index) => {
     return (
       <Link key={index} href={link.href}>
@@ -368,6 +369,7 @@ const Navbar = () => {
         >
           <Flex align="center" gap="1rem">
             {/* <Image alt="librum logo" src="ereader1.png" /> */}
+            <ThemeToggle />
             <Logo />
             <Heading
               size="lg"
@@ -378,13 +380,6 @@ const Navbar = () => {
           </Flex>
           <Spacer />
           <Flex gap="2rem" display={{ base: "none", lg: "flex" }}>
-            <Button variant="link" onClick={toggleColorTheme}>
-              {colorMode === "dark" ? (
-                <FaSun color={path == "/" ? "white" : "white"} size={20} />
-              ) : (
-                <FaMoon color={path == "/" ? "white" : "#946BDE"} size={20} />
-              )}
-            </Button>
             {navLinkComponents}
             <Button
               variant={path == "/" ? "navLinkHome" : "navLink"}

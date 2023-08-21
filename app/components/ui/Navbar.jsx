@@ -426,20 +426,26 @@ const Navbar = () => {
           </DrawerHeader>
           <DrawerBody>
             <Flex direction="column" justify="space-between" h="100%" pb="1rem">
-              <Flex direction="column" w="100%" align="start" gap="1rem">
-                <Flex w="100%" justify="space-between">
+              <Flex
+                direction="column"
+                w="100%"
+                align="start"
+                gap="1rem"
+                mt="4rem"
+              >
+                <Flex w="100%" justify="space-between" align="center">
                   <Text>HOME</Text>
                   <FaAngleRight />
                 </Flex>
-                <Flex w="100%" justify="space-between">
+                <Flex w="100%" justify="space-between" align="center">
                   <Text>NEWS</Text>
                   <FaAngleRight />
                 </Flex>
-                <Flex w="100%" justify="space-between">
+                <Flex w="100%" justify="space-between" align="center">
                   <Text>CONTACT</Text>
                   <FaAngleRight />
                 </Flex>
-                <Flex w="100%" justify="space-between">
+                <Flex w="100%" justify="space-between" align="center">
                   <Text>LOGOUT</Text>
                   <FaAngleRight />
                 </Flex>

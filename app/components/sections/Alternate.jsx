@@ -18,12 +18,15 @@ const Alternate = () => {
   const data = [
     {
       title: "Simple",
-      text: "Focus on what actually matters, using a simple and straight forward interface. Your time is too valuable to be wasted on badly designed applications.",
+      text: "Focus on what actually matters, using a simple and straight forward interface.",
+      text2:
+        "Your time is too valuable to be wasted on badly designed applications.",
       image: "/screenshots/reading_dark.png",
     },
     {
       title: "Your Own Library",
-      text: "Create your own personalized online library that you can access from any device, anytime, anywhere. Librum automatically saves everything you need to the cloud.",
+      text: "Create your own personalized online library that you can access from any device, anytime, anywhere.",
+      text2: "Librum automatically saves everything you need to the cloud.",
       image: "/screenshots/library_dark.png",
     },
     {
@@ -40,7 +43,7 @@ const Alternate = () => {
           <FeaturesAnimate key={index}>
             <Flex
               mx="auto"
-              gap="20rem"
+              gap="15rem"
               direction={index % 2 === 0 ? "row" : "row-reverse"}
               align="center"
               key={index}
@@ -60,10 +63,15 @@ const Alternate = () => {
                 </CardBody>
               </Card>
 
-              <VStack spacing={6} align="flex-start">
-                <Heading color="#946bde">{block.title}</Heading>
+              <Flex direction="column" align="flex-start">
+                <Heading color="#946bde" mb="1.5rem">
+                  {block.title}
+                </Heading>
                 <Text color="text-default">{block.text}</Text>
-              </VStack>
+                {block.text2 ? (
+                  <Text color="text-default">{block.text2}</Text>
+                ) : null}
+              </Flex>
             </Flex>
           </FeaturesAnimate>
         );

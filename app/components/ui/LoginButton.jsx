@@ -263,14 +263,14 @@ const LoginButton = (props) => {
           <ModalBody>
             <Center>
               <Box textAlign="center" mb="1rem">
-                <Heading size="md" pb=".5rem">
+                <Heading size="sm" pb=".5rem">
                   Welcome back!
                 </Heading>
-                <Text fontSize="xs">Log into your account</Text>
+                <Text fontSize="sm">Log into your account</Text>
               </Box>
             </Center>
             <FormControl>
-              <FormLabel fontSize="xs" textColor="text-default">
+              <FormLabel fontSize="sm" textColor="text-default">
                 Email
               </FormLabel>
               <Input
@@ -278,27 +278,27 @@ const LoginButton = (props) => {
                 onChange={handleEmail}
                 ref={initialRef}
                 placeholder="Enter Your Email"
-                fontSize="xs"
+                fontSize="sm"
                 variant="defaultVariant"
               />
             </FormControl>
 
             <FormControl mt={4}>
-              <FormLabel fontSize="xs" textColor="text-default">
+              <FormLabel fontSize="sm" textColor="text-default">
                 Password
               </FormLabel>
               <Input
                 value={password}
                 onChange={handlePassword}
                 placeholder="Enter Your Password"
-                fontSize="xs"
+                fontSize="sm"
                 variant="defaultVariant"
               />
             </FormControl>
           </ModalBody>
 
           <ModalFooter>
-            <Box width="100%" textAlign="center">
+            <Box width="100%" textAlign="center" pb=".7rem">
               <Button
                 onClick={() => {
                   handleLogin({ Email: email, Password: password });

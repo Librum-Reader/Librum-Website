@@ -58,6 +58,7 @@ import { GrClose } from "react-icons/gr";
 import ContactForm from "./ContactForm";
 import { usePathname } from "next/navigation";
 import ThemeToggle from "./ThemeToggle";
+import SunIcon from "../ui/SunIcon";
 
 const navLinks = [
   {
@@ -183,7 +184,7 @@ const Navbar = () => {
               <Card
                 borderRadius="md"
                 w="800px"
-                display={{ base: "none", md: "block" }}
+                display={{ base: "none", md: "flex" }}
               >
                 <CardBody
                   borderRadius="md"
@@ -391,6 +392,14 @@ const Navbar = () => {
           </Flex>
           <Spacer />
           <Flex gap="2rem" display={{ base: "none", lg: "flex" }}>
+            <Button variant="link" onClick={toggleColorTheme}>
+              {colorMode === "dark" ? (
+                <SunIcon />
+              ) : (
+                <FaMoon color={path == "/" ? "white" : "#946BDE"} size={20} />
+              )}
+            </Button>
+
             {navLinkComponents}
             <Button
               variant={path == "/" ? "navLinkHome" : "navLink"}
@@ -444,7 +453,9 @@ const Navbar = () => {
                   w="100%"
                   justify="space-between"
                   align="center"
-                  backgroundColor={path === "/" ? "#3c4047" : "bg-default"}
+                  backgroundColor={
+                    path === "/" ? "mobile-nav-active" : "bg-default"
+                  }
                   borderRadius="lg"
                   px="8px"
                   py="4px"
@@ -458,7 +469,9 @@ const Navbar = () => {
                   w="100%"
                   justify="space-between"
                   align="center"
-                  backgroundColor={path === "/news" ? "#3c4047" : "bg-default"}
+                  backgroundColor={
+                    path === "/news" ? "mobile-nav-active" : "bg-default"
+                  }
                   borderRadius="lg"
                   px="8px"
                   py="4px"
@@ -506,19 +519,23 @@ const Navbar = () => {
                     <LoginButtonMobile closeDrawer={onDrawerClose} />
                   </Flex>
                   {colorMode === "dark" ? (
-                    <FaSun
-                      color={"white"}
-                      size={20}
-                      onClick={toggleColorTheme}
-                      className="res-theme-icon"
-                    />
+                    // <FaSun
+                    //   color={"white"}
+                    //   size={20}
+                    //   onClick={toggleColorTheme}
+                    //   className="res-theme-icon"
+                    // />
+                    <Button variant="link" onClick={toggleColorTheme}>
+                      <SunIcon />
+                    </Button>
                   ) : (
-                    <FaMoon
-                      color={"#946BDE"}
-                      size={20}
-                      onClick={toggleColorTheme}
-                      className="res-theme-icon"
-                    />
+                    <Button variant="link" onClick={toggleColorTheme}>
+                      <FaMoon
+                        color={"#946BDE"}
+                        size={20}
+                        className="res-theme-icon"
+                      />
+                    </Button>
                   )}
                 </Flex>
               </Flex>

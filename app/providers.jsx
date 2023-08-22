@@ -18,6 +18,7 @@ export function Providers({ children }) {
   const tokens = {
     colors: {
       light: {
+        "mobile-nav-active": "#946BDE",
         "bg-default": "white",
         "text-default": "black",
         "nav-home": "white",
@@ -33,6 +34,7 @@ export function Providers({ children }) {
         "legal-title": "#946BDE",
       },
       dark: {
+        "mobile-nav-active": "#3c4047",
         "bg-default": "#282c34",
         "text-default": "white",
         "nav-default": "white",
@@ -97,6 +99,10 @@ export function Providers({ children }) {
       "legal-title": {
         default: tokens.colors.light["legal-title"],
         _dark: tokens.colors.dark["legal-title"],
+      },
+      "mobile-nav-active": {
+        default: tokens.colors.light["mobile-nav-active"],
+        _dark: tokens.colors.dark["mobile-nav-active"],
       },
     },
   };

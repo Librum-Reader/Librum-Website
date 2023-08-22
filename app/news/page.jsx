@@ -6,7 +6,12 @@ const News = () => {
   return (
     <Flex background="bg-default" align="center" direction="column">
       <Box>
-        <Heading size="2xl" color="#946bde" mt={24} mb={24}>
+        <Heading
+          size="2xl"
+          color="#946bde"
+          mt={{ base: "2rem", md: "24" }}
+          mb={{ base: "2rem", md: "24" }}
+        >
           News and Updates
         </Heading>
       </Box>

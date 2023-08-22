@@ -15,7 +15,7 @@ const Foss = () => {
       gap="2rem"
       px="1rem"
     >
-      <Heading size="lg" mb="1rem">
+      <Heading size="lg" mb={{ base: "0", md: "1rem" }}>
         Free and Open Source
       </Heading>
       <Text textAlign="center">
@@ -23,12 +23,12 @@ const Foss = () => {
         improvement on it . Also check out our blog for latest updates and
         downloads.
       </Text>
-      <Flex gap="10rem" mt="2rem">
+      <Flex gap={{ base: "5rem", md: "10rem" }} mt={{ base: "0", md: "2rem" }}>
         <Link href="https://github.com/Librum-Reader/Librum" target="#">
-          <FaGithub color="#946bdd" size={70} />
+          <FaGithub color="#946bdd" className="foss-icon" />
         </Link>
         <Link href="https://www.patreon.com/librumreader" target="#">
-          <FaPatreon color="#946bdd" size={70} />
+          <FaPatreon color="#946bdd" className="foss-icon" />
         </Link>
       </Flex>
     </Flex>

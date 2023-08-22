@@ -7,7 +7,7 @@ const Foss = () => {
   return (
     <Flex
       bg="bg-default"
-      pt={{ base: "4rem", md: "0" }}
+      pt={{ base: "10rem", md: "0" }}
       direction="column"
       justify="center"
       align="center"

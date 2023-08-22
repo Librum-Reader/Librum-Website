@@ -38,7 +38,7 @@ const Footer = () => {
         size="xl"
       >
         <ModalOverlay />
-        <ModalContent>
+        <ModalContent mx={{ base: "1rem", md: "0" }}>
           <ModalHeader px="4rem" pt="3.5rem">
             Librum-Reader Legal Information
           </ModalHeader>
@@ -77,20 +77,24 @@ const Footer = () => {
         borderStyle="dotted"
         pt="4.5rem"
       >
-        <VStack backgroundColor="bg-default" mb="4.5rem">
-          <Heading fontSize="1.5rem" mb="1rem">
+        <VStack
+          backgroundColor="bg-default"
+          mb="4.5rem"
+          px={{ base: "1rem", md: "0" }}
+        >
+          <Heading fontSize="1.5rem" mb="1rem" textAlign="center">
             Have any questions or concerns?
           </Heading>
           <Input
             type="email"
             placeholder="Enter your email address"
-            w="24rem"
+            w={{ base: "100%", md: "24rem" }}
             mb="1rem"
             variant="defaultVariant"
           />
           <Textarea
             placeholder="Message"
-            w="24rem"
+            w={{ base: "100%", md: "24rem" }}
             mb="1rem"
             variant="defaultVariant"
           />
@@ -98,41 +102,23 @@ const Footer = () => {
             Send Message
           </Button>
         </VStack>
-        {/* <Grid templateColumns="repeat(3, 1fr)" mx="1rem" mb="5px">
+        <Grid
+          templateColumns={{ base: "1fr 1fr", md: "repeat(3, 1fr)" }}
+          mx="1rem"
+          mb="5px"
+        >
           <Flex align="center" gap=".5rem">
             <Image alt="librum logo" src="Logo.svg" w="30px" />
             <Heading size="md" color="text-default">
               Librum
             </Heading>
           </Flex>
-          <Text fontSize="sm" alignSelf="center" justifySelf="center">
-            © 2023 Librum-Reader, All rights reserved
-          </Text>
-          <Flex justifySelf="end" alignSelf="center" align="center" gap="1rem">
-            <Link href="/impressum" alignSelf="center">
-              Impressum
-            </Link>
-            <Link alignSelf="center" justifySelf="end" onClick={onOpen}>
-              Legal
-            </Link>
-          </Flex>
-        </Grid> */}
-        <Grid
-          templateColumns={{ base: "1fr 1fr 1fr", md: "repeat(3, 1fr)" }}
-          mx="1rem"
-          mb="5px"
-        >
-          <Flex align="center" gap=".5rem">
-            <Image alt="librum logo" src="Logo.svg" w="30px" />
-            <Heading
-              size="md"
-              color="text-default"
-              display={{ base: "none", md: "block" }}
-            >
-              Librum
-            </Heading>
-          </Flex>
-          <Text fontSize="sm" alignSelf="center" justifySelf="center">
+          <Text
+            fontSize="sm"
+            alignSelf="center"
+            justifySelf="center"
+            display={{ base: "none", md: "flex" }}
+          >
             © 2023 Librum-Reader, All rights reserved
           </Text>
           <Flex justifySelf="end" alignSelf="center" align="center" gap="1rem">

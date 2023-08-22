@@ -18,9 +18,9 @@ const TOS = (props) => {
       color="whitesmoke"
       align="flex-start"
       direction="column"
-      px="8.5em"
-      py="9em"
-      mx="auto"
+      px={{ base: "0", md: "8.5em" }}
+      py={{ base: "1rem", md: " 9em" }}
+      mx={{ base: "1rem", md: "auto" }}
       maxW="1300px"
     >
       <Heading fontSize="2.5em" textColor="legal-title">

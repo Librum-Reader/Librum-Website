@@ -304,7 +304,6 @@ const Navbar = () => {
                     <VStack>
                       <FormLabel
                         fontSize="sm"
-                        fontWeight="bold"
                         color="text-default"
                         alignSelf="start"
                         m="0"
@@ -321,7 +320,6 @@ const Navbar = () => {
                       />
                       <FormLabel
                         fontSize="sm"
-                        fontWeight="bold"
                         color="text-default"
                         alignSelf="start"
                         m="0"
@@ -339,7 +337,6 @@ const Navbar = () => {
                       />
                       <FormLabel
                         fontSize="sm"
-                        fontWeight="bold"
                         color="text-default"
                         alignSelf="start"
                         m="0"
@@ -456,7 +453,13 @@ const Navbar = () => {
                   <FaAngleRight />
                 </Flex>
                 <Flex w="100%" justify="space-between" align="center">
-                  <Link href="" onClick={onOpen}>
+                  <Link
+                    href=""
+                    onClick={() => {
+                      onOpen();
+                      onDrawerClose();
+                    }}
+                  >
                     CONTACT
                   </Link>
                   <FaAngleRight />
@@ -478,7 +481,7 @@ const Navbar = () => {
                   <Flex align="center" gap="1rem">
                     {/* <Avatar size="sm" />
                     <Text>John Doe</Text> */}
-                    <LoginButtonMobile />
+                    <LoginButtonMobile closeDrawer={onDrawerClose} />
                   </Flex>
                   {colorMode === "dark" ? (
                     <FaSun

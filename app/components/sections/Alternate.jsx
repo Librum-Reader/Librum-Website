@@ -67,7 +67,7 @@ const Alternate = () => {
             background="bg-default"
             padding="1rem"
             borderRadius="lg"
-            w="1400px"
+            w={{ base: "100%", md: "1400px" }}
           >
             <Image src={modalData} className="modal-img" />
           </Flex>

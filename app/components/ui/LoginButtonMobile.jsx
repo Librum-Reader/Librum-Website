@@ -52,7 +52,7 @@ import {
 
 import { useCookies } from "react-cookie";
 
-const LoginButtonMobile = (props) => {
+const LoginButtonMobile = ({ closeDrawer }) => {
   // Set this to true after user confirms email to trigger login modal
   const [isEmailConfirmed, setIsEmailConfirmed] = useState();
 
@@ -246,7 +246,13 @@ const LoginButtonMobile = (props) => {
 
   return (
     <>
-      <Link href="" onClick={onOpenLogin}>
+      <Link
+        href=""
+        onClick={() => {
+          onOpenLogin();
+          // closeDrawer();
+        }}
+      >
         LOGIN
       </Link>
       {/* Login Modal */}
@@ -267,11 +273,11 @@ const LoginButtonMobile = (props) => {
                 <Heading size="md" pb=".5rem">
                   Welcome back!
                 </Heading>
-                <Text fontSize="xs">Log into your account</Text>
+                <Text fontSize="sm">Log into your account</Text>
               </Box>
             </Center>
             <FormControl>
-              <FormLabel fontSize="xs" textColor="text-default">
+              <FormLabel fontSize="sm" textColor="text-default">
                 Email
               </FormLabel>
               <Input
@@ -279,20 +285,20 @@ const LoginButtonMobile = (props) => {
                 onChange={handleEmail}
                 ref={initialRef}
                 placeholder="Enter Your Email"
-                fontSize="xs"
+                fontSize="sm"
                 variant="defaultVariant"
               />
             </FormControl>
 
             <FormControl mt={4}>
-              <FormLabel fontSize="xs" textColor="text-default">
+              <FormLabel fontSize="sm" textColor="text-default">
                 Password
               </FormLabel>
               <Input
                 value={password}
                 onChange={handlePassword}
                 placeholder="Enter Your Password"
-                fontSize="xs"
+                fontSize="sm"
                 variant="defaultVariant"
               />
             </FormControl>

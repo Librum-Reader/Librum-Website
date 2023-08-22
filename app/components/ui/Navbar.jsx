@@ -459,56 +459,50 @@ const Navbar = () => {
                 gap="1rem"
                 px="10px"
               >
-                <Flex
-                  w="100%"
-                  justify="space-between"
-                  align="center"
-                  backgroundColor={
-                    path === "/" ? "mobile-nav-active" : "bg-default"
-                  }
-                  borderRadius="lg"
-                  px="8px"
-                  py="4px"
-                >
-                  <Link href="/" onClick={onDrawerClose}>
-                    HOME
-                  </Link>
-                  <FaAngleRight />
-                </Flex>
-                <Flex
-                  w="100%"
-                  justify="space-between"
-                  align="center"
-                  backgroundColor={
-                    path === "/news" ? "mobile-nav-active" : "bg-default"
-                  }
-                  borderRadius="lg"
-                  px="8px"
-                  py="4px"
-                >
-                  <Link href="/news" onClick={onDrawerClose}>
-                    NEWS
-                  </Link>
-                  <FaAngleRight />
-                </Flex>
-                <Flex
-                  w="100%"
-                  justify="space-between"
-                  align="center"
-                  px="8px"
-                  py="4px"
-                >
-                  <Link
-                    href=""
-                    onClick={() => {
-                      onOpen();
-                      onDrawerClose();
-                    }}
+                <Link href="/" className="drawer-link" onClick={onDrawerClose}>
+                  <Button
+                    w="full"
+                    size="md"
+                    variant={path === "/" ? "drawerActive" : "drawerButton"}
                   >
-                    CONTACT
-                  </Link>
-                  <FaAngleRight />
-                </Flex>
+                    <Flex w="100%" align="center" justify="space-between">
+                      <Text>HOME</Text>
+                      <FaAngleRight />
+                    </Flex>
+                  </Button>
+                </Link>
+                <Link
+                  href="/news"
+                  className="drawer-link"
+                  onClick={onDrawerClose}
+                >
+                  <Button
+                    w="full"
+                    size="md"
+                    variant={path === "/news" ? "drawerActive" : "drawerButton"}
+                  >
+                    <Flex w="100%" align="center" justify="space-between">
+                      <Text>NEWS</Text>
+                      <FaAngleRight />
+                    </Flex>
+                  </Button>
+                </Link>
+                <Link
+                  className="drawer-link"
+                  href=""
+                  onClick={() => {
+                    onOpen();
+                    onDrawerClose();
+                  }}
+                >
+                  <Button w="full" size="md" variant="drawerButton">
+                    <Flex w="100%" align="center" justify="space-between">
+                      <Text>CONTACT</Text>
+                      <FaAngleRight />
+                    </Flex>
+                  </Button>
+                </Link>
+
                 {/* <Flex w="100%" justify="space-between" align="center">
                   <Link href="3">LOGOUT</Link>
                   <FaAngleRight />

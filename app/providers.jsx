@@ -198,6 +198,12 @@ export function Providers({ children }) {
             textColor: "white",
             fontSize: "md",
           },
+          drawerActive: {
+            bg: "mobile-nav-active",
+          },
+          drawerButton: {
+            bg: "bg-default",
+          },
         },
       },
       Modal: modalTheme, // Modals have to have a variant defined for custom styles to work, a known bug in Chakra

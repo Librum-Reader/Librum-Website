@@ -383,7 +383,7 @@ const Navbar = () => {
         >
           <Flex align="center" gap="1rem">
             {/* <Image alt="librum logo" src="ereader1.png" /> */}
-            <ThemeToggle />
+            {/* <ThemeToggle /> */}
             <Logo />
             <Heading
               size="lg"

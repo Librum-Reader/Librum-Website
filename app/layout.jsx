@@ -22,6 +22,8 @@ import {
   Center,
   Button,
   Link,
+  UnorderedList,
+  ListItem,
 } from "@chakra-ui/react";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -83,7 +85,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <ColorModeScript initialColorMode="light" />
+        <ColorModeScript initialColorMode="dark" />
         <GoogleReCaptchaProvider
           reCaptchaKey={process.env.REACT_APP_reCAPTCHA_SITE_KEY}
         >
@@ -98,20 +100,22 @@ export default function RootLayout({ children }) {
                       onClose={onDisclaimerClose}
                       bg="transparent"
                       closeOnOverlayClick={false}
+                      variant="defaultVariant"
                     >
                       <ModalOverlay />
                       <ModalContent
                         alignContent="center"
                         maxW="1000px"
-                        w="auto"
+                        w={{ base: "100%", md: "auto" }}
                         bg="transparent"
                         boxShadow="0"
                       >
-                        <ModalBody alignContent="center">
+                        <ModalBody alignContent="center" px="1rem">
                           <Flex
-                            w="620px"
-                            bg="white"
-                            p="4rem"
+                            w={{ base: "100%", md: "620px" }}
+                            bg="bg-default"
+                            // mx={{ base: "1rem", md: "0" }}
+                            p={{ base: "1rem", md: "4rem" }}
                             borderRadius="md"
                             gap="2rem"
                             direction="column"
@@ -124,7 +128,7 @@ export default function RootLayout({ children }) {
                               direction="column"
                               justify="center"
                             >
-                              <Text align="center">
+                              <Text align={{ base: "center", md: "center" }}>
                                 We use cookies to provide the best possible
                                 experience. By clicking continue, you agree to
                                 Librum&apos;s policies.
@@ -132,23 +136,40 @@ export default function RootLayout({ children }) {
                               <Flex
                                 gap=".5rem"
                                 justify="space-between"
+                                align={{ base: "center", md: "start" }}
                                 w="100%"
+                                direction={{ base: "column", md: "row" }}
                               >
-                                <Link href="/cookies">Cookie policy</Link>-
-                                <Link href="/privacypolicy">
-                                  Privacy policy
-                                </Link>
-                                -
-                                <Link href="/termsofservice">
-                                  Terms of service
-                                </Link>
-                                -<Link href="/disclaimer">Disclaimer</Link>
+                                <UnorderedList mt="0">
+                                  <ListItem>
+                                    <Link href="/disclaimer">
+                                      Legal Disclaimer
+                                    </Link>
+                                  </ListItem>
+                                  <ListItem>
+                                    <Link href="/privacypolicy">
+                                      Privacy Policy
+                                    </Link>
+                                  </ListItem>
+                                  <ListItem>
+                                    <Link href="/cookies">Cookies Policy</Link>
+                                  </ListItem>
+                                  <ListItem>
+                                    <Link href="/termsofservice">
+                                      Terms of Service
+                                    </Link>
+                                  </ListItem>
+                                </UnorderedList>
                               </Flex>
                             </Flex>
-                            <Flex gap="1rem">
+                            <Flex
+                              gap="1rem"
+                              direction={{ base: "column", md: "row" }}
+                            >
                               <Button
                                 variant="primary"
                                 onClick={closeModalAndSetFirstVisit}
+                                w={{ base: "100%", md: "auto" }}
                               >
                                 Accept and continue
                               </Button>

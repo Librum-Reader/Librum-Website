@@ -194,7 +194,7 @@ export function Providers({ children }) {
           loginButton: {
             bg: "btn-primary-bg",
             borderRadius: "5px",
-            paddingX: "28px",
+            paddingX: "26px",
             paddingY: "23px",
             textColor: "white",
             fontSize: "sm",

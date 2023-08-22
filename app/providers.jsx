@@ -18,7 +18,7 @@ export function Providers({ children }) {
   const tokens = {
     colors: {
       light: {
-        "mobile-nav-active": "#946BDE",
+        "mobile-nav-active": "#F0F0FF",
         "bg-default": "white",
         "text-default": "black",
         "nav-home": "white",

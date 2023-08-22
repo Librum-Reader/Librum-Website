@@ -115,18 +115,11 @@ body {
 }
 
 .nav-container-gradient {
-  /* background: linear-gradient(
-    145deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(148, 148, 238, 1) 100%,
-    rgba(0, 0, 0, 1) 100%
-  ); */
-  background: rgb(117, 59, 222);
   background: linear-gradient(
-    90deg,
-    rgba(117, 59, 222, 1) 0%,
-    rgba(148, 107, 222, 0.979411833092612) 32%,
-    rgba(164, 136, 215, 0.9149860627844888) 100%
+    150deg,
+    rgba(2, 0, 36, 0.5) 0%,
+    rgba(148, 107, 222, 1) 100%,
+    rgba(0, 0, 0, 1) 100%
   );
 }
 
@@ -172,16 +165,16 @@ Nav links hover animation
   position: absolute;
   display: block;
   width: 100%;
-  height: 2px;
+  height: 3px;
   bottom: 0;
   left: 0;
-  background-color: #000;
+  background-color: #946bde;
   transform: scaleX(0);
   transition: transform 0.3s ease;
 }
 
 .nav-hover:hover::before {
-  transform: scaleX(1);
+  transform: scaleX(0.8);
 }
 
 @media only screen and (max-width: 600px) {

@@ -404,6 +404,7 @@ const Navbar = () => {
             <Button
               variant={path == "/" ? "navLinkHome" : "navLink"}
               onClick={onOpen}
+              className="nav-hover"
             >
               CONTACT
             </Button>

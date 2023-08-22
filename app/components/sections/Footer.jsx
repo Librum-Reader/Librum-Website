@@ -98,10 +98,37 @@ const Footer = () => {
             Send Message
           </Button>
         </VStack>
-        <Grid templateColumns="repeat(3, 1fr)" mx="1rem" mb="5px">
+        {/* <Grid templateColumns="repeat(3, 1fr)" mx="1rem" mb="5px">
           <Flex align="center" gap=".5rem">
             <Image alt="librum logo" src="Logo.svg" w="30px" />
             <Heading size="md" color="text-default">
+              Librum
+            </Heading>
+          </Flex>
+          <Text fontSize="sm" alignSelf="center" justifySelf="center">
+            © 2023 Librum-Reader, All rights reserved
+          </Text>
+          <Flex justifySelf="end" alignSelf="center" align="center" gap="1rem">
+            <Link href="/impressum" alignSelf="center">
+              Impressum
+            </Link>
+            <Link alignSelf="center" justifySelf="end" onClick={onOpen}>
+              Legal
+            </Link>
+          </Flex>
+        </Grid> */}
+        <Grid
+          templateColumns={{ base: "1fr 1fr 1fr", md: "repeat(3, 1fr)" }}
+          mx="1rem"
+          mb="5px"
+        >
+          <Flex align="center" gap=".5rem">
+            <Image alt="librum logo" src="Logo.svg" w="30px" />
+            <Heading
+              size="md"
+              color="text-default"
+              display={{ base: "none", md: "block" }}
+            >
               Librum
             </Heading>
           </Flex>

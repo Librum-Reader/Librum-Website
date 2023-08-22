@@ -22,7 +22,7 @@ export function Providers({ children }) {
         "bg-default": "white",
         "text-default": "black",
         "nav-home": "white",
-        "nav-default": "#946BDE",
+        "nav-default": "black",
         "btn-primary-bg": "#946BDE",
         "btn-secondary-border": "#946BDE",
         "btn-secondary-text": "#946BDE",
@@ -185,6 +185,11 @@ export function Providers({ children }) {
             paddingX: "20px",
             textColor: "nav-purple",
             fontSize: "md",
+          },
+          navActive: {
+            bg: "transparent",
+            fontSize: "md",
+            textColor: "#946BDE",
           },
           loginButton: {
             bg: "btn-primary-bg",

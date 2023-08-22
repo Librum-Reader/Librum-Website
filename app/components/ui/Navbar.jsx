@@ -71,8 +71,17 @@ const navLinks = [
   },
 ];
 
+let inactive;
+let active;
+
 const Navbar = () => {
   const path = usePathname();
+  if (path === "/") {
+    inactive = "navLinkHome";
+    active = "navActive";
+  } else {
+    inactive = "navLink";
+  }
 
   const { colorMode, toggleColorMode } = useColorMode();
 
@@ -81,12 +90,8 @@ const Navbar = () => {
   };
   const navLinkComponents = navLinks.map((link, index) => {
     return (
-      <Link
-        key={index}
-        href={link.href}
-        className={path == link.href ? "nav-active" : "nav-hover"}
-      >
-        <Button variant={path == "/" ? "navLinkHome" : "navLink"}>
+      <Link key={index} href={link.href} className={"nav-hover"}>
+        <Button variant={path === link.href ? active : inactive}>
           {link.text}
         </Button>
       </Link>

@@ -117,8 +117,8 @@ body {
 .nav-container-gradient {
   background: linear-gradient(
     150deg,
-    rgba(2, 0, 36, 0.5) 0%,
-    rgba(148, 107, 222, 1) 100%,
+    rgb(43, 25, 68) 0%,
+    rgb(109, 75, 172) 100%,
     rgba(0, 0, 0, 1) 100%
   );
 }
@@ -161,19 +161,7 @@ Nav links hover animation
 }
 
 .nav-active {
-  position: relative;
-}
-
-.nav-active::before {
-  content: "";
-  position: absolute;
-  display: block;
-  width: 100%;
-  height: 3px;
-  bottom: 0;
-  left: 0;
-  background-color: #946bde;
-  transform: scaleX(0.8);
+  color: red;
 }
 
 .nav-hover::before {

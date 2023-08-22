@@ -4,8 +4,8 @@ const SunIcon = () => {
   return (
     <svg
       className="sun-icon"
-      width="25"
-      height="25"
+      width="18"
+      height="18"
       viewBox="0 0 21 21"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

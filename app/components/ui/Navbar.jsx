@@ -396,7 +396,7 @@ const Navbar = () => {
               {colorMode === "dark" ? (
                 <SunIcon />
               ) : (
-                <FaMoon color={path == "/" ? "white" : "#946BDE"} size={20} />
+                <FaMoon color={path == "/" ? "white" : "#946BDE"} size={16} />
               )}
             </Button>
 

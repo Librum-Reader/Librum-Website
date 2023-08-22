@@ -15,6 +15,8 @@ import Lottie from "lottie-web";
 import Features from "./Features";
 import ShowcaseAnimation from "../ui/ShowcaseAnimation";
 import { isValidMotionProp, motion } from "framer-motion";
+import { PiGithubLogo } from "react-icons/pi";
+import Link from "next/link";
 
 const Showcase = () => {
   const container = useRef(null);
@@ -67,9 +69,15 @@ const Showcase = () => {
             <Button w="250px" variant="primary">
               Download
             </Button>
-            <Button w="250px" variant="showcase">
-              GitHub
-            </Button>
+            <Link href="https://github.com/Librum-Reader/" target="#">
+              <Button
+                w="250px"
+                variant="showcase"
+                leftIcon={<PiGithubLogo size={18} />}
+              >
+                GitHub
+              </Button>
+            </Link>
           </VStack>
         </ChakraBox>
         <Box w="50%" align="right" display={{ base: "none", md: "flex" }}>

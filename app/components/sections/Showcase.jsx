@@ -69,7 +69,7 @@ const Showcase = () => {
             <Button w="250px" variant="primary">
               Download
             </Button>
-            <Link href="https://github.com/Librum-Reader/" target="#">
+            <Link href="https://github.com/Librum-Reader/Librum" target="#">
               <Button
                 w="250px"
                 variant="showcase"

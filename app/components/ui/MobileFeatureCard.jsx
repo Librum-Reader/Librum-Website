@@ -36,6 +36,7 @@ const MobileFeatureCard = (props) => {
         src={colorMode === "dark" ? props.image : props.image_light}
         alt="Illustration"
         shadow="lg"
+        borderRadius="md"
       />
       <Heading mb="1rem" mt="3rem" fontSize="xl">
         {props.title}

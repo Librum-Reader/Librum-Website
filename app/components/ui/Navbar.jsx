@@ -81,7 +81,7 @@ const Navbar = () => {
   };
   const navLinkComponents = navLinks.map((link, index) => {
     return (
-      <Link key={index} href={link.href}>
+      <Link key={index} href={link.href} className="nav-hover">
         <Button variant={path == "/" ? "navLinkHome" : "navLink"}>
           {link.text}
         </Button>

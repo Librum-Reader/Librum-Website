@@ -400,7 +400,11 @@ const Navbar = () => {
             </Heading>
           </Flex>
           <Spacer />
-          <Flex gap="2rem" display={{ base: "none", lg: "flex" }}>
+          <Flex
+            gap="1rem"
+            display={{ base: "none", lg: "flex" }}
+            align="center"
+          >
             <Button variant="link" onClick={toggleColorTheme}>
               {colorMode === "dark" ? (
                 <SunIcon />
@@ -418,7 +422,7 @@ const Navbar = () => {
               CONTACT
             </Button>
             {isLoggedIn ? <ProfileButton /> : null}
-            <LoginButton />
+            {isLoggedIn ? null : <LoginButton />}
           </Flex>
           <IconButton
             icon={<FaBars />}

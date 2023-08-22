@@ -193,10 +193,11 @@ export function Providers({ children }) {
           },
           loginButton: {
             bg: "btn-primary-bg",
-            borderRadius: "3px",
-            paddingX: "20px",
+            borderRadius: "5px",
+            paddingX: "28px",
+            paddingY: "23px",
             textColor: "white",
-            fontSize: "md",
+            fontSize: "sm",
           },
           drawerActive: {
             bg: "mobile-nav-active",

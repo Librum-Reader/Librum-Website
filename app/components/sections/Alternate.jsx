@@ -22,6 +22,7 @@ import {
 import { motion, useInView, useAnimation } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import FeaturesAnimate from "../ui/FeaturesAnimate";
+import FeaturesAnimateMobile from "../ui/FeaturesAnimateMobile";
 import MobileFeatureCard from "../ui/MobileFeatureCard";
 
 const Alternate = () => {
@@ -82,7 +83,7 @@ const Alternate = () => {
       </Modal>
       {data.map((block, index) => {
         return (
-          <FeaturesAnimate key={index}>
+          <FeaturesAnimateMobile key={index}>
             <MobileFeatureCard
               title={block.title}
               text={block.text_mobile}
@@ -90,7 +91,7 @@ const Alternate = () => {
               image={block.image}
               bg={index % 2 === 0 ? "#3c4047" : "#282c34"}
             />
-          </FeaturesAnimate>
+          </FeaturesAnimateMobile>
         );
       })}
       {data.map((block, index) => {

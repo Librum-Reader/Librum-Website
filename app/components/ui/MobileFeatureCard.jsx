@@ -37,7 +37,7 @@ const MobileFeatureCard = (props) => {
         alt="Illustration"
         shadow="lg"
       />
-      <Heading mb=".5rem" mt=".5rem" fontSize="xl">
+      <Heading mb="1rem" mt="3rem" fontSize="xl">
         {props.title}
       </Heading>
       <Text lineHeight="1.4em">{props.text}</Text>

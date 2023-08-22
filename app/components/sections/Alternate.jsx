@@ -36,6 +36,8 @@ const Alternate = () => {
       text: "Focus on what actually matters, using a simple and straight forward interface.",
       text2:
         "Your time is too valuable to be wasted on badly designed applications.",
+      text_mobile:
+        "Focus on what actually matters, using a simple and straight forward interface. Your time is too valuable to be wasted on badly designed applications.",
       image: "/screenshots/reading_dark.png",
       image_light: "/screenshots/reading_light.png",
     },
@@ -43,6 +45,8 @@ const Alternate = () => {
       title: "Your Own Library",
       text: "Create your own personalized online library that you can access from any device, anytime, anywhere.",
       text2: "Librum automatically saves everything you need to the cloud.",
+      text_mobile:
+        "Create your own personalized online library that you can access from any device, anytime, anywhere. Librum automatically saves everything you need to the cloud.",
       image: "/screenshots/library_dark.png",
       image_light: "/screenshots/library_light.png",
     },
@@ -74,12 +78,25 @@ const Alternate = () => {
           {/* </ModalBody> */}
         </ModalContent>
       </Modal>
-      {/* <MobileFeatureCard /> */}
+      {data.map((block, index) => {
+        return (
+          <FeaturesAnimate key={index}>
+            <MobileFeatureCard
+              title={block.title}
+              text={block.text_mobile}
+              image_light={block.image_light}
+              image={block.image}
+              bg={index % 2 === 0 ? "#3c4047" : "#282c34"}
+            />
+          </FeaturesAnimate>
+        );
+      })}
       {data.map((block, index) => {
         return (
           <FeaturesAnimate key={index}>
             <Flex
               // mx="auto"
+              display={{ base: "none", md: "flex" }}
               gap={{ base: "2rem", md: "15rem" }}
               direction={{
                 base: "column",

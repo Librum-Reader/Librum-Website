@@ -438,21 +438,43 @@ const Navbar = () => {
                 w="100%"
                 align="start"
                 gap="1rem"
-                px="24px"
+                px="10px"
               >
-                <Flex w="100%" justify="space-between" align="center">
+                <Flex
+                  w="100%"
+                  justify="space-between"
+                  align="center"
+                  backgroundColor={path === "/" ? "#3c4047" : "bg-default"}
+                  borderRadius="lg"
+                  px="8px"
+                  py="4px"
+                >
                   <Link href="/" onClick={onDrawerClose}>
                     HOME
                   </Link>
                   <FaAngleRight />
                 </Flex>
-                <Flex w="100%" justify="space-between" align="center">
+                <Flex
+                  w="100%"
+                  justify="space-between"
+                  align="center"
+                  backgroundColor={path === "/news" ? "#3c4047" : "bg-default"}
+                  borderRadius="lg"
+                  px="8px"
+                  py="4px"
+                >
                   <Link href="/news" onClick={onDrawerClose}>
                     NEWS
                   </Link>
                   <FaAngleRight />
                 </Flex>
-                <Flex w="100%" justify="space-between" align="center">
+                <Flex
+                  w="100%"
+                  justify="space-between"
+                  align="center"
+                  px="8px"
+                  py="4px"
+                >
                   <Link
                     href=""
                     onClick={() => {

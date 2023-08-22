@@ -16,28 +16,32 @@ import {
   ModalBody,
   ModalCloseButton,
   useDisclosure,
+  useColorMode,
 } from "@chakra-ui/react";
 
 import React from "react";
 
-const MobileFeatureCard = () => {
+const MobileFeatureCard = (props) => {
+  const { colorMode } = useColorMode();
+
   return (
-    <Card flexBasis="fit-content" className="mobile-card">
-      <CardBody p="1rem">
-        <Heading mb="1rem" textAlign="right">
-          Your own library
-        </Heading>
-        <Image
-          src="/screenshots/library_dark.png"
-          alt="Illustration"
-          shadow="lg"
-        />
-        <Text mt="1rem" textAlign="justify">
-          Create your own personalized online library that you can access from
-          any device, anytime, anywhere.
-        </Text>
-      </CardBody>
-    </Card>
+    <Flex
+      direction="column"
+      bg={props.bg}
+      px="1rem"
+      py="4rem"
+      display={{ base: "flex", md: "none" }}
+    >
+      <Image
+        src={colorMode === "dark" ? props.image : props.image_light}
+        alt="Illustration"
+        shadow="lg"
+      />
+      <Heading mb=".5rem" mt=".5rem" fontSize="xl">
+        {props.title}
+      </Heading>
+      <Text lineHeight="1.4em">{props.text}</Text>
+    </Flex>
   );
 };
 

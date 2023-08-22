@@ -22,12 +22,12 @@ const Features = () => {
         display={{ base: "none", md: "block" }}
       />
       <Box
-        px={{ base: "1rem", md: "9rem" }}
-        mt={{ base: "1rem", md: "10rem" }}
-        mb={{ base: "6rem", md: "10rem" }}
+        px={{ base: "0", md: "9rem" }}
+        mt={{ base: "0", md: "10rem" }}
+        mb={{ base: "0rem", md: "10rem" }}
         className="features-items"
       >
-        <Flex gap="10rem" direction="column" w="100%">
+        <Flex gap={{ base: "0", md: "10rem" }} direction="column" w="100%">
           <Alternate />
         </Flex>
       </Box>

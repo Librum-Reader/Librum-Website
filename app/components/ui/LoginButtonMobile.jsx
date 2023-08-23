@@ -20,6 +20,7 @@ import {
   Flex,
   useToast,
   Image,
+  Portal,
 } from "@chakra-ui/react";
 
 import Link from "next/link";
@@ -28,6 +29,7 @@ import { BeatLoader } from "react-spinners";
 import { useRouter, usePathname } from "next/navigation";
 
 import { useRef, useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 
 import {
   useQuery,
@@ -249,86 +251,94 @@ const LoginButtonMobile = ({ closeDrawer }) => {
       <Link
         href=""
         onClick={() => {
+          setTimeout(() => {
+            // onOpenLogin();
+            console.log("login form");
+            closeDrawer();
+          }, 1000);
           onOpenLogin();
-          // closeDrawer();
+          // onOpenLogin();
         }}
       >
         LOGIN
       </Link>
       {/* Login Modal */}
-      <Modal
-        isCentered
-        initialFocusRef={initialRef}
-        isOpen={isOpenLogin}
-        onClose={onCloseLogin}
-        variant="defaultVariant"
-      >
-        <ModalOverlay />
-        <ModalContent mx="2rem">
-          <ModalHeader> </ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
-            <Center>
-              <Box textAlign="center" mb="1rem">
-                <Heading size="md" pb=".5rem">
-                  Welcome back!
-                </Heading>
-                <Text fontSize="sm">Log into your account</Text>
+      {createPortal(
+        <Modal
+          isCentered
+          initialFocusRef={initialRef}
+          isOpen={isOpenLogin}
+          onClose={onCloseLogin}
+          variant="defaultVariant"
+        >
+          <ModalOverlay />
+          <ModalContent mx="2rem">
+            <ModalHeader> </ModalHeader>
+            <ModalCloseButton />
+            <ModalBody>
+              <Center>
+                <Box textAlign="center" mb="1rem">
+                  <Heading size="md" pb=".5rem">
+                    Welcome back!
+                  </Heading>
+                  <Text fontSize="sm">Log into your account</Text>
+                </Box>
+              </Center>
+              <FormControl>
+                <FormLabel fontSize="sm" textColor="text-default">
+                  Email
+                </FormLabel>
+                <Input
+                  value={email}
+                  onChange={handleEmail}
+                  ref={initialRef}
+                  placeholder="Enter Your Email"
+                  fontSize="sm"
+                  variant="defaultVariant"
+                />
+              </FormControl>
+
+              <FormControl mt={4}>
+                <FormLabel fontSize="sm" textColor="text-default">
+                  Password
+                </FormLabel>
+                <Input
+                  value={password}
+                  onChange={handlePassword}
+                  placeholder="Enter Your Password"
+                  fontSize="sm"
+                  variant="defaultVariant"
+                />
+              </FormControl>
+            </ModalBody>
+
+            <ModalFooter>
+              <Box width="100%" textAlign="center">
+                <Button
+                  onClick={() => {
+                    handleLogin({ Email: email, Password: password });
+                  }}
+                  variant="primary"
+                  width="100%"
+                  mb="1rem"
+                >
+                  {login.isLoading ? <BeatLoader /> : "Log In"}
+                </Button>
+                <Button
+                  variant="secondary"
+                  width="100%"
+                  onClick={() => {
+                    registerAccount();
+                  }}
+                >
+                  Register
+                </Button>
               </Box>
-            </Center>
-            <FormControl>
-              <FormLabel fontSize="sm" textColor="text-default">
-                Email
-              </FormLabel>
-              <Input
-                value={email}
-                onChange={handleEmail}
-                ref={initialRef}
-                placeholder="Enter Your Email"
-                fontSize="sm"
-                variant="defaultVariant"
-              />
-            </FormControl>
-
-            <FormControl mt={4}>
-              <FormLabel fontSize="sm" textColor="text-default">
-                Password
-              </FormLabel>
-              <Input
-                value={password}
-                onChange={handlePassword}
-                placeholder="Enter Your Password"
-                fontSize="sm"
-                variant="defaultVariant"
-              />
-            </FormControl>
-          </ModalBody>
-
-          <ModalFooter>
-            <Box width="100%" textAlign="center">
-              <Button
-                onClick={() => {
-                  handleLogin({ Email: email, Password: password });
-                }}
-                variant="primary"
-                width="100%"
-                mb="1rem"
-              >
-                {login.isLoading ? <BeatLoader /> : "Log In"}
-              </Button>
-              <Button
-                variant="secondary"
-                width="100%"
-                onClick={() => {
-                  registerAccount();
-                }}
-              >
-                Register
-              </Button>
-            </Box>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
+            </ModalFooter>
+          </ModalContent>
+        </Modal>,
+        document.body
+      )}
       {/* Register Modal */}
       <Modal
         isCentered

@@ -260,12 +260,7 @@ const UserProfile = () => {
                   </Text>
                 </Flex>
               </Flex>
-              <Progress
-                value={10}
-                mt="2rem"
-                height="25px"
-                colorScheme="text-default"
-              />
+              <Progress value={10} height="25px" colorScheme="text-default" />
             </Flex>
           </GridItem>
           <GridItem>

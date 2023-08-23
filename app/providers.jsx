@@ -132,7 +132,7 @@ export function Providers({ children }) {
             bg: "#946BDE",
           },
           track: {
-            borderRadius: "md",
+            borderRadius: "3px",
           },
         },
       },

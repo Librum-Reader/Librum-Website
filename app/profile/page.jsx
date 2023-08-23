@@ -21,6 +21,7 @@ import {
   Center,
   Button,
   Progress,
+  Grid,
 } from "@chakra-ui/react";
 
 import {
@@ -65,9 +66,119 @@ const UserProfile = () => {
   }
 
   return (
-    <Flex>Hello</Flex>
-    // <Flex background="bg-default" align="center" direction="column" h="100vh">
-    //   <Box w="70%" mt="2rem">
+    <Flex background="bg-default" h="100vh" w="100%" px="9rem" justify="center">
+      <Grid gap="1rem" templateColumns="1fr 1fr 1fr">
+        <Flex
+          direction="column"
+          border="1px"
+          borderColor="mobile-nav-active"
+          borderRadius="md"
+          p="1rem"
+          // w="320px"
+          h="255px"
+        >
+          <Text fontSize="xs" textColor="text-default">
+            YOUR TIER
+          </Text>
+          <Flex direction="column" my="1rem">
+            <Text fontSize="xl" textColor="text-default" textAlign="center">
+              BASIC
+            </Text>
+            <Text
+              fontSize="4xl"
+              fontWeight="700"
+              textColor="text-default"
+              textAlign="center"
+            >
+              0.2GB
+            </Text>
+          </Flex>
+          <Flex direction="column" gap="1rem">
+            <Button size="sm" variant="primary">
+              Upgrade
+            </Button>
+            <Button size="sm" variant="secondary">
+              See why we offer multiple tiers
+            </Button>
+          </Flex>
+        </Flex>
+
+        <Flex
+          direction="column"
+          border="1px"
+          borderColor="mobile-nav-active"
+          borderRadius="md"
+          p="1rem"
+          // w="320px"
+          h="255px"
+        >
+          <Text fontSize="xs" textColor="text-default">
+            USED STORAGE
+          </Text>
+          <Flex justify="center" gap="1.5rem">
+            <Flex direction="column" my="1rem">
+              <Text
+                fontSize="3xl"
+                fontWeight="700"
+                textColor="text-default"
+                textAlign="center"
+              >
+                0.05GB
+              </Text>
+              <Text fontSize="sm" textColor="text-default">
+                Used Storage
+              </Text>
+            </Flex>
+            <Flex direction="column" my="1rem">
+              <Text
+                fontSize="3xl"
+                fontWeight="700"
+                textColor="text-default"
+                textAlign="center"
+              >
+                0.15GB
+              </Text>
+              <Text fontSize="sm" textColor="text-default">
+                Free Storage
+              </Text>
+            </Flex>
+          </Flex>
+          <Progress
+            value={10}
+            mt="2rem"
+            height="25px"
+            colorScheme="text-default"
+          />
+        </Flex>
+
+        <Flex
+          direction="column"
+          border="1px"
+          borderColor="mobile-nav-active"
+          borderRadius="md"
+          p="1rem"
+          // w="320px"
+          h="255px"
+        >
+          <Text fontSize="xs" textColor="text-default">
+            YOUR BOOKS
+          </Text>
+          <Flex direction="column" my="auto">
+            <Text fontSize="3xl" textColor="text-default" textAlign="center">
+              6
+            </Text>
+            <Text
+              fontSize="sm"
+              fontWeight="700"
+              textColor="text-default"
+              textAlign="center"
+            >
+              Books in your library
+            </Text>
+          </Flex>
+        </Flex>
+      </Grid>
+      {/* //   <Box w="70%" mt="2rem">
     //     <Tabs>
     //       <TabList>
     //         <Tab>
@@ -132,82 +243,22 @@ const UserProfile = () => {
     //                   </Flex>
     //                 </CardBody>
     //               </Card>
-    //               <Card w="70%" borderRadius="sm">
-    //                 <CardHeader>
-    //                   <Text fontSize="xs" textColor="text-default">
-    //                     USED STORAGE
-    //                   </Text>
-    //                 </CardHeader>
-    //                 <CardBody>
-    //                   <Flex>
-    //                     <Flex direction="column" width="100%" align="center">
-    //                       <Text
-    //                         fontSize="4xl"
-    //                         fontWeight="700"
-    //                         textColor="text-default"
-    //                       >
-    //                         0.05GB
-    //                       </Text>
-    //                       <Text fontSize="sm" textColor="text-default">
-    //                         Used Storage
-    //                       </Text>
-    //                     </Flex>
-    //                     <Flex direction="column" width="100%" align="center">
-    //                       <Text
-    //                         fontSize="4xl"
-    //                         fontWeight="700"
-    //                         textColor="text-default"
-    //                       >
-    //                         0.2GB
-    //                       </Text>
-    //                       <Text fontSize="sm" textColor="text-default">
-    //                         Remaining Storage
-    //                       </Text>
-    //                     </Flex>
-    //                   </Flex>
-    //                   <Progress
-    //                     value={10}
-    //                     mt="2rem"
-    //                     height="25px"
-    //                     colorScheme="text-default"
-    //                   />
-    //                 </CardBody>
-    //               </Card>
+    //              
     //             </Flex>
     //             <Flex gap="1rem">
-    //               <Card w="30%" borderRadius="sm">
-    //                 <CardHeader>
-    //                   <Text fontSize="xs" textColor="text-default">
-    //                     YOUR BOOKS
-    //                   </Text>
-    //                 </CardHeader>
-    //                 <CardBody>
-    //                   <Flex direction="column" align="center">
-    //                     <Text
-    //                       fontSize="4xl"
-    //                       fontWeight="700"
-    //                       textColor="text-default"
-    //                     >
-    //                       6
-    //                     </Text>
-    //                     <Text fontSize="sm" textColor="text-default">
-    //                       Books in your Library
-    //                     </Text>
-    //                   </Flex>
-    //                 </CardBody>
-    //               </Card>
+    //              
     //               {/* Empty flex container to space things out properly */}
-    //               <Flex w="70%"></Flex>
-    //             </Flex>
-    //           </Flex>
-    //         </TabPanel>
+      {/* //               <Flex w="70%"></Flex>
+    //             </Flex> */}
+      {/* //           </Flex> */}
+      {/* //         </TabPanel>
     //         <TabPanel>
     //           <p>three!</p>
     //         </TabPanel>
     //       </TabPanels>
     //     </Tabs>
-    //   </Box>
-    // </Flex>
+    //   </Box> */}
+    </Flex>
   );
 };
 

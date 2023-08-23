@@ -3,16 +3,22 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 
 const ProfileButton = () => {
+  let inactive;
+  let active;
+
   const path = usePathname();
+  if (path === "/") {
+    inactive = "navLinkHome";
+    active = "navActive";
+  } else {
+    active = "navActive";
+
+    inactive = "navLink";
+  }
 
   return (
-    <Link href="/profile">
-      <Button
-        colorScheme="gray"
-        variant={path == "/" ? "navLinkHome" : "navLink"}
-      >
-        PROFILE
-      </Button>
+    <Link href="/profile" className={"nav-hover"}>
+      <Button variant={path === "/profile" ? active : inactive}>PROFILE</Button>
     </Link>
   );
 };

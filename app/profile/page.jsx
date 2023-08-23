@@ -3,7 +3,8 @@
 import { useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
 import { useQuery } from "@tanstack/react-query";
-
+import { useCookies } from "react-cookie";
+import { updateLoggedIn, updateUser } from "../features/user/userSlice";
 import {
   Flex,
   VStack,
@@ -26,6 +27,8 @@ import {
   GridItem,
 } from "@chakra-ui/react";
 
+import { useDispatch } from "react-redux";
+
 import {
   AiOutlineUser,
   AiFillSetting,
@@ -43,6 +46,15 @@ const UserProfile = () => {
   const router = useRouter();
 
   const isLoggedIn = useSelector((state) => state.user.value);
+
+  // Redux functions
+  const dispatch = useDispatch();
+
+  const setUser = (token) => {
+    fetchUserInfo(token).then((result) => {
+      dispatch(updateUser(result));
+    });
+  };
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -63,9 +75,28 @@ const UserProfile = () => {
     enabled: tokenExists,
   });
 
+  let storageLimit;
+
   if (!isLoading) {
     console.log(data);
+    storageLimit = data?.bookStorageLimit;
+    storageLimit = storageLimit / 1024;
+    storageLimit = storageLimit / 1024;
+    storageLimit = storageLimit / 1024;
   }
+
+  // Logout function
+  const [cookies, setCookie, removeCookie] = useCookies(["user"]);
+
+  const logOut = () => {
+    localStorage.removeItem("token");
+    setToken(null);
+    removeCookie("token");
+    dispatch(updateUser({}));
+    dispatch(updateLoggedIn(false));
+    router.push("/");
+    console.log("logging out");
+  };
 
   return (
     <Flex w="100%">
@@ -79,15 +110,15 @@ const UserProfile = () => {
         maxW="1300px"
         // justify="center"
         mb="4.5rem"
-        gap="2rem"
+        gap={{ base: "1rem", md: "2rem" }}
         direction="column"
       >
         <Flex
-          background="#2d313a"
+          background="user-profile-bg"
           border="1px"
-          borderColor="mobile-nav-active"
+          borderColor="user-profile-border"
           borderRadius="md"
-          p={{ base: "1re", md: "2rem" }}
+          p={{ base: "1rem", md: "2rem" }}
           direction={{ base: "column", md: "row" }}
           // w="320px"
           // h="255px"
@@ -99,15 +130,26 @@ const UserProfile = () => {
             gap="2rem"
             borderRight={{ base: "0px", md: "1px" }}
             borderBottom={{ base: "1px", md: "0px" }}
-            borderColor={{ base: "mobile-nav-active", md: "mobile-nav-active" }}
+            borderColor={{
+              base: "user-profile-border",
+              md: "user-profile-border",
+            }}
             pr={{ base: "0", md: "2rem" }}
             pb={{ base: "1rem", md: "0" }}
+            pt={{ base: "1rem", md: "0" }}
           >
             <Avatar size="2xl" />
-            <Text fontWeight="bold">John Doe</Text>
-            <Button variant="secondary" size="xs">
-              Change avatar
-            </Button>
+            <Text fontWeight="bold">
+              {data?.firstName} {data?.lastName}
+            </Text>
+            <Box>
+              <Button variant="secondary" size="xs" mb="1rem">
+                Change avatar
+              </Button>
+              <Button variant="primary" size="xs" w="full" onClick={logOut}>
+                Logout
+              </Button>
+            </Box>
           </Flex>
           <Flex
             direction="column"
@@ -116,7 +158,10 @@ const UserProfile = () => {
             w="100%"
             h="auto"
             borderRight={{ base: "0", md: "1px" }}
-            borderColor={{ base: "mobile-nav-active", md: "mobile-nav-active" }}
+            borderColor={{
+              base: "user-profile-border",
+              md: "user-profile-border",
+            }}
           >
             <Text
               fontSize="xs"
@@ -129,7 +174,7 @@ const UserProfile = () => {
               <Flex
                 w="100%"
                 borderBottom="1px"
-                borderColor="mobile-nav-active"
+                borderColor="user-profile-border"
                 mb=".5rem"
                 pb=".2rem"
                 justify="space-between"
@@ -140,12 +185,12 @@ const UserProfile = () => {
                 </Button>
               </Flex>
               <Text fontWeight="bold" mb={{ base: "1rem", md: "2rem" }}>
-                John Doe
+                {data?.firstName} {data?.lastName}
               </Text>
               <Flex
                 w="100%"
                 borderBottom="1px"
-                borderColor="mobile-nav-active"
+                borderColor="user-profile-border"
                 mb=".5rem"
                 pb=".2rem"
                 justify="space-between"
@@ -156,12 +201,12 @@ const UserProfile = () => {
                 </Button>
               </Flex>
               <Text fontWeight="bold" mb={{ base: "1rem", md: "2rem" }}>
-                johndoe@gmail.com
+                {data?.email}
               </Text>
               <Flex
                 w="100%"
                 borderBottom="1px"
-                borderColor="mobile-nav-active"
+                borderColor="user-profile-border"
                 mb=".5rem"
                 pb=".2rem"
                 justify="space-between"
@@ -178,7 +223,7 @@ const UserProfile = () => {
             borderRadius="md"
             p={{ base: "1rem", md: "2rem" }}
             // w="320px"
-            h="255px"
+            h={{ base: "auto", md: "255px" }}
           >
             <Text
               fontSize="xs"
@@ -189,7 +234,7 @@ const UserProfile = () => {
             </Text>
             <Flex direction="column" my="1rem" mb="2rem">
               <Text fontSize="xl" textColor="text-default" textAlign="center">
-                BASIC
+                {data?.role.toUpperCase()}
               </Text>
               <Text
                 fontSize="4xl"
@@ -197,7 +242,7 @@ const UserProfile = () => {
                 textColor="text-default"
                 textAlign="center"
               >
-                0.2GB
+                {storageLimit.toFixed(2)} GB
               </Text>
             </Flex>
             <Flex direction="column" gap="1rem">
@@ -211,15 +256,15 @@ const UserProfile = () => {
           </Flex>
         </Flex>
         <Grid
-          gap={{ base: "1rem", md: "2rem" }}
+          gap={{ base: "0rem", md: "2rem" }}
           templateColumns={{ base: "1fr", md: "1fr 1fr 1fr" }}
         >
           <GridItem colSpan="2">
             <Flex
               direction="column"
-              background="#2d313a"
+              background="user-profile-bg"
               border="1px"
-              borderColor="mobile-nav-active"
+              borderColor="user-profile-border"
               borderRadius="md"
               p={{ base: "1rem", md: "2rem" }}
               // w="320px"
@@ -240,7 +285,7 @@ const UserProfile = () => {
                     textColor="text-default"
                     textAlign="center"
                   >
-                    0.05GB
+                    {data?.usedBookStorage} GB
                   </Text>
                   <Text fontSize="sm" textColor="text-default">
                     Used Storage
@@ -253,26 +298,27 @@ const UserProfile = () => {
                     textColor="text-default"
                     textAlign="center"
                   >
-                    0.15GB
+                    {storageLimit.toFixed(2)} GB
                   </Text>
                   <Text fontSize="sm" textColor="text-default">
                     Free Storage
                   </Text>
                 </Flex>
               </Flex>
-              <Progress value={10} height="28px" colorScheme="text-default" />
+              <Progress value={0} height="28px" colorScheme="text-default" />
             </Flex>
           </GridItem>
           <GridItem>
             <Flex
-              background="#2d313a"
+              background="user-profile-bg"
               direction="column"
               border="1px"
-              borderColor="mobile-nav-active"
+              borderColor="user-profile-border"
               borderRadius="md"
               p={{ base: "1rem", md: "2rem" }}
               // w="320px"
               h="270px"
+              mt={{ base: "1rem", md: "0" }}
             >
               <Text
                 fontSize="xs"
@@ -287,7 +333,7 @@ const UserProfile = () => {
                   textColor="text-default"
                   textAlign="center"
                 >
-                  6
+                  {data?.usedBookStorage}
                 </Text>
                 <Text
                   fontSize="sm"

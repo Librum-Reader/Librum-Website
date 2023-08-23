@@ -13,6 +13,7 @@ import { extendTheme } from "@chakra-ui/react";
 import { modalTheme } from "./styles/modalTheme";
 import { inputTheme } from "./styles/inputTheme";
 import { drawerTheme } from "./styles/drawerTheme";
+import { batch } from "react-redux";
 
 export function Providers({ children }) {
   const tokens = {
@@ -32,6 +33,8 @@ export function Providers({ children }) {
         "bg-modal-default": "white",
         "legal-text": "black",
         "legal-title": "#946BDE",
+        "user-profile-bg": "#e2e8f0",
+        "user-profile-border": "#bec3ca",
       },
       dark: {
         "mobile-nav-active": "#3c4047",
@@ -45,6 +48,8 @@ export function Providers({ children }) {
         "bg-modal-default": "#282c34",
         "legal-text": "white",
         "legal-title": "#946BDE",
+        "user-profile-bg": "#2d313a",
+        "user-profile-border": "#3c4047",
       },
     },
   };
@@ -54,6 +59,14 @@ export function Providers({ children }) {
       "bg-default": {
         default: tokens.colors.light["bg-default"],
         _dark: tokens.colors.dark["bg-default"],
+      },
+      "user-profile-bg": {
+        default: tokens.colors.light["user-profile-bg"],
+        _dark: tokens.colors.dark["user-profile-bg"],
+      },
+      "user-profile-border": {
+        default: tokens.colors.light["user-profile-border"],
+        _dark: tokens.colors.dark["user-profile-border"],
       },
       "text-default": {
         default: tokens.colors.light["text-default"],
@@ -157,6 +170,7 @@ export function Providers({ children }) {
             borderColor: "btn-secondary-border",
             borderRadius: "3px",
           },
+
           showcase: {
             bg: "transparent",
             textColor: "white",

@@ -192,7 +192,7 @@ const UserProfile = () => {
             }}
           >
             <Text
-              fontSize="xs"
+              fontSize="sm"
               textColor="text-default"
               mb={{ base: "1rem", md: "2rem" }}
             >
@@ -267,7 +267,7 @@ const UserProfile = () => {
             h={{ base: "auto", md: "255px" }}
           >
             <Text
-              fontSize="xs"
+              fontSize="sm"
               textColor="text-default"
               mb={{ base: "1rem", md: "2rem" }}
             >
@@ -312,7 +312,7 @@ const UserProfile = () => {
               h="270px"
             >
               <Text
-                fontSize="xs"
+                fontSize="sm"
                 textColor="text-default"
                 mb={{ base: "1rem", md: "2rem" }}
               >
@@ -370,7 +370,7 @@ const UserProfile = () => {
               mt={{ base: "1rem", md: "0" }}
             >
               <Text
-                fontSize="xs"
+                fontSize="sm"
                 textColor="text-default"
                 mb={{ base: "1rem", md: "2rem" }}
               >

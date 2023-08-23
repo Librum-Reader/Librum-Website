@@ -12,7 +12,6 @@ const ProfileButton = () => {
     active = "navActive";
   } else {
     active = "navActive";
-
     inactive = "navLink";
   }
 

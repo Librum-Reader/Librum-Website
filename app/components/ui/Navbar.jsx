@@ -60,6 +60,8 @@ import ContactForm from "./ContactForm";
 import { usePathname } from "next/navigation";
 import ThemeToggle from "./ThemeToggle";
 import SunIcon from "../ui/SunIcon";
+import { LoginContext } from "../../context/loginModalContext";
+import { useContext } from "react";
 
 const navLinks = [
   {
@@ -76,6 +78,8 @@ let inactive;
 let active;
 
 const Navbar = () => {
+  const { loginOpen, setLoginOpen } = useContext(LoginContext);
+
   const path = usePathname();
   if (path === "/") {
     inactive = "navLinkHome";
@@ -542,7 +546,16 @@ const Navbar = () => {
                     {isLoggedIn ? (
                       <ProfileButtonMobile />
                     ) : (
-                      <LoginButtonMobile closeDrawer={onDrawerClose} />
+                      <Link href="">
+                        <Button
+                          onClick={() => {
+                            setLoginOpen(true);
+                          }}
+                          variant="drawerButton"
+                        >
+                          LOGINf
+                        </Button>
+                      </Link>
                     )}
                   </Flex>
                   {colorMode === "dark" ? (
@@ -570,6 +583,7 @@ const Navbar = () => {
           </DrawerBody>
         </DrawerContent>
       </Drawer>
+      <LoginButtonMobile closeDrawer={onDrawerClose} />
     </>
   );
 };

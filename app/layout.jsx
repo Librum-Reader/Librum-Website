@@ -38,6 +38,7 @@ import { CookiesProvider } from "react-cookie";
 import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
 
 import { useEffect, useState } from "react";
+import { LoginContext } from "./context/loginModalContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -82,117 +83,123 @@ export default function RootLayout({ children }) {
     onDisclaimerClose();
   };
 
+  const [loginOpen, setLoginOpen] = useState(false);
+
   return (
     <html lang="en">
       <body>
-        <ColorModeScript initialColorMode="dark" />
-        <GoogleReCaptchaProvider
-          reCaptchaKey={process.env.REACT_APP_reCAPTCHA_SITE_KEY}
-        >
-          <Provider store={store}>
-            <QueryClientProvider client={queryClient}>
-              <CookiesProvider>
-                <Providers>
-                  <Container>
-                    <Modal
-                      isCentered
-                      isOpen={isDisclaimerOpen}
-                      onClose={onDisclaimerClose}
-                      bg="transparent"
-                      closeOnOverlayClick={false}
-                      variant="defaultVariant"
-                    >
-                      <ModalOverlay />
-                      <ModalContent
-                        alignContent="center"
-                        maxW="1000px"
-                        w={{ base: "100%", md: "auto" }}
+        <LoginContext.Provider value={{ loginOpen, setLoginOpen }}>
+          <ColorModeScript initialColorMode="dark" />
+          <GoogleReCaptchaProvider
+            reCaptchaKey={process.env.REACT_APP_reCAPTCHA_SITE_KEY}
+          >
+            <Provider store={store}>
+              <QueryClientProvider client={queryClient}>
+                <CookiesProvider>
+                  <Providers>
+                    <Container>
+                      <Modal
+                        isCentered
+                        isOpen={isDisclaimerOpen}
+                        onClose={onDisclaimerClose}
                         bg="transparent"
-                        boxShadow="0"
+                        closeOnOverlayClick={false}
+                        variant="defaultVariant"
                       >
-                        <ModalBody alignContent="center" px="1rem">
-                          <Flex
-                            w={{ base: "100%", md: "620px" }}
-                            bg="bg-default"
-                            // mx={{ base: "1rem", md: "0" }}
-                            p={{ base: "1rem", md: "4rem" }}
-                            borderRadius="md"
-                            gap="2rem"
-                            direction="column"
-                            align="center"
-                          >
-                            <Image src="/cookies.svg" w="150px" h="auto" />
-                            <Heading size="lg">We use cookies</Heading>
+                        <ModalOverlay />
+                        <ModalContent
+                          alignContent="center"
+                          maxW="1000px"
+                          w={{ base: "100%", md: "auto" }}
+                          bg="transparent"
+                          boxShadow="0"
+                        >
+                          <ModalBody alignContent="center" px="1rem">
                             <Flex
+                              w={{ base: "100%", md: "620px" }}
+                              bg="bg-default"
+                              // mx={{ base: "1rem", md: "0" }}
+                              p={{ base: "1rem", md: "4rem" }}
+                              borderRadius="md"
                               gap="2rem"
                               direction="column"
-                              justify="center"
+                              align="center"
                             >
-                              <Text align={{ base: "center", md: "center" }}>
-                                We use cookies to provide the best possible
-                                experience. By clicking continue, you agree to
-                                Librum&apos;s policies.
-                              </Text>
+                              <Image src="/cookies.svg" w="150px" h="auto" />
+                              <Heading size="lg">We use cookies</Heading>
                               <Flex
-                                gap=".5rem"
-                                justify="space-between"
-                                align={{ base: "center", md: "start" }}
-                                w="100%"
+                                gap="2rem"
+                                direction="column"
+                                justify="center"
+                              >
+                                <Text align={{ base: "center", md: "center" }}>
+                                  We use cookies to provide the best possible
+                                  experience. By clicking continue, you agree to
+                                  Librum&apos;s policies.
+                                </Text>
+                                <Flex
+                                  gap=".5rem"
+                                  justify="space-between"
+                                  align={{ base: "center", md: "start" }}
+                                  w="100%"
+                                  direction={{ base: "column", md: "row" }}
+                                >
+                                  <UnorderedList mt="0">
+                                    <ListItem>
+                                      <Link href="/disclaimer">
+                                        Legal Disclaimer
+                                      </Link>
+                                    </ListItem>
+                                    <ListItem>
+                                      <Link href="/privacypolicy">
+                                        Privacy Policy
+                                      </Link>
+                                    </ListItem>
+                                    <ListItem>
+                                      <Link href="/cookies">
+                                        Cookies Policy
+                                      </Link>
+                                    </ListItem>
+                                    <ListItem>
+                                      <Link href="/termsofservice">
+                                        Terms of Service
+                                      </Link>
+                                    </ListItem>
+                                  </UnorderedList>
+                                </Flex>
+                              </Flex>
+                              <Flex
+                                gap="1rem"
                                 direction={{ base: "column", md: "row" }}
                               >
-                                <UnorderedList mt="0">
-                                  <ListItem>
-                                    <Link href="/disclaimer">
-                                      Legal Disclaimer
-                                    </Link>
-                                  </ListItem>
-                                  <ListItem>
-                                    <Link href="/privacypolicy">
-                                      Privacy Policy
-                                    </Link>
-                                  </ListItem>
-                                  <ListItem>
-                                    <Link href="/cookies">Cookies Policy</Link>
-                                  </ListItem>
-                                  <ListItem>
-                                    <Link href="/termsofservice">
-                                      Terms of Service
-                                    </Link>
-                                  </ListItem>
-                                </UnorderedList>
+                                <Button
+                                  variant="primary"
+                                  onClick={closeModalAndSetFirstVisit}
+                                  w={{ base: "100%", md: "auto" }}
+                                >
+                                  Accept and continue
+                                </Button>
+                                <Button
+                                  variant="secondary"
+                                  onClick={onDisclaimerClose}
+                                >
+                                  Decline
+                                </Button>
                               </Flex>
                             </Flex>
-                            <Flex
-                              gap="1rem"
-                              direction={{ base: "column", md: "row" }}
-                            >
-                              <Button
-                                variant="primary"
-                                onClick={closeModalAndSetFirstVisit}
-                                w={{ base: "100%", md: "auto" }}
-                              >
-                                Accept and continue
-                              </Button>
-                              <Button
-                                variant="secondary"
-                                onClick={onDisclaimerClose}
-                              >
-                                Decline
-                              </Button>
-                            </Flex>
-                          </Flex>
-                        </ModalBody>
-                      </ModalContent>
-                    </Modal>
-                    <Navbar />
-                    {children}
-                    <Footer />
-                  </Container>
-                </Providers>
-              </CookiesProvider>
-            </QueryClientProvider>
-          </Provider>
-        </GoogleReCaptchaProvider>
+                          </ModalBody>
+                        </ModalContent>
+                      </Modal>
+                      <Navbar />
+                      {children}
+                      <Footer />
+                    </Container>
+                  </Providers>
+                </CookiesProvider>
+              </QueryClientProvider>
+            </Provider>
+          </GoogleReCaptchaProvider>
+        </LoginContext.Provider>
       </body>
     </html>
   );

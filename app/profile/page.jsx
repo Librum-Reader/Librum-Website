@@ -206,7 +206,7 @@ const UserProfile = () => {
               <Flex
                 w="100%"
                 border="1px"
-                background="#30353e"
+                background="user-info-bg"
                 borderColor="user-profile-border"
                 borderRadius="md"
                 onPlayingCapture=".8rem"
@@ -231,7 +231,7 @@ const UserProfile = () => {
               <Flex
                 w="100%"
                 border="1px"
-                background="#30353e"
+                background="user-info-bg"
                 borderColor="user-profile-border"
                 borderRadius="md"
                 pl=".8rem"

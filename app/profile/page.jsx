@@ -71,7 +71,7 @@ const UserProfile = () => {
     <Flex w="100%">
       <Flex
         background="bg-default"
-        h="100vh"
+        h={{ base: "100%", md: "100dvh" }}
         w="100%"
         px={{ base: "1rem", md: "9rem" }}
         mt="4.5rem"
@@ -79,14 +79,14 @@ const UserProfile = () => {
         maxW="1300px"
         // justify="center"
         mb="4.5rem"
-        gap="1rem"
+        gap="2rem"
         direction="column"
       >
         <Flex
           border="1px"
           borderColor="mobile-nav-active"
           borderRadius="md"
-          p="1rem"
+          p={{ base: "1re", md: "2rem" }}
           direction={{ base: "column", md: "row" }}
           // w="320px"
           // h="255px"
@@ -95,11 +95,11 @@ const UserProfile = () => {
             direction="column"
             justify="center"
             align="center"
-            gap="1rem"
+            gap="2rem"
             borderRight={{ base: "0px", md: "1px" }}
             borderBottom={{ base: "1px", md: "0px" }}
             borderColor={{ base: "mobile-nav-active", md: "mobile-nav-active" }}
-            pr={{ base: "0", md: "1rem" }}
+            pr={{ base: "0", md: "2rem" }}
             pb={{ base: "1rem", md: "0" }}
           >
             <Avatar size="2xl" />
@@ -110,14 +110,18 @@ const UserProfile = () => {
           </Flex>
           <Flex
             direction="column"
-            p="1rem"
+            p={{ base: "1rem", md: "2rem" }}
             // w="320px"
             w="100%"
             h="auto"
             borderRight={{ base: "0", md: "1px" }}
             borderColor={{ base: "mobile-nav-active", md: "mobile-nav-active" }}
           >
-            <Text fontSize="xs" textColor="text-default">
+            <Text
+              fontSize="xs"
+              textColor="text-default"
+              mb={{ base: "1rem", md: "2rem" }}
+            >
               YOUR INFORMATION
             </Text>
             <Flex direction="column" my="1rem">
@@ -134,7 +138,7 @@ const UserProfile = () => {
                   Edit
                 </Button>
               </Flex>
-              <Text fontWeight="bold" mb="1rem">
+              <Text fontWeight="bold" mb={{ base: "1rem", md: "2rem" }}>
                 John Doe
               </Text>
               <Flex
@@ -150,7 +154,7 @@ const UserProfile = () => {
                   Edit
                 </Button>
               </Flex>
-              <Text fontWeight="bold" mb="1rem">
+              <Text fontWeight="bold" mb={{ base: "1rem", md: "2rem" }}>
                 johndoe@gmail.com
               </Text>
               <Flex
@@ -171,11 +175,15 @@ const UserProfile = () => {
           <Flex
             direction="column"
             borderRadius="md"
-            p="1rem"
+            p={{ base: "1rem", md: "2rem" }}
             // w="320px"
             h="255px"
           >
-            <Text fontSize="xs" textColor="text-default">
+            <Text
+              fontSize="xs"
+              textColor="text-default"
+              mb={{ base: "1rem", md: "2rem" }}
+            >
               YOUR TIER
             </Text>
             <Flex direction="column" my="1rem">
@@ -208,11 +216,15 @@ const UserProfile = () => {
               border="1px"
               borderColor="mobile-nav-active"
               borderRadius="md"
-              p="1rem"
+              p={{ base: "1rem", md: "2rem" }}
               // w="320px"
-              h="255px"
+              h="270px"
             >
-              <Text fontSize="xs" textColor="text-default">
+              <Text
+                fontSize="xs"
+                textColor="text-default"
+                mb={{ base: "1rem", md: "2rem" }}
+              >
                 USED STORAGE
               </Text>
               <Flex justify="space-between" gap="4rem">
@@ -257,11 +269,15 @@ const UserProfile = () => {
               border="1px"
               borderColor="mobile-nav-active"
               borderRadius="md"
-              p="1rem"
+              p={{ base: "1rem", md: "2rem" }}
               // w="320px"
-              h="255px"
+              h="270px"
             >
-              <Text fontSize="xs" textColor="text-default">
+              <Text
+                fontSize="xs"
+                textColor="text-default"
+                mb={{ base: "1rem", md: "2rem" }}
+              >
                 YOUR BOOKS
               </Text>
               <Flex direction="column" my="auto">

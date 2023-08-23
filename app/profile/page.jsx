@@ -283,7 +283,7 @@ const UserProfile = () => {
                     fontSize="3xl"
                     fontWeight="700"
                     textColor="text-default"
-                    textAlign="center"
+                    textAlign="left"
                   >
                     {data?.usedBookStorage} GB
                   </Text>
@@ -296,11 +296,15 @@ const UserProfile = () => {
                     fontSize="3xl"
                     fontWeight="700"
                     textColor="text-default"
-                    textAlign="center"
+                    textAlign="right"
                   >
                     {storageLimit.toFixed(2)} GB
                   </Text>
-                  <Text fontSize="sm" textColor="text-default">
+                  <Text
+                    fontSize="sm"
+                    textColor="text-default"
+                    textAlign="right"
+                  >
                     Free Storage
                   </Text>
                 </Flex>

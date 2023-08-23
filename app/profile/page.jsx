@@ -23,6 +23,7 @@ import {
   Progress,
   Grid,
   Avatar,
+  GridItem,
 } from "@chakra-ui/react";
 
 import {
@@ -72,7 +73,7 @@ const UserProfile = () => {
         background="bg-default"
         h="100vh"
         w="100%"
-        px="9rem"
+        px={{ base: "1rem", md: "9rem" }}
         mt="4.5rem"
         mx="auto"
         maxW="1300px"
@@ -100,13 +101,33 @@ const UserProfile = () => {
           >
             <Avatar size="2xl" />
             <Text fontWeight="bold">John Doe</Text>
+            <Button variant="secondary" size="xs">
+              Change avatar
+            </Button>
           </Flex>
-        </Flex>
-        <Grid gap="1rem" templateColumns={{ base: "1fr", md: "1fr 1fr 1fr" }}>
           <Flex
             direction="column"
-            border="1px"
+            p="1rem"
+            // w="320px"
+            w="100%"
+            h="255px"
+            borderRight="1px"
             borderColor="mobile-nav-active"
+          >
+            <Text fontSize="xs" textColor="text-default">
+              YOUR INFORMATION
+            </Text>
+            <Flex direction="column" my="1rem">
+              <Text>Username</Text>
+              <Text fontWeight="bold" mb="1rem">
+                John Doe
+              </Text>
+              <Text>Email</Text>
+              <Text fontWeight="bold">johndoe@gmail.com</Text>
+            </Flex>
+          </Flex>
+          <Flex
+            direction="column"
             borderRadius="md"
             p="1rem"
             // w="320px"
@@ -137,81 +158,89 @@ const UserProfile = () => {
               </Button>
             </Flex>
           </Flex>
-
-          <Flex
-            direction="column"
-            border="1px"
-            borderColor="mobile-nav-active"
-            borderRadius="md"
-            p="1rem"
-            // w="320px"
-            h="255px"
-          >
-            <Text fontSize="xs" textColor="text-default">
-              USED STORAGE
-            </Text>
-            <Flex justify="center" gap="1.5rem">
-              <Flex direction="column" my="1rem">
+        </Flex>
+        <Grid gap="1rem" templateColumns={{ base: "1fr", md: "1fr 1fr 1fr" }}>
+          <GridItem colSpan="2">
+            <Flex
+              direction="column"
+              border="1px"
+              borderColor="mobile-nav-active"
+              borderRadius="md"
+              p="1rem"
+              // w="320px"
+              h="255px"
+            >
+              <Text fontSize="xs" textColor="text-default">
+                USED STORAGE
+              </Text>
+              <Flex justify="center" gap="4rem">
+                <Flex direction="column" my="1rem">
+                  <Text
+                    fontSize="3xl"
+                    fontWeight="700"
+                    textColor="text-default"
+                    textAlign="center"
+                  >
+                    0.05GB
+                  </Text>
+                  <Text fontSize="sm" textColor="text-default">
+                    Used Storage
+                  </Text>
+                </Flex>
+                <Flex direction="column" my="1rem">
+                  <Text
+                    fontSize="3xl"
+                    fontWeight="700"
+                    textColor="text-default"
+                    textAlign="center"
+                  >
+                    0.15GB
+                  </Text>
+                  <Text fontSize="sm" textColor="text-default">
+                    Free Storage
+                  </Text>
+                </Flex>
+              </Flex>
+              <Progress
+                value={10}
+                mt="2rem"
+                height="25px"
+                colorScheme="text-default"
+              />
+            </Flex>
+          </GridItem>
+          <GridItem>
+            <Flex
+              direction="column"
+              border="1px"
+              borderColor="mobile-nav-active"
+              borderRadius="md"
+              p="1rem"
+              // w="320px"
+              h="255px"
+            >
+              <Text fontSize="xs" textColor="text-default">
+                YOUR BOOKS
+              </Text>
+              <Flex direction="column" my="auto">
                 <Text
                   fontSize="3xl"
+                  textColor="text-default"
+                  textAlign="center"
+                >
+                  6
+                </Text>
+                <Text
+                  fontSize="sm"
                   fontWeight="700"
                   textColor="text-default"
                   textAlign="center"
                 >
-                  0.05GB
-                </Text>
-                <Text fontSize="sm" textColor="text-default">
-                  Used Storage
-                </Text>
-              </Flex>
-              <Flex direction="column" my="1rem">
-                <Text
-                  fontSize="3xl"
-                  fontWeight="700"
-                  textColor="text-default"
-                  textAlign="center"
-                >
-                  0.15GB
-                </Text>
-                <Text fontSize="sm" textColor="text-default">
-                  Free Storage
+                  Books in your library
                 </Text>
               </Flex>
             </Flex>
-            <Progress
-              value={10}
-              mt="2rem"
-              height="25px"
-              colorScheme="text-default"
-            />
-          </Flex>
-
-          <Flex
-            direction="column"
-            border="1px"
-            borderColor="mobile-nav-active"
-            borderRadius="md"
-            p="1rem"
-            // w="320px"
-            h="255px"
-          >
-            <Text fontSize="xs" textColor="text-default">
-              YOUR BOOKS
-            </Text>
-            <Flex direction="column" my="auto">
-              <Text fontSize="3xl" textColor="text-default" textAlign="center">
-                6
-              </Text>
-              <Text
-                fontSize="sm"
-                fontWeight="700"
-                textColor="text-default"
-                textAlign="center"
-              >
-                Books in your library
-              </Text>
-            </Flex>
-          </Flex>
+          </GridItem>
         </Grid>
       </Flex>
     </Flex>

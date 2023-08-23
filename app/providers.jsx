@@ -129,7 +129,10 @@ export function Providers({ children }) {
       Progress: {
         baseStyle: {
           filledTrack: {
-            bg: "text-default",
+            bg: "#946BDE",
+          },
+          track: {
+            borderRadius: "md",
           },
         },
       },

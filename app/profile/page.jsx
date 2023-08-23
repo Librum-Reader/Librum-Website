@@ -83,6 +83,7 @@ const UserProfile = () => {
         direction="column"
       >
         <Flex
+          background="#2d313a"
           border="1px"
           borderColor="mobile-nav-active"
           borderRadius="md"
@@ -216,6 +217,7 @@ const UserProfile = () => {
           <GridItem colSpan="2">
             <Flex
               direction="column"
+              background="#2d313a"
               border="1px"
               borderColor="mobile-nav-active"
               borderRadius="md"
@@ -268,6 +270,7 @@ const UserProfile = () => {
           </GridItem>
           <GridItem>
             <Flex
+              background="#2d313a"
               direction="column"
               border="1px"
               borderColor="mobile-nav-active"

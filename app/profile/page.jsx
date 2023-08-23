@@ -353,7 +353,7 @@ const UserProfile = () => {
                   textColor="text-default"
                   textAlign="center"
                 >
-                  {data?.usedBookStorage}
+                  0
                 </Text>
                 <Text
                   fontSize="sm"

@@ -213,7 +213,7 @@ const Navbar = () => {
                       <Heading size="lg" mb=".5rem">
                         Contact Information
                       </Heading>
-                      <Text mb="2rem" fontSize="sm" color="text-default">
+                      <Text mb="2rem" fontSize="sm" color="white">
                         Fill out the form if you have any questions, comments,
                         concerns, or bug reports. Our team is 100% responsive,
                         and we reply quickly! Check out other contact options
@@ -221,7 +221,7 @@ const Navbar = () => {
                       </Text>
                       <Flex alignItems="center" gap=".5rem" mb="1rem" ml="1rem">
                         <AiFillMail color="#946bde" size={20} />
-                        <Text fontSize="sm" color="text-default">
+                        <Text fontSize="sm" color="white">
                           <Link href="mailto:help@librumreader.com">
                             help@librumreader.com
                           </Link>
@@ -229,7 +229,7 @@ const Navbar = () => {
                       </Flex>
                       <Flex alignItems="center" gap=".5rem" mb="1rem" ml="1rem">
                         <AiFillMail color="#946bde" size={20} />
-                        <Text fontSize="sm" color="text-default">
+                        <Text fontSize="sm" color="white">
                           <Link href="mailto:contact@librumreader.com">
                             contact@librumreader.com
                           </Link>
@@ -237,7 +237,7 @@ const Navbar = () => {
                       </Flex>
                       <Flex alignItems="center" gap=".5rem" mb="1rem" ml="1rem">
                         <AiFillGithub color="#946bde" size={20} />
-                        <Text fontSize="sm" color="text-default">
+                        <Text fontSize="sm" color="white">
                           <Link
                             href="http://github.com/librum-reader"
                             target="#"
@@ -281,7 +281,7 @@ const Navbar = () => {
               >
                 <Flex direction="column" align="center" mt="4rem">
                   <Heading mb="2rem">Thank you!</Heading>
-                  <Text mb="2rem" fontSize="sm" color="#47478f">
+                  <Text mb="2rem" fontSize="sm" color="text-default">
                     We have received your message, and someone from our team
                     will be in touch shortly.
                   </Text>

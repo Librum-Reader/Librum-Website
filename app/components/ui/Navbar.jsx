@@ -106,6 +106,12 @@ const Navbar = () => {
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const {
+    isOpen: isThankYouOpen,
+    onOpen: onThankYouOpen,
+    onClose: onThankYouClose,
+  } = useDisclosure();
+
+  const {
     isOpen: isDrawerOpen,
     onOpen: onDrawerOpen,
     onClose: onDrawerClose,
@@ -125,6 +131,7 @@ const Navbar = () => {
   const submitForm = async (e, values) => {
     e.preventDefault();
     try {
+      console.log("Form submitting");
       await fetch("https://formsubmit.co/ajax/help@librumreader.com", {
         method: "POST",
         headers: {
@@ -162,7 +169,8 @@ const Navbar = () => {
     setMessage("");
     setiIsLoading(false);
     e.preventDefault();
-    setContactOpen(false);
+    onClose();
+    onThankYouOpen();
   };
 
   const loading = <Spinner />;
@@ -175,6 +183,42 @@ const Navbar = () => {
 
   return (
     <>
+      <Modal
+        isOpen={isThankYouOpen}
+        onClose={onThankYouClose}
+        variant="defaultVariant"
+        isCentered
+      >
+        <ModalOverlay />
+        <ModalContent boxShadow="0" alignContent="center">
+          <ModalBody>
+            <Flex
+              direction="column"
+              align="center"
+              justify="space-between"
+              pl="1rem"
+              py="1rem"
+            >
+              <Heading mb="2rem">Thank you!</Heading>
+              <Text mb="2rem" fontSize="sm" color="text-default">
+                We have received your message, and someone from our team will be
+                in touch shortly.
+              </Text>
+
+              <Button
+                variant="primary"
+                onClick={() => {
+                  onThankYouClose();
+                  resetModal();
+                }}
+              >
+                Close
+              </Button>
+            </Flex>
+          </ModalBody>
+        </ModalContent>
+      </Modal>
+
       <Modal
         isOpen={isOpen}
         onClose={onClose}
@@ -267,35 +311,7 @@ const Navbar = () => {
                   </Flex>
                 </CardBody>
               </Card>
-              <Flex
-                w="800px"
-                direction="column"
-                className={
-                  contactOpen
-                    ? "contact-success-message closed"
-                    : "contact-success-message"
-                }
-                align="center"
-                justify="space-between"
-                pl="1rem"
-              >
-                <Flex direction="column" align="center" mt="4rem">
-                  <Heading mb="2rem">Thank you!</Heading>
-                  <Text mb="2rem" fontSize="sm" color="text-default">
-                    We have received your message, and someone from our team
-                    will be in touch shortly.
-                  </Text>
-                </Flex>
-                <Button
-                  alignSelf="end"
-                  variant="primary"
-                  onClick={() => {
-                    resetModal();
-                  }}
-                >
-                  Close
-                </Button>
-              </Flex>
+
               <Flex
                 w="800px"
                 direction="column"

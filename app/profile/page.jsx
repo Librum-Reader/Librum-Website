@@ -131,7 +131,7 @@ const UserProfile = () => {
         h={{ base: "100%", md: "100dvh" }}
         w="100%"
         px={{ base: "1rem", md: "9rem" }}
-        mt="4.5rem"
+        mt="3.5rem"
         mx="auto"
         maxW="1300px"
         // justify="center"

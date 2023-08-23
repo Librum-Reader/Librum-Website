@@ -187,7 +187,7 @@ const UserProfile = () => {
             >
               YOUR TIER
             </Text>
-            <Flex direction="column" my="1rem">
+            <Flex direction="column" my="1rem" mb="2rem">
               <Text fontSize="xl" textColor="text-default" textAlign="center">
                 BASIC
               </Text>

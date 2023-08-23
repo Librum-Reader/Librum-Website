@@ -40,6 +40,8 @@ import { useState, useEffect } from "react";
 
 import { fetchUserInfo, fetchBooks } from "../utils/apiFunctions";
 
+import { FaRegEdit } from "react-icons/fa";
+
 const UserProfile = () => {
   const [token, setToken] = useState(null);
   const [tokenExists, setTokenExists] = useState(false);
@@ -97,7 +99,7 @@ const UserProfile = () => {
     storageLimit = storageLimit / 1024;
 
     // usedStorage = data?.usedBookStorage;
-    usedStorage = 204402653;
+    usedStorage = data?.usedBookStorage;
     usedStorage = usedStorage / 1024;
     usedStorage = usedStorage / 1024;
     usedStorage = usedStorage / 1024;
@@ -197,38 +199,47 @@ const UserProfile = () => {
               YOUR INFORMATION
             </Text>
             <Flex direction="column" my="1rem">
+              <Text mb=".5rem">Username</Text>
+
               <Flex
                 w="100%"
-                borderBottom="1px"
+                border="1px"
+                background="#30353e"
                 borderColor="user-profile-border"
-                mb=".5rem"
-                pb=".2rem"
+                borderRadius="md"
+                onPlayingCapture=".8rem"
                 justify="space-between"
+                align="center"
+                mb="1rem"
+                pl=".8rem"
               >
-                <Text>Username</Text>
-                <Button variant="secondary" size="sm">
-                  Edit
+                <Text fontWeight="bold">
+                  {data?.firstName} {data?.lastName}
+                </Text>
+                <Button variant="secondary" size="sm" border="0">
+                  <FaRegEdit />
                 </Button>
               </Flex>
-              <Text fontWeight="bold" mb={{ base: "1rem", md: "2rem" }}>
-                {data?.firstName} {data?.lastName}
-              </Text>
+
+              <Flex w="100%" justify="space-between">
+                <Text mb=".5rem">Email</Text>
+              </Flex>
               <Flex
                 w="100%"
-                borderBottom="1px"
+                border="1px"
+                background="#30353e"
                 borderColor="user-profile-border"
-                mb=".5rem"
-                pb=".2rem"
+                borderRadius="md"
+                pl=".8rem"
                 justify="space-between"
+                align="center"
+                mb="1rem"
               >
-                <Text>Email</Text>
-                <Button variant="secondary" size="sm">
-                  Edit
+                <Text fontWeight="bold">{data?.email}</Text>
+                <Button variant="secondary" size="sm" border="0">
+                  <FaRegEdit />
                 </Button>
               </Flex>
-              <Text fontWeight="bold" mb={{ base: "1rem", md: "2rem" }}>
-                {data?.email}
-              </Text>
               <Flex
                 w="100%"
                 borderBottom="1px"

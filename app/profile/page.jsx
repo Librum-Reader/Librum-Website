@@ -199,7 +199,9 @@ const UserProfile = () => {
               YOUR INFORMATION
             </Text>
             <Flex direction="column" my="1rem">
-              <Text mb=".5rem">Username</Text>
+              <Text mb=".1rem" fontSize="sm" fontWeight="semibold">
+                Username
+              </Text>
 
               <Flex
                 w="100%"
@@ -213,7 +215,7 @@ const UserProfile = () => {
                 mb="1rem"
                 pl=".8rem"
               >
-                <Text fontWeight="bold">
+                <Text fontSize="md">
                   {data?.firstName} {data?.lastName}
                 </Text>
                 <Button variant="secondary" size="sm" border="0">
@@ -222,7 +224,9 @@ const UserProfile = () => {
               </Flex>
 
               <Flex w="100%" justify="space-between">
-                <Text mb=".5rem">Email</Text>
+                <Text mb=".1rem" fontSize="sm" fontWeight="semibold">
+                  Email
+                </Text>
               </Flex>
               <Flex
                 w="100%"
@@ -235,7 +239,7 @@ const UserProfile = () => {
                 align="center"
                 mb="1rem"
               >
-                <Text fontWeight="bold">{data?.email}</Text>
+                <Text>{data?.email}</Text>
                 <Button variant="secondary" size="sm" border="0">
                   <FaRegEdit />
                 </Button>

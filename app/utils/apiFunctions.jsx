@@ -61,7 +61,6 @@ export const userRegistration = async (data) => {
 
 export const fetchUserInfo = async (data) => {
   try {
-    console.log(data);
     const response = await fetch(
       "https://librum-dev.azurewebsites.net/api/user",
       {
@@ -75,7 +74,29 @@ export const fetchUserInfo = async (data) => {
     );
 
     const result = await response.json();
-    console.log(result);
+    return result;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const fetchBooks = async (data) => {
+  try {
+    console.log(data);
+    const response = await fetch(
+      "https://librum-dev.azurewebsites.net/api/book",
+      {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${data}`,
+        },
+        method: "GET",
+      }
+    );
+
+    const result = await response.json();
+    console.log("books", result);
     return result;
   } catch (error) {
     console.error(error);

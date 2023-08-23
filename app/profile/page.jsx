@@ -38,7 +38,7 @@ import {
 
 import { useState, useEffect } from "react";
 
-import { fetchUserInfo } from "../utils/apiFunctions";
+import { fetchUserInfo, fetchBooks } from "../utils/apiFunctions";
 
 const UserProfile = () => {
   const [token, setToken] = useState(null);
@@ -63,14 +63,24 @@ const UserProfile = () => {
     }
     setToken(token);
     setTokenExists(true);
-    console.log(token);
   }, [token, router]);
 
   const { isLoading, error, data } = useQuery({
     queryKey: ["user"],
     queryFn: () => {
-      console.log("query: ", token);
       return fetchUserInfo(token);
+    },
+    enabled: tokenExists,
+  });
+
+  const {
+    isLoading: isBooksLoading,
+    error: booksError,
+    data: booksData,
+  } = useQuery({
+    queryKey: ["books"],
+    queryFn: () => {
+      return fetchBooks(token);
     },
     enabled: tokenExists,
   });
@@ -95,6 +105,10 @@ const UserProfile = () => {
     storageProgress = usedStorage / storageLimit;
     storageProgress = storageProgress * 100;
     console.log(storageProgress.toFixed(0));
+  }
+
+  if (!isBooksLoading) {
+    console.log(booksData);
   }
 
   // Logout function
@@ -297,7 +311,7 @@ const UserProfile = () => {
                     textColor="text-default"
                     textAlign="left"
                   >
-                    {usedStorage.toFixed(2)} GB
+                    {usedStorage?.toFixed(2)} GB
                   </Text>
                   <Text fontSize="sm" textColor="text-default">
                     Used Storage
@@ -322,7 +336,7 @@ const UserProfile = () => {
                 </Flex>
               </Flex>
               <Progress
-                value={storageProgress.toFixed(0)}
+                value={storageProgress?.toFixed(0)}
                 height="28px"
                 colorScheme="text-default"
               />
@@ -353,7 +367,7 @@ const UserProfile = () => {
                   textColor="text-default"
                   textAlign="center"
                 >
-                  0
+                  {booksData?.length}
                 </Text>
                 <Text
                   fontSize="sm"

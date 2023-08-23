@@ -171,7 +171,12 @@ const UserProfile = () => {
               {data?.firstName} {data?.lastName}
             </Text>
             <Box>
-              <Button variant="secondary" size="sm" mb="1rem">
+              <Button
+                variant="secondary"
+                size="sm"
+                mb="1rem"
+                w={{ base: "full", md: "auto" }}
+              >
                 Change avatar
               </Button>
               <Button variant="primary" size="sm" w="full" onClick={logOut}>

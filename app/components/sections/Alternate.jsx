@@ -17,6 +17,7 @@ import {
   ModalCloseButton,
   useDisclosure,
   useColorMode,
+  useColorModeValue,
 } from "@chakra-ui/react";
 
 import { motion, useInView, useAnimation } from "framer-motion";
@@ -27,6 +28,9 @@ import MobileFeatureCard from "../ui/MobileFeatureCard";
 
 const Alternate = () => {
   const { colorMode } = useColorMode();
+
+  const evenAlternateBackground = useColorModeValue("gray.50", "#3c4047");
+  const oddAlternateBackground = useColorModeValue("gray.200", "#282c34");
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [modalData, setModalData] = useState("");
@@ -89,7 +93,11 @@ const Alternate = () => {
               text={block.text_mobile}
               image_light={block.image_light}
               image={block.image}
-              bg={index % 2 === 0 ? "#3c4047" : "#282c34"}
+              bg={
+                index % 2 === 0
+                  ? evenAlternateBackground
+                  : oddAlternateBackground
+              }
             />
           </FeaturesAnimateMobile>
         );

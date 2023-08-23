@@ -169,10 +169,10 @@ const UserProfile = () => {
               {data?.firstName} {data?.lastName}
             </Text>
             <Box>
-              <Button variant="secondary" size="xs" mb="1rem">
+              <Button variant="secondary" size="sm" mb="1rem">
                 Change avatar
               </Button>
-              <Button variant="primary" size="xs" w="full" onClick={logOut}>
+              <Button variant="primary" size="sm" w="full" onClick={logOut}>
                 Logout
               </Button>
             </Box>
@@ -206,7 +206,7 @@ const UserProfile = () => {
                 justify="space-between"
               >
                 <Text>Username</Text>
-                <Button variant="secondary" size="xs">
+                <Button variant="secondary" size="sm">
                   Edit
                 </Button>
               </Flex>
@@ -222,7 +222,7 @@ const UserProfile = () => {
                 justify="space-between"
               >
                 <Text>Email</Text>
-                <Button variant="secondary" size="xs">
+                <Button variant="secondary" size="sm">
                   Edit
                 </Button>
               </Flex>
@@ -239,7 +239,7 @@ const UserProfile = () => {
               >
                 <Text>Security</Text>
               </Flex>
-              <Button variant="secondary" size="xs" alignSelf="start">
+              <Button variant="secondary" size="sm" alignSelf="start">
                 Change password
               </Button>
             </Flex>

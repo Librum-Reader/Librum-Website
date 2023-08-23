@@ -87,6 +87,7 @@ const UserProfile = () => {
           borderColor="mobile-nav-active"
           borderRadius="md"
           p="1rem"
+          direction={{ base: "column", md: "row" }}
           // w="320px"
           // h="255px"
         >
@@ -95,9 +96,11 @@ const UserProfile = () => {
             justify="center"
             align="center"
             gap="1rem"
-            borderRight="1px"
-            borderColor="mobile-nav-active"
-            pr="1rem"
+            borderRight={{ base: "0px", md: "1px" }}
+            borderBottom={{ base: "1px", md: "0px" }}
+            borderColor={{ base: "mobile-nav-active", md: "mobile-nav-active" }}
+            pr={{ base: "0", md: "1rem" }}
+            pb={{ base: "1rem", md: "0" }}
           >
             <Avatar size="2xl" />
             <Text fontWeight="bold">John Doe</Text>
@@ -110,20 +113,59 @@ const UserProfile = () => {
             p="1rem"
             // w="320px"
             w="100%"
-            h="255px"
-            borderRight="1px"
-            borderColor="mobile-nav-active"
+            h="auto"
+            borderRight={{ base: "0", md: "1px" }}
+            borderColor={{ base: "mobile-nav-active", md: "mobile-nav-active" }}
           >
             <Text fontSize="xs" textColor="text-default">
               YOUR INFORMATION
             </Text>
             <Flex direction="column" my="1rem">
-              <Text>Username</Text>
+              <Flex
+                w="100%"
+                borderBottom="1px"
+                borderColor="mobile-nav-active"
+                mb=".5rem"
+                pb=".2rem"
+                justify="space-between"
+              >
+                <Text>Username</Text>
+                <Button variant="secondary" size="xs">
+                  Edit
+                </Button>
+              </Flex>
               <Text fontWeight="bold" mb="1rem">
                 John Doe
               </Text>
-              <Text>Email</Text>
-              <Text fontWeight="bold">johndoe@gmail.com</Text>
+              <Flex
+                w="100%"
+                borderBottom="1px"
+                borderColor="mobile-nav-active"
+                mb=".5rem"
+                pb=".2rem"
+                justify="space-between"
+              >
+                <Text>Email</Text>
+                <Button variant="secondary" size="xs">
+                  Edit
+                </Button>
+              </Flex>
+              <Text fontWeight="bold" mb="1rem">
+                johndoe@gmail.com
+              </Text>
+              <Flex
+                w="100%"
+                borderBottom="1px"
+                borderColor="mobile-nav-active"
+                mb=".5rem"
+                pb=".2rem"
+                justify="space-between"
+              >
+                <Text>Security</Text>
+              </Flex>
+              <Button variant="secondary" size="xs" alignSelf="start">
+                Change password
+              </Button>
             </Flex>
           </Flex>
           <Flex
@@ -173,7 +215,7 @@ const UserProfile = () => {
               <Text fontSize="xs" textColor="text-default">
                 USED STORAGE
               </Text>
-              <Flex justify="center" gap="4rem">
+              <Flex justify="space-between" gap="4rem">
                 <Flex direction="column" my="1rem">
                   <Text
                     fontSize="3xl"

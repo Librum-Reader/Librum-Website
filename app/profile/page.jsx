@@ -76,6 +76,8 @@ const UserProfile = () => {
   });
 
   let storageLimit;
+  let usedStorage;
+  let storageProgress;
 
   if (!isLoading) {
     console.log(data);
@@ -83,6 +85,16 @@ const UserProfile = () => {
     storageLimit = storageLimit / 1024;
     storageLimit = storageLimit / 1024;
     storageLimit = storageLimit / 1024;
+
+    // usedStorage = data?.usedBookStorage;
+    usedStorage = 204402653;
+    usedStorage = usedStorage / 1024;
+    usedStorage = usedStorage / 1024;
+    usedStorage = usedStorage / 1024;
+
+    storageProgress = usedStorage / storageLimit;
+    storageProgress = storageProgress * 100;
+    console.log(storageProgress.toFixed(0));
   }
 
   // Logout function
@@ -285,7 +297,7 @@ const UserProfile = () => {
                     textColor="text-default"
                     textAlign="left"
                   >
-                    {data?.usedBookStorage} GB
+                    {usedStorage.toFixed(2)} GB
                   </Text>
                   <Text fontSize="sm" textColor="text-default">
                     Used Storage
@@ -309,7 +321,11 @@ const UserProfile = () => {
                   </Text>
                 </Flex>
               </Flex>
-              <Progress value={0} height="28px" colorScheme="text-default" />
+              <Progress
+                value={storageProgress.toFixed(0)}
+                height="28px"
+                colorScheme="text-default"
+              />
             </Flex>
           </GridItem>
           <GridItem>

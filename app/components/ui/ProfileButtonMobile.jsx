@@ -2,7 +2,7 @@
 
 import React from "react";
 
-import { Button } from "@chakra-ui/react";
+import { Button, Avatar, Flex } from "@chakra-ui/react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { useState, useEffect } from "react";
@@ -42,9 +42,12 @@ const ProfileButtonMobile = () => {
   const path = usePathname();
   return (
     <Link href="/profile">
-      <Button colorScheme="gray" variant="drawerButton">
-        {data?.firstName} {data?.lastName}
-      </Button>
+      <Flex align="center" ml=".5rem">
+        <Avatar size="sm" />
+        <Button colorScheme="gray" variant="drawerButton">
+          {data?.firstName} {data?.lastName}
+        </Button>
+      </Flex>
     </Link>
   );
 };

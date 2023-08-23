@@ -539,8 +539,6 @@ const Navbar = () => {
                   pb=".5rem"
                 >
                   <Flex align="center" gap="1rem">
-                    <Avatar size="sm" />
-
                     {isLoggedIn ? (
                       <ProfileButtonMobile />
                     ) : (

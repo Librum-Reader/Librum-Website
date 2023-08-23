@@ -191,6 +191,7 @@ const UserProfile = () => {
             w="100%"
             h="auto"
             borderRight={{ base: "0", md: "1px" }}
+            borderBottom={{ base: "1px", md: "0" }}
             borderColor={{
               base: "user-profile-border",
               md: "user-profile-border",

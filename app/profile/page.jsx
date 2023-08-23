@@ -209,7 +209,10 @@ const UserProfile = () => {
             </Flex>
           </Flex>
         </Flex>
-        <Grid gap="1rem" templateColumns={{ base: "1fr", md: "1fr 1fr 1fr" }}>
+        <Grid
+          gap={{ base: "1rem", md: "2rem" }}
+          templateColumns={{ base: "1fr", md: "1fr 1fr 1fr" }}
+        >
           <GridItem colSpan="2">
             <Flex
               direction="column"

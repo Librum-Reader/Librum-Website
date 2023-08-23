@@ -525,11 +525,11 @@ const Navbar = () => {
                   <Flex align="center" gap="1rem">
                     {/* <Avatar size="sm" />
                     <Text>John Doe</Text> */}
-                    {isLoggedIn ? (
+                    {/* {isLoggedIn ? (
                       <ProfileButtonMobile />
                     ) : (
                       <LoginButtonMobile closeDrawer={onDrawerClose} />
-                    )}
+                    )} */}
                   </Flex>
                   {colorMode === "dark" ? (
                     // <FaSun

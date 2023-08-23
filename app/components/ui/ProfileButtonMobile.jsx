@@ -31,16 +31,6 @@ const ProfileButtonMobile = () => {
     });
   };
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      router.push("/");
-    }
-    setToken(token);
-    setTokenExists(true);
-    console.log(token);
-  }, [token, router]);
-
   const { isLoading, error, data } = useQuery({
     queryKey: ["user"],
     queryFn: () => {

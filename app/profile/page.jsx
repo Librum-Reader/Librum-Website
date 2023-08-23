@@ -242,7 +242,7 @@ const UserProfile = () => {
                 textColor="text-default"
                 textAlign="center"
               >
-                {storageLimit.toFixed(2)} GB
+                {storageLimit?.toFixed(2)} GB
               </Text>
             </Flex>
             <Flex direction="column" gap="1rem">
@@ -298,7 +298,7 @@ const UserProfile = () => {
                     textColor="text-default"
                     textAlign="right"
                   >
-                    {storageLimit.toFixed(2)} GB
+                    {storageLimit?.toFixed(2)} GB
                   </Text>
                   <Text
                     fontSize="sm"

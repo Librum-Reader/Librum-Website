@@ -51,6 +51,7 @@ import LoginButtonMobile from "../ui/LoginButtonMobile";
 import Logo from "./Logo";
 import MobileNavLogo from "./MobileNavLogo";
 import ProfileButton from "../ui/ProfileButton";
+import ProfileButtonMobile from "../ui/ProfileButtonMobile";
 import { AiFillMail, AiFillGithub } from "react-icons/ai";
 import { FaBars, FaMoon, FaSun, FaAngleRight } from "react-icons/fa";
 import { FaXmark } from "react-icons/fa6";
@@ -517,14 +518,18 @@ const Navbar = () => {
                 <Flex
                   justify="space-between"
                   align="center"
-                  px="24px"
+                  px="10px"
                   pt="1rem"
                   pb=".5rem"
                 >
                   <Flex align="center" gap="1rem">
                     {/* <Avatar size="sm" />
                     <Text>John Doe</Text> */}
-                    <LoginButtonMobile closeDrawer={onDrawerClose} />
+                    {isLoggedIn ? (
+                      <ProfileButtonMobile />
+                    ) : (
+                      <LoginButtonMobile closeDrawer={onDrawerClose} />
+                    )}
                   </Flex>
                   {colorMode === "dark" ? (
                     // <FaSun

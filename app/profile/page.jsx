@@ -176,10 +176,17 @@ const UserProfile = () => {
                 size="sm"
                 mb="1rem"
                 w={{ base: "full", md: "auto" }}
+                h="40px"
               >
                 Change avatar
               </Button>
-              <Button variant="primary" size="sm" w="full" onClick={logOut}>
+              <Button
+                variant="primary"
+                size="sm"
+                w="full"
+                onClick={logOut}
+                h="40px"
+              >
                 Logout
               </Button>
             </Box>
@@ -260,7 +267,7 @@ const UserProfile = () => {
               >
                 <Text>Security</Text>
               </Flex>
-              <Button variant="secondary" size="sm" alignSelf="start">
+              <Button variant="secondary" size="sm" alignSelf="start" h="40px">
                 Change password
               </Button>
             </Flex>
@@ -293,10 +300,10 @@ const UserProfile = () => {
               </Text>
             </Flex>
             <Flex direction="column" gap="1rem">
-              <Button size="sm" variant="primary">
+              <Button size="sm" variant="primary" h="40px">
                 Upgrade
               </Button>
-              <Button size="sm" variant="secondary">
+              <Button size="sm" variant="secondary" h="40px">
                 See why we offer multiple tiers
               </Button>
             </Flex>

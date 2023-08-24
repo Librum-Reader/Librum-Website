@@ -172,3 +172,28 @@ export const editUser = async (data) => {
     console.error(error);
   }
 };
+
+export const uploadAvatar = async (data) => {
+  try {
+    console.log("file from api handler", data.file);
+
+    const response = await fetch(
+      "https://librum-dev.azurewebsites.net/api/user/profilePicture",
+      {
+        headers: {
+          Accept: "multipart/form-data",
+          Authorization: `Bearer ${data.token}`,
+        },
+        method: "POST",
+        body: data.file,
+      }
+    );
+
+    const result = await response;
+    console.log(result);
+
+    return result;
+  } catch (error) {
+    console.error(error);
+  }
+};

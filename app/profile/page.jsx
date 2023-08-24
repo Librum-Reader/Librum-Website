@@ -52,7 +52,12 @@ import {
 
 import { useState, useEffect } from "react";
 
-import { fetchUserInfo, fetchBooks, editUser } from "../utils/apiFunctions";
+import {
+  fetchUserInfo,
+  fetchBooks,
+  editUser,
+  uploadAvatar,
+} from "../utils/apiFunctions";
 
 import { FaRegEdit, FaRegSave } from "react-icons/fa";
 import { FaXmark } from "react-icons/fa6";
@@ -92,12 +97,29 @@ const UserProfile = () => {
     setNewEmail("");
   };
 
+  // File upload mutation
+  const avatarUpload = useMutation({
+    mutationFn: uploadAvatar,
+    // onSuccess: () => {
+    //
+    // },
+  });
+
   // State handlers for avatar upload
   const [avatar, setAvatar] = useState();
 
   const handleFileSelect = (e) => {
-    setAvatar(e.target.value);
-    console.log(e.target.value);
+    setAvatar(e.target.files[0]);
+  };
+
+  // File upload function
+  const uploadFile = (e, avatar) => {
+    e.preventDefault();
+    console.log("avatar:", avatar);
+    const token = localStorage.getItem("token");
+    const formData = new FormData();
+    formData.append("file", avatar);
+    avatarUpload.mutate({ file: formData, token: token });
   };
 
   const router = useRouter();
@@ -661,22 +683,24 @@ const UserProfile = () => {
           <ModalHeader>Upload avatar</ModalHeader>
           <ModalCloseButton onClick={resetEmail} />
           <ModalBody>
-            <Form>
+            <form
+              onSubmit={(e) => {
+                uploadFile(e, avatar);
+              }}
+            >
               <Input
                 type="file"
                 accept="image/*"
                 variant="editUserInfo"
                 onChange={handleFileSelect}
               />
-            </Form>
+              <Button variant="primary" mr="1rem" type="submit">
+                Upload
+              </Button>
+            </form>
           </ModalBody>
 
-          <ModalFooter>
-            <Button variant="primary" mr="1rem">
-              Upload
-            </Button>
-            <Button variant="secondary">Discard</Button>
-          </ModalFooter>
+          <ModalFooter></ModalFooter>
         </ModalContent>
       </Modal>
     </Flex>

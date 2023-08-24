@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useCookies } from "react-cookie";
 import { updateLoggedIn, updateUser } from "../features/user/userSlice";
 import {
@@ -25,7 +25,17 @@ import {
   Grid,
   Avatar,
   GridItem,
+  Input,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
 } from "@chakra-ui/react";
+import { BeatLoader } from "react-spinners";
 
 import { useDispatch } from "react-redux";
 
@@ -38,16 +48,58 @@ import {
 
 import { useState, useEffect } from "react";
 
-import { fetchUserInfo, fetchBooks } from "../utils/apiFunctions";
+import { fetchUserInfo, fetchBooks, editUser } from "../utils/apiFunctions";
 
-import { FaRegEdit } from "react-icons/fa";
+import { FaRegEdit, FaRegSave } from "react-icons/fa";
+import { FaXmark } from "react-icons/fa6";
 
 const UserProfile = () => {
   const [token, setToken] = useState(null);
   const [tokenExists, setTokenExists] = useState(false);
+
+  // State handlers for changing username
+  const [newFirstName, setNewFirstName] = useState("");
+  const [newLastName, setNewLastName] = useState("");
+
+  const handleNewFirstName = (e) => setNewFirstName(e.target.value);
+  const handleNewLastName = (e) => setNewLastName(e.target.value);
+
+  // State handlers for changing email
+  const [newEmail, setNewEmail] = useState("");
+  const [confirmEmail, setConfirmEmail] = useState("");
+  const [emailIsValid, setEmailIsValid] = useState(null);
+
+  const handleNewEmail = (e) => setNewEmail(e.target.value);
+
+  const validateEmail = (e) => {
+    setConfirmEmail(e.target.value);
+    if (e.target.value === newEmail) {
+      setEmailIsValid(true);
+    } else {
+      setEmailIsValid(false);
+    }
+  };
+
+  const resetEmail = () => {
+    setNewEmail("");
+  };
+
   const router = useRouter();
+  const queryClient = useQueryClient();
 
   const isLoggedIn = useSelector((state) => state.user.value);
+
+  const {
+    isOpen: isEditUserNameOpen,
+    onOpen: onEditUserNameOpen,
+    onClose: onEditUserNameClose,
+  } = useDisclosure();
+
+  const {
+    isOpen: isEditEmailOpen,
+    onOpen: onEditEmailOpen,
+    onClose: onEditEmailClose,
+  } = useDisclosure();
 
   // Redux functions
   const dispatch = useDispatch();
@@ -74,6 +126,36 @@ const UserProfile = () => {
     },
     enabled: tokenExists,
   });
+
+  // Mutation for changing username
+  const updateUser = useMutation({
+    mutationFn: editUser,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["user"] });
+      onEditUserNameClose();
+    },
+  });
+
+  const handleUpdateUser = (newFirstName, newLastName) => {
+    const token = localStorage.getItem("token");
+
+    updateUser.mutate({
+      firstName: newFirstName,
+      lastName: newLastName,
+      token: token,
+    });
+  };
+
+  const handleUpdateEmail = (newEmail) => {
+    const token = localStorage.getItem("token");
+
+    updateUser.mutate({
+      firstName: data?.firstName,
+      lastName: data?.lastName,
+      email: newEmail,
+      token: token,
+    });
+  };
 
   const {
     isLoading: isBooksLoading,
@@ -232,8 +314,15 @@ const UserProfile = () => {
                 <Text fontSize="md">
                   {data?.firstName} {data?.lastName}
                 </Text>
+
                 <Button variant="secondary" size="sm" border="0">
-                  <FaRegEdit />
+                  <FaRegEdit
+                    onClick={() => {
+                      setNewFirstName(data?.firstName);
+                      setNewLastName(data?.lastName);
+                      onEditUserNameOpen();
+                    }}
+                  />
                 </Button>
               </Flex>
 
@@ -256,7 +345,12 @@ const UserProfile = () => {
               >
                 <Text>{data?.email}</Text>
                 <Button variant="secondary" size="sm" border="0">
-                  <FaRegEdit />
+                  <FaRegEdit
+                    onClick={() => {
+                      setNewEmail(data?.email);
+                      onEditEmailOpen();
+                    }}
+                  />
                 </Button>
               </Flex>
               <Flex
@@ -265,6 +359,7 @@ const UserProfile = () => {
                 borderColor="user-profile-border"
                 mb=".5rem"
                 pb=".2rem"
+                mt=".5rem"
                 justify="space-between"
               >
                 <Text>Security</Text>
@@ -412,6 +507,116 @@ const UserProfile = () => {
           </GridItem>
         </Grid>
       </Flex>
+      {/* Edit username modal */}
+      <Modal
+        isOpen={isEditUserNameOpen}
+        onClose={onEditUserNameClose}
+        variant="defaultVariant"
+        isCentered
+      >
+        <ModalOverlay />
+        <ModalContent mx="1rem">
+          <ModalHeader>Edit your username</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <Text mb=".1rem" fontSize="sm" fontWeight="semibold">
+              First name
+            </Text>
+            <Input
+              type="text"
+              variant="editUserInfo"
+              value={newFirstName}
+              mb="1rem"
+              onChange={handleNewFirstName}
+            />
+            <Text mb=".1rem" fontSize="sm" fontWeight="semibold">
+              Last name
+            </Text>
+            <Input
+              type="text"
+              variant="editUserInfo"
+              value={newLastName}
+              onChange={handleNewLastName}
+            />
+          </ModalBody>
+
+          <ModalFooter>
+            <Button
+              variant="primary"
+              mr="1rem"
+              onClick={() => {
+                handleUpdateUser(newFirstName, newLastName);
+              }}
+            >
+              {updateUser.isLoading ? <BeatLoader /> : "Save Changes"}
+            </Button>
+            <Button variant="secondary">Discard</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+      {/* Edit email modal */}
+      <Modal
+        isOpen={isEditEmailOpen}
+        onClose={onEditEmailClose}
+        variant="defaultVariant"
+        isCentered
+      >
+        <ModalOverlay />
+        <ModalContent mx="1rem">
+          <ModalHeader>Edit your email</ModalHeader>
+          <ModalCloseButton onClick={resetEmail} />
+          <ModalBody>
+            <Text mb=".1rem" fontSize="sm" fontWeight="semibold">
+              New email
+            </Text>
+            <Input
+              type="text"
+              variant="editUserInfo"
+              value={newEmail}
+              mb="1rem"
+              onChange={handleNewEmail}
+            />
+            <Text mb=".1rem" fontSize="sm" fontWeight="semibold">
+              Confirm new email
+            </Text>
+            <Input
+              type="text"
+              variant="editUserInfo"
+              value={confirmEmail}
+              onChange={validateEmail}
+            />
+            {confirmEmail ? (
+              emailIsValid ? null : (
+                <Text mt="1rem">Emails must match before submitting.</Text>
+              )
+            ) : null}
+          </ModalBody>
+
+          <ModalFooter>
+            <Button
+              variant="primary"
+              mr="1rem"
+              onClick={() => {
+                if (emailIsValid) {
+                  handleUpdateEmail(newEmail);
+                  resetEmail();
+                }
+              }}
+            >
+              {updateUser.isLoading ? <BeatLoader /> : "Save Changes"}
+            </Button>
+            <Button
+              variant="secondary"
+              onClick={() => {
+                resetEmail();
+                onEditEmailClose();
+              }}
+            >
+              Discard
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </Flex>
   );
 };

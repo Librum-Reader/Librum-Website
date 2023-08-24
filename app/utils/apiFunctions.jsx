@@ -127,3 +127,48 @@ export const getVerifiedStatus = async (email) => {
     console.error(error);
   }
 };
+
+export const editUser = async (data) => {
+  try {
+    console.log(
+      JSON.stringify({
+        op: "replace",
+        path: "firstname",
+        value: data.email,
+      })
+    );
+    const response = await fetch(
+      "https://librum-dev.azurewebsites.net/api/user",
+      {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${data.token}`,
+        },
+        method: "PATCH",
+        body: JSON.stringify([
+          {
+            op: "replace",
+            path: "firstName",
+            value: data.firstName,
+          },
+          {
+            op: "replace",
+            path: "lastName",
+            value: data.lastName,
+          },
+          {
+            op: "replace",
+            path: "Email",
+            value: data.email,
+          },
+        ]),
+      }
+    );
+    const result = await response;
+    console.log(result);
+    return result;
+  } catch (error) {
+    console.error(error);
+  }
+};

@@ -227,6 +227,7 @@ const UserProfile = () => {
                 align="center"
                 mb="1rem"
                 pl=".8rem"
+                py=".3rem"
               >
                 <Text fontSize="md">
                   {data?.firstName} {data?.lastName}
@@ -248,6 +249,7 @@ const UserProfile = () => {
                 borderColor="user-profile-border"
                 borderRadius="md"
                 pl=".8rem"
+                py=".3rem"
                 justify="space-between"
                 align="center"
                 mb="1rem"

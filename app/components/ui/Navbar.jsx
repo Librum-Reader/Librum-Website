@@ -544,7 +544,9 @@ const Navbar = () => {
                 >
                   <Flex align="center" gap="1rem">
                     {isLoggedIn ? (
-                      <ProfileButtonMobile />
+                      <Link href="" onClick={onDrawerClose}>
+                        <ProfileButtonMobile />
+                      </Link>
                     ) : (
                       <Link href="">
                         <Button

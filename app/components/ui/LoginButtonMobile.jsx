@@ -317,6 +317,7 @@ const LoginButtonMobile = ({ closeDrawer }) => {
                   placeholder="Enter Your Password"
                   fontSize="sm"
                   variant="defaultVariant"
+                  type={showPassword ? "text" : "password"}
                 />
                 <InputRightElement width="4.5rem">
                   <Button

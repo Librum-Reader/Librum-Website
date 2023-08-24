@@ -20,7 +20,11 @@ import {
   Flex,
   useToast,
   Image,
+  InputGroup,
+  InputRightElement,
 } from "@chakra-ui/react";
+
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
 import { BeatLoader } from "react-spinners";
 
@@ -81,6 +85,7 @@ const LoginButton = (props) => {
   const [token, setToken] = useState(null);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   // User register state
   const [registerEmail, setRegisterEmail] = useState("");
@@ -114,6 +119,7 @@ const LoginButton = (props) => {
   // User auth state setters
   const handleEmail = (event) => setEmail(event.target.value);
   const handlePassword = (event) => setPassword(event.target.value);
+  const handleShowPassword = () => setShowPassword(!showPassword);
 
   // Redux functions for storing user info after login
   const dispatch = useDispatch();
@@ -287,13 +293,30 @@ const LoginButton = (props) => {
               <FormLabel fontSize="sm" textColor="text-default">
                 Password
               </FormLabel>
-              <Input
-                value={password}
-                onChange={handlePassword}
-                placeholder="Enter Your Password"
-                fontSize="sm"
-                variant="defaultVariant"
-              />
+              <InputGroup>
+                <Input
+                  value={password}
+                  onChange={handlePassword}
+                  placeholder="Enter Your Password"
+                  fontSize="sm"
+                  variant="defaultVariant"
+                  type={showPassword ? "text" : "password"}
+                />
+                <InputRightElement width="4.5rem">
+                  <Button
+                    h="1.75rem"
+                    size="sm"
+                    onClick={handleShowPassword}
+                    variant="ghost"
+                  >
+                    {showPassword ? (
+                      <AiOutlineEyeInvisible />
+                    ) : (
+                      <AiOutlineEye />
+                    )}
+                  </Button>
+                </InputRightElement>
+              </InputGroup>
             </FormControl>
           </ModalBody>
 

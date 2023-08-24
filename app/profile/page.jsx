@@ -37,6 +37,7 @@ import {
   ModalBody,
   ModalCloseButton,
   useDisclosure,
+  Form,
 } from "@chakra-ui/react";
 import { BeatLoader } from "react-spinners";
 
@@ -91,11 +92,20 @@ const UserProfile = () => {
     setNewEmail("");
   };
 
+  // State handlers for avatar upload
+  const [avatar, setAvatar] = useState();
+
+  const handleFileSelect = (e) => {
+    setAvatar(e.target.value);
+    console.log(e.target.value);
+  };
+
   const router = useRouter();
   const queryClient = useQueryClient();
 
   const isLoggedIn = useSelector((state) => state.user.value);
 
+  // User info edit modals
   const {
     isOpen: isEditUserNameOpen,
     onOpen: onEditUserNameOpen,
@@ -106,6 +116,12 @@ const UserProfile = () => {
     isOpen: isEditEmailOpen,
     onOpen: onEditEmailOpen,
     onClose: onEditEmailClose,
+  } = useDisclosure();
+
+  const {
+    isOpen: isAvatarOpen,
+    onOpen: onAvatarOpen,
+    onClose: onAvatarClose,
   } = useDisclosure();
 
   // Redux functions
@@ -266,6 +282,7 @@ const UserProfile = () => {
                 mb="1rem"
                 w={{ base: "full", md: "auto" }}
                 h="40px"
+                onClick={onAvatarOpen}
               >
                 Change avatar
               </Button>
@@ -629,6 +646,36 @@ const UserProfile = () => {
             >
               Discard
             </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+      {/* Upload/change avatar modal */}
+      <Modal
+        isOpen={isAvatarOpen}
+        onClose={onAvatarClose}
+        variant="defaultVariant"
+        isCentered
+      >
+        <ModalOverlay />
+        <ModalContent mx="1rem">
+          <ModalHeader>Upload avatar</ModalHeader>
+          <ModalCloseButton onClick={resetEmail} />
+          <ModalBody>
+            <Form>
+              <Input
+                type="file"
+                accept="image/*"
+                variant="editUserInfo"
+                onChange={handleFileSelect}
+              />
+            </Form>
+          </ModalBody>
+
+          <ModalFooter>
+            <Button variant="primary" mr="1rem">
+              Upload
+            </Button>
+            <Button variant="secondary">Discard</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

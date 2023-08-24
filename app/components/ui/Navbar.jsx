@@ -553,18 +553,12 @@ const Navbar = () => {
                           }}
                           variant="drawerButton"
                         >
-                          LOGINf
+                          LOGIN
                         </Button>
                       </Link>
                     )}
                   </Flex>
                   {colorMode === "dark" ? (
-                    // <FaSun
-                    //   color={"white"}
-                    //   size={20}
-                    //   onClick={toggleColorTheme}
-                    //   className="res-theme-icon"
-                    // />
                     <Button variant="link" onClick={toggleColorTheme}>
                       <SunIcon />
                     </Button>

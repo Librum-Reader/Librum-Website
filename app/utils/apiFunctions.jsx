@@ -157,11 +157,11 @@ export const editUser = async (data) => {
             path: "lastName",
             value: data.lastName,
           },
-          {
-            op: "replace",
-            path: "Email",
-            value: data.email,
-          },
+          // {
+          //   op: "replace",
+          //   path: "Email",
+          //   value: data.email,
+          // },
         ]),
       }
     );

@@ -4,7 +4,10 @@ import { useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useCookies } from "react-cookie";
-import { updateLoggedIn, updateUser } from "../features/user/userSlice";
+import {
+  updateLoggedIn,
+  updateUser as resetUser,
+} from "../features/user/userSlice";
 import {
   Flex,
   VStack,
@@ -63,6 +66,10 @@ const UserProfile = () => {
 
   const handleNewFirstName = (e) => setNewFirstName(e.target.value);
   const handleNewLastName = (e) => setNewLastName(e.target.value);
+  const resetUsernames = () => {
+    setNewFirstName("");
+    setNewLastName("");
+  };
 
   // State handlers for changing email
   const [newEmail, setNewEmail] = useState("");
@@ -202,7 +209,7 @@ const UserProfile = () => {
     localStorage.removeItem("token");
     setToken(null);
     removeCookie("token");
-    dispatch(updateUser({}));
+    dispatch(resetUser({}));
     dispatch(updateLoggedIn(false));
     router.push("/");
     console.log("logging out");
@@ -346,10 +353,10 @@ const UserProfile = () => {
                 <Text>{data?.email}</Text>
                 <Button variant="secondary" size="sm" border="0">
                   <FaRegEdit
-                    onClick={() => {
-                      setNewEmail(data?.email);
-                      onEditEmailOpen();
-                    }}
+                  // onClick={() => {
+                  //   setNewEmail(data?.email);
+                  //   onEditEmailOpen();
+                  // }}
                   />
                 </Button>
               </Flex>
@@ -550,7 +557,15 @@ const UserProfile = () => {
             >
               {updateUser.isLoading ? <BeatLoader /> : "Save Changes"}
             </Button>
-            <Button variant="secondary">Discard</Button>
+            <Button
+              variant="secondary"
+              onClick={() => {
+                resetUsernames();
+                onEditUserNameClose();
+              }}
+            >
+              Discard
+            </Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

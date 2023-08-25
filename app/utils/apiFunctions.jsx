@@ -135,6 +135,7 @@ export const editUser = async (data) => {
         value: data.email,
       })
     );
+
     const response = await fetch(
       "https://librum-dev.azurewebsites.net/api/user",
       {
@@ -155,11 +156,57 @@ export const editUser = async (data) => {
             path: "lastName",
             value: data.lastName,
           },
+          {
+            op: "replace",
+            path: "hasProfilePicture",
+            value: data.hasProfilePicture,
+          },
           // {
           //   op: "replace",
           //   path: "Email",
           //   value: data.email,
           // },
+        ]),
+      }
+    );
+    const result = await response;
+    console.log(result);
+    return result;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const updatePictureInfo = async (data) => {
+  try {
+    console.log(
+      JSON.stringify({
+        op: "replace",
+        path: "firstname",
+        value: data.email,
+      })
+    );
+
+    const response = await fetch(
+      "https://librum-dev.azurewebsites.net/api/user",
+      {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${data.token}`,
+        },
+        method: "PATCH",
+        body: JSON.stringify([
+          {
+            op: "replace",
+            path: "hasProfilePicture",
+            value: data.hasProfilePicture,
+          },
+          {
+            op: "replace",
+            path: "profilePictureLastUpdated",
+            value: data.lastUpdated,
+          },
         ]),
       }
     );
@@ -220,7 +267,6 @@ export const fetchAvatar = async (data) => {
 
     const imageData = `data:image/jpeg;base64,${base64Image}`;
 
-    console.log("avatar API:", imageData);
     return imageData;
   } catch (error) {
     console.error(error);

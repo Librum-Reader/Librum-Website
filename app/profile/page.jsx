@@ -59,6 +59,7 @@ import {
   editUser,
   uploadAvatar,
   fetchAvatar,
+  updatePictureInfo,
 } from "../utils/apiFunctions";
 
 import { FaRegEdit, FaRegSave } from "react-icons/fa";
@@ -93,10 +94,6 @@ const UserProfile = () => {
     },
     enabled: tokenExists,
   });
-
-  if (!isAvatarLoading) {
-    console.log("Fetched avatar: ", avatarData);
-  }
 
   // State handlers for changing username
   const [newFirstName, setNewFirstName] = useState("");
@@ -148,11 +145,17 @@ const UserProfile = () => {
   // File upload function
   const uploadFile = async (e, avatar) => {
     e.preventDefault();
-    console.log("avatar:", avatar);
+    const currentDateTime = new Date();
+    const formattedDateTime = currentDateTime.toISOString().slice(0, 19);
     const token = localStorage.getItem("token");
     const formData = new FormData();
     formData.append("file", avatar);
     avatarUpload.mutate({ file: formData, token: token });
+    updatePicture.mutate({
+      hasProfilePicture: true,
+      lastUpdated: formattedDateTime,
+      token: token,
+    });
   };
 
   const isLoggedIn = useSelector((state) => state.user.value);
@@ -193,9 +196,17 @@ const UserProfile = () => {
     enabled: tokenExists,
   });
 
-  // Mutation for changing username
+  // Mutations for changing username and image info
   const updateUser = useMutation({
     mutationFn: editUser,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["user"] });
+      onEditUserNameClose();
+    },
+  });
+
+  const updatePicture = useMutation({
+    mutationFn: updatePictureInfo,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["user"] });
       onEditUserNameClose();

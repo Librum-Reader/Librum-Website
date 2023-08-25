@@ -54,6 +54,7 @@ import {
   userLogin,
   userRegistration,
   getVerifiedStatus,
+  fetchAvatar,
 } from "../../utils/apiFunctions";
 
 import { useCookies } from "react-cookie";
@@ -63,6 +64,7 @@ import { useContext } from "react";
 
 const LoginButtonMobile = ({ closeDrawer }) => {
   const { loginOpen, setLoginOpen } = useContext(LoginContext);
+  const [tokenExists, setTokenExists] = useState(false);
 
   // Set this to true after user confirms email to trigger login modal
   const [isEmailConfirmed, setIsEmailConfirmed] = useState();
@@ -196,6 +198,7 @@ const LoginButtonMobile = ({ closeDrawer }) => {
     setToken(localStorage.getItem("token"));
     if (token) {
       dispatch(updateLoggedIn(true));
+      setTokenExists(true);
     } else {
       dispatch(updateLoggedIn(false));
     }
@@ -263,6 +266,18 @@ const LoginButtonMobile = ({ closeDrawer }) => {
     onOpenConfirmEmail();
     listenForEmailConfirmation();
   };
+
+  const {
+    isLoading: isAvatarLoading,
+    error: avatarError,
+    data: avatarData,
+  } = useQuery({
+    queryKey: ["avatar"],
+    queryFn: () => {
+      return fetchAvatar(token);
+    },
+    enabled: tokenExists,
+  });
 
   return (
     <>

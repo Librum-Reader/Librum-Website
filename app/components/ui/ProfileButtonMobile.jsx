@@ -13,7 +13,7 @@ import { useCookies } from "react-cookie";
 import { updateLoggedIn, updateUser } from "../../features/user/userSlice";
 import { useDispatch } from "react-redux";
 
-import { fetchUserInfo } from "../../utils/apiFunctions";
+import { fetchUserInfo, fetchAvatar } from "../../utils/apiFunctions";
 
 const ProfileButtonMobile = () => {
   const [token, setToken] = useState(null);
@@ -31,19 +31,30 @@ const ProfileButtonMobile = () => {
     });
   };
 
+  const {
+    isLoading: isAvatarLoading,
+    error: avatarError,
+    data: avatarData,
+  } = useQuery({
+    queryKey: ["avatar"],
+    queryFn: () => {
+      return fetchAvatar(token);
+    },
+  });
+
   const { isLoading, error, data } = useQuery({
     queryKey: ["user"],
     queryFn: () => {
       console.log("query: ", token);
       return fetchUserInfo(token);
     },
-    enabled: tokenExists,
   });
+
   const path = usePathname();
   return (
     <Link href="/profile">
       <Flex align="center" ml=".5rem">
-        <Avatar size="sm" />
+        <Avatar src={!isAvatarLoading && avatarData} size="sm" />
         <Button colorScheme="gray" variant="drawerButton">
           {data?.firstName} {data?.lastName}
         </Button>

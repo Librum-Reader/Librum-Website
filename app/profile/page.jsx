@@ -106,6 +106,11 @@ const UserProfile = () => {
     setNewLastName("");
   };
 
+  // State handlers for changing password
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [passwordIsValid, setPasswordIsValid] = useState(null);
+
   // State handlers for changing email
   const [newEmail, setNewEmail] = useState("");
   const [confirmEmail, setConfirmEmail] = useState("");
@@ -170,6 +175,12 @@ const UserProfile = () => {
     isOpen: isEditUserNameOpen,
     onOpen: onEditUserNameOpen,
     onClose: onEditUserNameClose,
+  } = useDisclosure();
+
+  const {
+    isOpen: isChangePasswordOpen,
+    onOpen: onChangePasswordOpen,
+    onClose: onChangePasswordClose,
   } = useDisclosure();
 
   const {
@@ -749,6 +760,52 @@ const UserProfile = () => {
           </ModalBody>
 
           <ModalFooter></ModalFooter>
+        </ModalContent>
+      </Modal>
+      {/* Change password modal */}
+      <Modal
+        isOpen={isChangePasswordOpen}
+        onClose={onChangePasswordClose}
+        variant="defaultVariant"
+        isCentered
+      >
+        <ModalOverlay />
+        <ModalContent mx="1rem">
+          <ModalHeader>Edit your email</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <Text mb=".1rem" fontSize="sm" fontWeight="semibold">
+              New password
+            </Text>
+            <Input
+              type="text"
+              variant="editUserInfo"
+              value={newEmail}
+              mb="1rem"
+              // onChange={handleNewPassword}
+            />
+            <Text mb=".1rem" fontSize="sm" fontWeight="semibold">
+              Confirm new password
+            </Text>
+            <Input
+              type="text"
+              variant="editUserInfo"
+              value={confirmEmail}
+              // onChange={validatePassword}
+            />
+            {confirmPassword ? (
+              PasswordIsValid ? null : (
+                <Text mt="1rem">Password must match before submitting.</Text>
+              )
+            ) : null}
+          </ModalBody>
+
+          <ModalFooter>
+            <Button variant="primary" mr="1rem">
+              {updateUser.isLoading ? <BeatLoader /> : "Save Changes"}
+            </Button>
+            <Button variant="secondary">Discard</Button>
+          </ModalFooter>
         </ModalContent>
       </Modal>
     </Flex>

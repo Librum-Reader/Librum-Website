@@ -20,34 +20,29 @@ const ProfileButtonMobile = () => {
   const [tokenExists, setTokenExists] = useState(false);
   const router = useRouter();
 
-  const isLoggedIn = useSelector((state) => state.user.value);
-
-  // Redux functions
-  const dispatch = useDispatch();
-
-  const setUser = (token) => {
-    fetchUserInfo(token).then((result) => {
-      dispatch(updateUser(result));
-    });
-  };
+  useEffect(() => {
+    setToken(localStorage.getItem("token"));
+    console.log(token);
+  });
 
   const {
     isLoading: isAvatarLoading,
     error: avatarError,
     data: avatarData,
   } = useQuery({
-    queryKey: ["avatar"],
+    queryKey: ["profileAvatar"],
     queryFn: () => {
       return fetchAvatar(token);
     },
+    enabled: !!token,
   });
 
   const { isLoading, error, data } = useQuery({
     queryKey: ["user"],
     queryFn: () => {
-      console.log("query: ", token);
       return fetchUserInfo(token);
     },
+    enabled: !!token,
   });
 
   const path = usePathname();

@@ -46,6 +46,7 @@ import {
   AlertTitle,
   AlertDescription,
   CloseButton,
+  useToast,
 } from "@chakra-ui/react";
 import { BeatLoader } from "react-spinners";
 
@@ -75,6 +76,8 @@ import { FaXmark } from "react-icons/fa6";
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 
 const UserProfile = () => {
+  const toast = useToast();
+
   const router = useRouter();
   const queryClient = useQueryClient();
   const [token, setToken] = useState(null);
@@ -259,9 +262,20 @@ const UserProfile = () => {
     mutationFn: changePassword,
     onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ["user"] });
+
       if (data.code === 0) {
         setErrorMsg("The password entered was too short.");
         onAlertOpen();
+      } else {
+        onChangePasswordClose();
+        resetPassword();
+        toast({
+          title: "Success!",
+          description: "Your password has been changed.",
+          status: "success",
+          duration: 9000,
+          isClosable: true,
+        });
       }
     },
   });

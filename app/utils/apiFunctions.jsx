@@ -236,8 +236,14 @@ export const changePassword = async (data) => {
         }),
       }
     );
-    const result = await response.json();
-    return result;
+
+    const contentType = response.headers.get("Content-Type");
+    if (contentType && contentType.includes("application/json")) {
+      const result = await response.json();
+      return result;
+    } else {
+      return response;
+    }
   } catch (error) {
     console.error(error);
   }

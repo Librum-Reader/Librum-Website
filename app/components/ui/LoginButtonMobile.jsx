@@ -113,7 +113,6 @@ const LoginButtonMobile = ({ closeDrawer }) => {
       onOpenLogin();
       closeDrawer();
     }
-    console.log("Modal state: ", isOpenLogin);
   }, [loginOpen]);
 
   // Modal state for register modal

@@ -82,7 +82,6 @@ export const fetchUserInfo = async (data) => {
 
 export const fetchBooks = async (data) => {
   try {
-    console.log(data);
     const response = await fetch(
       "https://librum-dev.azurewebsites.net/api/book",
       {
@@ -96,7 +95,6 @@ export const fetchBooks = async (data) => {
     );
 
     const result = await response.json();
-    console.log("books", result);
     return result;
   } catch (error) {
     console.error(error);
@@ -193,6 +191,37 @@ export const uploadAvatar = async (data) => {
     console.log(result);
 
     return result;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const fetchAvatar = async (data) => {
+  try {
+    console.log("Hello");
+    const response = await fetch(
+      "https://librum-dev.azurewebsites.net/api/user/profilePicture",
+      {
+        headers: {
+          Authorization: `Bearer ${data}`,
+        },
+        method: "GET",
+      }
+    );
+
+    const result = await response.arrayBuffer();
+
+    const base64Image = btoa(
+      new Uint8Array(result).reduce(
+        (data, byte) => data + String.fromCharCode(byte),
+        ""
+      )
+    );
+
+    const imageData = `data:image/jpeg;base64,${base64Image}`;
+
+    console.log("avatar API:", imageData);
+    return imageData;
   } catch (error) {
     console.error(error);
   }

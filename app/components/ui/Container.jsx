@@ -9,10 +9,6 @@ const Container = (props) => {
 
   const path = usePathname();
 
-  useEffect(() => {
-    console.log(colorMode);
-  });
-
   return (
     <Flex
       direction="column"

@@ -38,6 +38,7 @@ import {
   ModalCloseButton,
   useDisclosure,
   Form,
+  Image,
 } from "@chakra-ui/react";
 import { BeatLoader } from "react-spinners";
 
@@ -57,14 +58,45 @@ import {
   fetchBooks,
   editUser,
   uploadAvatar,
+  fetchAvatar,
 } from "../utils/apiFunctions";
 
 import { FaRegEdit, FaRegSave } from "react-icons/fa";
 import { FaXmark } from "react-icons/fa6";
 
 const UserProfile = () => {
+  const router = useRouter();
+  const queryClient = useQueryClient();
   const [token, setToken] = useState(null);
   const [tokenExists, setTokenExists] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      router.push("/");
+    }
+    setToken(token);
+    setTokenExists(true);
+  }, [token, router]);
+
+  // State handlers for fetching avatar
+  const [userPicture, setUserPicture] = useState();
+
+  const {
+    isLoading: isAvatarLoading,
+    error: avatarError,
+    data: avatarData,
+  } = useQuery({
+    queryKey: ["avatar"],
+    queryFn: () => {
+      return fetchAvatar(token);
+    },
+    enabled: tokenExists,
+  });
+
+  if (!isAvatarLoading) {
+    console.log("Fetched avatar: ", avatarData);
+  }
 
   // State handlers for changing username
   const [newFirstName, setNewFirstName] = useState("");
@@ -122,9 +154,6 @@ const UserProfile = () => {
     avatarUpload.mutate({ file: formData, token: token });
   };
 
-  const router = useRouter();
-  const queryClient = useQueryClient();
-
   const isLoggedIn = useSelector((state) => state.user.value);
 
   // User info edit modals
@@ -154,15 +183,6 @@ const UserProfile = () => {
       dispatch(updateUser(result));
     });
   };
-
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      router.push("/");
-    }
-    setToken(token);
-    setTokenExists(true);
-  }, [token, router]);
 
   const { isLoading, error, data } = useQuery({
     queryKey: ["user"],
@@ -233,11 +253,6 @@ const UserProfile = () => {
 
     storageProgress = usedStorage / storageLimit;
     storageProgress = storageProgress * 100;
-    console.log(storageProgress.toFixed(0));
-  }
-
-  if (!isBooksLoading) {
-    console.log(booksData);
   }
 
   // Logout function
@@ -250,7 +265,6 @@ const UserProfile = () => {
     dispatch(resetUser({}));
     dispatch(updateLoggedIn(false));
     router.push("/");
-    console.log("logging out");
   };
 
   return (
@@ -293,7 +307,8 @@ const UserProfile = () => {
             pb={{ base: "1rem", md: "0" }}
             pt={{ base: "1rem", md: "0" }}
           >
-            <Avatar size="2xl" />
+            <Avatar src={!isAvatarLoading && avatarData} size="2xl" />
+            {/* {!isAvatarLoading && <Image src={avatarData} alt="Fetched" />} */}
             <Text fontWeight="bold">
               {data?.firstName} {data?.lastName}
             </Text>

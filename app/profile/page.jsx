@@ -895,19 +895,14 @@ const UserProfile = () => {
             <Flex direction="column" gap="1rem" justify="center" w="100%">
               {isAlertOpen ? (
                 <Alert status="error" mb=".4rem">
-                  <Flex direction="column">
+                  <Flex align="center" justify="space-between" w="100%">
+                    <AlertIcon />
+                    <AlertDescription>{errorMsg}</AlertDescription>
                     <CloseButton
-                      alignSelf="flex-start"
-                      position="relative"
                       // right={-1}
                       // top={-1}
                       onClick={onAlertClose}
                     />
-
-                    <Flex>
-                      <AlertIcon />
-                      <AlertDescription>{errorMsg}</AlertDescription>
-                    </Flex>
                   </Flex>
                 </Alert>
               ) : null}

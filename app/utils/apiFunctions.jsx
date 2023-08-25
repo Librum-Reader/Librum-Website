@@ -220,8 +220,6 @@ export const updatePictureInfo = async (data) => {
 
 export const uploadAvatar = async (data) => {
   try {
-    console.log("file from api handler", data.file);
-
     const response = await fetch(
       "https://librum-dev.azurewebsites.net/api/user/profilePicture",
       {
@@ -245,7 +243,6 @@ export const uploadAvatar = async (data) => {
 
 export const fetchAvatar = async (data) => {
   try {
-    console.log("Hello");
     const response = await fetch(
       "https://librum-dev.azurewebsites.net/api/user/profilePicture",
       {

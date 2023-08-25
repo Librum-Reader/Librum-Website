@@ -244,6 +244,7 @@ const UserProfile = () => {
     queryFn: () => {
       return fetchUserInfo(token);
     },
+    enabled: tokenExists,
   });
 
   // Mutations for changing username, image, password, and other info

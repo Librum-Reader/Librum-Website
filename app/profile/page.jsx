@@ -132,9 +132,10 @@ const UserProfile = () => {
   // File upload mutation
   const avatarUpload = useMutation({
     mutationFn: uploadAvatar,
-    // onSuccess: () => {
-    //
-    // },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["avatar"] });
+      onAvatarClose();
+    },
   });
 
   // State handlers for avatar upload
@@ -145,7 +146,7 @@ const UserProfile = () => {
   };
 
   // File upload function
-  const uploadFile = (e, avatar) => {
+  const uploadFile = async (e, avatar) => {
     e.preventDefault();
     console.log("avatar:", avatar);
     const token = localStorage.getItem("token");
@@ -709,7 +710,13 @@ const UserProfile = () => {
                 variant="editUserInfo"
                 onChange={handleFileSelect}
               />
-              <Button variant="primary" mr="1rem" type="submit">
+              <Button
+                variant="primary"
+                mr="1rem"
+                type="submit"
+                mt=".5rem"
+                isLoading={avatarUpload.isLoading}
+              >
                 Upload
               </Button>
             </form>

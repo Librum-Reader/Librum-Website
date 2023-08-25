@@ -142,6 +142,11 @@ const UserProfile = () => {
     setAvatar(e.target.files[0]);
   };
 
+  const cancelUpload = () => {
+    setAvatar(null);
+    onAvatarClose();
+  };
+
   // File upload function
   const uploadFile = async (e, avatar) => {
     e.preventDefault();
@@ -715,21 +720,28 @@ const UserProfile = () => {
                 uploadFile(e, avatar);
               }}
             >
-              <Input
-                type="file"
-                accept="image/*"
-                variant="editUserInfo"
-                onChange={handleFileSelect}
-              />
-              <Button
-                variant="primary"
-                mr="1rem"
-                type="submit"
-                mt=".5rem"
-                isLoading={avatarUpload.isLoading}
-              >
-                Upload
-              </Button>
+              <Flex direction="column" gap="1rem">
+                <Input
+                  type="file"
+                  accept="image/*"
+                  variant="editUserInfo"
+                  onChange={handleFileSelect}
+                />
+                <Flex w="100%" justify="end">
+                  <Button
+                    variant="primary"
+                    mr="1rem"
+                    type="submit"
+                    isLoading={avatarUpload.isLoading}
+                    alignSelf="flex-start"
+                  >
+                    Upload
+                  </Button>
+                  <Button variant="secondary" onClick={cancelUpload}>
+                    Cancel
+                  </Button>
+                </Flex>
+              </Flex>
             </form>
           </ModalBody>
 

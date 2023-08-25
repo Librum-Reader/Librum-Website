@@ -39,6 +39,13 @@ import {
   useDisclosure,
   Form,
   Image,
+  InputRightElement,
+  InputGroup,
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  AlertDescription,
+  CloseButton,
 } from "@chakra-ui/react";
 import { BeatLoader } from "react-spinners";
 
@@ -60,10 +67,12 @@ import {
   uploadAvatar,
   fetchAvatar,
   updatePictureInfo,
+  changePassword,
 } from "../utils/apiFunctions";
 
 import { FaRegEdit, FaRegSave } from "react-icons/fa";
 import { FaXmark } from "react-icons/fa6";
+import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 
 const UserProfile = () => {
   const router = useRouter();
@@ -110,6 +119,29 @@ const UserProfile = () => {
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [passwordIsValid, setPasswordIsValid] = useState(null);
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const handleNewPassword = (e) => {
+    setNewPassword(e.target.value);
+  };
+
+  const validatePassword = (e) => {
+    setConfirmPassword(e.target.value);
+    if (e.target.value === newPassword) {
+      setPasswordIsValid(true);
+    } else {
+      setPasswordIsValid(false);
+    }
+  };
+
+  const resetPassword = () => {
+    setNewPassword("");
+    setConfirmPassword("");
+  };
 
   // State handlers for changing email
   const [newEmail, setNewEmail] = useState("");
@@ -212,12 +244,25 @@ const UserProfile = () => {
     enabled: tokenExists,
   });
 
-  // Mutations for changing username and image info
+  // Mutations for changing username, image, password, and other info
   const updateUser = useMutation({
     mutationFn: editUser,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["user"] });
       onEditUserNameClose();
+    },
+  });
+
+  const [errorMsg, setErrorMsg] = useState("");
+
+  const editPassword = useMutation({
+    mutationFn: changePassword,
+    onSuccess: (data) => {
+      queryClient.invalidateQueries({ queryKey: ["user"] });
+      if (data.code === 0) {
+        setErrorMsg("The password entered was too short.");
+        onAlertOpen();
+      }
     },
   });
 
@@ -235,6 +280,15 @@ const UserProfile = () => {
     updateUser.mutate({
       firstName: newFirstName,
       lastName: newLastName,
+      token: token,
+    });
+  };
+
+  const handleEditPassword = (password) => {
+    const token = localStorage.getItem("token");
+
+    editPassword.mutate({
+      password: password,
       token: token,
     });
   };
@@ -294,6 +348,12 @@ const UserProfile = () => {
     dispatch(updateLoggedIn(false));
     router.push("/");
   };
+
+  const {
+    isOpen: isAlertOpen,
+    onClose: onAlertClose,
+    onOpen: onAlertOpen,
+  } = useDisclosure();
 
   return (
     <Flex w="100%">
@@ -453,7 +513,14 @@ const UserProfile = () => {
               >
                 <Text>Security</Text>
               </Flex>
-              <Button variant="secondary" size="sm" alignSelf="start" h="40px">
+
+              <Button
+                variant="secondary"
+                size="sm"
+                alignSelf="start"
+                h="40px"
+                onClick={onChangePasswordOpen}
+              >
                 Change password
               </Button>
             </Flex>
@@ -771,40 +838,100 @@ const UserProfile = () => {
       >
         <ModalOverlay />
         <ModalContent mx="1rem">
-          <ModalHeader>Edit your email</ModalHeader>
-          <ModalCloseButton />
+          <ModalHeader>Change your password</ModalHeader>
+          <ModalCloseButton onClick={resetPassword} />
           <ModalBody>
             <Text mb=".1rem" fontSize="sm" fontWeight="semibold">
               New password
             </Text>
-            <Input
-              type="text"
-              variant="editUserInfo"
-              value={newEmail}
-              mb="1rem"
-              // onChange={handleNewPassword}
-            />
+            <InputGroup>
+              <Input
+                type={showPassword ? "text" : "password"}
+                variant="editUserInfo"
+                value={newPassword}
+                mb="1rem"
+                onChange={handleNewPassword}
+              />
+              <InputRightElement width="4.5rem">
+                <Button
+                  h="1.75rem"
+                  size="sm"
+                  onClick={handleShowPassword}
+                  variant="ghost"
+                >
+                  {showPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
+                </Button>
+              </InputRightElement>
+            </InputGroup>
             <Text mb=".1rem" fontSize="sm" fontWeight="semibold">
               Confirm new password
             </Text>
-            <Input
-              type="text"
-              variant="editUserInfo"
-              value={confirmEmail}
-              // onChange={validatePassword}
-            />
+            <InputGroup>
+              <Input
+                type={showPassword ? "text" : "password"}
+                variant="editUserInfo"
+                value={confirmPassword}
+                onChange={validatePassword}
+              />
+              <InputRightElement width="4.5rem">
+                <Button
+                  h="1.75rem"
+                  size="sm"
+                  onClick={handleShowPassword}
+                  variant="ghost"
+                >
+                  {showPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
+                </Button>
+              </InputRightElement>
+            </InputGroup>
             {confirmPassword ? (
-              PasswordIsValid ? null : (
-                <Text mt="1rem">Password must match before submitting.</Text>
+              passwordIsValid ? null : (
+                <Text mt="1rem">Passwords must match before submitting.</Text>
               )
             ) : null}
           </ModalBody>
 
           <ModalFooter>
-            <Button variant="primary" mr="1rem">
-              {updateUser.isLoading ? <BeatLoader /> : "Save Changes"}
-            </Button>
-            <Button variant="secondary">Discard</Button>
+            <Flex direction="column" gap="1rem" justify="center" w="100%">
+              {isAlertOpen ? (
+                <Alert status="error" mb=".4rem">
+                  <Flex direction="column">
+                    <CloseButton
+                      alignSelf="flex-start"
+                      position="relative"
+                      // right={-1}
+                      // top={-1}
+                      onClick={onAlertClose}
+                    />
+
+                    <Flex>
+                      <AlertIcon />
+                      <AlertDescription>{errorMsg}</AlertDescription>
+                    </Flex>
+                  </Flex>
+                </Alert>
+              ) : null}
+              <Flex w="100%" justify="end">
+                <Button
+                  variant="primary"
+                  mr="1rem"
+                  onClick={() => {
+                    handleEditPassword(newPassword);
+                  }}
+                >
+                  {updateUser.isLoading ? <BeatLoader /> : "Save Changes"}
+                </Button>
+                <Button
+                  variant="secondary"
+                  onClick={() => {
+                    onChangePasswordClose();
+                    resetPassword();
+                  }}
+                >
+                  Discard
+                </Button>
+              </Flex>
+            </Flex>
           </ModalFooter>
         </ModalContent>
       </Modal>

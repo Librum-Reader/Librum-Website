@@ -218,6 +218,31 @@ export const updatePictureInfo = async (data) => {
   }
 };
 
+export const changePassword = async (data) => {
+  console.log(data);
+
+  try {
+    const response = await fetch(
+      "https://librum-dev.azurewebsites.net/api/user",
+      {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${data.token}`,
+        },
+        method: "POST",
+        body: JSON.stringify({
+          Input: data.password,
+        }),
+      }
+    );
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 export const uploadAvatar = async (data) => {
   try {
     const response = await fetch(

@@ -450,7 +450,8 @@ const UserProfile = () => {
           <Flex
             direction="column"
             borderRadius="md"
-            p={{ base: "1rem", md: "2rem" }}
+            w="100%"
+            pl={{ base: "1rem", md: "2rem" }}
             // w="320px"
             h={{ base: "auto", md: "255px" }}
           >

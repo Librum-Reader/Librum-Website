@@ -452,6 +452,7 @@ const UserProfile = () => {
             borderRadius="md"
             w="100%"
             pl={{ base: "1rem", md: "2rem" }}
+            pr={{ base: "1rem", md: "0" }}
             // w="320px"
             h={{ base: "auto", md: "255px" }}
           >

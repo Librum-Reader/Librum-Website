@@ -244,7 +244,6 @@ const UserProfile = () => {
     queryFn: () => {
       return fetchUserInfo(token);
     },
-    enabled: tokenExists,
   });
 
   // Mutations for changing username, image, password, and other info
@@ -253,6 +252,13 @@ const UserProfile = () => {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["user"] });
       onEditUserNameClose();
+      toast({
+        title: "Success!",
+        description: "Your information was updated.",
+        status: "success",
+        duration: 9000,
+        isClosable: true,
+      });
     },
   });
 

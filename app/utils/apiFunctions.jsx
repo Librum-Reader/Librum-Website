@@ -156,11 +156,11 @@ export const editUser = async (data) => {
             path: "lastName",
             value: data.lastName,
           },
-          {
-            op: "replace",
-            path: "hasProfilePicture",
-            value: data.hasProfilePicture,
-          },
+          // {
+          //   op: "replace",
+          //   path: "hasProfilePicture",
+          //   value: data.hasProfilePicture,
+          // },
           // {
           //   op: "replace",
           //   path: "Email",

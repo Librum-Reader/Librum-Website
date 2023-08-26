@@ -1,14 +1,34 @@
 import React from "react";
-import { Flex, Avatar, Button, Box, Text } from "@chakra-ui/react";
+import { Flex, Avatar, Button, Box, Text, Spinner } from "@chakra-ui/react";
 import { useQuery } from "@tanstack/react-query";
+import { FaRegEdit, FaRegSave } from "react-icons/fa";
+import { useEffect, useState } from "react";
+import { fetchUserInfo, fetchAvatar } from "@/app/utils/apiFunctions";
 
 const AvatarAndUserName = () => {
+  const [avatarLoading, setAvatarLoading] = useState(true);
+
+  let token;
+  if (typeof window !== "undefined") {
+    token = localStorage.getItem("token");
+  }
+
   const { isLoading, error, data } = useQuery({
     queryKey: ["user"],
     queryFn: () => {
       return fetchUserInfo(token);
     },
-    enabled: tokenExists,
+  });
+
+  const {
+    isLoading: isAvatarLoading,
+    error: avatarError,
+    data: avatarData,
+  } = useQuery({
+    queryKey: ["avatar"],
+    queryFn: () => {
+      return fetchAvatar(token);
+    },
   });
 
   return (
@@ -28,7 +48,8 @@ const AvatarAndUserName = () => {
         pb={{ base: "1rem", md: "0" }}
         pt={{ base: "1rem", md: "0" }}
       >
-        <Avatar src={!isAvatarLoading && avatarData} size="2xl" />
+        <Avatar src={avatarData ?? avatarData} icon={<Spinner />} size="2xl" />
+
         {/* {!isAvatarLoading && <Image src={avatarData} alt="Fetched" />} */}
         <Text fontWeight="bold">
           {data?.firstName} {data?.lastName}
@@ -40,7 +61,7 @@ const AvatarAndUserName = () => {
             mb="1rem"
             w={{ base: "full", md: "auto" }}
             h="40px"
-            onClick={onAvatarOpen}
+            // onClick={onAvatarOpen}
           >
             Change avatar
           </Button>
@@ -48,7 +69,7 @@ const AvatarAndUserName = () => {
             variant="primary"
             size="sm"
             w="full"
-            onClick={logOut}
+            // onClick={logOut}
             h="40px"
           >
             Logout
@@ -152,7 +173,7 @@ const AvatarAndUserName = () => {
             size="sm"
             alignSelf="start"
             h="40px"
-            onClick={onChangePasswordOpen}
+            // onClick={onChangePasswordOpen}
           >
             Change password
           </Button>

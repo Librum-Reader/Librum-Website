@@ -185,18 +185,6 @@ const UserProfile = () => {
     storageProgress = storageProgress * 100;
   }
 
-  // Logout function
-  const [cookies, setCookie, removeCookie] = useCookies(["user"]);
-
-  const logOut = () => {
-    localStorage.removeItem("token");
-    setToken(null);
-    removeCookie("token");
-    dispatch(resetUser({}));
-    dispatch(updateLoggedIn(false));
-    router.push("/");
-  };
-
   return (
     <Flex w="100%">
       <Flex
@@ -222,7 +210,7 @@ const UserProfile = () => {
           // w="320px"
           // h="255px"
         >
-          <AvatarAndUserName avatarControl={isAvatarOpen} />
+          <AvatarAndUserName />
           <UsernameAndEmail />
           <Flex
             direction="column"

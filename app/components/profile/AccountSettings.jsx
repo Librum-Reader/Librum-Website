@@ -24,6 +24,7 @@ const AccountSettings = () => {
       p={{ base: "1rem", md: "2rem" }}
       direction={{ base: "column", md: "row" }}
       mb="4.5rem"
+      mt="1rem"
       // w="320px"
       // h="255px"
     >

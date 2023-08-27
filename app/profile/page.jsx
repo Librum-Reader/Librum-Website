@@ -364,7 +364,6 @@ const UserProfile = () => {
           </GridItem>
         </Grid>
       </Flex>
-
       {/* Edit email modal */}
       {/* <Modal
         isOpen={isEditEmailOpen}

@@ -14,7 +14,11 @@
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@fontsource/lato": "^5.0.9",
+    "@portabletext/react": "^3.0.7",
     "@reduxjs/toolkit": "^1.9.5",
+    "@sanity/client": "^6.4.9",
+    "@sanity/image-url": "^1.0.2",
+    "@sanity/vision": "^3.15.1",
     "@tanstack/react-query": "^4.29.19",
     "@types/node": "20.4.1",
     "@types/react": "18.2.14",
@@ -28,6 +32,7 @@
     "lottie-react": "^2.4.0",
     "lottie-web": "^5.12.2",
     "next": "13.4.9",
+    "next-sanity": "^5.4.6",
     "postcss": "8.4.25",
     "react": "18.2.0",
     "react-cookie": "^4.1.1",
@@ -36,6 +41,8 @@
     "react-icons": "^4.10.1",
     "react-redux": "^8.1.1",
     "react-spinners": "^0.13.8",
+    "sanity": "^3.15.1",
+    "styled-components": "5.2",
     "tailwindcss": "3.3.2",
     "typescript": "^5.1.6"
   }

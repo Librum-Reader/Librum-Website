@@ -3,6 +3,8 @@
 import AvatarAndUserName from "../components/profile/AvatarAndUserName";
 import UsernameAndEmail from "../components/profile/UsernameAndEmail";
 import AccountSettings from "../components/profile/AccountSettings";
+import UsedStorage from "../components/profile/UsedStorage";
+import TierInformation from "../components/profile/TierInformation";
 
 import { useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
@@ -122,8 +124,6 @@ const UserProfile = () => {
 
   const isLoggedIn = useSelector((state) => state.user.value);
 
-  // User info edit modals
-
   // Redux functions
   const dispatch = useDispatch();
 
@@ -141,16 +141,16 @@ const UserProfile = () => {
     enabled: tokenExists,
   });
 
-  const handleUpdateEmail = (newEmail) => {
-    const token = localStorage.getItem("token");
+  // const handleUpdateEmail = (newEmail) => {
+  //   const token = localStorage.getItem("token");
 
-    updateUser.mutate({
-      firstName: data?.firstName,
-      lastName: data?.lastName,
-      email: newEmail,
-      token: token,
-    });
-  };
+  //   updateUser.mutate({
+  //     firstName: data?.firstName,
+  //     lastName: data?.lastName,
+  //     email: newEmail,
+  //     token: token,
+  //   });
+  // };
 
   const {
     isLoading: isBooksLoading,
@@ -163,27 +163,6 @@ const UserProfile = () => {
     },
     enabled: tokenExists,
   });
-
-  let storageLimit;
-  let usedStorage;
-  let storageProgress;
-
-  if (!isLoading) {
-    console.log(data);
-    storageLimit = data?.bookStorageLimit;
-    storageLimit = storageLimit / 1024;
-    storageLimit = storageLimit / 1024;
-    storageLimit = storageLimit / 1024;
-
-    // usedStorage = data?.usedBookStorage;
-    usedStorage = data?.usedBookStorage;
-    usedStorage = usedStorage / 1024;
-    usedStorage = usedStorage / 1024;
-    usedStorage = usedStorage / 1024;
-
-    storageProgress = usedStorage / storageLimit;
-    storageProgress = storageProgress * 100;
-  }
 
   return (
     <Flex w="100%">
@@ -212,106 +191,14 @@ const UserProfile = () => {
         >
           <AvatarAndUserName />
           <UsernameAndEmail />
-          <Flex
-            direction="column"
-            borderRadius="md"
-            w="100%"
-            pl={{ base: "1rem", md: "2rem" }}
-            pt={{ base: "1rem", md: "2rem" }}
-            pr={{ base: "1rem", md: "0" }}
-            // w="320px"
-            h={{ base: "auto", md: "255px" }}
-          >
-            <Text
-              fontSize="sm"
-              textColor="text-default"
-              mb={{ base: "1rem", md: "2rem" }}
-            >
-              YOUR TIER
-            </Text>
-            <Flex direction="column" my="1rem" mb="2rem">
-              <Text fontSize="xl" textColor="text-default" textAlign="center">
-                {data?.role.toUpperCase()}
-              </Text>
-              <Text
-                fontSize="4xl"
-                fontWeight="700"
-                textColor="text-default"
-                textAlign="center"
-              >
-                {storageLimit?.toFixed(2)} GB
-              </Text>
-            </Flex>
-            <Flex direction="column" gap="1rem">
-              <Button size="sm" variant="primary" h="40px">
-                Upgrade
-              </Button>
-              <Button size="sm" variant="secondary" h="40px">
-                See why we offer multiple tiers
-              </Button>
-            </Flex>
-          </Flex>
+          <TierInformation />
         </Flex>
         <Grid
           gap={{ base: "0rem", md: "2rem" }}
           templateColumns={{ base: "1fr", md: "1fr 1fr 1fr" }}
         >
           <GridItem colSpan="2">
-            <Flex
-              direction="column"
-              background="user-profile-bg"
-              border="1px"
-              borderColor="user-profile-border"
-              borderRadius="md"
-              p={{ base: "1rem", md: "2rem" }}
-              // w="320px"
-              h="270px"
-            >
-              <Text
-                fontSize="sm"
-                textColor="text-default"
-                mb={{ base: "1rem", md: "2rem" }}
-              >
-                USED STORAGE
-              </Text>
-              <Flex justify="space-between" gap="4rem">
-                <Flex direction="column" my="1rem">
-                  <Text
-                    fontSize="3xl"
-                    fontWeight="700"
-                    textColor="text-default"
-                    textAlign="left"
-                  >
-                    {usedStorage?.toFixed(2)} GB
-                  </Text>
-                  <Text fontSize="sm" textColor="text-default">
-                    Used Storage
-                  </Text>
-                </Flex>
-                <Flex direction="column" my="1rem">
-                  <Text
-                    fontSize="3xl"
-                    fontWeight="700"
-                    textColor="text-default"
-                    textAlign="right"
-                  >
-                    {storageLimit?.toFixed(2)} GB
-                  </Text>
-                  <Text
-                    fontSize="sm"
-                    textColor="text-default"
-                    textAlign="right"
-                  >
-                    Free Storage
-                  </Text>
-                </Flex>
-              </Flex>
-              <Progress
-                value={storageProgress?.toFixed(0)}
-                height="28px"
-                colorScheme="text-default"
-              />
-            </Flex>
+            <UsedStorage />
           </GridItem>
           <GridItem>
             <Flex

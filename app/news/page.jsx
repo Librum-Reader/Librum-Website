@@ -1,8 +1,45 @@
 "use client";
 import { Flex, Box, Heading, Text, VStack } from "@chakra-ui/react";
 import NewsItems from "../components/ui/NewsItems";
+import { createClient } from "next-sanity";
+import { useState, useEffect } from "react";
 
 const News = () => {
+  const client = createClient({
+    projectId: "46vwrypj",
+    dataset: "production",
+    apiVersion: "2023-08-27",
+    useCdn: false,
+  });
+
+  const fetchPosts = async () => {
+    const query = `*[_type == "post"] | order(publishedAt desc) {
+      _id,
+      title,
+      publishedAt,
+      'slug': slug.current,
+      body,
+      summary
+    }`;
+
+    try {
+      const posts = await client.fetch(query);
+      return posts;
+    } catch {
+      console.error("Error retrieving posts.");
+    }
+  };
+  const [postArray, setPostArray] = useState([]);
+
+  useEffect(() => {
+    const fetchedPosts = fetchPosts();
+    fetchedPosts.then((posts) => {
+      setPostArray(posts);
+    });
+  }, []);
+
+  console.log(postArray);
+
   return (
     <Flex background="bg-default" align="center" direction="column">
       <Box>
@@ -16,18 +53,19 @@ const News = () => {
         </Heading>
       </Box>
       <VStack spacing={8} mb={8}>
-        <NewsItems
-          title="Welcome to the Librum-Reader Blog"
-          date="October 25, 2022"
-          body=" Welcome to our blog page. Here you will find the latest news and
-          updates for Librum-Reader. If you would like to share an article or
-          announce an event you are organizing, feel free to contact us."
-        />
-        <NewsItems
-          title="Launching of Librum Reader"
-          date="October 23, 2022"
-          body="So, as you can tell, the beta version of the website is live. Many more features are to come for this iteration. In the meanwhile, feel free to browse through our pages and download the latest version of Librum. Report any bugs or issues to us via our contact page which is up and running"
-        />
+        <Text>
+          {postArray.map((post) => {
+            return (
+              <NewsItems
+                title={post.title}
+                date={post.publishedAt}
+                summary={post.summary}
+                id={post._id}
+                body="test"
+              />
+            );
+          })}
+        </Text>
       </VStack>
     </Flex>
   );

@@ -484,7 +484,11 @@ const Navbar = () => {
                 gap="1rem"
                 px="10px"
               >
-                <Link href="/" className="drawer-link" onClick={onDrawerClose}>
+                <Link
+                  href="/"
+                  style={{ display: "flex", width: "100%" }}
+                  onClick={onDrawerClose}
+                >
                   <Button
                     w="full"
                     size="md"
@@ -497,7 +501,7 @@ const Navbar = () => {
                 </Link>
                 <Link
                   href="/news"
-                  className="drawer-link"
+                  style={{ display: "flex", width: "100%" }}
                   onClick={onDrawerClose}
                 >
                   <Button
@@ -511,7 +515,7 @@ const Navbar = () => {
                   </Button>
                 </Link>
                 <Link
-                  className="drawer-link"
+                  style={{ display: "flex", width: "100%" }}
                   href=""
                   onClick={() => {
                     onOpen();

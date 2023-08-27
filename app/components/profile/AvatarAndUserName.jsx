@@ -136,15 +136,6 @@ const AvatarAndUserName = () => {
           >
             Change avatar
           </Button>
-          <Button
-            variant="primary"
-            size="sm"
-            w="full"
-            // onClick={logOut}
-            h="40px"
-          >
-            Logout
-          </Button>
         </Box>
       </Flex>
 

@@ -176,6 +176,14 @@ export function Providers({ children }) {
             borderColor: "btn-secondary-border",
             borderRadius: "3px",
           },
+          destructive: {
+            bg: "transparent",
+            textColor: "red",
+            fontSize: "sm",
+            borderWidth: "1px",
+            borderColor: "red",
+            borderRadius: "3px",
+          },
 
           showcase: {
             bg: "transparent",

@@ -2,6 +2,7 @@
 
 import AvatarAndUserName from "../components/profile/AvatarAndUserName";
 import UsernameAndEmail from "../components/profile/UsernameAndEmail";
+import AccountSettings from "../components/profile/AccountSettings";
 
 import { useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
@@ -200,7 +201,7 @@ const UserProfile = () => {
     <Flex w="100%">
       <Flex
         background="bg-default"
-        h={{ base: "100%", md: "100dvh" }}
+        h={{ base: "100%", md: "100%" }}
         w="100%"
         px={{ base: "1rem", md: "9rem" }}
         mt="3.5rem"
@@ -363,6 +364,7 @@ const UserProfile = () => {
             </Flex>
           </GridItem>
         </Grid>
+        <AccountSettings />
       </Flex>
       {/* Edit email modal */}
       {/* <Modal

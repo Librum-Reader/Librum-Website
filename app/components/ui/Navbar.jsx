@@ -489,11 +489,10 @@ const Navbar = () => {
                     w="full"
                     size="md"
                     variant={path === "/" ? "drawerActive" : "drawerButton"}
+                    rightIcon={<FaAngleRight />}
+                    iconSpacing="auto"
                   >
-                    <Flex w="100%" align="center" justify="space-between">
-                      <Text>HOME</Text>
-                      <FaAngleRight />
-                    </Flex>
+                    HOME
                   </Button>
                 </Link>
                 <Link
@@ -505,11 +504,10 @@ const Navbar = () => {
                     w="full"
                     size="md"
                     variant={path === "/news" ? "drawerActive" : "drawerButton"}
+                    rightIcon={<FaAngleRight />}
+                    iconSpacing="auto"
                   >
-                    <Flex w="100%" align="center" justify="space-between">
-                      <Text>NEWS</Text>
-                      <FaAngleRight />
-                    </Flex>
+                    NEWS
                   </Button>
                 </Link>
                 <Link
@@ -520,11 +518,14 @@ const Navbar = () => {
                     onDrawerClose();
                   }}
                 >
-                  <Button w="full" size="md" variant="drawerButton">
-                    <Flex w="100%" align="center" justify="space-between">
-                      <Text>CONTACT</Text>
-                      <FaAngleRight />
-                    </Flex>
+                  <Button
+                    w="full"
+                    size="md"
+                    variant="drawerButton"
+                    rightIcon={<FaAngleRight />}
+                    iconSpacing="auto"
+                  >
+                    CONTACT
                   </Button>
                 </Link>
 

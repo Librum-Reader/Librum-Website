@@ -1,12 +1,37 @@
 import React from "react";
-import { Flex, Avatar, Button, Box, Text, Spinner } from "@chakra-ui/react";
-import { useQuery } from "@tanstack/react-query";
+import {
+  Flex,
+  Avatar,
+  Button,
+  Box,
+  Text,
+  Spinner,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  Input,
+  useDisclosure,
+} from "@chakra-ui/react";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { FaRegEdit, FaRegSave } from "react-icons/fa";
 import { useEffect, useState } from "react";
-import { fetchUserInfo, fetchAvatar } from "@/app/utils/apiFunctions";
+import {
+  fetchUserInfo,
+  fetchAvatar,
+  updatePictureInfo,
+  uploadAvatar,
+} from "@/app/utils/apiFunctions";
 
 const AvatarAndUserName = () => {
-  const [avatarLoading, setAvatarLoading] = useState(true);
+  const {
+    isOpen: isAvatarOpen,
+    onOpen: onAvatarOpen,
+    onClose: onAvatarClose,
+  } = useDisclosure();
 
   let token;
   if (typeof window !== "undefined") {
@@ -30,6 +55,51 @@ const AvatarAndUserName = () => {
       return fetchAvatar(token);
     },
   });
+
+  const updatePicture = useMutation({
+    mutationFn: updatePictureInfo,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["user"] });
+      onEditUserNameClose();
+    },
+  });
+
+  // File upload mutation
+  const queryClient = useQueryClient();
+  const avatarUpload = useMutation({
+    mutationFn: uploadAvatar,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["avatar"] });
+      onAvatarClose();
+    },
+  });
+
+  // File upload function
+  const uploadFile = async (e, avatar) => {
+    e.preventDefault();
+    const currentDateTime = new Date();
+    const formattedDateTime = currentDateTime.toISOString().slice(0, 19);
+    const token = localStorage.getItem("token");
+    const formData = new FormData();
+    formData.append("file", avatar);
+    avatarUpload.mutate({ file: formData, token: token });
+    updatePicture.mutate({
+      hasProfilePicture: true,
+      lastUpdated: formattedDateTime,
+      token: token,
+    });
+  };
+
+  const [avatar, setAvatar] = useState();
+
+  const handleFileSelect = (e) => {
+    setAvatar(e.target.files[0]);
+  };
+
+  const cancelUpload = () => {
+    setAvatar(null);
+    onAvatarClose();
+  };
 
   return (
     <>
@@ -61,7 +131,7 @@ const AvatarAndUserName = () => {
             mb="1rem"
             w={{ base: "full", md: "auto" }}
             h="40px"
-            // onClick={onAvatarOpen}
+            onClick={onAvatarOpen}
           >
             Change avatar
           </Button>
@@ -76,109 +146,52 @@ const AvatarAndUserName = () => {
           </Button>
         </Box>
       </Flex>
-      <Flex
-        direction="column"
-        p={{ base: "1rem", md: "2rem" }}
-        // w="320px"
-        w="100%"
-        h="auto"
-        borderRight={{ base: "0", md: "1px" }}
-        borderBottom={{ base: "1px", md: "0" }}
-        borderColor={{
-          base: "user-profile-border",
-          md: "user-profile-border",
-        }}
+
+      {/* Upload/change avatar modal */}
+      <Modal
+        isOpen={isAvatarOpen}
+        onClose={onAvatarClose}
+        variant="defaultVariant"
+        isCentered
       >
-        <Text
-          fontSize="sm"
-          textColor="text-default"
-          mb={{ base: "1rem", md: "2rem" }}
-        >
-          YOUR INFORMATION
-        </Text>
-        <Flex direction="column" my="1rem">
-          <Text mb=".1rem" fontSize="sm" fontWeight="semibold">
-            Username
-          </Text>
+        <ModalOverlay />
+        <ModalContent mx="1rem">
+          <ModalHeader>Upload avatar</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <form
+              onSubmit={(e) => {
+                uploadFile(e, avatar);
+              }}
+            >
+              <Flex direction="column" gap="1rem">
+                <Input
+                  type="file"
+                  accept="image/*"
+                  variant="editUserInfo"
+                  onChange={handleFileSelect}
+                />
+                <Flex w="100%" justify="end">
+                  <Button
+                    variant="primary"
+                    mr="1rem"
+                    type="submit"
+                    isLoading={avatarUpload.isLoading}
+                    alignSelf="flex-start"
+                  >
+                    Upload
+                  </Button>
+                  <Button variant="secondary" onClick={cancelUpload}>
+                    Cancel
+                  </Button>
+                </Flex>
+              </Flex>
+            </form>
+          </ModalBody>
 
-          <Flex
-            w="100%"
-            border="1px"
-            background="user-info-bg"
-            borderColor="user-profile-border"
-            borderRadius="md"
-            onPlayingCapture=".8rem"
-            justify="space-between"
-            align="center"
-            mb="1rem"
-            pl=".8rem"
-            py=".3rem"
-          >
-            <Text fontSize="md">
-              {data?.firstName} {data?.lastName}
-            </Text>
-
-            <Button variant="secondary" size="sm" border="0">
-              <FaRegEdit
-                onClick={() => {
-                  setNewFirstName(data?.firstName);
-                  setNewLastName(data?.lastName);
-                  onEditUserNameOpen();
-                }}
-              />
-            </Button>
-          </Flex>
-
-          <Flex w="100%" justify="space-between">
-            <Text mb=".1rem" fontSize="sm" fontWeight="semibold">
-              Email
-            </Text>
-          </Flex>
-          <Flex
-            w="100%"
-            border="1px"
-            background="user-info-bg"
-            borderColor="user-profile-border"
-            borderRadius="md"
-            pl=".8rem"
-            py=".3rem"
-            justify="space-between"
-            align="center"
-            mb="1rem"
-          >
-            <Text>{data?.email}</Text>
-            <Button variant="secondary" size="sm" border="0">
-              <FaRegEdit
-              // onClick={() => {
-              //   setNewEmail(data?.email);
-              //   onEditEmailOpen();
-              // }}
-              />
-            </Button>
-          </Flex>
-          <Flex
-            w="100%"
-            borderBottom="1px"
-            borderColor="user-profile-border"
-            mb=".5rem"
-            pb=".2rem"
-            mt=".5rem"
-            justify="space-between"
-          >
-            <Text>Security</Text>
-          </Flex>
-
-          <Button
-            variant="secondary"
-            size="sm"
-            alignSelf="start"
-            h="40px"
-            // onClick={onChangePasswordOpen}
-          >
-            Change password
-          </Button>
-        </Flex>
-      </Flex>
+          <ModalFooter></ModalFooter>
+        </ModalContent>
+      </Modal>
     </>
   );
 };

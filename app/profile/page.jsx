@@ -1,6 +1,8 @@
 "use client";
 
 import AvatarAndUserName from "../components/profile/AvatarAndUserName";
+import UsernameAndEmail from "../components/profile/UsernameAndEmail";
+
 import { useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -49,7 +51,6 @@ import {
   CloseButton,
   useToast,
 } from "@chakra-ui/react";
-import { BeatLoader } from "react-spinners";
 
 import { useDispatch } from "react-redux";
 
@@ -77,6 +78,8 @@ import { FaXmark } from "react-icons/fa6";
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 
 const UserProfile = () => {
+  const [isAvatarOpen, setIsAvatarOpen] = useState(false);
+
   const toast = useToast();
 
   const router = useRouter();
@@ -95,45 +98,6 @@ const UserProfile = () => {
 
   // State handlers for fetching avatar
   const [userPicture, setUserPicture] = useState();
-
-  // State handlers for changing username
-  const [newFirstName, setNewFirstName] = useState("");
-  const [newLastName, setNewLastName] = useState("");
-
-  const handleNewFirstName = (e) => setNewFirstName(e.target.value);
-  const handleNewLastName = (e) => setNewLastName(e.target.value);
-  const resetUsernames = () => {
-    setNewFirstName("");
-    setNewLastName("");
-  };
-
-  // State handlers for changing password
-  const [newPassword, setNewPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [passwordIsValid, setPasswordIsValid] = useState(null);
-  const [showPassword, setShowPassword] = useState(false);
-
-  const handleShowPassword = () => {
-    setShowPassword(!showPassword);
-  };
-
-  const handleNewPassword = (e) => {
-    setNewPassword(e.target.value);
-  };
-
-  const validatePassword = (e) => {
-    setConfirmPassword(e.target.value);
-    if (e.target.value === newPassword) {
-      setPasswordIsValid(true);
-    } else {
-      setPasswordIsValid(false);
-    }
-  };
-
-  const resetPassword = () => {
-    setNewPassword("");
-    setConfirmPassword("");
-  };
 
   // State handlers for changing email
   const [newEmail, setNewEmail] = useState("");
@@ -155,69 +119,9 @@ const UserProfile = () => {
     setNewEmail("");
   };
 
-  // File upload mutation
-  const avatarUpload = useMutation({
-    mutationFn: uploadAvatar,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["avatar"] });
-      onAvatarClose();
-    },
-  });
-
-  // State handlers for avatar upload
-  const [avatar, setAvatar] = useState();
-
-  const handleFileSelect = (e) => {
-    setAvatar(e.target.files[0]);
-  };
-
-  const cancelUpload = () => {
-    setAvatar(null);
-    onAvatarClose();
-  };
-
-  // File upload function
-  const uploadFile = async (e, avatar) => {
-    e.preventDefault();
-    const currentDateTime = new Date();
-    const formattedDateTime = currentDateTime.toISOString().slice(0, 19);
-    const token = localStorage.getItem("token");
-    const formData = new FormData();
-    formData.append("file", avatar);
-    avatarUpload.mutate({ file: formData, token: token });
-    updatePicture.mutate({
-      hasProfilePicture: true,
-      lastUpdated: formattedDateTime,
-      token: token,
-    });
-  };
-
   const isLoggedIn = useSelector((state) => state.user.value);
 
   // User info edit modals
-  const {
-    isOpen: isEditUserNameOpen,
-    onOpen: onEditUserNameOpen,
-    onClose: onEditUserNameClose,
-  } = useDisclosure();
-
-  const {
-    isOpen: isChangePasswordOpen,
-    onOpen: onChangePasswordOpen,
-    onClose: onChangePasswordClose,
-  } = useDisclosure();
-
-  const {
-    isOpen: isEditEmailOpen,
-    onOpen: onEditEmailOpen,
-    onClose: onEditEmailClose,
-  } = useDisclosure();
-
-  const {
-    isOpen: isAvatarOpen,
-    onOpen: onAvatarOpen,
-    onClose: onAvatarClose,
-  } = useDisclosure();
 
   // Redux functions
   const dispatch = useDispatch();
@@ -235,73 +139,6 @@ const UserProfile = () => {
     },
     enabled: tokenExists,
   });
-
-  // Mutations for changing username, image, password, and other info
-  const updateUser = useMutation({
-    mutationFn: editUser,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["user"] });
-      onEditUserNameClose();
-      toast({
-        title: "Success!",
-        description: "Your information was updated.",
-        status: "success",
-        duration: 9000,
-        isClosable: true,
-      });
-    },
-  });
-
-  const [errorMsg, setErrorMsg] = useState("");
-
-  const editPassword = useMutation({
-    mutationFn: changePassword,
-    onSuccess: (data) => {
-      queryClient.invalidateQueries({ queryKey: ["user"] });
-
-      if (data.code === 0) {
-        setErrorMsg("The password entered was too short.");
-        onAlertOpen();
-      } else {
-        onChangePasswordClose();
-        resetPassword();
-        toast({
-          title: "Success!",
-          description: "Your password has been changed.",
-          status: "success",
-          duration: 9000,
-          isClosable: true,
-        });
-      }
-    },
-  });
-
-  const updatePicture = useMutation({
-    mutationFn: updatePictureInfo,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["user"] });
-      onEditUserNameClose();
-    },
-  });
-
-  const handleUpdateUser = (newFirstName, newLastName) => {
-    const token = localStorage.getItem("token");
-
-    updateUser.mutate({
-      firstName: newFirstName,
-      lastName: newLastName,
-      token: token,
-    });
-  };
-
-  const handleEditPassword = (password) => {
-    const token = localStorage.getItem("token");
-
-    editPassword.mutate({
-      password: password,
-      token: token,
-    });
-  };
 
   const handleUpdateEmail = (newEmail) => {
     const token = localStorage.getItem("token");
@@ -359,12 +196,6 @@ const UserProfile = () => {
     router.push("/");
   };
 
-  const {
-    isOpen: isAlertOpen,
-    onClose: onAlertClose,
-    onOpen: onAlertOpen,
-  } = useDisclosure();
-
   return (
     <Flex w="100%">
       <Flex
@@ -390,7 +221,8 @@ const UserProfile = () => {
           // w="320px"
           // h="255px"
         >
-          <AvatarAndUserName token={token} />
+          <AvatarAndUserName avatarControl={isAvatarOpen} />
+          <UsernameAndEmail />
           <Flex
             direction="column"
             borderRadius="md"
@@ -532,63 +364,9 @@ const UserProfile = () => {
           </GridItem>
         </Grid>
       </Flex>
-      {/* Edit username modal */}
-      <Modal
-        isOpen={isEditUserNameOpen}
-        onClose={onEditUserNameClose}
-        variant="defaultVariant"
-        isCentered
-      >
-        <ModalOverlay />
-        <ModalContent mx="1rem">
-          <ModalHeader>Edit your username</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
-            <Text mb=".1rem" fontSize="sm" fontWeight="semibold">
-              First name
-            </Text>
-            <Input
-              type="text"
-              variant="editUserInfo"
-              value={newFirstName}
-              mb="1rem"
-              onChange={handleNewFirstName}
-            />
-            <Text mb=".1rem" fontSize="sm" fontWeight="semibold">
-              Last name
-            </Text>
-            <Input
-              type="text"
-              variant="editUserInfo"
-              value={newLastName}
-              onChange={handleNewLastName}
-            />
-          </ModalBody>
 
-          <ModalFooter>
-            <Button
-              variant="primary"
-              mr="1rem"
-              onClick={() => {
-                handleUpdateUser(newFirstName, newLastName);
-              }}
-            >
-              {updateUser.isLoading ? <BeatLoader /> : "Save Changes"}
-            </Button>
-            <Button
-              variant="secondary"
-              onClick={() => {
-                resetUsernames();
-                onEditUserNameClose();
-              }}
-            >
-              Discard
-            </Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
       {/* Edit email modal */}
-      <Modal
+      {/* <Modal
         isOpen={isEditEmailOpen}
         onClose={onEditEmailClose}
         variant="defaultVariant"
@@ -649,153 +427,7 @@ const UserProfile = () => {
             </Button>
           </ModalFooter>
         </ModalContent>
-      </Modal>
-      {/* Upload/change avatar modal */}
-      <Modal
-        isOpen={isAvatarOpen}
-        onClose={onAvatarClose}
-        variant="defaultVariant"
-        isCentered
-      >
-        <ModalOverlay />
-        <ModalContent mx="1rem">
-          <ModalHeader>Upload avatar</ModalHeader>
-          <ModalCloseButton onClick={resetEmail} />
-          <ModalBody>
-            <form
-              onSubmit={(e) => {
-                uploadFile(e, avatar);
-              }}
-            >
-              <Flex direction="column" gap="1rem">
-                <Input
-                  type="file"
-                  accept="image/*"
-                  variant="editUserInfo"
-                  onChange={handleFileSelect}
-                />
-                <Flex w="100%" justify="end">
-                  <Button
-                    variant="primary"
-                    mr="1rem"
-                    type="submit"
-                    isLoading={avatarUpload.isLoading}
-                    alignSelf="flex-start"
-                  >
-                    Upload
-                  </Button>
-                  <Button variant="secondary" onClick={cancelUpload}>
-                    Cancel
-                  </Button>
-                </Flex>
-              </Flex>
-            </form>
-          </ModalBody>
-
-          <ModalFooter></ModalFooter>
-        </ModalContent>
-      </Modal>
-      {/* Change password modal */}
-      <Modal
-        isOpen={isChangePasswordOpen}
-        onClose={onChangePasswordClose}
-        variant="defaultVariant"
-        isCentered
-      >
-        <ModalOverlay />
-        <ModalContent mx="1rem">
-          <ModalHeader>Change your password</ModalHeader>
-          <ModalCloseButton onClick={resetPassword} />
-          <ModalBody>
-            <Text mb=".1rem" fontSize="sm" fontWeight="semibold">
-              New password
-            </Text>
-            <InputGroup>
-              <Input
-                type={showPassword ? "text" : "password"}
-                variant="editUserInfo"
-                value={newPassword}
-                mb="1rem"
-                onChange={handleNewPassword}
-              />
-              <InputRightElement width="4.5rem">
-                <Button
-                  h="1.75rem"
-                  size="sm"
-                  onClick={handleShowPassword}
-                  variant="ghost"
-                >
-                  {showPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
-                </Button>
-              </InputRightElement>
-            </InputGroup>
-            <Text mb=".1rem" fontSize="sm" fontWeight="semibold">
-              Confirm new password
-            </Text>
-            <InputGroup>
-              <Input
-                type={showPassword ? "text" : "password"}
-                variant="editUserInfo"
-                value={confirmPassword}
-                onChange={validatePassword}
-              />
-              <InputRightElement width="4.5rem">
-                <Button
-                  h="1.75rem"
-                  size="sm"
-                  onClick={handleShowPassword}
-                  variant="ghost"
-                >
-                  {showPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
-                </Button>
-              </InputRightElement>
-            </InputGroup>
-            {confirmPassword ? (
-              passwordIsValid ? null : (
-                <Text mt="1rem">Passwords must match before submitting.</Text>
-              )
-            ) : null}
-          </ModalBody>
-
-          <ModalFooter>
-            <Flex direction="column" gap="1rem" justify="center" w="100%">
-              {isAlertOpen ? (
-                <Alert status="error" mb=".4rem">
-                  <Flex align="center" justify="space-between" w="100%">
-                    <AlertIcon />
-                    <AlertDescription>{errorMsg}</AlertDescription>
-                    <CloseButton
-                      // right={-1}
-                      // top={-1}
-                      onClick={onAlertClose}
-                    />
-                  </Flex>
-                </Alert>
-              ) : null}
-              <Flex w="100%" justify="end">
-                <Button
-                  variant="primary"
-                  mr="1rem"
-                  onClick={() => {
-                    handleEditPassword(newPassword);
-                  }}
-                >
-                  {updateUser.isLoading ? <BeatLoader /> : "Save Changes"}
-                </Button>
-                <Button
-                  variant="secondary"
-                  onClick={() => {
-                    onChangePasswordClose();
-                    resetPassword();
-                  }}
-                >
-                  Discard
-                </Button>
-              </Flex>
-            </Flex>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
+      </Modal> */}
     </Flex>
   );
 };

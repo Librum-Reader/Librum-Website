@@ -23,10 +23,11 @@ const NewsItems = (props) => {
         <Flex maxW="1300px" gap="4rem" align="center">
           <Image
             alt="news item illustration"
-            src="/news/news.svg"
+            src={props.image}
             className="news-image"
-            boxSize="50px"
+            boxSize="150px"
             display={{ base: "none", md: "block" }}
+            objectFit="cover"
           />
           <VStack direction="column" spacing={2} align="flex-start">
             <Heading size="lg" color="#946bde">

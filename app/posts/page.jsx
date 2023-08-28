@@ -57,7 +57,7 @@ const Posts = () => {
           {post?.title}
         </Heading>
       </Box>
-      <VStack spacing={8} mb={8}>
+      <VStack spacing={8} mb={8} maxW="1300px">
         <Text>
           <PortableText value={post?.body} />
         </Text>

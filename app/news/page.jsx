@@ -19,7 +19,9 @@ const News = () => {
       publishedAt,
       'slug': slug.current,
       body,
-      summary
+      mainImage,
+      summary,
+      "imageUrl": mainImage.asset -> url
     }`;
 
     try {
@@ -55,13 +57,15 @@ const News = () => {
       <VStack spacing={8} mb={8}>
         <Text>
           {postArray.map((post) => {
+            console.log(post);
             return (
               <NewsItems
                 title={post.title}
-                date={post.publishedAt}
+                date={new Date(post.publishedAt).toDateString().slice(4)}
                 summary={post.summary}
                 id={post._id}
                 body="test"
+                image={post.imageUrl}
               />
             );
           })}

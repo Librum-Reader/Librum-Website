@@ -114,7 +114,6 @@ const Alternate = () => {
               md: index % 2 === 0 ? "row" : "row-reverse",
             }}
             align="center"
-            key={index}
           >
             <Card flexBasis="fit-content">
               <CardBody p="1rem">

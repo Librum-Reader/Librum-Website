@@ -2,7 +2,6 @@
 
 ![Untitled](https://github.com/Librum-Reader/Librum-Website/assets/69865187/ecb5e40d-dd60-4cd5-baff-54904da39dfe)
 
-
 Welcome to the official website of Librum, a powerful and intuitive application for managing your personal online library and reading your books. This repository contains the source code and assets for the Librum website, where you can learn more about the application, its features, and how to get started.
 
 <br>
@@ -36,23 +35,27 @@ We appreciate contributions to the Librum website that improve its content, desi
 If you would like to run the Librum website locally on your machine, follow the instructions below:
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/Librum-Reader/Librum-Website.git
 ```
 
 2. Navigate to the project directory:
+
 ```bash
 cd Librum-Website
 ```
 
 3. Install the dependencies:
+
 ```bash
 npm install
 ```
 
 4. Start the development server:
+
 ```bash
-npm start
+npm run dev
 ```
 
 5. Open your browser and visit `http://localhost:3000` to view the Librum website.

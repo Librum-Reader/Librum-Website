@@ -1,22 +1,33 @@
 "use client";
 
-import { Flex, Image, Box, Text, Heading } from "@chakra-ui/react";
+import {
+  Flex,
+  Image,
+  Box,
+  Text,
+  Heading,
+  useColorMode,
+} from "@chakra-ui/react";
 import React from "react";
-import wave from "../../../public/wave.svg";
 import Alternate from "./Alternate";
 
 const Features = () => {
+  const { colorMode, toggleColorMode } = useColorMode();
+
   return (
-    <Flex background="#282c34" className="features-container">
-      <Image src="/wave.svg" className="wave" />
+    <Flex background="bg-default" className="features-container">
+      <Image
+        src={colorMode == "light" ? "/wave-light.svg" : "/wave.svg"}
+        className="wave"
+        display={{ base: "none", md: "block" }}
+      />
       <Box
-        maxW="1300px"
-        mx="auto"
-        mt="10rem"
-        mb="10rem"
+        px={{ base: "0", md: "9rem" }}
+        mt={{ base: "0", md: "10rem" }}
+        mb={{ base: "0rem", md: "10rem" }}
         className="features-items"
       >
-        <Flex mx="auto" gap="10rem" direction="column">
+        <Flex gap={{ base: "0", md: "10rem" }} direction="column" w="100%">
           <Alternate />
         </Flex>
       </Box>

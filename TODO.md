@@ -1,0 +1,10 @@
+- [x] Add the privacy policy page
+- [x] Add the disclaimer page
+- [x] Reduce the font size of the other pages with legal documents, to look exactly like on the official version of the website
+- [x] Switch the whole theme of the website from the current blue-ish color (#47478f) to purple used on the website (#946BDE)
+- [x] Make the items in the navbar white instead of blue and increase the size of the items a bit (including the logo), to look similar to the official one
+- [ ] Add the theme switch ( @slrbristol said that this is mostly done )
+- [x] Fix the News page to look like the official website's news page
+- [x] Add a footer that looks like the ones of the official website
+- [ ] Add popup to the Register "page" that tells the user to confirm their email address (similar to the one on the website, feel free to improve the UI of it if you have anything in mind)
+- [ ] Add a popup that opens when the website is opened for the first time, which tells the user that the website is still in development and to accept the legal terms (You can look at https://github.com/Librum-Reader/Librum-Website/pull/33 to see what contents need to be present)

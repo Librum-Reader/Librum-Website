@@ -44,6 +44,21 @@ const post = {
       ],
     },
     {
+      name: "heroImage",
+      title: "Hero image",
+      type: "image",
+      options: {
+        hotspot: true,
+      },
+      fields: [
+        {
+          name: "alt",
+          type: "string",
+          title: "Alternative Text",
+        },
+      ],
+    },
+    {
       name: "categories",
       title: "Categories",
       type: "array",

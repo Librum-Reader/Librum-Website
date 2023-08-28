@@ -13,7 +13,7 @@ const News = () => {
   });
 
   const fetchPosts = async () => {
-    const query = `*[_type == "post"] | order(publishedAt desc) {
+    const query = `*[_type == "post"] | order(_createdAt desc) {
       _id,
       title,
       publishedAt,
@@ -21,7 +21,8 @@ const News = () => {
       body,
       mainImage,
       summary,
-      "imageUrl": mainImage.asset -> url
+      "imageUrl": mainImage.asset -> url,
+      "heroImageUrl": heroImage.asset -> url
     }`;
 
     try {
@@ -48,8 +49,8 @@ const News = () => {
         <Heading
           size="2xl"
           color="#946bde"
-          mt={{ base: "2rem", md: "24" }}
-          mb={{ base: "2rem", md: "24" }}
+          mt={{ base: "2rem", md: "2rem" }}
+          mb={{ base: "2rem", md: "2rem" }}
         >
           News and Updates
         </Heading>

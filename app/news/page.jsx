@@ -56,10 +56,10 @@ const News = () => {
       </Box>
       <VStack spacing={8} mb={8}>
         <Text>
-          {postArray.map((post) => {
-            console.log(post);
+          {postArray.map((post, index) => {
             return (
               <NewsItems
+                key={index}
                 title={post.title}
                 date={new Date(post.publishedAt).toDateString().slice(4)}
                 summary={post.summary}

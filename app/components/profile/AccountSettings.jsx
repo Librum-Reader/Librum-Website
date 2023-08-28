@@ -1,16 +1,25 @@
 import React from "react";
 import { Flex, Text, Button } from "@chakra-ui/react";
 import { useCookies } from "react-cookie";
+import { useSelector, useDispatch } from "react-redux";
+import { useRouter } from "next/navigation";
+import {
+  updateUser,
+  updateLoggedIn,
+  resetUser,
+} from "@/app/features/user/userSlice";
 
 const AccountSettings = () => {
+  const router = useRouter();
   // Logout function
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.value);
 
   const logOut = () => {
     localStorage.removeItem("token");
-    setToken(null);
     removeCookie("token");
-    dispatch(resetUser({}));
+    // dispatch(resetUser({}));
     dispatch(updateLoggedIn(false));
     router.push("/");
   };
@@ -23,7 +32,6 @@ const AccountSettings = () => {
       borderRadius="md"
       p={{ base: "1rem", md: "2rem" }}
       direction={{ base: "column", md: "row" }}
-      mb="4.5rem"
       // w="320px"
       // h="255px"
     >
@@ -32,7 +40,6 @@ const AccountSettings = () => {
         borderRadius="md"
         w="100%"
         // w="320px"
-        h={{ base: "auto", md: "255px" }}
       >
         <Text
           fontSize="sm"

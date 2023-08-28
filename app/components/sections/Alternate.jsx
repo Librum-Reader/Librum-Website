@@ -87,78 +87,76 @@ const Alternate = () => {
       </Modal>
       {data.map((block, index) => {
         return (
-          <FeaturesAnimateMobile key={index}>
-            <MobileFeatureCard
-              title={block.title}
-              text={block.text_mobile}
-              image_light={block.image_light}
-              image={block.image}
-              bg={
-                index % 2 === 0
-                  ? evenAlternateBackground
-                  : oddAlternateBackground
-              }
-            />
-          </FeaturesAnimateMobile>
+          // <FeaturesAnimateMobile key={index}>
+          <MobileFeatureCard
+            title={block.title}
+            text={block.text_mobile}
+            image_light={block.image_light}
+            image={block.image}
+            bg={
+              index % 2 === 0 ? evenAlternateBackground : oddAlternateBackground
+            }
+          />
+          // </FeaturesAnimateMobile>
         );
       })}
       {data.map((block, index) => {
         return (
-          <FeaturesAnimate key={index}>
-            <Flex
-              // mx="auto"
-              display={{ base: "none", md: "flex" }}
-              gap={{ base: "2rem", md: "15rem" }}
-              direction={{
-                base: "column",
-                md: index % 2 === 0 ? "row" : "row-reverse",
-              }}
-              align="center"
-              key={index}
-            >
-              <Card flexBasis="fit-content">
-                <CardBody p="1rem">
-                  <Image
-                    src={colorMode === "dark" ? block.image : block.image_light}
-                    className={
-                      index % 2 === 0
-                        ? "features-img shadow-left"
-                        : "features-img shadow-right"
-                    }
-                    alt="Illustration"
-                    onClick={() => {
-                      setModalData(block.image);
-                      onOpen();
-                    }}
-                  />
-                </CardBody>
-              </Card>
+          // <FeaturesAnimate key={index}>
+          <Flex
+            // mx="auto"
+            display={{ base: "none", md: "flex" }}
+            gap={{ base: "2rem", md: "15rem" }}
+            direction={{
+              base: "column",
+              md: index % 2 === 0 ? "row" : "row-reverse",
+            }}
+            align="center"
+            key={index}
+          >
+            <Card flexBasis="fit-content">
+              <CardBody p="1rem">
+                <Image
+                  src={colorMode === "dark" ? block.image : block.image_light}
+                  className={
+                    index % 2 === 0
+                      ? "features-img shadow-left"
+                      : "features-img shadow-right"
+                  }
+                  alt="Illustration"
+                  onClick={() => {
+                    setModalData(block.image);
+                    onOpen();
+                  }}
+                />
+              </CardBody>
+            </Card>
 
-              <Flex
-                direction="column"
-                align={{ base: "center", md: "flex-start" }}
-                flexBasis="70%"
+            <Flex
+              direction="column"
+              align={{ base: "center", md: "flex-start" }}
+              flexBasis="70%"
+            >
+              <Heading color="#946bde" mb="1.5rem">
+                {block.title}
+              </Heading>
+              <Text
+                color="text-default"
+                textAlign={{ base: "center", md: "left" }}
               >
-                <Heading color="#946bde" mb="1.5rem">
-                  {block.title}
-                </Heading>
+                {block.text}
+              </Text>
+              {block.text2 ? (
                 <Text
                   color="text-default"
                   textAlign={{ base: "center", md: "left" }}
                 >
-                  {block.text}
+                  {block.text2}
                 </Text>
-                {block.text2 ? (
-                  <Text
-                    color="text-default"
-                    textAlign={{ base: "center", md: "left" }}
-                  >
-                    {block.text2}
-                  </Text>
-                ) : null}
-              </Flex>
+              ) : null}
             </Flex>
-          </FeaturesAnimate>
+          </Flex>
+          // </FeaturesAnimate>
         );
       })}
     </>

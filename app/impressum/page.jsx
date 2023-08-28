@@ -10,12 +10,12 @@ const Impressum = () => {
       w="100%"
       maxW="1300px"
       px={{ base: "0", md: "8.5em" }}
-      py={{ base: "0", md: " 9em" }}
+      py={{ base: "1rem", md: " 9em" }}
       mx={{ base: "1rem", md: "auto" }}
       h="100dvh"
       spacing={1}
     >
-      <VStack spacing={16} mt={{ base: "4rem", md: "10rem" }} align="start">
+      <VStack spacing={16} align="start">
         <VStack align="flex-start">
           <Heading mb="1.5rem">About Us</Heading>
           <Text>Librum-Reader</Text>

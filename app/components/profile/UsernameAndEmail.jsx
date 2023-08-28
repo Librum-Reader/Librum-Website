@@ -355,7 +355,7 @@ const UsernameAndEmail = () => {
               <InputRightElement width="4.5rem">
                 <Button
                   h="1.75rem"
-                  size="sm"
+                  size="lg"
                   onClick={handleShowPassword}
                   variant="ghost"
                 >
@@ -376,7 +376,7 @@ const UsernameAndEmail = () => {
               <InputRightElement width="4.5rem">
                 <Button
                   h="1.75rem"
-                  size="sm"
+                  size="lg"
                   onClick={handleShowPassword}
                   variant="ghost"
                 >

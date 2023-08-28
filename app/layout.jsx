@@ -1,8 +1,9 @@
 "use client";
 import { Inter } from "next/font/google";
-import Navbar from "./components/ui/Navbar";
+// import Navbar from "./components/ui/Navbar";
 import Container from "./components/ui/Container";
 import Footer from "./components/sections/Footer";
+import dynamic from "next/dynamic";
 
 import {
   ChakraProvider,
@@ -84,6 +85,10 @@ export default function RootLayout({ children }) {
   };
 
   const [loginOpen, setLoginOpen] = useState(false);
+
+  const DynamicNav = dynamic(() => import("./components/ui/Navbar"), {
+    loading: () => <p>Loading...</p>,
+  });
 
   return (
     <html lang="en">
@@ -190,7 +195,8 @@ export default function RootLayout({ children }) {
                           </ModalBody>
                         </ModalContent>
                       </Modal>
-                      <Navbar />
+                      {/* <Navbar /> */}
+                      <DynamicNav />
                       {children}
                       <Footer />
                     </Container>

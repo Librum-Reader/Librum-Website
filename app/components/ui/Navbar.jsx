@@ -1,4 +1,5 @@
 "use client";
+import styles from "../ui/navlinks.module.css";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -95,8 +96,19 @@ const Navbar = () => {
   };
   const navLinkComponents = navLinks.map((link, index) => {
     return (
-      <Link key={index} href={link.href} className={"nav-hover"}>
-        <Button variant={path === link.href ? active : inactive}>
+      <Link key={index} href={link.href} className={styles.navHover}>
+        {/* <Button variant={path === link.href ? active : inactive}> */}
+        <Button
+          variant={
+            path === "/"
+              ? path === link.href
+                ? "navActive"
+                : "navLinkHome"
+              : path === link.href
+              ? "navActive"
+              : "navLink"
+          }
+        >
           {link.text}
         </Button>
       </Link>

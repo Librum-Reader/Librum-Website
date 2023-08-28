@@ -6,6 +6,7 @@ import { useSearchParams } from "next/navigation";
 import { createClient } from "next-sanity";
 import { useState, useEffect } from "react";
 import { PortableText } from "@portabletext/react";
+import SanityImage from "../components/blog/SanityImage";
 
 const Posts = () => {
   const searchParams = useSearchParams();
@@ -45,6 +46,14 @@ const Posts = () => {
     });
   }, []);
 
+  const myPortableTextComponents = {
+    types: {
+      image: ({ value }) => {
+        return <SanityImage {...value} />;
+      },
+    },
+  };
+
   return (
     <Flex background="bg-default" align="center" direction="column">
       <Box>
@@ -59,7 +68,10 @@ const Posts = () => {
       </Box>
       <VStack spacing={8} mb={8} maxW="1300px">
         <Text>
-          <PortableText value={post?.body} />
+          <PortableText
+            value={post?.body}
+            components={myPortableTextComponents}
+          />
         </Text>
       </VStack>
     </Flex>

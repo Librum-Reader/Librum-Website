@@ -89,6 +89,7 @@ const Alternate = () => {
         return (
           // <FeaturesAnimateMobile key={index}>
           <MobileFeatureCard
+            key={index}
             title={block.title}
             text={block.text_mobile}
             image_light={block.image_light}
@@ -105,6 +106,7 @@ const Alternate = () => {
           // <FeaturesAnimate key={index}>
           <Flex
             // mx="auto"
+            key={index}
             display={{ base: "none", md: "flex" }}
             gap={{ base: "2rem", md: "15rem" }}
             direction={{

@@ -454,8 +454,7 @@ const Navbar = () => {
             >
               CONTACT
             </Button>
-            {isLoggedIn ? <ProfileButton /> : null}
-            {isLoggedIn ? null : <LoginButton />}
+            {isLoggedIn ? <ProfileButton /> : <LoginButton />}
           </Flex>
           <IconButton
             icon={<FaBars />}

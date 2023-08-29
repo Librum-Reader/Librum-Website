@@ -86,9 +86,7 @@ export default function RootLayout({ children }) {
 
   const [loginOpen, setLoginOpen] = useState(false);
 
-  const DynamicNav = dynamic(() => import("./components/ui/Navbar"), {
-    loading: () => <p>Loading...</p>,
-  });
+  const DynamicNav = dynamic(() => import("./components/ui/Navbar"));
 
   return (
     <html lang="en">

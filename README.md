@@ -1,6 +1,6 @@
-# Librum Website
+![logo](https://github.com/Librum-Reader/Librum-Website/assets/69865187/62210766-0588-4f36-aacb-bb94ac6cf420)
 
-![Untitled](https://github.com/Librum-Reader/Librum-Website/assets/69865187/ecb5e40d-dd60-4cd5-baff-54904da39dfe)
+# Librum-Website
 
 Welcome to the official website of Librum, a powerful and intuitive application for managing your personal online library and reading your books. This repository contains the source code and assets for the Librum website, where you can learn more about the application, its features, and how to get started.
 

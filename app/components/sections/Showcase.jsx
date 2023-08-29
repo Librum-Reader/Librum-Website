@@ -13,6 +13,7 @@ import {
 import { useContext, useEffect, useRef } from "react";
 import Lottie from "lottie-web";
 import Features from "./Features";
+import DownloadButton from "../ui/DownloadButton";
 import ShowcaseAnimation from "../ui/ShowcaseAnimation";
 import { isValidMotionProp, motion } from "framer-motion";
 import { PiGithubLogo } from "react-icons/pi";
@@ -66,9 +67,7 @@ const Showcase = () => {
             spacing="6"
             mb="2rem"
           >
-            <Button w="250px" variant="primary">
-              Download
-            </Button>
+            <DownloadButton />
             <Link href="https://github.com/Librum-Reader/Librum" target="#">
               <Button
                 w="250px"

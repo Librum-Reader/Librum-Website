@@ -43,7 +43,7 @@ const DownloadButton = () => {
       href={
         os === "Windows"
           ? "https://librumblobstorage.blob.core.windows.net/binaries/windows_installer_0-6-3.exe"
-          : ""
+          : "download for mac"
       }
     >
       <Button w="250px" variant="primary" onClick={showOS}>

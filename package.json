@@ -14,6 +14,7 @@
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@fontsource/lato": "^5.0.9",
+    "@netlify/plugin-nextjs": "^4.29.5-appdir.0",
     "@portabletext/react": "^3.0.7",
     "@reduxjs/toolkit": "^1.9.5",
     "@sanity/client": "^6.4.9",

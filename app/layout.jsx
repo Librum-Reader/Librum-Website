@@ -1,6 +1,6 @@
 "use client";
 import { Inter } from "next/font/google";
-// import Navbar from "./components/ui/Navbar";
+import Navbar from "./components/ui/Navbar";
 import Container from "./components/ui/Container";
 import Footer from "./components/sections/Footer";
 import dynamic from "next/dynamic";
@@ -193,8 +193,8 @@ export default function RootLayout({ children }) {
                           </ModalBody>
                         </ModalContent>
                       </Modal>
-                      {/* <Navbar /> */}
-                      <DynamicNav />
+                      <Navbar />
+                      {/* <DynamicNav /> */}
                       {children}
                       <Footer />
                     </Container>

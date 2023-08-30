@@ -41,7 +41,7 @@ const Posts = () => {
             headers: {
               Accept: "application/json",
               "Content-Type": "application/json",
-              Authorization: `Bearer skxekD95hKFIStt447OhxUNtv1p5A5Ohzi3ruOU2ARdPpUMlKfzFUrQaS0EyKBiXX73A3900d5uZ5j8b9Hk8Ld9ElM3SiO2RWFfaB32g7azG5OED7eUZEaIL1yo8csBOSzrCRd0hmm5WzZ9enBt1YLMm67i6lKYc11fySD44N035NH6oQ01U`,
+              Authorization: `Bearer`,
             },
             method: "GET",
           }

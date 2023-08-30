@@ -34,23 +34,21 @@ const DownloadButton = () => {
     detectOS();
   }, []);
 
-  const showOS = () => {
-    console.log(os);
-  };
-
-  return (
-    <Link
-      href={
-        os === "Windows"
-          ? "https://librumblobstorage.blob.core.windows.net/binaries/windows_installer_0-6-3.exe"
-          : "download for mac"
-      }
-    >
+  if (os === "Windows") {
+    return (
+      <Link href="https://librumblobstorage.blob.core.windows.net/binaries/windows_installer_0-6-3.exe">
+        <Button w="250px" variant="primary" onClick={showOS}>
+          Download for Windows
+        </Button>
+      </Link>
+    );
+  } else {
+    <Link href="">
       <Button w="250px" variant="primary" onClick={showOS}>
-        {os === "Windows" ? "Download for Windows" : "Download"}
+        Download
       </Button>
-    </Link>
-  );
+    </Link>;
+  }
 };
 
 export default DownloadButton;

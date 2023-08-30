@@ -11,6 +11,8 @@ import {
   Avatar,
   Divider,
 } from "@chakra-ui/react";
+
+import { useQuery } from "@tanstack/react-query";
 import { useSearchParams } from "next/navigation";
 import { createClient } from "next-sanity";
 import { useState, useEffect } from "react";
@@ -18,8 +20,9 @@ import { PortableText } from "@portabletext/react";
 import SanityImage from "../components/blog/SanityImage";
 
 const Posts = () => {
+  const API_KEY = process.env.SANITY_API;
   const searchParams = useSearchParams();
-  const postId = searchParams.get("id");
+  const id = searchParams.get("id");
   const client = createClient({
     projectId: "46vwrypj",
     dataset: "production",
@@ -27,36 +30,45 @@ const Posts = () => {
     useCdn: false,
   });
 
-  const fetchPost = async () => {
-    const query = `*[_id == $postId][0] | {
-        _id,
-        title,
-        publishedAt,
-        'slug': slug.current,
-        body,
-        summary,
-        "author": author -> name,
-        "authorImg": author -> image.asset -> url,
-        "heroImageUrl": heroImage.asset -> url
-      }`;
-    const params = { postId };
+  const { data, isLoading } = useQuery({
+    queryFn: async () => {
+      const id = searchParams.get("id");
+      const query = encodeURIComponent(`*[_id=='${id}']`);
+      try {
+        const response = await fetch(
+          `https://46vwrypj.api.sanity.io/v2023-08-27/data/query/production?query=${query}`,
+          {
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+              Authorization: `Bearer skxekD95hKFIStt447OhxUNtv1p5A5Ohzi3ruOU2ARdPpUMlKfzFUrQaS0EyKBiXX73A3900d5uZ5j8b9Hk8Ld9ElM3SiO2RWFfaB32g7azG5OED7eUZEaIL1yo8csBOSzrCRd0hmm5WzZ9enBt1YLMm67i6lKYc11fySD44N035NH6oQ01U`,
+            },
+            method: "GET",
+          }
+        );
 
-    try {
-      const posts = await client.fetch(query, params);
-      return posts;
-    } catch {
-      console.error("Error retrieving posts.");
-    }
-  };
-  const [post, setPost] = useState();
+        const result = await response.json();
+        console.log(result);
 
-  useEffect(() => {
-    const fetchedPost = fetchPost();
-    fetchedPost.then((post) => {
-      setPost(post);
-      console.log(post);
-    });
-  }, []);
+        return result;
+      } catch {
+        console.log("error");
+      }
+    },
+    queryKey: ["preview_post"],
+  });
+
+  console.log("query data", data?.result[0]);
+
+  // const [post, setPost] = useState();
+
+  // useEffect(() => {
+  //   const fetchedPost = fetchPost();
+  //   fetchedPost.then((post) => {
+  //     setPost(post);
+  //     console.log(post);
+  //   });
+  // }, []);
 
   const myPortableTextComponents = {
     types: {
@@ -81,7 +93,7 @@ const Posts = () => {
     >
       <Box>
         <Heading size="2xl" color="#946bde" mt="2rem">
-          {post?.title}
+          {data?.result[0].title}
         </Heading>
       </Box>
       <Divider mt="2rem" mb="2rem" />
@@ -93,23 +105,23 @@ const Posts = () => {
         mb="2rem"
       >
         <Flex align="center" gap="1rem">
-          <Avatar src={post?.authorImg} />
+          <Avatar src={data?.result[0].authorImg} />
           <Text fontSize="1.5rem" fontWeight="bold">
-            {post?.author}
+            {/* {data?.result[0].author} */}
           </Text>
         </Flex>
-        <Text>{new Date(post?.publishedAt).toDateString().slice(4)}</Text>
+        {/* <Text>{new Date(post?.publishedAt).toDateString().slice(4)}</Text> */}
       </Flex>
       <VStack spacing={8} mb={8} maxW="1300px">
-        {/* <Image
-          src={post?.heroImageUrl}
+        <Image
+          src={data?.result.heroImageUrl}
           boxSize="150px"
           display={{ base: "none", md: "block" }}
           objectFit="cover"
-        /> */}
+        />
         <Text>
           <PortableText
-            value={post?.body}
+            value={data?.result[0].body}
             components={myPortableTextComponents}
           />
         </Text>

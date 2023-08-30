@@ -4,6 +4,7 @@ import Navbar from "./components/ui/Navbar";
 import Container from "./components/ui/Container";
 import Footer from "./components/sections/Footer";
 import dynamic from "next/dynamic";
+import Head from "next/head";
 
 import {
   ChakraProvider,
@@ -90,6 +91,9 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
+      <Head>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <body>
         <LoginContext.Provider value={{ loginOpen, setLoginOpen }}>
           <ColorModeScript initialColorMode="dark" />

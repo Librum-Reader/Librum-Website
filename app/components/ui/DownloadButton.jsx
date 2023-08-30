@@ -37,17 +37,19 @@ const DownloadButton = () => {
   if (os === "Windows") {
     return (
       <Link href="https://librumblobstorage.blob.core.windows.net/binaries/windows_installer_0-6-3.exe">
-        <Button w="250px" variant="primary" onClick={showOS}>
+        <Button w="250px" variant="primary">
           Download for Windows
         </Button>
       </Link>
     );
   } else {
-    <Link href="">
-      <Button w="250px" variant="primary" onClick={showOS}>
-        Download
-      </Button>
-    </Link>;
+    return (
+      <Link href="">
+        <Button w="250px" variant="primary">
+          Download
+        </Button>
+      </Link>
+    );
   }
 };
 

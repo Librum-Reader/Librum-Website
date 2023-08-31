@@ -44,11 +44,9 @@ const DownloadButton = () => {
     );
   } else {
     return (
-      <Link href="">
-        <Button w="250px" variant="primary">
-          Download
-        </Button>
-      </Link>
+      <Button w="250px" variant="primary">
+        Download
+      </Button>
     );
   }
 };

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "@chakra-ui/react";
 import Link from "next/link";
+import { AiOutlineWindows } from "react-icons/ai";
 
 const DownloadButton = () => {
   const [os, setOS] = useState("");
@@ -37,7 +38,11 @@ const DownloadButton = () => {
   if (os === "Windows") {
     return (
       <Link href="https://librumblobstorage.blob.core.windows.net/binaries/windows_installer_0-6-3.exe">
-        <Button w="250px" variant="primary">
+        <Button
+          w="250px"
+          variant="primary"
+          leftIcon={<AiOutlineWindows size={18} />}
+        >
           Download for Windows
         </Button>
       </Link>

@@ -4,7 +4,7 @@ export const userLogin = async (data) => {
   try {
     console.log(data);
     const response = await fetch(
-      "https://librum-dev.azurewebsites.net/api/login",
+      "https://api.librumreader.com/authentication/login",
       {
         headers: {
           Accept: "application/json",
@@ -32,23 +32,20 @@ export const userRegistration = async (data) => {
   try {
     console.log(data);
 
-    const response = await fetch(
-      "https://librum-dev.azurewebsites.net/api/register",
-      {
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          //   Authorization: `Bearer ${token}`,
-        },
-        method: "POST",
-        body: JSON.stringify({
-          FirstName: data.FirstName,
-          LastName: data.LastName,
-          Email: data.Email,
-          Password: data.Password,
-        }),
-      }
-    );
+    const response = await fetch("https://api.librumreader.com/register", {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        //   Authorization: `Bearer ${token}`,
+      },
+      method: "POST",
+      body: JSON.stringify({
+        FirstName: data.FirstName,
+        LastName: data.LastName,
+        Email: data.Email,
+        Password: data.Password,
+      }),
+    });
 
     const result = await response;
     console.log(result);
@@ -61,17 +58,14 @@ export const userRegistration = async (data) => {
 
 export const fetchUserInfo = async (data) => {
   try {
-    const response = await fetch(
-      "https://librum-dev.azurewebsites.net/api/user",
-      {
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${data}`,
-        },
-        method: "GET",
-      }
-    );
+    const response = await fetch("https://api.librumreader.com/user", {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${data}`,
+      },
+      method: "GET",
+    });
 
     const result = await response.json();
     return result;
@@ -82,17 +76,14 @@ export const fetchUserInfo = async (data) => {
 
 export const fetchBooks = async (data) => {
   try {
-    const response = await fetch(
-      "https://librum-dev.azurewebsites.net/api/book",
-      {
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${data}`,
-        },
-        method: "GET",
-      }
-    );
+    const response = await fetch("https://api.librumreader.com/book", {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${data}`,
+      },
+      method: "GET",
+    });
 
     const result = await response.json();
     return result;
@@ -105,7 +96,7 @@ export const getVerifiedStatus = async (email) => {
   try {
     // console.log(token);
     const response = await fetch(
-      `https://librum-dev.azurewebsites.net/api/checkIfEmailConfirmed/${email}`,
+      `https://api.librumreader.com/authentication/checkIfEmailConfirmed/${email}`,
       {
         headers: {
           Accept: "application/json",
@@ -136,39 +127,36 @@ export const editUser = async (data) => {
       })
     );
 
-    const response = await fetch(
-      "https://librum-dev.azurewebsites.net/api/user",
-      {
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${data.token}`,
+    const response = await fetch("https://api.librumreader.com/user", {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${data.token}`,
+      },
+      method: "PATCH",
+      body: JSON.stringify([
+        {
+          op: "replace",
+          path: "firstName",
+          value: data.firstName,
         },
-        method: "PATCH",
-        body: JSON.stringify([
-          {
-            op: "replace",
-            path: "firstName",
-            value: data.firstName,
-          },
-          {
-            op: "replace",
-            path: "lastName",
-            value: data.lastName,
-          },
-          // {
-          //   op: "replace",
-          //   path: "hasProfilePicture",
-          //   value: data.hasProfilePicture,
-          // },
-          // {
-          //   op: "replace",
-          //   path: "Email",
-          //   value: data.email,
-          // },
-        ]),
-      }
-    );
+        {
+          op: "replace",
+          path: "lastName",
+          value: data.lastName,
+        },
+        // {
+        //   op: "replace",
+        //   path: "hasProfilePicture",
+        //   value: data.hasProfilePicture,
+        // },
+        // {
+        //   op: "replace",
+        //   path: "Email",
+        //   value: data.email,
+        // },
+      ]),
+    });
     const result = await response;
     console.log(result);
     return result;
@@ -187,29 +175,26 @@ export const updatePictureInfo = async (data) => {
       })
     );
 
-    const response = await fetch(
-      "https://librum-dev.azurewebsites.net/api/user",
-      {
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${data.token}`,
+    const response = await fetch("https://api.librumreader.com/user", {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${data.token}`,
+      },
+      method: "PATCH",
+      body: JSON.stringify([
+        {
+          op: "replace",
+          path: "hasProfilePicture",
+          value: data.hasProfilePicture,
         },
-        method: "PATCH",
-        body: JSON.stringify([
-          {
-            op: "replace",
-            path: "hasProfilePicture",
-            value: data.hasProfilePicture,
-          },
-          {
-            op: "replace",
-            path: "profilePictureLastUpdated",
-            value: data.lastUpdated,
-          },
-        ]),
-      }
-    );
+        {
+          op: "replace",
+          path: "profilePictureLastUpdated",
+          value: data.lastUpdated,
+        },
+      ]),
+    });
     const result = await response;
     console.log(result);
     return result;
@@ -222,20 +207,17 @@ export const changePassword = async (data) => {
   console.log(data);
 
   try {
-    const response = await fetch(
-      "https://librum-dev.azurewebsites.net/api/user",
-      {
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${data.token}`,
-        },
-        method: "POST",
-        body: JSON.stringify({
-          Input: data.password,
-        }),
-      }
-    );
+    const response = await fetch("https://api.librumreader.com/user", {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${data.token}`,
+      },
+      method: "POST",
+      body: JSON.stringify({
+        Input: data.password,
+      }),
+    });
 
     const contentType = response.headers.get("Content-Type");
     if (contentType && contentType.includes("application/json")) {
@@ -252,7 +234,7 @@ export const changePassword = async (data) => {
 export const uploadAvatar = async (data) => {
   try {
     const response = await fetch(
-      "https://librum-dev.azurewebsites.net/api/user/profilePicture",
+      "https://api.librumreader.com/user/profilePicture",
       {
         headers: {
           Accept: "multipart/form-data",
@@ -275,7 +257,7 @@ export const uploadAvatar = async (data) => {
 export const fetchAvatar = async (data) => {
   try {
     const response = await fetch(
-      "https://librum-dev.azurewebsites.net/api/user/profilePicture",
+      "https://api.librumreader.com/user/profilePicture",
       {
         headers: {
           Authorization: `Bearer ${data}`,

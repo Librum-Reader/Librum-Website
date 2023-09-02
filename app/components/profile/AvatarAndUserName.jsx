@@ -119,7 +119,7 @@ const AvatarAndUserName = () => {
         pb={{ base: "1rem", md: "0" }}
         pt={{ base: "1rem", md: "0" }}
       >
-        <Avatar src={avatarData ?? avatarData} icon={<Spinner />} size="2xl" />
+        <Avatar src={avatarData ?? avatarData} size="2xl" />
 
         {/* {!isAvatarLoading && <Image src={avatarData} alt="Fetched" />} */}
         <Text fontWeight="bold">

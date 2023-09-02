@@ -25,6 +25,8 @@ import {
   ListItem,
 } from "@chakra-ui/react";
 
+import FooterContactForm from "../ui/FooterContactForm";
+
 const Footer = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -77,31 +79,7 @@ const Footer = () => {
         borderStyle="dotted"
         pt="4.5rem"
       >
-        <VStack
-          backgroundColor="bg-default"
-          mb="4.5rem"
-          px={{ base: "1rem", md: "0" }}
-        >
-          <Heading fontSize="1.5rem" mb="1rem" textAlign="center">
-            Have any questions or concerns?
-          </Heading>
-          <Input
-            type="email"
-            placeholder="Enter your email address"
-            w={{ base: "100%", md: "24rem" }}
-            mb="1rem"
-            variant="defaultVariant"
-          />
-          <Textarea
-            placeholder="Message"
-            w={{ base: "100%", md: "24rem" }}
-            mb="1rem"
-            variant="defaultVariant"
-          />
-          <Button variant="primary" size="lg" height="2.5rem">
-            Send Message
-          </Button>
-        </VStack>
+        <FooterContactForm />
         <Grid
           templateColumns={{ base: "1fr 1fr", md: "repeat(3, 1fr)" }}
           mx="1rem"

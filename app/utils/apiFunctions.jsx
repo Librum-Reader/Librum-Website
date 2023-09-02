@@ -66,8 +66,9 @@ export const fetchUserInfo = async (data) => {
       },
       method: "GET",
     });
-
+    console.log("ToKEN", data);
     const result = await response.json();
+    console.log("USER", result);
     return result;
   } catch (error) {
     console.error(error);

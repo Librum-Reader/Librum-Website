@@ -86,7 +86,7 @@ const DownloadButton = () => {
     return (
       <Menu>
         <MenuButton>
-          <Button variant="primary" w="250px" leftIcon={<FaLinux />}>
+          <Button variant="primary" w="250px" leftIcon={<FaLinux size={18} />}>
             Download
           </Button>
         </MenuButton>

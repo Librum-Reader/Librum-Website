@@ -90,12 +90,6 @@ export default function RootLayout({ children }) {
 
   const DynamicNav = dynamic(() => import("./components/ui/Navbar"));
 
-  const router = useRouter();
-
-  if (typeof window !== "undefined") {
-    const token = localStorage.getItem("token");
-  }
-
   return (
     <html lang="en">
       <Head>

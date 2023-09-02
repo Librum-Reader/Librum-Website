@@ -90,6 +90,15 @@ export default function RootLayout({ children }) {
 
   const DynamicNav = dynamic(() => import("./components/ui/Navbar"));
 
+<<<<<<< HEAD
+=======
+  const router = useRouter();
+
+  if (typeof window !== "undefined") {
+    const token = localStorage.getItem("token");
+  }
+
+>>>>>>> 93753e2 (Refresh fix for Netlify)
   return (
     <html lang="en">
       <Head>

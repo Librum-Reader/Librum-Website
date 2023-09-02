@@ -216,6 +216,7 @@ const UsernameAndEmail = () => {
 
           <Button variant="secondary" size="sm" border="0">
             <FaRegEdit
+              size={20}
               onClick={() => {
                 setNewFirstName(data?.firstName);
                 setNewLastName(data?.lastName);
@@ -243,14 +244,6 @@ const UsernameAndEmail = () => {
           mb="1rem"
         >
           <Text>{data?.email}</Text>
-          <Button variant="secondary" size="sm" border="0">
-            <FaRegEdit
-            // onClick={() => {
-            //   setNewEmail(data?.email);
-            //   onEditEmailOpen();
-            // }}
-            />
-          </Button>
         </Flex>
         <Flex
           w="100%"

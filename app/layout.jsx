@@ -41,6 +41,7 @@ import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
 
 import { useEffect, useState } from "react";
 import { LoginContext } from "./context/loginModalContext";
+import { useRouter } from "next/navigation";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -88,6 +89,12 @@ export default function RootLayout({ children }) {
   const [loginOpen, setLoginOpen] = useState(false);
 
   const DynamicNav = dynamic(() => import("./components/ui/Navbar"));
+
+  const router = useRouter();
+
+  if (typeof window !== "undefined") {
+    const token = localStorage.getItem("token");
+  }
 
   return (
     <html lang="en">

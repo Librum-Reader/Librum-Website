@@ -58,15 +58,18 @@ export const userRegistration = async (data) => {
 
 export const fetchUserInfo = async (data) => {
   try {
-    const response = await fetch("https://api.librumreader.com/user", {
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${data}`,
-      },
-      method: "GET",
-    });
-    console.log("ToKEN", data);
+    const response = await fetch(
+      "https://librum-dev.azurewebsites.net/api/user",
+      {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${data}`,
+        },
+        method: "GET",
+      }
+    );
+
     const result = await response.json();
     console.log("USER", result);
     return result;

@@ -234,22 +234,25 @@ const LoginButton = (props) => {
   };
 
   const handleRegister = (data) => {
-    register.mutate(data);
-    // toast({
-    //   title: "Account Created.",
-    //   description:
-    //     "We've created an account for you and have sent a verification link to your email. Please verify your account.",
-    //   status: "success",
-    //   duration: 9000,
-    //   isClosable: true,
-    //   colorScheme: "purple",
-    // });
-    // localStorage.setItem("isVerified", "false");
-    onCloseRegister();
-    setIsEmailConfirmed(false);
-    onOpenConfirmEmail();
-    listenForEmailConfirmation();
+    if (!isChecked) {
+      toast({
+        title: "Please accept the terms and conditions.",
+        description:
+          "We are unable to create your account without agreeing to our terms and conditions.",
+        status: "error",
+        duration: 9000,
+        isClosable: true,
+      });
+    } else {
+      register.mutate(data);
+      onCloseRegister();
+      setIsEmailConfirmed(false);
+      onOpenConfirmEmail();
+      listenForEmailConfirmation();
+    }
   };
+
+  const [isChecked, setIsChecked] = useState(true);
 
   return (
     <>
@@ -478,7 +481,14 @@ const LoginButton = (props) => {
                       </InputRightElement>
                     </InputGroup>
                   </FormControl>
-                  <Checkbox fontSize="sm" mt="1rem">
+                  <Checkbox
+                    fontSize="sm"
+                    mt="1rem"
+                    isChecked={isChecked}
+                    onChange={() => {
+                      setIsChecked(!isChecked);
+                    }}
+                  >
                     <Text fontSize="sm">
                       I accept the{" "}
                       <Link href="/termsofservice" textColor="#946BDE">

@@ -101,7 +101,13 @@ const FooterContactForm = () => {
             onChange={handleMessage}
             value={message}
           />
-          <Button variant="primary" size="lg" height="2.5rem" type="submit">
+          <Button
+            variant="primary"
+            size="lg"
+            height="2.5rem"
+            type="submit"
+            isLoading={isLoading}
+          >
             Send Message
           </Button>
         </Flex>

@@ -269,14 +269,19 @@ const LoginButton = (props) => {
           <ModalBody>
             <Center>
               <Box textAlign="center" mb="1rem">
-                <Heading size="sm" pb=".5rem">
+                <Heading size="lg" pb=".5rem">
                   Welcome back!
                 </Heading>
-                <Text fontSize="sm">Log into your account</Text>
+                <Text fontSize="md">Log into your account</Text>
               </Box>
             </Center>
             <FormControl>
-              <FormLabel fontSize="sm" textColor="text-default">
+              <FormLabel
+                fontSize="md"
+                textColor="text-default"
+                mb="0"
+                fontWeight="semibold"
+              >
                 Email
               </FormLabel>
               <Input
@@ -284,13 +289,18 @@ const LoginButton = (props) => {
                 onChange={handleEmail}
                 ref={initialRef}
                 placeholder="Enter Your Email"
-                fontSize="sm"
+                fontSize="md"
                 variant="defaultVariant"
               />
             </FormControl>
 
             <FormControl mt={4}>
-              <FormLabel fontSize="sm" textColor="text-default">
+              <FormLabel
+                fontSize="md"
+                textColor="text-default"
+                mb="0"
+                fontWeight="semibold"
+              >
                 Password
               </FormLabel>
               <InputGroup>
@@ -298,23 +308,16 @@ const LoginButton = (props) => {
                   value={password}
                   onChange={handlePassword}
                   placeholder="Enter Your Password"
-                  fontSize="sm"
+                  fontSize="md"
                   variant="defaultVariant"
                   type={showPassword ? "text" : "password"}
                 />
-                <InputRightElement width="4.5rem">
-                  <Button
-                    h="1.75rem"
-                    size="sm"
-                    onClick={handleShowPassword}
-                    variant="ghost"
-                  >
-                    {showPassword ? (
-                      <AiOutlineEyeInvisible />
-                    ) : (
-                      <AiOutlineEye />
-                    )}
-                  </Button>
+                <InputRightElement width="3rem">
+                  {showPassword ? (
+                    <AiOutlineEyeInvisible onClick={handleShowPassword} />
+                  ) : (
+                    <AiOutlineEye onClick={handleShowPassword} />
+                  )}
                 </InputRightElement>
               </InputGroup>
             </FormControl>
@@ -355,38 +358,48 @@ const LoginButton = (props) => {
       >
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader background="bg-default"> </ModalHeader>
+          <ModalHeader> </ModalHeader>
           <ModalCloseButton />
-          <ModalBody background="bg-default">
+          <ModalBody>
             <Center>
               <Flex direction="column">
                 <Box textAlign="center" mb="1rem">
-                  <Heading size="md" pb=".5rem">
+                  <Heading size="lg" pb=".5rem">
                     Welcome to Librum
                   </Heading>
-                  <Text fontSize="xs">
+                  <Text fontSize="md">
                     Your credentials are only used to authenticate you. Your
                     credentials will be stored in a secure database.
                   </Text>
                 </Box>
                 <Flex gap="1rem" mb="1rem">
                   <FormControl>
-                    <FormLabel fontSize="xs" textColor="text-default">
+                    <FormLabel
+                      fontSize="md"
+                      textColor="text-default"
+                      mb="0"
+                      fontWeight="semibold"
+                    >
                       First Name
                     </FormLabel>
                     <Input
-                      fontSize="xs"
+                      fontSize="md"
                       value={registerFirstName}
                       onChange={handleRegFName}
                       variant="defaultVariant"
                     />
                   </FormControl>
                   <FormControl>
-                    <FormLabel fontSize="xs" textColor="text-default">
+                    <FormLabel
+                      fontSize="md"
+                      textColor="text-default"
+                      mb="0"
+                      fontWeight="semibold"
+                    >
                       Last Name
                     </FormLabel>
                     <Input
-                      fontSize="xs"
+                      fontSize="md"
                       value={registerLastName}
                       onChange={handleRegLName}
                       variant="defaultVariant"
@@ -395,39 +408,77 @@ const LoginButton = (props) => {
                 </Flex>
                 <Box>
                   <FormControl>
-                    <FormLabel fontSize="xs" textColor="text-default">
+                    <FormLabel
+                      fontSize="md"
+                      textColor="text-default"
+                      mb="0"
+                      fontWeight="semibold"
+                    >
                       Email
                     </FormLabel>
                     <Input
-                      fontSize="xs"
+                      fontSize="md"
                       value={registerEmail}
                       onChange={handleRegEmail}
                       variant="defaultVariant"
                     />
                   </FormControl>
                   <FormControl mt={4}>
-                    <FormLabel fontSize="xs" textColor="text-default">
+                    <FormLabel
+                      fontSize="md"
+                      textColor="text-default"
+                      mb="0"
+                      fontWeight="semibold"
+                    >
                       Password
                     </FormLabel>
-                    <Input
-                      fontSize="xs"
-                      value={registerPassword}
-                      onChange={handleRegPass}
-                      variant="defaultVariant"
-                    />
+                    <InputGroup>
+                      <Input
+                        fontSize="md"
+                        value={registerPassword}
+                        onChange={handleRegPass}
+                        variant="defaultVariant"
+                        type={showPassword ? "text" : "password"}
+                      />
+                      <InputRightElement width="3rem">
+                        {showPassword ? (
+                          <AiOutlineEyeInvisible onClick={handleShowPassword} />
+                        ) : (
+                          <AiOutlineEye onClick={handleShowPassword} />
+                        )}
+                      </InputRightElement>
+                    </InputGroup>
                   </FormControl>
                   <FormControl mt={4}>
-                    <FormLabel fontSize="xs" textColor="text-default">
+                    <FormLabel
+                      fontSize="md"
+                      textColor="text-default"
+                      mb="0"
+                      fontWeight="semibold"
+                    >
                       Confirm password
                     </FormLabel>
-                    <Input fontSize="xs" variant="defaultVariant" />
+                    <InputGroup>
+                      <Input
+                        fontSize="md"
+                        variant="defaultVariant"
+                        type={showPassword ? "text" : "password"}
+                      />
+                      <InputRightElement width="3rem">
+                        {showPassword ? (
+                          <AiOutlineEyeInvisible onClick={handleShowPassword} />
+                        ) : (
+                          <AiOutlineEye onClick={handleShowPassword} />
+                        )}
+                      </InputRightElement>
+                    </InputGroup>
                   </FormControl>
                 </Box>
               </Flex>
             </Center>
           </ModalBody>
 
-          <ModalFooter background="bg-default">
+          <ModalFooter>
             <Box width="100%" textAlign="center">
               <Button
                 onClick={() => {

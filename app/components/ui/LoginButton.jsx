@@ -53,6 +53,7 @@ import {
   userLogin,
   userRegistration,
   getVerifiedStatus,
+  resetPassword,
 } from "../../utils/apiFunctions";
 
 import { useCookies } from "react-cookie";
@@ -114,6 +115,18 @@ const LoginButton = (props) => {
     isOpen: isOpenConfirmEmail,
     onOpen: onOpenConfirmEmail,
     onClose: onCloseConfirmEmail,
+  } = useDisclosure();
+
+  const {
+    isOpen: isOpenPasswordReset,
+    onOpen: onOpenPasswordReset,
+    onClose: onClosePasswordReset,
+  } = useDisclosure();
+
+  const {
+    isOpen: isOpenPasswordConfirmation,
+    onOpen: onOpenPasswordConfirmation,
+    onClose: onClosePasswordConfirmation,
   } = useDisclosure();
 
   const initialRef = useRef(null);
@@ -252,6 +265,10 @@ const LoginButton = (props) => {
     }
   };
 
+  const handlePasswordReset = () => {
+    resetPassword(email);
+  };
+
   const [isChecked, setIsChecked] = useState(true);
 
   return (
@@ -326,6 +343,20 @@ const LoginButton = (props) => {
                 </InputRightElement>
               </InputGroup>
             </FormControl>
+            <Text fontSize="sm">
+              Forgot password? Click{" "}
+              <Link
+                href="#"
+                textColor="#946BDE"
+                onClick={() => {
+                  onOpenPasswordReset();
+                  onCloseLogin();
+                }}
+              >
+                here
+              </Link>{" "}
+              to reset it.
+            </Text>
           </ModalBody>
 
           <ModalFooter>
@@ -558,6 +589,81 @@ const LoginButton = (props) => {
               </Text>
             </Flex>
           </ModalBody>
+        </ModalContent>
+      </Modal>
+      {/* Password reset Modal */}
+      <Modal
+        isCentered
+        initialFocusRef={initialRef}
+        isOpen={isOpenPasswordReset}
+        onClose={onClosePasswordReset}
+        variant="defaultVariant"
+      >
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader></ModalHeader>
+          <ModalCloseButton />
+
+          <ModalBody>
+            <Flex direction="column" align="center" gap="1rem">
+              <Heading size="md">Password Reset</Heading>
+              <Text>
+                Please enter the email that you've used to create your account:
+              </Text>
+              <FormControl>
+                <FormLabel
+                  fontSize="md"
+                  textColor="text-default"
+                  mb="0"
+                  fontWeight="semibold"
+                >
+                  Email
+                </FormLabel>
+                <Input
+                  value={email}
+                  onChange={handleEmail}
+                  ref={initialRef}
+                  placeholder="Enter Your Email"
+                  fontSize="md"
+                  variant="defaultVariant"
+                />
+              </FormControl>
+              <Button
+                variant="primary"
+                alignSelf="flex-end"
+                onClick={handlePasswordReset}
+              >
+                Reset password
+              </Button>
+            </Flex>
+          </ModalBody>
+          <ModalFooter></ModalFooter>
+        </ModalContent>
+      </Modal>
+      {/* Password reset notification Modal */}
+      <Modal
+        isCentered
+        initialFocusRef={initialRef}
+        isOpen={isOpenPasswordConfirmation}
+        onClose={onClosePasswordConfirmation}
+        variant="defaultVariant"
+      >
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader></ModalHeader>
+          <ModalCloseButton />
+
+          <ModalBody>
+            <Flex direction="column" align="center" gap="1rem">
+              <Heading size="md">Password Reset</Heading>
+              <Text>
+                We have sent you an e-mail with a link to complete the password
+                reset process. Please click the link and follow the
+                instructions.
+              </Text>
+            </Flex>
+          </ModalBody>
+          <ModalFooter></ModalFooter>
         </ModalContent>
       </Modal>
     </>

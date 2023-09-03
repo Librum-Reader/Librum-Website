@@ -283,3 +283,44 @@ export const fetchAvatar = async (data) => {
     console.error(error);
   }
 };
+
+export const resetPassword = async (email) => {
+  console.log(email);
+  try {
+    const response = await fetch(
+      `https://api.librumreader.com/user/forgotPassword/${email}`,
+      { method: "POST" }
+    );
+    const result = await response;
+    console.log(result);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const confirmPasswordReset = async (data) => {
+  console.log(data);
+  try {
+    const response = await fetch(
+      "https://api.librumreader.com/user/resetPassword",
+      {
+        headers: {
+          Accept: "application/json",
+
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+        body: JSON.stringify({
+          email: data.email,
+          token: data.token,
+          password: data.password,
+        }),
+      }
+    );
+
+    const result = await response;
+    console.log(result);
+  } catch (err) {
+    console.log(err);
+  }
+};

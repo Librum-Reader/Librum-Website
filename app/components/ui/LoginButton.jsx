@@ -22,6 +22,8 @@ import {
   Image,
   InputGroup,
   InputRightElement,
+  Checkbox,
+  Link,
 } from "@chakra-ui/react";
 
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
@@ -387,6 +389,7 @@ const LoginButton = (props) => {
                       value={registerFirstName}
                       onChange={handleRegFName}
                       variant="defaultVariant"
+                      placeholder="Kai"
                     />
                   </FormControl>
                   <FormControl>
@@ -403,6 +406,7 @@ const LoginButton = (props) => {
                       value={registerLastName}
                       onChange={handleRegLName}
                       variant="defaultVariant"
+                      placeholder="Doe"
                     />
                   </FormControl>
                 </Flex>
@@ -421,6 +425,7 @@ const LoginButton = (props) => {
                       value={registerEmail}
                       onChange={handleRegEmail}
                       variant="defaultVariant"
+                      placeholder="kaidoe@gmail.com"
                     />
                   </FormControl>
                   <FormControl mt={4}>
@@ -473,6 +478,18 @@ const LoginButton = (props) => {
                       </InputRightElement>
                     </InputGroup>
                   </FormControl>
+                  <Checkbox fontSize="sm" mt="1rem">
+                    <Text fontSize="sm">
+                      I accept the{" "}
+                      <Link href="/termsofservice" textColor="#946BDE">
+                        Terms of Service
+                      </Link>{" "}
+                      and the{" "}
+                      <Link href="/privacypolicy" textColor="#946BDE">
+                        Privacy Policy
+                      </Link>
+                    </Text>
+                  </Checkbox>
                 </Box>
               </Flex>
             </Center>
@@ -495,6 +512,19 @@ const LoginButton = (props) => {
               >
                 {register.isLoading ? <BeatLoader /> : "Let's Get Started"}
               </Button>
+              <Text>
+                Already have an account?{" "}
+                <Link
+                  href="#"
+                  textColor="#946BDE"
+                  onClick={() => {
+                    onCloseRegister();
+                    onOpenLogin();
+                  }}
+                >
+                  Log In
+                </Link>
+              </Text>
             </Box>
           </ModalFooter>
         </ModalContent>

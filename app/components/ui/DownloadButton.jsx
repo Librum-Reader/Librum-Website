@@ -72,7 +72,7 @@ const DownloadButton = () => {
 
   if (os === "Windows") {
     return (
-      <Link href="https://librumblobstorage.blob.core.windows.net/binaries/windows_installer_0-6-3.exe">
+      <Link href="https://librumblobstorage.blob.core.windows.net/binaries/librum-windows-0.7.0-installer.exe">
         <Button
           w="250px"
           variant="primary"
@@ -94,22 +94,22 @@ const DownloadButton = () => {
           <MenuItem
             onClick={() =>
               window.open(
-                "https://librumstorageaccount.blob.core.windows.net/releases/0-6-3-linux-binaries.tar.gz",
-                "_blank"
-              )
-            }
-          >
-            tar.gz
-          </MenuItem>
-          <MenuItem
-            onClick={() =>
-              window.open(
                 "https://flathub.org/apps/com.librumreader.librum",
                 "_blank"
               )
             }
           >
             Flatpak
+          </MenuItem>
+          <MenuItem
+            onClick={() =>
+              window.open(
+                "",
+                "_blank"
+              )
+            }
+          >
+            tar.gz   (Coming Soon)
           </MenuItem>
         </MenuList>
       </Menu>

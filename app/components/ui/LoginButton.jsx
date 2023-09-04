@@ -608,7 +608,8 @@ const LoginButton = (props) => {
             <Flex direction="column" align="center" gap="1rem">
               <Heading size="md">Password Reset</Heading>
               <Text>
-                Please enter the email that you've used to create your account:
+                Please enter the email that you&apos;ve used to create your
+                account:
               </Text>
               <FormControl>
                 <FormLabel

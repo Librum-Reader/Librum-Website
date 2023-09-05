@@ -10,11 +10,13 @@ import {
   MenuList,
   MenuItem,
   forwardRef,
+  Text,
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { FaLinux, FaCopy } from "react-icons/fa";
-import { AiOutlineWindows } from "react-icons/ai";
+import { AiOutlineWindows, AiFillApple, AiFillFileZip } from "react-icons/ai";
 import { SiFlatpak } from "react-icons/si";
+import { FiChevronDown } from "react-icons/fi";
 
 const DownloadButton = () => {
   const [os, setOS] = useState("");
@@ -86,11 +88,16 @@ const DownloadButton = () => {
     return (
       <Menu>
         <MenuButton>
-          <Button variant="primary" w="250px" leftIcon={<FaLinux size={18} />}>
+          <Button
+            variant="primary"
+            w="250px"
+            leftIcon={<FaLinux size={18} />}
+            rightIcon={<FiChevronDown />}
+          >
             Download
           </Button>
         </MenuButton>
-        <MenuList>
+        <MenuList w="250px">
           <MenuItem
             onClick={() =>
               window.open(
@@ -99,20 +106,21 @@ const DownloadButton = () => {
               )
             }
           >
-            Flatpak
+            {<SiFlatpak />}
+            <Text ml="1rem">Flatpak</Text>
           </MenuItem>
-          <MenuItem
-            onClick={() =>
-              window.open(
-                "",
-                "_blank"
-              )
-            }
-          >
-            tar.gz   (Coming Soon)
+          <MenuItem onClick={() => window.open("", "_blank")}>
+            {<AiFillFileZip />}
+            <Text ml="1rem">tar.gz (Coming Soon)</Text>
           </MenuItem>
         </MenuList>
       </Menu>
+    );
+  } else if (os === "MacOS") {
+    return (
+      <Button w="250px" variant="primary" leftIcon={<AiFillApple size={18} />}>
+        Coming soon
+      </Button>
     );
   } else {
     return (

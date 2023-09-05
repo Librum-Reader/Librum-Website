@@ -13,6 +13,7 @@ import { extendTheme } from "@chakra-ui/react";
 import { modalTheme } from "./styles/modalTheme";
 import { inputTheme } from "./styles/inputTheme";
 import { drawerTheme } from "./styles/drawerTheme";
+import { menuTheme } from "./styles/menuTheme";
 import { batch } from "react-redux";
 
 export function Providers({ children }) {
@@ -261,6 +262,7 @@ export function Providers({ children }) {
           textColor: "text-default",
         },
       },
+      Menu: menuTheme,
     },
   });
 

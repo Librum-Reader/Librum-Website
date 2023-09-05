@@ -84,35 +84,35 @@ const FooterContactForm = () => {
         }}
         className="footer-form"
       >
-        <Flex direction="column" gap=".5rem" w="100%">
-          <Input
-            type="email"
-            placeholder="Enter your email address"
-            w={{ base: "100%", md: "24rem" }}
-            mb="1rem"
-            variant="defaultVariant"
-            onChange={handleEmail}
-            value={email}
-          />
-          <Textarea
-            placeholder="Message"
-            w={{ base: "100%", md: "24rem" }}
-            mb="1rem"
-            variant="defaultVariant"
-            onChange={handleMessage}
-            value={message}
-          />
-          <Button
-            variant="primary"
-            size="lg"
-            height="2.5rem"
-            type="submit"
-            isLoading={isLoading}
-            alignSelf="center"
-          >
-            Send Message
-          </Button>
-        </Flex>
+        {/* <Flex direction="column" gap=".5rem" w="100%"> */}
+        <Input
+          type="email"
+          placeholder="Enter your email address"
+          w={{ base: "100%", md: "24rem" }}
+          mb="1rem"
+          variant="defaultVariant"
+          onChange={handleEmail}
+          value={email}
+        />
+        <Textarea
+          placeholder="Message"
+          w={{ base: "100%", md: "24rem" }}
+          mb="1rem"
+          variant="defaultVariant"
+          onChange={handleMessage}
+          value={message}
+        />
+        <Button
+          variant="primary"
+          size="lg"
+          height="2.5rem"
+          type="submit"
+          isLoading={isLoading}
+          alignSelf="center"
+        >
+          Send Message
+        </Button>
+        {/* </Flex> */}
       </form>
     </VStack>
   );

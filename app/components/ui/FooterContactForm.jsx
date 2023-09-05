@@ -107,6 +107,7 @@ const FooterContactForm = () => {
             height="2.5rem"
             type="submit"
             isLoading={isLoading}
+            alignSelf="center"
           >
             Send Message
           </Button>

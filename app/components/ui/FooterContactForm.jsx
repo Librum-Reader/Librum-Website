@@ -22,28 +22,40 @@ const FooterContactForm = () => {
   const toast = useToast();
 
   const handleSubmit = async (e) => {
-    const values = {
-      Name: "Footer contact form",
-      Email: email,
-      Message: message,
-    };
-    setiIsLoading(true);
-    try {
-      await submitForm(e, values);
-    } catch (err) {
-      console.log(err);
+    if (!email || !message) {
+      e.preventDefault();
+      toast({
+        title: "Uh oh!",
+        description:
+          "Please make sure all the fields are filled out before submitting your message.",
+        status: "error",
+        duration: 9000,
+        isClosable: true,
+      });
+    } else {
+      const values = {
+        Name: "Footer contact form",
+        Email: email,
+        Message: message,
+      };
+      setiIsLoading(true);
+      try {
+        await submitForm(e, values);
+      } catch (err) {
+        console.log(err);
+      }
+      setMessage("");
+      setEmail("");
+      setiIsLoading(false);
+      toast({
+        title: "Thank you!",
+        description: "Your message has been received.",
+        status: "success",
+        duration: 9000,
+        isClosable: true,
+      });
+      e.preventDefault();
     }
-    setMessage("");
-    setEmail("");
-    setiIsLoading(false);
-    toast({
-      title: "Thank you!",
-      description: "Your message has been received.",
-      status: "success",
-      duration: 9000,
-      isClosable: true,
-    });
-    e.preventDefault();
   };
 
   const submitForm = async (e, values) => {

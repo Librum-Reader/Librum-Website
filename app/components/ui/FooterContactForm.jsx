@@ -82,8 +82,9 @@ const FooterContactForm = () => {
         onSubmit={(e) => {
           handleSubmit(e);
         }}
+        className="footer-form"
       >
-        <Flex direction="column" gap=".5rem">
+        <Flex direction="column" gap=".5rem" w="100%">
           <Input
             type="email"
             placeholder="Enter your email address"

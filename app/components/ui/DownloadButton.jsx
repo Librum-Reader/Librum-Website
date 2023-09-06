@@ -92,7 +92,7 @@ const DownloadButton = () => {
             variant="primary"
             w="250px"
             leftIcon={<FaLinux size={18} />}
-            rightIcon={<FiChevronDown size={18} />}
+            rightIcon={<FiChevronDown size={18} className="download-chevron" />}
           >
             Download
           </Button>

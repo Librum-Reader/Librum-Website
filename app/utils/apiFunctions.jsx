@@ -71,7 +71,6 @@ export const fetchUserInfo = async (data) => {
     });
 
     const result = await response.json();
-    console.log("USER", result);
     return result;
   } catch (error) {
     console.error(error);
@@ -318,6 +317,28 @@ export const confirmPasswordReset = async (data) => {
           token: data.token,
           password: data.password,
         }),
+      }
+    );
+
+    const result = await response;
+    console.log(result);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const deleteAvatar = async (data) => {
+  console.log(data);
+  try {
+    const response = await fetch(
+      "https://api.librumreader.com/user/profilePicture",
+      {
+        headers: {
+          Accept: "application/json",
+          Authorization: `Bearer ${data}`,
+          "Content-Type": "application/json",
+        },
+        method: "DELETE",
       }
     );
 

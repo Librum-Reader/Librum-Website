@@ -16,6 +16,7 @@ import {
   Input,
   useDisclosure,
   useToast,
+  Divider,
 } from "@chakra-ui/react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { FaRegEdit, FaRegSave } from "react-icons/fa";
@@ -25,13 +26,22 @@ import {
   fetchAvatar,
   updatePictureInfo,
   uploadAvatar,
+  deleteAvatar,
 } from "@/app/utils/apiFunctions";
 
 const AvatarAndUserName = () => {
+  const queryClient = useQueryClient();
+
   const {
     isOpen: isAvatarOpen,
     onOpen: onAvatarOpen,
     onClose: onAvatarClose,
+  } = useDisclosure();
+
+  const {
+    isOpen: isDeleteAvatarOpen,
+    onOpen: onDeleteAvatarOpen,
+    onClose: onDeleteAvatarClose,
   } = useDisclosure();
 
   let token;
@@ -53,7 +63,8 @@ const AvatarAndUserName = () => {
   } = useQuery({
     queryKey: ["avatar"],
     queryFn: () => {
-      return fetchAvatar(token);
+      const token = localStorage.getItem("token");
+      fetchAvatar(token);
     },
   });
 
@@ -61,12 +72,18 @@ const AvatarAndUserName = () => {
     mutationFn: updatePictureInfo,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["user"] });
-      onEditUserNameClose();
+    },
+  });
+
+  const deletePicture = useMutation({
+    mutationFn: deleteAvatar,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["avatar"] });
+      onDeleteAvatarClose();
     },
   });
 
   // File upload mutation
-  const queryClient = useQueryClient();
   const avatarUpload = useMutation({
     mutationFn: uploadAvatar,
     onSuccess: () => {
@@ -89,6 +106,13 @@ const AvatarAndUserName = () => {
       lastUpdated: formattedDateTime,
       token: token,
     });
+  };
+
+  // Delete avatar function
+
+  const deleteUserAvatar = () => {
+    const token = localStorage.getItem("token");
+    deletePicture.mutate(token);
   };
 
   const [avatar, setAvatar] = useState();
@@ -134,7 +158,10 @@ const AvatarAndUserName = () => {
             h="40px"
             onClick={onAvatarOpen}
           >
-            Change avatar
+            Avatar settings
+          </Button>
+          <Button variant="destructive" w="full" onClick={onDeleteAvatarOpen}>
+            Delete avatar
           </Button>
         </Box>
       </Flex>
@@ -148,7 +175,7 @@ const AvatarAndUserName = () => {
       >
         <ModalOverlay />
         <ModalContent mx="1rem">
-          <ModalHeader>Upload avatar</ModalHeader>
+          <ModalHeader>Avatar settings</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <form
@@ -157,6 +184,7 @@ const AvatarAndUserName = () => {
               }}
             >
               <Flex direction="column" gap="1rem">
+                <Text mb="-.8rem">Upload new avatar</Text>
                 <Input
                   type="file"
                   accept="image/*"
@@ -179,6 +207,37 @@ const AvatarAndUserName = () => {
                 </Flex>
               </Flex>
             </form>
+          </ModalBody>
+
+          <ModalFooter></ModalFooter>
+        </ModalContent>
+      </Modal>
+      {/* Delete avatar modal */}
+      <Modal
+        isOpen={isDeleteAvatarOpen}
+        onClose={onDeleteAvatarClose}
+        variant="defaultVariant"
+        isCentered
+      >
+        <ModalOverlay />
+        <ModalContent mx="1rem">
+          <ModalHeader>Delete avatar</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <Flex direction="column" gap="1rem">
+              <Text>
+                This will remove the current avatar you have set. Are you sure
+                you want to proceed?
+              </Text>
+              <Flex gap="1rem">
+                <Button variant="destructive" onClick={deleteUserAvatar}>
+                  Delete avatar
+                </Button>
+                <Button variant="secondary" onClick={onDeleteAvatarClose}>
+                  Cancel
+                </Button>
+              </Flex>
+            </Flex>
           </ModalBody>
 
           <ModalFooter></ModalFooter>

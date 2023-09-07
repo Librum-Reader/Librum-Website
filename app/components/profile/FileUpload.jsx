@@ -11,6 +11,7 @@ import { FilePond, registerPlugin } from "react-filepond";
 
 // Import FilePond styles
 import "filepond/dist/filepond.min.css";
+import "../../filepond.css";
 
 // Import the Image EXIF Orientation and Image Preview plugins
 // Note: These need to be installed separately
@@ -93,7 +94,7 @@ const FileUpload = () => {
             },
           }}
           name="files" /* sets the file input name, it's filepond by default */
-          labelIdle='Drag & Drop your files or <span class="filepond--label-action">Browse</span>'
+          labelIdle='Drag & Drop your avatar or <span class="filepond--label-action">Browse</span>'
         />
       </div>
       <Button variant="primary">Close</Button>

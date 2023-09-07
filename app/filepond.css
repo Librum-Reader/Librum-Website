@@ -1,0 +1,19 @@
+.filepond--root {
+  font-family: "Lato", BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.filepond--panel-root {
+  border-radius: 0.5em;
+  background-color: #30353e !important;
+  border: 1px solid #363a42;
+  color: white;
+}
+
+.filepond--label-action {
+  text-decoration-color: white !important;
+}
+
+.filepond--drop-label {
+  color: white !important;
+}

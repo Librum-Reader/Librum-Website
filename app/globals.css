@@ -26,6 +26,11 @@ body {
   font-family: "Lato", sans-serif;
 }
 
+.filepond--panel-root {
+  border-radius: 0.5em;
+  background-color: #cc2727 !important;
+}
+
 .news-image {
   width: 300px;
   height: auto;

@@ -156,13 +156,13 @@ const AvatarAndUserName = () => {
             variant="secondary"
             size="sm"
             mb="1rem"
-            w={{ base: "full", md: "auto" }}
+            w={{ base: "full", md: "147px" }}
             h="40px"
             onClick={onAvatarOpen}
           >
             Upload avatar
           </Button>
-          <Button variant="destructive" w="full" onClick={onDeleteAvatarOpen}>
+          <Button variant="destructive" w="147px" onClick={onDeleteAvatarOpen}>
             Delete avatar
           </Button>
         </Box>

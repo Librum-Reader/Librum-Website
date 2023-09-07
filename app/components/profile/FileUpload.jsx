@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
-import { Button } from "@chakra-ui/react";
+import { Button, Flex, Text } from "@chakra-ui/react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { uploadAvatar } from "@/app/utils/apiFunctions";
 
@@ -26,6 +26,8 @@ registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
 // Our app
 const FileUpload = () => {
   const [files, setFiles] = useState([]);
+  const [isUploaded, setIsUploaded] = useState(false);
+
   let token;
   if (typeof window !== "undefined") {
     token = localStorage.getItem("token");
@@ -90,6 +92,7 @@ const FileUpload = () => {
                 .then((data) => {
                   load(fieldName);
                   queryClient.invalidateQueries({ queryKey: ["avatar"] });
+                  setIsUploaded(true);
                 });
             },
           }}
@@ -97,7 +100,6 @@ const FileUpload = () => {
           labelIdle='Drag & Drop your avatar or <span class="filepond--label-action">Browse</span>'
         />
       </div>
-      <Button variant="primary">Close</Button>
     </>
   );
 };

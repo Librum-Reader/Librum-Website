@@ -180,13 +180,16 @@ const AvatarAndUserName = () => {
           <ModalHeader>Avatar upload</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <form
+            {/* <form
               onSubmit={(e) => {
                 uploadFile(e, avatar);
               }}
-            >
-              <FileUpload />
-            </form>
+            > */}
+            <FileUpload />
+            {/* </form> */}
+            <Button variant="primary" onClick={onAvatarClose}>
+              Close
+            </Button>
           </ModalBody>
 
           <ModalFooter></ModalFooter>

@@ -3,6 +3,7 @@ import { Flex, Box, Heading, Text, VStack, Spinner } from "@chakra-ui/react";
 import NewsItems from "../components/ui/NewsItems";
 import { createClient } from "next-sanity";
 import { useState, useEffect } from "react";
+import "../globals.css";
 
 const News = () => {
   const [isLoading, setIsLoading] = useState(true);

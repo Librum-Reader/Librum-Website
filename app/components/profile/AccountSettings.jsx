@@ -59,7 +59,7 @@ const AccountSettings = () => {
           >
             Logout
           </Button>
-          <Button
+          {/* <Button
             variant="destructive"
             w="150px"
             size="sm"
@@ -67,7 +67,7 @@ const AccountSettings = () => {
             h="40px"
           >
             Delete Account
-          </Button>
+          </Button> */}
         </Flex>
       </Flex>
     </Flex>

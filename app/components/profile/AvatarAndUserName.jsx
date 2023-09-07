@@ -29,6 +29,8 @@ import {
   deleteAvatar,
 } from "@/app/utils/apiFunctions";
 
+import FileUpload from "./FileUpload";
+
 const AvatarAndUserName = () => {
   const queryClient = useQueryClient();
 
@@ -154,13 +156,13 @@ const AvatarAndUserName = () => {
             variant="secondary"
             size="sm"
             mb="1rem"
-            w={{ base: "full", md: "auto" }}
+            w={{ base: "full", md: "147px" }}
             h="40px"
             onClick={onAvatarOpen}
           >
-            Avatar settings
+            Upload avatar
           </Button>
-          <Button variant="destructive" w="full" onClick={onDeleteAvatarOpen}>
+          <Button variant="destructive" w="147px" onClick={onDeleteAvatarOpen}>
             Delete avatar
           </Button>
         </Box>
@@ -175,38 +177,19 @@ const AvatarAndUserName = () => {
       >
         <ModalOverlay />
         <ModalContent mx="1rem">
-          <ModalHeader>Avatar settings</ModalHeader>
+          <ModalHeader>Avatar upload</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <form
+            {/* <form
               onSubmit={(e) => {
                 uploadFile(e, avatar);
               }}
-            >
-              <Flex direction="column" gap="1rem">
-                <Text mb="-.8rem">Upload new avatar</Text>
-                <Input
-                  type="file"
-                  accept="image/*"
-                  variant="editUserInfo"
-                  onChange={handleFileSelect}
-                />
-                <Flex w="100%" justify="end">
-                  <Button
-                    variant="primary"
-                    mr="1rem"
-                    type="submit"
-                    isLoading={avatarUpload.isLoading}
-                    alignSelf="flex-start"
-                  >
-                    Upload
-                  </Button>
-                  <Button variant="secondary" onClick={cancelUpload}>
-                    Cancel
-                  </Button>
-                </Flex>
-              </Flex>
-            </form>
+            > */}
+            <FileUpload />
+            {/* </form> */}
+            <Button variant="primary" onClick={onAvatarClose}>
+              Close
+            </Button>
           </ModalBody>
 
           <ModalFooter></ModalFooter>

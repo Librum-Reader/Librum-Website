@@ -50,7 +50,7 @@ export const userRegistration = async (data) => {
       }
     );
 
-    const result = await response;
+    const result = await response.json();
     console.log(result);
 
     return result;

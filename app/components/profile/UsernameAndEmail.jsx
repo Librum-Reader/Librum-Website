@@ -26,6 +26,7 @@ import {
 import { BeatLoader } from "react-spinners";
 
 import { FaRegEdit } from "react-icons/fa";
+import { FiEdit } from "react-icons/fi";
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import {
@@ -215,8 +216,8 @@ const UsernameAndEmail = () => {
           </Text>
 
           <Button variant="secondary" size="sm" border="0">
-            <FaRegEdit
-              size={20}
+            <FiEdit
+              size={18}
               onClick={() => {
                 setNewFirstName(data?.firstName);
                 setNewLastName(data?.lastName);
@@ -242,6 +243,7 @@ const UsernameAndEmail = () => {
           justify="space-between"
           align="center"
           mb="1rem"
+          h="43.6px"
         >
           <Text>{data?.email}</Text>
         </Flex>

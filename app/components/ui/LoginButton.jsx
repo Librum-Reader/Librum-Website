@@ -355,6 +355,9 @@ const LoginButton = (props) => {
   };
 
   const handlePasswordReset = () => {
+    setEmail("");
+    onClosePasswordReset();
+    onOpenPasswordConfirmation();
     resetPassword(email);
   };
 

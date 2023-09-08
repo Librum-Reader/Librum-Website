@@ -5,6 +5,7 @@ import Container from "./components/ui/Container";
 import Footer from "./components/sections/Footer";
 import dynamic from "next/dynamic";
 import Head from "next/head";
+import "./globals.css";
 
 import {
   ChakraProvider,
@@ -105,8 +106,7 @@ export default function RootLayout({ children }) {
         <LoginContext.Provider value={{ loginOpen, setLoginOpen }}>
           <ColorModeScript initialColorMode="dark" />
           <GoogleReCaptchaProvider
-            reCaptchaKey={process.env.REACT_APP_reCAPTCHA_SITE_KEY}
-          >
+            reCaptchaKey={process.env.REACT_APP_reCAPTCHA_SITE_KEY}>
             <Provider store={store}>
               <QueryClientProvider client={queryClient}>
                 <CookiesProvider>
@@ -118,16 +118,14 @@ export default function RootLayout({ children }) {
                         onClose={onDisclaimerClose}
                         bg="transparent"
                         closeOnOverlayClick={false}
-                        variant="defaultVariant"
-                      >
+                        variant="defaultVariant">
                         <ModalOverlay />
                         <ModalContent
                           alignContent="center"
                           maxW="1000px"
                           w={{ base: "100%", md: "auto" }}
                           bg="transparent"
-                          boxShadow="0"
-                        >
+                          boxShadow="0">
                           <ModalBody alignContent="center" px="1rem">
                             <Flex
                               w={{ base: "100%", md: "620px" }}
@@ -137,15 +135,13 @@ export default function RootLayout({ children }) {
                               borderRadius="md"
                               gap="2rem"
                               direction="column"
-                              align="center"
-                            >
+                              align="center">
                               <Image src="/cookies.svg" w="150px" h="auto" />
                               <Heading size="lg">We use cookies</Heading>
                               <Flex
                                 gap="2rem"
                                 direction="column"
-                                justify="center"
-                              >
+                                justify="center">
                                 <Text align={{ base: "center", md: "center" }}>
                                   We use cookies to provide the best possible
                                   experience. By clicking continue, you agree to
@@ -156,8 +152,7 @@ export default function RootLayout({ children }) {
                                   justify="space-between"
                                   align={{ base: "center", md: "start" }}
                                   w="100%"
-                                  direction={{ base: "column", md: "row" }}
-                                >
+                                  direction={{ base: "column", md: "row" }}>
                                   <UnorderedList mt="0">
                                     <ListItem>
                                       <Link href="/disclaimer">
@@ -184,19 +179,16 @@ export default function RootLayout({ children }) {
                               </Flex>
                               <Flex
                                 gap="1rem"
-                                direction={{ base: "column", md: "row" }}
-                              >
+                                direction={{ base: "column", md: "row" }}>
                                 <Button
                                   variant="primary"
                                   onClick={closeModalAndSetFirstVisit}
-                                  w={{ base: "100%", md: "auto" }}
-                                >
+                                  w={{ base: "100%", md: "auto" }}>
                                   Accept and continue
                                 </Button>
                                 <Button
                                   variant="secondary"
-                                  onClick={onDisclaimerClose}
-                                >
+                                  onClick={onDisclaimerClose}>
                                   Decline
                                 </Button>
                               </Flex>

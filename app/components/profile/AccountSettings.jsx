@@ -9,7 +9,9 @@ import {
   resetUser,
 } from "@/app/features/user/userSlice";
 
-const AccountSettings = () => {
+import DeleteAccount from "./DeleteAccount";
+
+const AccountSettings = ({ email }) => {
   const router = useRouter();
   // Logout function
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
@@ -59,15 +61,7 @@ const AccountSettings = () => {
           >
             Logout
           </Button>
-          {/* <Button
-            variant="destructive"
-            w="150px"
-            size="sm"
-            alignSelf="start"
-            h="40px"
-          >
-            Delete Account
-          </Button> */}
+          <DeleteAccount email={email} />
         </Flex>
       </Flex>
     </Flex>

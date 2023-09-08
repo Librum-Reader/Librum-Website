@@ -93,6 +93,7 @@ const LoginButton = (props) => {
   // User register state
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
+  const [registerConfirmPassword, setRegisterConfirmPassword] = useState("");
   const [registerFirstName, setRegisterFirstName] = useState("");
   const [registerLastName, setRegisterLastName] = useState("");
 
@@ -150,6 +151,8 @@ const LoginButton = (props) => {
   const handleRegLName = (event) => setRegisterLastName(event.target.value);
   const handleRegEmail = (event) => setRegisterEmail(event.target.value);
   const handleRegPass = (event) => setRegisterPassword(event.target.value);
+  const handleRegConfirmPass = (event) =>
+    setRegisterConfirmPassword(event.target.value);
 
   // API handling - Login
   const queryClient = useQueryClient();
@@ -208,6 +211,9 @@ const LoginButton = (props) => {
   // API handling - Register
   const register = useMutation({
     mutationFn: userRegistration,
+    onMutate: (data) => {
+      console.log("Mutating data....");
+    },
     onSuccess: (data) => {
       if (data.code === 2) {
         toast({
@@ -580,6 +586,8 @@ const LoginButton = (props) => {
                     <InputGroup>
                       <Input
                         fontSize="md"
+                        value={registerConfirmPassword}
+                        onChange={handleRegConfirmPass}
                         variant="defaultVariant"
                         type={showPassword ? "text" : "password"}
                       />
@@ -619,6 +627,18 @@ const LoginButton = (props) => {
             <Box width="100%" textAlign="center">
               <Button
                 onClick={() => {
+                  if (registerPassword !== registerConfirmPassword) {
+                    toast({
+                      title: "Uh oh...",
+                      description: "Confirmation password doesn't match",
+                      status: "error",
+                      duration: 9000,
+                      isClosable: true,
+                    });
+
+                    return;
+                  }
+
                   handleRegister({
                     FirstName: registerFirstName,
                     LastName: registerLastName,

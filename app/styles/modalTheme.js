@@ -9,6 +9,8 @@ const defaultVariant = definePartsStyle({
     borderRadius: "6px",
     bg: "bg-modal-default",
     textColor: "text-default",
+    maxWidth: "470px",
+    padding: "0 0.5rem",
   },
 });
 

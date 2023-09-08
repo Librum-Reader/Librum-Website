@@ -374,8 +374,7 @@ const LoginButton = (props) => {
         initialFocusRef={initialRef}
         isOpen={isOpenLogin}
         onClose={onCloseLogin}
-        variant="defaultVariant"
-      >
+        variant="defaultVariant">
         <ModalOverlay />
         <ModalContent>
           <ModalHeader> </ModalHeader>
@@ -394,8 +393,7 @@ const LoginButton = (props) => {
                 fontSize="md"
                 textColor="text-default"
                 mb="0"
-                fontWeight="semibold"
-              >
+                fontWeight="semibold">
                 Email
               </FormLabel>
               <Input
@@ -413,8 +411,7 @@ const LoginButton = (props) => {
                 fontSize="md"
                 textColor="text-default"
                 mb="0"
-                fontWeight="semibold"
-              >
+                fontWeight="semibold">
                 Password
               </FormLabel>
               <InputGroup>
@@ -443,8 +440,7 @@ const LoginButton = (props) => {
                 onClick={() => {
                   onOpenPasswordReset();
                   onCloseLogin();
-                }}
-              >
+                }}>
                 here
               </Link>{" "}
               to reset it.
@@ -459,8 +455,7 @@ const LoginButton = (props) => {
                 }}
                 variant="primary"
                 width="100%"
-                mb="1rem"
-              >
+                mb="1rem">
                 {login.isLoading ? <BeatLoader /> : "Log In"}
               </Button>
               <Button
@@ -468,8 +463,7 @@ const LoginButton = (props) => {
                 width="100%"
                 onClick={() => {
                   registerAccount();
-                }}
-              >
+                }}>
                 Register
               </Button>
             </Box>
@@ -482,8 +476,7 @@ const LoginButton = (props) => {
         initialFocusRef={initialRef}
         isOpen={isOpenRegister}
         onClose={onCloseRegister}
-        variant="defaultVariant"
-      >
+        variant="defaultVariant">
         <ModalOverlay />
         <ModalContent>
           <ModalHeader> </ModalHeader>
@@ -495,19 +488,18 @@ const LoginButton = (props) => {
                   <Heading size="lg" pb=".5rem">
                     Welcome to Librum
                   </Heading>
-                  <Text fontSize="md">
+                  <Text fontSize="sm" lineHeight={1.6}>
                     Your credentials are only used to authenticate you. Your
                     credentials will be stored in a secure database.
                   </Text>
                 </Box>
-                <Flex gap="1rem" mb="1rem">
+                <Flex gap="1rem" my="1rem">
                   <FormControl>
                     <FormLabel
                       fontSize="md"
                       textColor="text-default"
                       mb="0"
-                      fontWeight="semibold"
-                    >
+                      fontWeight="semibold">
                       First Name
                     </FormLabel>
                     <Input
@@ -523,8 +515,7 @@ const LoginButton = (props) => {
                       fontSize="md"
                       textColor="text-default"
                       mb="0"
-                      fontWeight="semibold"
-                    >
+                      fontWeight="semibold">
                       Last Name
                     </FormLabel>
                     <Input
@@ -542,8 +533,7 @@ const LoginButton = (props) => {
                       fontSize="md"
                       textColor="text-default"
                       mb="0"
-                      fontWeight="semibold"
-                    >
+                      fontWeight="semibold">
                       Email
                     </FormLabel>
                     <Input
@@ -559,8 +549,7 @@ const LoginButton = (props) => {
                       fontSize="md"
                       textColor="text-default"
                       mb="0"
-                      fontWeight="semibold"
-                    >
+                      fontWeight="semibold">
                       Password
                     </FormLabel>
                     <InputGroup>
@@ -585,8 +574,7 @@ const LoginButton = (props) => {
                       fontSize="md"
                       textColor="text-default"
                       mb="0"
-                      fontWeight="semibold"
-                    >
+                      fontWeight="semibold">
                       Confirm password
                     </FormLabel>
                     <InputGroup>
@@ -605,14 +593,13 @@ const LoginButton = (props) => {
                     </InputGroup>
                   </FormControl>
                   <Checkbox
-                    fontSize="sm"
                     mt="1rem"
+                    colorScheme="purple"
                     isChecked={isChecked}
                     onChange={() => {
                       setIsChecked(!isChecked);
-                    }}
-                  >
-                    <Text fontSize="sm">
+                    }}>
+                    <Text fontSize="sm" fontWeight="light">
                       I accept the{" "}
                       <Link href="/termsofservice" textColor="#946BDE">
                         Terms of Service
@@ -641,11 +628,10 @@ const LoginButton = (props) => {
                 }}
                 variant="primary"
                 width="100%"
-                mb="1rem"
-              >
+                mb="1rem">
                 {register.isLoading ? <BeatLoader /> : "Let's Get Started"}
               </Button>
-              <Text>
+              <Text fontSize="sm">
                 Already have an account?{" "}
                 <Link
                   href="#"
@@ -653,8 +639,7 @@ const LoginButton = (props) => {
                   onClick={() => {
                     onCloseRegister();
                     onOpenLogin();
-                  }}
-                >
+                  }}>
                   Log In
                 </Link>
               </Text>
@@ -667,8 +652,7 @@ const LoginButton = (props) => {
         isCentered
         initialFocusRef={initialRef}
         isOpen={isOpenConfirmEmail}
-        onClose={onCloseConfirmEmail}
-      >
+        onClose={onCloseConfirmEmail}>
         <ModalOverlay />
         <ModalContent>
           <ModalBody background="bg-default" borderRadius="2px">
@@ -689,8 +673,7 @@ const LoginButton = (props) => {
         initialFocusRef={initialRef}
         isOpen={isOpenPasswordReset}
         onClose={onClosePasswordReset}
-        variant="defaultVariant"
-      >
+        variant="defaultVariant">
         <ModalOverlay />
         <ModalContent>
           <ModalHeader></ModalHeader>
@@ -708,8 +691,7 @@ const LoginButton = (props) => {
                   fontSize="md"
                   textColor="text-default"
                   mb="0"
-                  fontWeight="semibold"
-                >
+                  fontWeight="semibold">
                   Email
                 </FormLabel>
                 <Input
@@ -724,8 +706,7 @@ const LoginButton = (props) => {
               <Button
                 variant="primary"
                 alignSelf="flex-end"
-                onClick={handlePasswordReset}
-              >
+                onClick={handlePasswordReset}>
                 Reset password
               </Button>
             </Flex>
@@ -739,8 +720,7 @@ const LoginButton = (props) => {
         initialFocusRef={initialRef}
         isOpen={isOpenPasswordConfirmation}
         onClose={onClosePasswordConfirmation}
-        variant="defaultVariant"
-      >
+        variant="defaultVariant">
         <ModalOverlay />
         <ModalContent>
           <ModalHeader></ModalHeader>

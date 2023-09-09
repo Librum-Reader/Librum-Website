@@ -14,6 +14,7 @@ import { modalTheme } from "./styles/modalTheme";
 import { inputTheme } from "./styles/inputTheme";
 import { drawerTheme } from "./styles/drawerTheme";
 import { menuTheme } from "./styles/menuTheme";
+import { checkboxTheme } from "./styles/checkboxThem";
 import { batch } from "react-redux";
 
 export function Providers({ children }) {
@@ -263,6 +264,7 @@ export function Providers({ children }) {
         },
       },
       Menu: menuTheme,
+      Checkbox: checkboxTheme,
     },
   });
 

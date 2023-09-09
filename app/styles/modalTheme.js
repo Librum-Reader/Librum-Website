@@ -9,6 +9,8 @@ const defaultVariant = definePartsStyle({
     borderRadius: "6px",
     bg: "bg-modal-default",
     textColor: "text-default",
+    maxWidth: "470px",
+    padding: "0 0.5rem",
   },
 });
 
@@ -23,6 +25,12 @@ const legalVariant = definePartsStyle({
   },
 });
 
+const emailConfirmation = definePartsStyle({
+  dialog: {
+    maxWidth: "600px",
+  },
+});
+
 export const modalTheme = defineMultiStyleConfig({
-  variants: { defaultVariant, legalVariant },
+  variants: { defaultVariant, legalVariant, emailConfirmation },
 });

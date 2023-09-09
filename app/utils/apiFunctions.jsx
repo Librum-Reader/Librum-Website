@@ -30,8 +30,6 @@ export const userLogin = async (data) => {
 
 export const userRegistration = async (data) => {
   try {
-    console.log(data);
-
     const response = await fetch(
       "https://api.librumreader.com/authentication/register",
       {
@@ -50,10 +48,21 @@ export const userRegistration = async (data) => {
       }
     );
 
-    const result = await response.json();
-    console.log(result);
+    const { status } = response;
 
-    return result;
+    if (status >= 400 && status <= 500) {
+      const result = await response?.json();
+
+      return {
+        success: false,
+        ...result,
+      };
+    }
+
+    return {
+      success: true,
+      status,
+    };
   } catch (error) {
     console.error(error);
   }

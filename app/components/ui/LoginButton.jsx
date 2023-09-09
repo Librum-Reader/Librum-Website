@@ -93,6 +93,7 @@ const LoginButton = (props) => {
   // User register state
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
+  const [registerConfirmPassword, setRegisterConfirmPassword] = useState("");
   const [registerFirstName, setRegisterFirstName] = useState("");
   const [registerLastName, setRegisterLastName] = useState("");
 
@@ -150,6 +151,8 @@ const LoginButton = (props) => {
   const handleRegLName = (event) => setRegisterLastName(event.target.value);
   const handleRegEmail = (event) => setRegisterEmail(event.target.value);
   const handleRegPass = (event) => setRegisterPassword(event.target.value);
+  const handleRegConfirmPass = (event) =>
+    setRegisterConfirmPassword(event.target.value);
 
   // API handling - Login
   const queryClient = useQueryClient();
@@ -209,100 +212,124 @@ const LoginButton = (props) => {
   const register = useMutation({
     mutationFn: userRegistration,
     onSuccess: (data) => {
-      if (data.code === 2) {
-        toast({
-          title: "Uh oh...",
-          description: "A user with that email already exists",
-          status: "error",
-          duration: 9000,
-          isClosable: true,
-        });
-      } else if (data.code === 8) {
-        toast({
-          title: "Uh oh...",
-          description: "You've entered an incorrect email format",
-          status: "error",
-          duration: 9000,
-          isClosable: true,
-        });
-      } else if (data.code === 9) {
-        toast({
-          title: "Uh oh...",
-          description: "Your email address is too short",
-          status: "error",
-          duration: 9000,
-          isClosable: true,
-        });
-      } else if (data.code === 11) {
-        toast({
-          title: "Uh oh...",
-          description:
-            "Your password is too short. Your password must be at least 4 characters",
-          status: "error",
-          duration: 9000,
-          isClosable: true,
-        });
-      } else if (data.code === 12) {
-        toast({
-          title: "Uh oh...",
-          description:
-            "Your password is too long, it cannot exceed 60 characters",
-          status: "error",
-          duration: 9000,
-          isClosable: true,
-        });
-      } else if (data.code === 13) {
-        toast({
-          title: "Uh oh...",
-          description:
-            "Your first name is too short, it must be at least 2 characters",
-          status: "error",
-          duration: 9000,
-          isClosable: true,
-        });
-      } else if (data.code === 14) {
-        toast({
-          title: "Uh oh...",
-          description:
-            "Your first name is too long, it cannot exceet 40 characters",
-          status: "error",
-          duration: 9000,
-          isClosable: true,
-        });
-      } else if (data.code === 15) {
-        toast({
-          title: "Uh oh...",
-          description:
-            "Your last name is too short, it must be at least 2 characters",
-          status: "error",
-          duration: 9000,
-          isClosable: true,
-        });
-      } else if (data.code === 16) {
-        toast({
-          title: "Uh oh...",
-          description:
-            "Your last name is too long, it cannot exceept 50 characters",
-          status: "error",
-          duration: 9000,
-          isClosable: true,
-        });
-      } else if (data.code === 19) {
-        toast({
-          title: "Uh oh...",
-          description:
-            "You've made too many requests. Please wait before trying again",
-          status: "error",
-          duration: 9000,
-          isClosable: true,
-        });
-      } else {
+      if (data.success) {
         queryClient.invalidateQueries({ queryKey: ["register"] });
         onCloseRegister();
         setIsEmailConfirmed(false);
         onOpenConfirmEmail();
         listenForEmailConfirmation();
+      } else {
+        toast({
+          title: "Uh oh...",
+          description: data.message,
+          status: "error",
+          duration: 9000,
+          isClosable: true,
+        });
       }
+
+      // if (data.code === 2) {
+      //   toast({
+      //     title: "Uh oh...",
+      //     description: "A user with that email already exists",
+      //     status: "error",
+      //     duration: 9000,
+      //     isClosable: true,
+      //   });
+      // } else if (data.code === 8) {
+      //   toast({
+      //     title: "Uh oh...",
+      //     description: "You've entered an incorrect email format",
+      //     status: "error",
+      //     duration: 9000,
+      //     isClosable: true,
+      //   });
+      // } else if (data.code === 9) {
+      //   toast({
+      //     title: "Uh oh...",
+      //     description: "Your email address is too short",
+      //     status: "error",
+      //     duration: 9000,
+      //     isClosable: true,
+      //   });
+      // } else if (data.code === 11) {
+      //   toast({
+      //     title: "Uh oh...",
+      //     description:
+      //       "Your password is too short. Your password must be at least 4 characters",
+      //     status: "error",
+      //     duration: 9000,
+      //     isClosable: true,
+      //   });
+      // } else if (data.code === 12) {
+      //   toast({
+      //     title: "Uh oh...",
+      //     description:
+      //       "Your password is too long, it cannot exceed 60 characters",
+      //     status: "error",
+      //     duration: 9000,
+      //     isClosable: true,
+      //   });
+      // } else if (data.code === 3) {
+      //   toast({
+      //     title: "Uh oh...",
+      //     description: "Your password needs to contain letters",
+      //     status: "error",
+      //     duration: 9000,
+      //     isClosable: true,
+      //   });
+      // } else if (data.code === 13) {
+      //   toast({
+      //     title: "Uh oh...",
+      //     description:
+      //       "Your first name is too short, it must be at least 2 characters",
+      //     status: "error",
+      //     duration: 9000,
+      //     isClosable: true,
+      //   });
+      // } else if (data.code === 14) {
+      //   toast({
+      //     title: "Uh oh...",
+      //     description:
+      //       "Your first name is too long, it cannot exceet 40 characters",
+      //     status: "error",
+      //     duration: 9000,
+      //     isClosable: true,
+      //   });
+      // } else if (data.code === 15) {
+      //   toast({
+      //     title: "Uh oh...",
+      //     description:
+      //       "Your last name is too short, it must be at least 2 characters",
+      //     status: "error",
+      //     duration: 9000,
+      //     isClosable: true,
+      //   });
+      // } else if (data.code === 16) {
+      //   toast({
+      //     title: "Uh oh...",
+      //     description:
+      //       "Your last name is too long, it cannot exceept 50 characters",
+      //     status: "error",
+      //     duration: 9000,
+      //     isClosable: true,
+      //   });
+      // } else if (data.code === 19) {
+      //   toast({
+      //     title: "Uh oh...",
+      //     description:
+      //       "You've made too many requests. Please wait before trying again",
+      //     status: "error",
+      //     duration: 9000,
+      //     isClosable: true,
+      //   });
+      // } else {
+      //   queryClient.invalidateQueries({ queryKey: ["register"] });
+      //   onCloseRegister();
+      //   setIsEmailConfirmed(false);
+      //   onOpenConfirmEmail();
+      //   listenForEmailConfirmation();
+      // }
     },
   });
 
@@ -340,7 +367,15 @@ const LoginButton = (props) => {
   };
 
   const handleRegister = (data) => {
-    if (!isChecked) {
+    if (registerPassword !== registerConfirmPassword) {
+      toast({
+        title: "Uh oh...",
+        description: "Confirmation password doesn't match",
+        status: "error",
+        duration: 9000,
+        isClosable: true,
+      });
+    } else if (!isChecked) {
       toast({
         title: "Please accept the terms and conditions.",
         description:
@@ -374,8 +409,7 @@ const LoginButton = (props) => {
         initialFocusRef={initialRef}
         isOpen={isOpenLogin}
         onClose={onCloseLogin}
-        variant="defaultVariant"
-      >
+        variant="defaultVariant">
         <ModalOverlay />
         <ModalContent>
           <ModalHeader> </ModalHeader>
@@ -394,8 +428,7 @@ const LoginButton = (props) => {
                 fontSize="md"
                 textColor="text-default"
                 mb="0"
-                fontWeight="semibold"
-              >
+                fontWeight="semibold">
                 Email
               </FormLabel>
               <Input
@@ -413,8 +446,7 @@ const LoginButton = (props) => {
                 fontSize="md"
                 textColor="text-default"
                 mb="0"
-                fontWeight="semibold"
-              >
+                fontWeight="semibold">
                 Password
               </FormLabel>
               <InputGroup>
@@ -443,8 +475,7 @@ const LoginButton = (props) => {
                 onClick={() => {
                   onOpenPasswordReset();
                   onCloseLogin();
-                }}
-              >
+                }}>
                 here
               </Link>{" "}
               to reset it.
@@ -459,8 +490,7 @@ const LoginButton = (props) => {
                 }}
                 variant="primary"
                 width="100%"
-                mb="1rem"
-              >
+                mb="1rem">
                 {login.isLoading ? <BeatLoader /> : "Log In"}
               </Button>
               <Button
@@ -468,8 +498,7 @@ const LoginButton = (props) => {
                 width="100%"
                 onClick={() => {
                   registerAccount();
-                }}
-              >
+                }}>
                 Register
               </Button>
             </Box>
@@ -482,8 +511,7 @@ const LoginButton = (props) => {
         initialFocusRef={initialRef}
         isOpen={isOpenRegister}
         onClose={onCloseRegister}
-        variant="defaultVariant"
-      >
+        variant="defaultVariant">
         <ModalOverlay />
         <ModalContent>
           <ModalHeader> </ModalHeader>
@@ -495,19 +523,18 @@ const LoginButton = (props) => {
                   <Heading size="lg" pb=".5rem">
                     Welcome to Librum
                   </Heading>
-                  <Text fontSize="md">
+                  <Text fontSize="sm" lineHeight={1.6}>
                     Your credentials are only used to authenticate you. Your
                     credentials will be stored in a secure database.
                   </Text>
                 </Box>
-                <Flex gap="1rem" mb="1rem">
+                <Flex gap="1rem" my="1rem">
                   <FormControl>
                     <FormLabel
                       fontSize="md"
                       textColor="text-default"
                       mb="0"
-                      fontWeight="semibold"
-                    >
+                      fontWeight="semibold">
                       First Name
                     </FormLabel>
                     <Input
@@ -523,8 +550,7 @@ const LoginButton = (props) => {
                       fontSize="md"
                       textColor="text-default"
                       mb="0"
-                      fontWeight="semibold"
-                    >
+                      fontWeight="semibold">
                       Last Name
                     </FormLabel>
                     <Input
@@ -542,8 +568,7 @@ const LoginButton = (props) => {
                       fontSize="md"
                       textColor="text-default"
                       mb="0"
-                      fontWeight="semibold"
-                    >
+                      fontWeight="semibold">
                       Email
                     </FormLabel>
                     <Input
@@ -559,8 +584,7 @@ const LoginButton = (props) => {
                       fontSize="md"
                       textColor="text-default"
                       mb="0"
-                      fontWeight="semibold"
-                    >
+                      fontWeight="semibold">
                       Password
                     </FormLabel>
                     <InputGroup>
@@ -585,13 +609,14 @@ const LoginButton = (props) => {
                       fontSize="md"
                       textColor="text-default"
                       mb="0"
-                      fontWeight="semibold"
-                    >
+                      fontWeight="semibold">
                       Confirm password
                     </FormLabel>
                     <InputGroup>
                       <Input
                         fontSize="md"
+                        value={registerConfirmPassword}
+                        onChange={handleRegConfirmPass}
                         variant="defaultVariant"
                         type={showPassword ? "text" : "password"}
                       />
@@ -605,13 +630,12 @@ const LoginButton = (props) => {
                     </InputGroup>
                   </FormControl>
                   <Checkbox
-                    fontSize="sm"
                     mt="1rem"
+                    colorScheme="purple"
                     isChecked={isChecked}
                     onChange={() => {
                       setIsChecked(!isChecked);
-                    }}
-                  >
+                    }}>
                     <Text fontSize="sm">
                       I accept the{" "}
                       <Link href="/termsofservice" textColor="#946BDE">
@@ -639,13 +663,13 @@ const LoginButton = (props) => {
                     Password: registerPassword,
                   });
                 }}
-                variant="primary"
+                variant="loginButton"
                 width="100%"
                 mb="1rem"
-              >
+                fontSize={15}>
                 {register.isLoading ? <BeatLoader /> : "Let's Get Started"}
               </Button>
-              <Text>
+              <Text fontSize="sm">
                 Already have an account?{" "}
                 <Link
                   href="#"
@@ -653,8 +677,7 @@ const LoginButton = (props) => {
                   onClick={() => {
                     onCloseRegister();
                     onOpenLogin();
-                  }}
-                >
+                  }}>
                   Log In
                 </Link>
               </Text>
@@ -665,20 +688,52 @@ const LoginButton = (props) => {
       {/* Confirm Email Modal */}
       <Modal
         isCentered
+        variant="emailConfirmation"
         initialFocusRef={initialRef}
         isOpen={isOpenConfirmEmail}
-        onClose={onCloseConfirmEmail}
-      >
+        onClose={onCloseConfirmEmail}>
         <ModalOverlay />
         <ModalContent>
-          <ModalBody background="bg-default" borderRadius="2px">
-            <Flex direction="column" align="center" gap="1rem">
-              <Heading size="md">Email confirmation required</Heading>
-              <Text>
-                We&apos;ve created an account for you and have sent a
-                verification link to your email. This window will automatically
-                close and you will be logged in after confirming your email.
+          <ModalBody
+            background="bg-default"
+            lineHeight="1.5rem"
+            borderRadius="5px"
+            px="3rem"
+            pt="3.3rem"
+            pb="3rem">
+            <Flex direction="column" align="center">
+              <Heading
+                size="xl"
+                fontSize="2.6rem"
+                mb={6}
+                color="#ccc"
+                textAlign="center">
+                Confirm Your Email
+              </Heading>
+              <Text
+                textAlign="center"
+                color="#ccc"
+                fontSize="1.15rem"
+                lineHeight="1.5rem">
+                You&apos;re almost ready to go!
               </Text>
+              <Text
+                textAlign="center"
+                color="#ccc"
+                fontSize="1.15rem"
+                lineHeight="1.5rem">
+                Confirm your email by clicking the link we sent you.
+              </Text>
+
+              <Button
+                variant="primary"
+                width="100%"
+                p={2}
+                mt="3.5rem"
+                fontSize="md"
+                onClick={() => onCloseConfirmEmail()}>
+                Ok
+              </Button>
             </Flex>
           </ModalBody>
         </ModalContent>
@@ -689,8 +744,7 @@ const LoginButton = (props) => {
         initialFocusRef={initialRef}
         isOpen={isOpenPasswordReset}
         onClose={onClosePasswordReset}
-        variant="defaultVariant"
-      >
+        variant="defaultVariant">
         <ModalOverlay />
         <ModalContent>
           <ModalHeader></ModalHeader>
@@ -708,8 +762,7 @@ const LoginButton = (props) => {
                   fontSize="md"
                   textColor="text-default"
                   mb="0"
-                  fontWeight="semibold"
-                >
+                  fontWeight="semibold">
                   Email
                 </FormLabel>
                 <Input
@@ -724,8 +777,7 @@ const LoginButton = (props) => {
               <Button
                 variant="primary"
                 alignSelf="flex-end"
-                onClick={handlePasswordReset}
-              >
+                onClick={handlePasswordReset}>
                 Reset password
               </Button>
             </Flex>
@@ -739,8 +791,7 @@ const LoginButton = (props) => {
         initialFocusRef={initialRef}
         isOpen={isOpenPasswordConfirmation}
         onClose={onClosePasswordConfirmation}
-        variant="defaultVariant"
-      >
+        variant="defaultVariant">
         <ModalOverlay />
         <ModalContent>
           <ModalHeader></ModalHeader>

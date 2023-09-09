@@ -26,8 +26,8 @@ const legalVariant = definePartsStyle({
 });
 
 const emailConfirmation = definePartsStyle({
-  body: {
-    boxSize: "xl",
+  dialog: {
+    maxWidth: "600px",
   },
 });
 

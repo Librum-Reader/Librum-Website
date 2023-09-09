@@ -607,7 +607,7 @@ const LoginButton = (props) => {
                     onChange={() => {
                       setIsChecked(!isChecked);
                     }}>
-                    <Text fontSize="sm" fontWeight="light">
+                    <Text fontSize="sm">
                       I accept the{" "}
                       <Link href="/termsofservice" textColor="#946BDE">
                         Terms of Service
@@ -646,9 +646,10 @@ const LoginButton = (props) => {
                     Password: registerPassword,
                   });
                 }}
-                variant="primary"
+                variant="loginButton"
                 width="100%"
-                mb="1rem">
+                mb="1rem"
+                fontSize={15}>
                 {register.isLoading ? <BeatLoader /> : "Let's Get Started"}
               </Button>
               <Text fontSize="sm">

@@ -211,104 +211,125 @@ const LoginButton = (props) => {
   // API handling - Register
   const register = useMutation({
     mutationFn: userRegistration,
-    onMutate: (data) => {
-      console.log("Mutating data....");
-    },
     onSuccess: (data) => {
-      if (data.code === 2) {
-        toast({
-          title: "Uh oh...",
-          description: "A user with that email already exists",
-          status: "error",
-          duration: 9000,
-          isClosable: true,
-        });
-      } else if (data.code === 8) {
-        toast({
-          title: "Uh oh...",
-          description: "You've entered an incorrect email format",
-          status: "error",
-          duration: 9000,
-          isClosable: true,
-        });
-      } else if (data.code === 9) {
-        toast({
-          title: "Uh oh...",
-          description: "Your email address is too short",
-          status: "error",
-          duration: 9000,
-          isClosable: true,
-        });
-      } else if (data.code === 11) {
-        toast({
-          title: "Uh oh...",
-          description:
-            "Your password is too short. Your password must be at least 4 characters",
-          status: "error",
-          duration: 9000,
-          isClosable: true,
-        });
-      } else if (data.code === 12) {
-        toast({
-          title: "Uh oh...",
-          description:
-            "Your password is too long, it cannot exceed 60 characters",
-          status: "error",
-          duration: 9000,
-          isClosable: true,
-        });
-      } else if (data.code === 13) {
-        toast({
-          title: "Uh oh...",
-          description:
-            "Your first name is too short, it must be at least 2 characters",
-          status: "error",
-          duration: 9000,
-          isClosable: true,
-        });
-      } else if (data.code === 14) {
-        toast({
-          title: "Uh oh...",
-          description:
-            "Your first name is too long, it cannot exceet 40 characters",
-          status: "error",
-          duration: 9000,
-          isClosable: true,
-        });
-      } else if (data.code === 15) {
-        toast({
-          title: "Uh oh...",
-          description:
-            "Your last name is too short, it must be at least 2 characters",
-          status: "error",
-          duration: 9000,
-          isClosable: true,
-        });
-      } else if (data.code === 16) {
-        toast({
-          title: "Uh oh...",
-          description:
-            "Your last name is too long, it cannot exceept 50 characters",
-          status: "error",
-          duration: 9000,
-          isClosable: true,
-        });
-      } else if (data.code === 19) {
-        toast({
-          title: "Uh oh...",
-          description:
-            "You've made too many requests. Please wait before trying again",
-          status: "error",
-          duration: 9000,
-          isClosable: true,
-        });
-      } else {
+      if (data.success) {
         queryClient.invalidateQueries({ queryKey: ["register"] });
         onCloseRegister();
         setIsEmailConfirmed(false);
         onOpenConfirmEmail();
         listenForEmailConfirmation();
+      } else {
+        toast({
+          title: "Uh oh...",
+          description: data.message,
+          status: "error",
+          duration: 9000,
+          isClosable: true,
+        });
       }
+
+      // if (data.code === 2) {
+      //   toast({
+      //     title: "Uh oh...",
+      //     description: "A user with that email already exists",
+      //     status: "error",
+      //     duration: 9000,
+      //     isClosable: true,
+      //   });
+      // } else if (data.code === 8) {
+      //   toast({
+      //     title: "Uh oh...",
+      //     description: "You've entered an incorrect email format",
+      //     status: "error",
+      //     duration: 9000,
+      //     isClosable: true,
+      //   });
+      // } else if (data.code === 9) {
+      //   toast({
+      //     title: "Uh oh...",
+      //     description: "Your email address is too short",
+      //     status: "error",
+      //     duration: 9000,
+      //     isClosable: true,
+      //   });
+      // } else if (data.code === 11) {
+      //   toast({
+      //     title: "Uh oh...",
+      //     description:
+      //       "Your password is too short. Your password must be at least 4 characters",
+      //     status: "error",
+      //     duration: 9000,
+      //     isClosable: true,
+      //   });
+      // } else if (data.code === 12) {
+      //   toast({
+      //     title: "Uh oh...",
+      //     description:
+      //       "Your password is too long, it cannot exceed 60 characters",
+      //     status: "error",
+      //     duration: 9000,
+      //     isClosable: true,
+      //   });
+      // } else if (data.code === 3) {
+      //   toast({
+      //     title: "Uh oh...",
+      //     description: "Your password needs to contain letters",
+      //     status: "error",
+      //     duration: 9000,
+      //     isClosable: true,
+      //   });
+      // } else if (data.code === 13) {
+      //   toast({
+      //     title: "Uh oh...",
+      //     description:
+      //       "Your first name is too short, it must be at least 2 characters",
+      //     status: "error",
+      //     duration: 9000,
+      //     isClosable: true,
+      //   });
+      // } else if (data.code === 14) {
+      //   toast({
+      //     title: "Uh oh...",
+      //     description:
+      //       "Your first name is too long, it cannot exceet 40 characters",
+      //     status: "error",
+      //     duration: 9000,
+      //     isClosable: true,
+      //   });
+      // } else if (data.code === 15) {
+      //   toast({
+      //     title: "Uh oh...",
+      //     description:
+      //       "Your last name is too short, it must be at least 2 characters",
+      //     status: "error",
+      //     duration: 9000,
+      //     isClosable: true,
+      //   });
+      // } else if (data.code === 16) {
+      //   toast({
+      //     title: "Uh oh...",
+      //     description:
+      //       "Your last name is too long, it cannot exceept 50 characters",
+      //     status: "error",
+      //     duration: 9000,
+      //     isClosable: true,
+      //   });
+      // } else if (data.code === 19) {
+      //   toast({
+      //     title: "Uh oh...",
+      //     description:
+      //       "You've made too many requests. Please wait before trying again",
+      //     status: "error",
+      //     duration: 9000,
+      //     isClosable: true,
+      //   });
+      // } else {
+      //   queryClient.invalidateQueries({ queryKey: ["register"] });
+      //   onCloseRegister();
+      //   setIsEmailConfirmed(false);
+      //   onOpenConfirmEmail();
+      //   listenForEmailConfirmation();
+      // }
     },
   });
 
@@ -346,7 +367,15 @@ const LoginButton = (props) => {
   };
 
   const handleRegister = (data) => {
-    if (!isChecked) {
+    if (registerPassword !== registerConfirmPassword) {
+      toast({
+        title: "Uh oh...",
+        description: "Confirmation password doesn't match",
+        status: "error",
+        duration: 9000,
+        isClosable: true,
+      });
+    } else if (!isChecked) {
       toast({
         title: "Please accept the terms and conditions.",
         description:
@@ -627,18 +656,6 @@ const LoginButton = (props) => {
             <Box width="100%" textAlign="center">
               <Button
                 onClick={() => {
-                  if (registerPassword !== registerConfirmPassword) {
-                    toast({
-                      title: "Uh oh...",
-                      description: "Confirmation password doesn't match",
-                      status: "error",
-                      duration: 9000,
-                      isClosable: true,
-                    });
-
-                    return;
-                  }
-
                   handleRegister({
                     FirstName: registerFirstName,
                     LastName: registerLastName,
@@ -671,19 +688,52 @@ const LoginButton = (props) => {
       {/* Confirm Email Modal */}
       <Modal
         isCentered
+        variant="emailConfirmation"
         initialFocusRef={initialRef}
         isOpen={isOpenConfirmEmail}
         onClose={onCloseConfirmEmail}>
         <ModalOverlay />
         <ModalContent>
-          <ModalBody background="bg-default" borderRadius="2px">
-            <Flex direction="column" align="center" gap="1rem">
-              <Heading size="md">Email confirmation required</Heading>
-              <Text>
-                We&apos;ve created an account for you and have sent a
-                verification link to your email. This window will automatically
-                close and you will be logged in after confirming your email.
+          <ModalBody
+            background="bg-default"
+            lineHeight="1.5rem"
+            borderRadius="5px"
+            px="3rem"
+            pt="3.3rem"
+            pb="3rem">
+            <Flex direction="column" align="center">
+              <Heading
+                size="xl"
+                fontSize="2.6rem"
+                mb={6}
+                color="#ccc"
+                textAlign="center">
+                Confirm Your Email
+              </Heading>
+              <Text
+                textAlign="center"
+                color="#ccc"
+                fontSize="1.15rem"
+                lineHeight="1.5rem">
+                You&apos;re almost ready to go!
               </Text>
+              <Text
+                textAlign="center"
+                color="#ccc"
+                fontSize="1.15rem"
+                lineHeight="1.5rem">
+                Confirm your email by clicking the link we sent you.
+              </Text>
+
+              <Button
+                variant="primary"
+                width="100%"
+                p={2}
+                mt="3.5rem"
+                fontSize="md"
+                onClick={() => onCloseConfirmEmail()}>
+                Ok
+              </Button>
             </Flex>
           </ModalBody>
         </ModalContent>

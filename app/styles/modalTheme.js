@@ -25,6 +25,12 @@ const legalVariant = definePartsStyle({
   },
 });
 
+const emailConfirmation = definePartsStyle({
+  body: {
+    boxSize: "xl",
+  },
+});
+
 export const modalTheme = defineMultiStyleConfig({
-  variants: { defaultVariant, legalVariant },
+  variants: { defaultVariant, legalVariant, emailConfirmation },
 });

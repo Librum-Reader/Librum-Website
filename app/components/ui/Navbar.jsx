@@ -525,24 +525,28 @@ const Navbar = () => {
                     NEWS
                   </Button>
                 </Link>
-                <Link
+                {/* <Link
                   style={{ display: "flex", width: "100%" }}
                   href=""
                   onClick={() => {
                     onOpen();
                     onDrawerClose();
                   }}
+                > */}
+                <Button
+                  w="full"
+                  size="md"
+                  variant="drawerButton"
+                  rightIcon={<FaAngleRight />}
+                  iconSpacing="auto"
+                  onClick={() => {
+                    onOpen();
+                    onDrawerClose();
+                  }}
                 >
-                  <Button
-                    w="full"
-                    size="md"
-                    variant="drawerButton"
-                    rightIcon={<FaAngleRight />}
-                    iconSpacing="auto"
-                  >
-                    CONTACT
-                  </Button>
-                </Link>
+                  CONTACT
+                </Button>
+                {/* </Link> */}
 
                 {/* <Flex w="100%" justify="space-between" align="center">
                   <Link href="3">LOGOUT</Link>

@@ -568,16 +568,16 @@ const Navbar = () => {
                         <ProfileButtonMobile />
                       </Link>
                     ) : (
-                      <Link href="">
-                        <Button
-                          onClick={() => {
-                            setLoginOpen(true);
-                          }}
-                          variant="drawerButton"
-                        >
-                          LOGIN
-                        </Button>
-                      </Link>
+                      // <Link href="">
+                      <Button
+                        onClick={() => {
+                          setLoginOpen(true);
+                        }}
+                        variant="drawerButton"
+                      >
+                        LOGIN
+                      </Button>
+                      // </Link>
                     )}
                   </Flex>
                   {colorMode === "dark" ? (

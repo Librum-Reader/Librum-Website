@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Button,
   Spinner,
@@ -25,6 +25,7 @@ import { useRouter } from "next/navigation";
 
 const DeleteAccount = ({ email, token }) => {
   const dispatch = useDispatch();
+  const [emailMatches, setEmailMatches] = useState(true);
 
   const {
     isOpen: isDeleteAccountOpen,
@@ -35,11 +36,11 @@ const DeleteAccount = ({ email, token }) => {
   const router = useRouter();
 
   const deleteAccount = () => {
-    // localStorage.setItem("deletedAccount", email);
-    // localStorage.removeItem("token");
-    // dispatch(updateLoggedIn(false));
-    //deleteAccount(token)
-    // router.push("/accountdeleted");
+    localStorage.setItem("deletedAccount", email);
+    localStorage.removeItem("token");
+    dispatch(updateLoggedIn(false));
+    deleteAccount(token);
+    router.push("/accountdeleted");
   };
 
   return (
@@ -75,7 +76,7 @@ const DeleteAccount = ({ email, token }) => {
               </Text>
               <Flex direction="column">
                 <Text mb=".1rem" fontSize="sm" fontWeight="semibold">
-                  Confirm account deletion by entering your account's email
+                  Confirm account deletion by entering your account&apos;s email
                 </Text>
                 <Input type="text" placeholder="Your email" />
                 <Flex gap="1rem" mt="3rem" mb="1rem">
@@ -87,7 +88,11 @@ const DeleteAccount = ({ email, token }) => {
                   >
                     Cancel
                   </Button>
-                  <Button variant="destructive" onClick={deleteAccount}>
+                  <Button
+                    variant="destructive"
+                    disabled
+                    onClick={deleteAccount}
+                  >
                     Delete account
                   </Button>
                 </Flex>

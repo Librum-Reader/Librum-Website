@@ -357,3 +357,21 @@ export const deleteAvatar = async (data) => {
     console.log(err);
   }
 };
+
+export const deleteAccount = async (data) => {
+  try {
+    const response = await fetch("https://api.librumreader.com/user", {
+      headers: {
+        Accept: "application/json",
+        Authorization: `Bearer ${data}`,
+        "Content-Type": "application/json",
+      },
+      method: "DELETE",
+    });
+
+    const result = await response;
+    console.log(result);
+  } catch (err) {
+    console.log(err);
+  }
+};

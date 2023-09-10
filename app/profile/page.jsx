@@ -239,7 +239,7 @@ const UserProfile = () => {
             </Flex>
           </GridItem>
         </Grid>
-        <AccountSettings />
+        <AccountSettings email={data?.email} />
       </Flex>
       {/* Edit email modal */}
       {/* <Modal

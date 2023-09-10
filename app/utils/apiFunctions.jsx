@@ -20,6 +20,8 @@ export const userLogin = async (data) => {
 
     localStorage.setItem("token", result);
 
+    console.log(result);
+
     return result;
   } catch (error) {
     console.error(error);
@@ -46,9 +48,21 @@ export const userRegistration = async (data) => {
       }
     );
 
-    const result = await response.json();
+    const { status } = response;
 
-    return result;
+    if (status >= 400 && status <= 500) {
+      const result = await response?.json();
+
+      return {
+        success: false,
+        ...result,
+      };
+    }
+
+    return {
+      success: true,
+      status,
+    };
   } catch (error) {
     console.error(error);
   }
@@ -92,6 +106,7 @@ export const fetchBooks = async (data) => {
 
 export const getVerifiedStatus = async (email) => {
   try {
+    // console.log(token);
     const response = await fetch(
       `https://api.librumreader.com/authentication/checkIfEmailConfirmed/${email}`,
       {
@@ -108,6 +123,7 @@ export const getVerifiedStatus = async (email) => {
     if (result == true) {
       return true;
     }
+    // return result;
   } catch (error) {
     console.error(error);
   }
@@ -115,6 +131,14 @@ export const getVerifiedStatus = async (email) => {
 
 export const editUser = async (data) => {
   try {
+    console.log(
+      JSON.stringify({
+        op: "replace",
+        path: "firstname",
+        value: data.email,
+      })
+    );
+
     const response = await fetch("https://api.librumreader.com/user", {
       headers: {
         Accept: "application/json",
@@ -146,6 +170,7 @@ export const editUser = async (data) => {
       ]),
     });
     const result = await response;
+    console.log(result);
     return result;
   } catch (error) {
     console.error(error);
@@ -154,6 +179,14 @@ export const editUser = async (data) => {
 
 export const updatePictureInfo = async (data) => {
   try {
+    console.log(
+      JSON.stringify({
+        op: "replace",
+        path: "firstname",
+        value: data.email,
+      })
+    );
+
     const response = await fetch("https://api.librumreader.com/user", {
       headers: {
         Accept: "application/json",
@@ -175,6 +208,7 @@ export const updatePictureInfo = async (data) => {
       ]),
     });
     const result = await response;
+    console.log(result);
     return result;
   } catch (error) {
     console.error(error);
@@ -182,6 +216,8 @@ export const updatePictureInfo = async (data) => {
 };
 
 export const changePassword = async (data) => {
+  console.log(data);
+
   try {
     const response = await fetch("https://api.librumreader.com/user", {
       headers: {
@@ -222,6 +258,7 @@ export const uploadAvatar = async (data) => {
     );
 
     const result = await response;
+    console.log(result);
 
     return result;
   } catch (error) {
@@ -259,18 +296,21 @@ export const fetchAvatar = async (data) => {
 };
 
 export const resetPassword = async (email) => {
+  console.log(email);
   try {
     const response = await fetch(
       `https://api.librumreader.com/user/forgotPassword/${email}`,
       { method: "POST" }
     );
     const result = await response;
+    console.log(result);
   } catch (err) {
     console.log(err);
   }
 };
 
 export const confirmPasswordReset = async (data) => {
+  console.log(data);
   try {
     const response = await fetch(
       "https://api.librumreader.com/user/resetPassword",
@@ -290,12 +330,14 @@ export const confirmPasswordReset = async (data) => {
     );
 
     const result = await response;
+    console.log(result);
   } catch (err) {
     console.log(err);
   }
 };
 
 export const deleteAvatar = async (data) => {
+  console.log(data);
   try {
     const response = await fetch(
       "https://api.librumreader.com/user/profilePicture",
@@ -310,6 +352,7 @@ export const deleteAvatar = async (data) => {
     );
 
     const result = await response;
+    console.log(result);
   } catch (err) {
     console.log(err);
   }

@@ -370,6 +370,7 @@ export const deleteAccount = async (data) => {
     });
 
     const result = await response;
+    console.log(result);
   } catch (err) {
     console.log(err);
   }

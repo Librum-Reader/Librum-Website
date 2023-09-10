@@ -3,12 +3,16 @@
 import React from "react";
 import { Flex, Text } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { updateLoggedIn } from "@/app/features/user/userSlice";
 
 const AccountDeleted = () => {
   const [email, setEmail] = useState();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setEmail(localStorage.getItem("deletedAccount"));
+    dispatch(updateLoggedIn(false));
   });
 
   return (

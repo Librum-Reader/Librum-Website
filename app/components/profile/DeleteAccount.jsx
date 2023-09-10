@@ -17,15 +17,10 @@ import {
 
 import { deleteAccount } from "../../utils/apiFunctions";
 
-import { useSelector, useDispatch } from "react-redux";
-
-import { updateLoggedIn } from "@/app/features/user/userSlice";
-
 import { useRouter } from "next/navigation";
 
 const DeleteAccount = ({ email, token }) => {
-  const dispatch = useDispatch();
-  const [emailMatches, setEmailMatches] = useState(true);
+  const [emailMatches, setEmailMatches] = useState(false);
 
   const {
     isOpen: isDeleteAccountOpen,
@@ -35,12 +30,17 @@ const DeleteAccount = ({ email, token }) => {
 
   const router = useRouter();
 
-  const deleteAccount = () => {
+  const handleDeleteAccount = () => {
     localStorage.setItem("deletedAccount", email);
     localStorage.removeItem("token");
-    dispatch(updateLoggedIn(false));
     deleteAccount(token);
     router.push("/accountdeleted");
+  };
+
+  const validateEmail = (e) => {
+    if (e.target.value === email) {
+      setEmailMatches(true);
+    }
   };
 
   return (
@@ -78,7 +78,11 @@ const DeleteAccount = ({ email, token }) => {
                 <Text mb=".1rem" fontSize="sm" fontWeight="semibold">
                   Confirm account deletion by entering your account&apos;s email
                 </Text>
-                <Input type="text" placeholder="Your email" />
+                <Input
+                  type="text"
+                  placeholder="Your email"
+                  onChange={validateEmail}
+                />
                 <Flex gap="1rem" mt="3rem" mb="1rem">
                   <Button
                     variant="primary"
@@ -90,8 +94,8 @@ const DeleteAccount = ({ email, token }) => {
                   </Button>
                   <Button
                     variant="destructive"
-                    disabled
-                    onClick={deleteAccount}
+                    isDisabled={emailMatches ? false : true}
+                    onClick={handleDeleteAccount}
                   >
                     Delete account
                   </Button>

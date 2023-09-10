@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Flex, Text, Button } from "@chakra-ui/react";
 import { useCookies } from "react-cookie";
 import { useSelector, useDispatch } from "react-redux";
@@ -12,6 +12,12 @@ import {
 import DeleteAccount from "./DeleteAccount";
 
 const AccountSettings = ({ email }) => {
+  const [token, setToken] = useState();
+
+  useEffect(() => {
+    setToken(localStorage.getItem("token"));
+  });
+
   const router = useRouter();
   // Logout function
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
@@ -61,7 +67,7 @@ const AccountSettings = ({ email }) => {
           >
             Logout
           </Button>
-          <DeleteAccount email={email} />
+          <DeleteAccount email={email} token={token} />
         </Flex>
       </Flex>
     </Flex>

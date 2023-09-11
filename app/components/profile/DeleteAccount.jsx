@@ -62,6 +62,7 @@ const DeleteAccount = ({ email, token }) => {
         isCentered
         size="lg"
       >
+        <ModalOverlay />
         <ModalContent mx="1rem">
           <ModalHeader>Delete account</ModalHeader>
           <ModalCloseButton />

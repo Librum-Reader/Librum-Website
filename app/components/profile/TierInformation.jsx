@@ -1,6 +1,7 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Flex, Text, Button } from "@chakra-ui/react";
+import UpgradeTier from "../profile/UpgradeTier";
 
 const TierInformation = () => {
   let token;
@@ -68,9 +69,7 @@ const TierInformation = () => {
         </Text>
       </Flex>
       <Flex direction="column" gap="1rem">
-        <Button size="sm" variant="primary" h="40px">
-          Upgrade
-        </Button>
+        <UpgradeTier />
         <Button size="sm" variant="secondary" h="40px">
           See why we offer multiple tiers
         </Button>

@@ -29,8 +29,6 @@ const AccountSettings = ({ email }) => {
     },
   });
 
-  console.log("DATA", data?.role);
-
   const router = useRouter();
   // Logout function
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);

@@ -4,8 +4,8 @@ import { Iframe } from "sanity-plugin-iframe-pane";
 function getPreviewUrl(doc) {
   console.log(doc);
   return doc?._id
-    ? `http://localhost:3000/preview?id=${doc._id}`
-    : `http://localhost:3333`;
+    ? `https://librumreader.com/preview?id=${doc._id}`
+    : `https://librumreader.com`;
 }
 
 // Import this into the deskTool() plugin

@@ -68,7 +68,12 @@ const News = () => {
   }
 
   return (
-    <Flex background="bg-default" align="center" direction="column">
+    <Flex
+      background="bg-default"
+      align="center"
+      direction="column"
+      px={{ base: "1rem", md: "0" }}
+    >
       <Box>
         <Heading
           size="2xl"

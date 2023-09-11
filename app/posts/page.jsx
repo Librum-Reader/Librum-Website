@@ -78,9 +78,10 @@ const Posts = () => {
       direction="column"
       maxW="975px"
       mx="auto"
+      px={{ base: "1rem", md: "0" }}
     >
-      <Box>
-        <Heading size="2xl" color="#946bde" mt="2rem">
+      <Box textAlign="center">
+        <Heading size={{ base: "xl", md: "2xl" }} color="#946bde" mt="2rem">
           {post?.title}
         </Heading>
       </Box>
@@ -93,12 +94,17 @@ const Posts = () => {
         mb="2rem"
       >
         <Flex align="center" gap="1rem">
-          <Avatar src={post?.authorImg} />
-          <Text fontSize="1.5rem" fontWeight="bold">
+          <Avatar
+            src={post?.authorImg}
+            boxSize={{ base: "35px", md: "48px" }}
+          />
+          <Text fontSize={{ base: "1rem", md: "1.5rem" }} fontWeight="bold">
             {post?.author}
           </Text>
         </Flex>
-        <Text>{new Date(post?.publishedAt).toDateString().slice(4)}</Text>
+        <Text fontSize={{ base: ".8rem", md: "1rem" }}>
+          {new Date(post?.publishedAt).toDateString().slice(4)}
+        </Text>
       </Flex>
       <VStack spacing={8} mb={8} maxW="1300px">
         {/* <Image

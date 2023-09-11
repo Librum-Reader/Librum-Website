@@ -94,6 +94,7 @@ const Posts = () => {
       w="100%"
       maxW="975px"
       mx="auto"
+      p="1rem"
     >
       <Box>
         <Heading size="2xl" color="#946bde" mt="2rem">
@@ -119,12 +120,19 @@ const Posts = () => {
         </Text>
       </Flex>
       <VStack spacing={8} mb={8} maxW="1300px">
-        <Image
-          src={data?.result[0].heroImageUrl}
-          boxSize="150px"
-          display={{ base: "none", md: "block" }}
-          objectFit="cover"
-        />
+        {data?.result[0].heroImageUrl ? (
+          <Image
+            src={data?.result[0].heroImageUrl}
+            boxSize="150px"
+            display={{ base: "none", md: "block" }}
+            objectFit="cover"
+          />
+        ) : (
+          <Text fontWeight="semibold">
+            [No hero image selected. This warning will not show up in the
+            published post.]
+          </Text>
+        )}
         <Text>
           <PortableText
             value={data?.result[0].body}

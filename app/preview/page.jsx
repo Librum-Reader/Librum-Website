@@ -30,8 +30,6 @@ const Posts = () => {
     useCdn: false,
   });
 
-  console.log("API KEY", API_KEY);
-
   const { data, isLoading } = useQuery({
     queryFn: async () => {
       const id = searchParams.get("id");

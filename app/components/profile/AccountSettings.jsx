@@ -3,11 +3,15 @@ import { Flex, Text, Button } from "@chakra-ui/react";
 import { useCookies } from "react-cookie";
 import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
+import { useQuery } from "@tanstack/react-query";
 import {
   updateUser,
   updateLoggedIn,
   resetUser,
 } from "@/app/features/user/userSlice";
+
+import Link from "next/link";
+import { fetchUserInfo } from "@/app/utils/apiFunctions";
 
 import DeleteAccount from "./DeleteAccount";
 
@@ -17,6 +21,15 @@ const AccountSettings = ({ email }) => {
   useEffect(() => {
     setToken(localStorage.getItem("token"));
   });
+
+  const { isLoading, error, data } = useQuery({
+    queryKey: ["user"],
+    queryFn: () => {
+      return fetchUserInfo(token);
+    },
+  });
+
+  console.log("DATA", data?.role);
 
   const router = useRouter();
   // Logout function
@@ -46,8 +59,8 @@ const AccountSettings = ({ email }) => {
       <Flex
         direction="column"
         borderRadius="md"
-        w="100%"
         // w="320px"
+        pr="2rem"
       >
         <Text
           fontSize="sm"
@@ -70,6 +83,41 @@ const AccountSettings = ({ email }) => {
           <DeleteAccount email={email} token={token} />
         </Flex>
       </Flex>
+      {data?.role === "Admin" ? (
+        <Flex
+          direction="column"
+          // w="320px"
+          pl={{ base: 0, md: "2rem" }}
+          pt={{ base: "2rem", md: 0 }}
+          borderLeft={{ base: "0px", md: "1px" }}
+          borderTop={{ base: "1px", md: "0px" }}
+          borderColor={{
+            base: "user-profile-border",
+            md: "user-profile-border",
+          }}
+        >
+          <Text
+            fontSize="sm"
+            textColor="text-default"
+            mb={{ base: "1rem", md: "2rem" }}
+          >
+            ADMIN FUNCTIONS
+          </Text>
+          <Flex direction="column" my="1rem" mb="2rem" gap="1rem">
+            <Link href="/studio" target="#">
+              <Button
+                variant="primary"
+                size="sm"
+                alignSelf="start"
+                h="40px"
+                w="150px"
+              >
+                Sanity Studio
+              </Button>
+            </Link>
+          </Flex>
+        </Flex>
+      ) : null}
     </Flex>
   );
 };

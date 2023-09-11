@@ -20,7 +20,7 @@ import { PortableText } from "@portabletext/react";
 import SanityImage from "../components/blog/SanityImage";
 
 const Posts = () => {
-  const API_KEY = process.env.SANITY_API;
+  const API_KEY = process.env.NEXT_PUBLIC_SANITY_API;
   const searchParams = useSearchParams();
   const id = searchParams.get("id");
   const client = createClient({
@@ -30,10 +30,25 @@ const Posts = () => {
     useCdn: false,
   });
 
+  console.log("API KEY", API_KEY);
+
   const { data, isLoading } = useQuery({
     queryFn: async () => {
       const id = searchParams.get("id");
-      const query = encodeURIComponent(`*[_id=='${id}']`);
+      const query = encodeURIComponent(`*[_id=='${id}']{
+        _id,
+        title,
+        publishedAt,
+        body,
+        author->{
+          _id,
+          name,
+          image
+        },
+        "authorImg": author -> image.asset -> url,
+        "heroImageUrl": heroImage.asset -> url
+
+      }`);
       try {
         const response = await fetch(
           `https://46vwrypj.api.sanity.io/v2023-08-27/data/query/production?query=${query}`,
@@ -41,14 +56,14 @@ const Posts = () => {
             headers: {
               Accept: "application/json",
               "Content-Type": "application/json",
-              Authorization: `Bearer`,
+              Authorization: `Bearer ${API_KEY}`,
             },
             method: "GET",
           }
         );
 
         const result = await response.json();
-        console.log(result);
+        console.log(result.result[0].heroImageUrl);
 
         return result;
       } catch {
@@ -57,18 +72,6 @@ const Posts = () => {
     },
     queryKey: ["preview_post"],
   });
-
-  console.log("query data", data?.result[0]);
-
-  // const [post, setPost] = useState();
-
-  // useEffect(() => {
-  //   const fetchedPost = fetchPost();
-  //   fetchedPost.then((post) => {
-  //     setPost(post);
-  //     console.log(post);
-  //   });
-  // }, []);
 
   const myPortableTextComponents = {
     types: {
@@ -88,6 +91,7 @@ const Posts = () => {
       background="bg-default"
       align="center"
       direction="column"
+      w="100%"
       maxW="975px"
       mx="auto"
     >
@@ -107,14 +111,16 @@ const Posts = () => {
         <Flex align="center" gap="1rem">
           <Avatar src={data?.result[0].authorImg} />
           <Text fontSize="1.5rem" fontWeight="bold">
-            {/* {data?.result[0].author} */}
+            {data?.result[0].author.name}
           </Text>
         </Flex>
-        {/* <Text>{new Date(post?.publishedAt).toDateString().slice(4)}</Text> */}
+        <Text>
+          {new Date(data?.result[0].publishedAt).toDateString().slice(4)}
+        </Text>
       </Flex>
       <VStack spacing={8} mb={8} maxW="1300px">
         <Image
-          src={data?.result.heroImageUrl}
+          src={data?.result[0].heroImageUrl}
           boxSize="150px"
           display={{ base: "none", md: "block" }}
           objectFit="cover"

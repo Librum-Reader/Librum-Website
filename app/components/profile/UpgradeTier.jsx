@@ -44,8 +44,8 @@ const UpgradeTier = () => {
             >
               <Heading>Upgrade Your Tier</Heading>
               <Text>
-                We don't offer upgrading options at the moment. If you require
-                additional storage, please contact us at{" "}
+                We don&apos;t offer upgrading options at the moment. If you
+                require additional storage, please contact us at{" "}
                 <Text fontWeight="semibold" as="span">
                   contact@librumreader.com
                 </Text>

@@ -48,6 +48,7 @@ const Posts = () => {
       console.error("Error retrieving posts.");
     }
   };
+
   const [post, setPost] = useState();
 
   useEffect(() => {
@@ -70,6 +71,8 @@ const Posts = () => {
       },
     },
   };
+
+  console.log(post?.body);
 
   return (
     <Flex

@@ -68,6 +68,14 @@ const blockContent = {
           type: "string",
           title: "Alternative Text",
         },
+        {
+          name: "size",
+          title: "Image Size",
+          type: "string",
+          options: {
+            list: ["small", "medium", "large"],
+          },
+        },
       ],
     },
   ],

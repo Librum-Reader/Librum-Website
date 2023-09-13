@@ -61,6 +61,11 @@ const blockContent = {
     // as a block type.
     {
       type: "image",
+      initialValue: {
+        wrap: "noWrap",
+        alignment: "center",
+        size: "medium",
+      },
       options: { hotspot: true },
       fields: [
         {
@@ -73,7 +78,35 @@ const blockContent = {
           title: "Image Size",
           type: "string",
           options: {
-            list: ["small", "medium", "large"],
+            list: [
+              { title: "Small", value: "small" },
+              { title: "Medium", value: "medium" },
+              { title: "Large", value: "large" },
+            ],
+          },
+        },
+        {
+          name: "alignment",
+          title: "Image Alignment",
+          type: "string",
+          options: {
+            list: [
+              { title: "Left", value: "left" },
+              { title: "Center", value: "center" },
+              { title: "Right", value: "right" },
+            ],
+          },
+        },
+        {
+          name: "wrap",
+          title: "Wrap Text Around Image",
+          type: "string",
+          options: {
+            list: [
+              { title: "No wrap", value: "noWrap" },
+              { title: "Wrap", value: "wrap" },
+            ],
+            layout: "radio",
           },
         },
       ],

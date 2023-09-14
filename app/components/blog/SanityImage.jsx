@@ -10,22 +10,26 @@ const client = createClient({
   useCdn: false,
 });
 
-const SanityImage = ({ asset, size }) => {
+const SanityImage = ({ asset, size, alignment }) => {
   const imageProps = useNextSanityImage(client, asset);
 
   if (!imageProps) return null;
 
-  let source;
+  let height;
+
   if (size === "small") {
-    source = imageProps?.src + "&h=200";
+    height = "&h=200";
   } else if (size === "medium") {
-    source = imageProps?.src + "&h=400";
+    height = "&h=400";
   } else if (size === "large") {
-    source = imageProps?.src + "&h=600";
+    height = "&h=600";
   }
 
+  const source = imageProps?.src + height;
+  console.log(alignment);
+
   return (
-    <Flex w="100%" justify="center">
+    <Flex w="100%" justify={alignment}>
       <img
         // {...imageProps}
         src={source}

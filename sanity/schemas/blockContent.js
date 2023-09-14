@@ -104,7 +104,8 @@ const blockContent = {
           options: {
             list: [
               { title: "No wrap", value: "noWrap" },
-              { title: "Wrap", value: "wrap" },
+              { title: "Wrap - align right", value: "wrap-right" },
+              { title: "Wrap - align left", value: "wrap-left" },
             ],
             layout: "radio",
           },

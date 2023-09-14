@@ -10,7 +10,7 @@ const client = createClient({
   useCdn: false,
 });
 
-const SanityImage = ({ asset, size, alignment }) => {
+const SanityImage = ({ asset, size, alignment, wrap }) => {
   const imageProps = useNextSanityImage(client, asset);
 
   if (!imageProps) return null;
@@ -26,10 +26,9 @@ const SanityImage = ({ asset, size, alignment }) => {
   }
 
   const source = imageProps?.src + height;
-  console.log(alignment);
-
-  return (
-    <Flex w="100%" justify={alignment}>
+  console.log(imageProps?.wrap);
+  if (wrap === "wrap-left") {
+    return (
       <img
         // {...imageProps}
         src={source}
@@ -38,9 +37,37 @@ const SanityImage = ({ asset, size, alignment }) => {
         // width={200}
         // height={200}
         alt="Blog image"
+        style={{ float: "right", margin: ".5rem" }}
       />
-    </Flex>
-  );
+    );
+  } else if (wrap === "wrap-right") {
+    return (
+      <img
+        // {...imageProps}
+        src={source}
+        // layout="responsive"
+        // // sizes="(max-width: 800px) 100vw, 800px"
+        // width={200}
+        // height={200}
+        alt="Blog image"
+        style={{ float: "right", margin: ".5rem" }}
+      />
+    );
+  } else {
+    return (
+      <Flex w="100%" justify={alignment}>
+        <img
+          // {...imageProps}
+          src={source}
+          // layout="responsive"
+          // // sizes="(max-width: 800px) 100vw, 800px"
+          // width={200}
+          // height={200}
+          alt="Blog image"
+        />
+      </Flex>
+    );
+  }
 };
 
 export default SanityImage;

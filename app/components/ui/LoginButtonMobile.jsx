@@ -229,6 +229,7 @@ const LoginButtonMobile = ({ closeDrawer }) => {
   // Register modal logic
   const registerAccount = () => {
     onCloseLogin();
+    setLoginOpen(false);
     onOpenRegister();
   };
 
@@ -286,7 +287,10 @@ const LoginButtonMobile = ({ closeDrawer }) => {
         isCentered
         initialFocusRef={initialRef}
         isOpen={isOpenLogin}
-        onClose={onCloseLogin}
+        onClose={() => {
+          onCloseLogin();
+          setLoginOpen(false);
+        }}
         variant="defaultVariant"
       >
         <ModalOverlay />
@@ -300,14 +304,19 @@ const LoginButtonMobile = ({ closeDrawer }) => {
           <ModalBody>
             <Center>
               <Box textAlign="center" mb="1rem">
-                <Heading size="md" pb=".5rem">
+                <Heading size="xl" pb=".5rem">
                   Welcome back!
                 </Heading>
-                <Text fontSize="sm">Log into your account</Text>
+                <Text fontSize="md">Log into your account</Text>
               </Box>
             </Center>
             <FormControl>
-              <FormLabel fontSize="sm" textColor="text-default">
+              <FormLabel
+                fontSize="sm"
+                textColor="text-default"
+                mb="0"
+                fontWeight="semibold"
+              >
                 Email
               </FormLabel>
               <Input
@@ -321,7 +330,12 @@ const LoginButtonMobile = ({ closeDrawer }) => {
             </FormControl>
 
             <FormControl mt={4}>
-              <FormLabel fontSize="sm" textColor="text-default">
+              <FormLabel
+                fontSize="sm"
+                textColor="text-default"
+                mb="0"
+                fontWeight="semibold"
+              >
                 Password
               </FormLabel>
               <InputGroup>
@@ -392,17 +406,22 @@ const LoginButtonMobile = ({ closeDrawer }) => {
             <Center>
               <Flex direction="column">
                 <Box textAlign="center" mb="1rem">
-                  <Heading size="md" pb=".5rem">
+                  <Heading size="xl" pb=".5rem">
                     Welcome to Librum
                   </Heading>
-                  <Text fontSize="xs">
+                  <Text fontSize="md">
                     Your credentials are only used to authenticate you. Your
                     credentials will be stored in a secure database.
                   </Text>
                 </Box>
-                <Flex gap="1rem" mb="1rem">
+                <Flex gap="1rem" mb="1rem" direction="column">
                   <FormControl>
-                    <FormLabel fontSize="xs" textColor="text-default">
+                    <FormLabel
+                      fontSize="sm"
+                      textColor="text-default"
+                      mb="0"
+                      fontWeight="semibold"
+                    >
                       First Name
                     </FormLabel>
                     <Input
@@ -413,7 +432,12 @@ const LoginButtonMobile = ({ closeDrawer }) => {
                     />
                   </FormControl>
                   <FormControl>
-                    <FormLabel fontSize="xs" textColor="text-default">
+                    <FormLabel
+                      fontSize="sm"
+                      textColor="text-default"
+                      mb="0"
+                      fontWeight="semibold"
+                    >
                       Last Name
                     </FormLabel>
                     <Input
@@ -426,7 +450,12 @@ const LoginButtonMobile = ({ closeDrawer }) => {
                 </Flex>
                 <Box>
                   <FormControl>
-                    <FormLabel fontSize="xs" textColor="text-default">
+                    <FormLabel
+                      fontSize="sm"
+                      textColor="text-default"
+                      mb="0"
+                      fontWeight="semibold"
+                    >
                       Email
                     </FormLabel>
                     <Input
@@ -437,7 +466,12 @@ const LoginButtonMobile = ({ closeDrawer }) => {
                     />
                   </FormControl>
                   <FormControl mt={4}>
-                    <FormLabel fontSize="xs" textColor="text-default">
+                    <FormLabel
+                      fontSize="sm"
+                      textColor="text-default"
+                      mb="0"
+                      fontWeight="semibold"
+                    >
                       Password
                     </FormLabel>
                     <Input
@@ -448,7 +482,12 @@ const LoginButtonMobile = ({ closeDrawer }) => {
                     />
                   </FormControl>
                   <FormControl mt={4}>
-                    <FormLabel fontSize="xs" textColor="text-default">
+                    <FormLabel
+                      fontSize="sm"
+                      textColor="text-default"
+                      mb="0"
+                      fontWeight="semibold"
+                    >
                       Confirm password
                     </FormLabel>
                     <Input fontSize="xs" variant="defaultVariant" />
@@ -471,6 +510,7 @@ const LoginButtonMobile = ({ closeDrawer }) => {
                 }}
                 variant="primary"
                 width="100%"
+                height="44px"
                 mb="1rem"
               >
                 {register.isLoading ? <BeatLoader /> : "Let's Get Started"}

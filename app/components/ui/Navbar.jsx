@@ -572,6 +572,7 @@ const Navbar = () => {
                       <Button
                         onClick={() => {
                           setLoginOpen(true);
+                          console.log("open login", loginOpen);
                         }}
                         variant="drawerButton"
                       >

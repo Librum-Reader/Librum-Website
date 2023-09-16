@@ -167,13 +167,13 @@ export function Providers({ children }) {
           primary: {
             bg: "btn-primary-bg",
             textColor: "white",
-            fontSize: "sm",
+            fontSize: "md",
             borderRadius: "3px",
           },
           secondary: {
             bg: "transparent",
             textColor: "btn-secondary-text",
-            fontSize: "sm",
+            fontSize: "md",
             borderWidth: "1px",
             borderColor: "btn-secondary-border",
             borderRadius: "3px",
@@ -181,7 +181,7 @@ export function Providers({ children }) {
           destructive: {
             bg: "transparent",
             textColor: "red",
-            fontSize: "sm",
+            fontSize: "md",
             borderWidth: "1px",
             borderColor: "red",
             borderRadius: "3px",
@@ -190,7 +190,7 @@ export function Providers({ children }) {
           showcase: {
             bg: "transparent",
             textColor: "white",
-            fontSize: "sm",
+            fontSize: "md",
             borderWidth: "1px",
             borderColor: "btn-secondary-border",
             borderRadius: "3px",

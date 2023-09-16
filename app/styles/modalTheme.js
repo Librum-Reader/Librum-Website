@@ -6,7 +6,7 @@ const { definePartsStyle, defineMultiStyleConfig } =
 
 const defaultVariant = definePartsStyle({
   dialog: {
-    borderRadius: "6px",
+    borderRadius: "8px",
     bg: "bg-modal-default",
     textColor: "text-default",
     maxWidth: "470px",

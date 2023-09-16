@@ -47,7 +47,7 @@ const DeleteAccount = ({ email, token }) => {
     <>
       <Button
         variant="destructive"
-        w="150px"
+        w="170px"
         size="sm"
         alignSelf="start"
         h="40px"

@@ -74,7 +74,7 @@ const AccountSettings = ({ email }) => {
             alignSelf="start"
             onClick={logOut}
             h="40px"
-            w="150px"
+            w="170px"
           >
             Logout
           </Button>

@@ -216,7 +216,7 @@ const Navbar = () => {
               py="1rem"
             >
               <Heading mb="2rem">Thank you!</Heading>
-              <Text mb="2rem" fontSize="sm" color="text-default">
+              <Text mb="2rem" color="text-default">
                 We have received your message, and someone from our team will be
                 in touch shortly.
               </Text>

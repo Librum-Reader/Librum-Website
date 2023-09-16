@@ -95,6 +95,8 @@ const LoginButtonMobile = ({ closeDrawer }) => {
   const [token, setToken] = useState(null);
   const [email, setEmail] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [showRegPassword, setShowRegPassword] = useState(false);
+
   const [password, setPassword] = useState("");
 
   // User register state
@@ -137,6 +139,7 @@ const LoginButtonMobile = ({ closeDrawer }) => {
   const handleEmail = (event) => setEmail(event.target.value);
   const handlePassword = (event) => setPassword(event.target.value);
   const handleShowPassword = () => setShowPassword(!showPassword);
+  const handleShowRegisterPassword = () => setShowRegPassword(!showRegPassword);
 
   // Redux functions for storing user info after login
   const dispatch = useDispatch();
@@ -347,7 +350,7 @@ const LoginButtonMobile = ({ closeDrawer }) => {
                   variant="defaultVariant"
                   type={showPassword ? "text" : "password"}
                 />
-                <InputRightElement width="4.5rem">
+                <InputRightElement width="3rem">
                   <Button
                     h="1.75rem"
                     size="sm"
@@ -474,12 +477,29 @@ const LoginButtonMobile = ({ closeDrawer }) => {
                     >
                       Password
                     </FormLabel>
-                    <Input
-                      fontSize="xs"
-                      value={registerPassword}
-                      onChange={handleRegPass}
-                      variant="defaultVariant"
-                    />
+                    <InputGroup>
+                      <Input
+                        fontSize="xs"
+                        value={registerPassword}
+                        onChange={handleRegPass}
+                        variant="defaultVariant"
+                        type={showRegPassword ? "text" : "password"}
+                      />
+                      <InputRightElement width="3rem">
+                        <Button
+                          h="1.75rem"
+                          size="sm"
+                          onClick={handleShowRegisterPassword}
+                          variant="ghost"
+                        >
+                          {showPassword ? (
+                            <AiOutlineEyeInvisible />
+                          ) : (
+                            <AiOutlineEye />
+                          )}
+                        </Button>
+                      </InputRightElement>
+                    </InputGroup>
                   </FormControl>
                   <FormControl mt={4}>
                     <FormLabel
@@ -490,7 +510,27 @@ const LoginButtonMobile = ({ closeDrawer }) => {
                     >
                       Confirm password
                     </FormLabel>
-                    <Input fontSize="xs" variant="defaultVariant" />
+                    <InputGroup>
+                      <Input
+                        fontSize="xs"
+                        variant="defaultVariant"
+                        type={showRegPassword ? "text" : "password"}
+                      />
+                      <InputRightElement width="3rem">
+                        <Button
+                          h="1.75rem"
+                          size="sm"
+                          onClick={handleShowRegisterPassword}
+                          variant="ghost"
+                        >
+                          {showPassword ? (
+                            <AiOutlineEyeInvisible />
+                          ) : (
+                            <AiOutlineEye />
+                          )}
+                        </Button>
+                      </InputRightElement>
+                    </InputGroup>
                   </FormControl>
                 </Box>
               </Flex>

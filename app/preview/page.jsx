@@ -18,6 +18,7 @@ import { createClient } from "next-sanity";
 import { useState, useEffect } from "react";
 import { PortableText } from "@portabletext/react";
 import SanityImage from "../components/blog/SanityImage";
+import SanityVideo from "../components/blog/SanityVideo";
 
 const Posts = () => {
   const API_KEY = process.env.NEXT_PUBLIC_SANITY_API;
@@ -61,7 +62,7 @@ const Posts = () => {
         );
 
         const result = await response.json();
-        console.log(result.result[0].heroImageUrl);
+        console.log(result);
 
         return result;
       } catch {
@@ -75,6 +76,9 @@ const Posts = () => {
     types: {
       image: ({ value }) => {
         return <SanityImage {...value} />;
+      },
+      video: ({ value }) => {
+        return <SanityVideo {...value} />;
       },
     },
     block: {

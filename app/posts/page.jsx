@@ -69,6 +69,20 @@ const Posts = () => {
       p: ({ children }) => {
         return <Text mb="1rem">{children}</Text>;
       },
+      h1: ({ children }) => {
+        return (
+          <Heading size={{ base: "lg", md: "xl" }} color="#946bde">
+            {children}
+          </Heading>
+        );
+      },
+      h2: ({ children }) => {
+        return (
+          <Heading size={{ base: "md", md: "lg" }} color="#946bde">
+            {children}
+          </Heading>
+        );
+      },
     },
   };
 

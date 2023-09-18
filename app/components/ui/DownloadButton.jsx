@@ -82,7 +82,7 @@ const DownloadButton = () => {
         >
           Download
         </Button>
-      </Link>
+      </a>
     );
   } else if (os === "Linux") {
     return (
@@ -116,12 +116,12 @@ const DownloadButton = () => {
         </MenuList>
       </Menu>
     );
-  } else if (os === "MacOS") {
-    return (
-      <Button w="250px" variant="primary" leftIcon={<AiFillApple size={18} />}>
-        Coming soon
-      </Button>
-    );
+    // } else if (os === "MacOS") {
+    //   return (
+    //     <Button w="250px" variant="primary" leftIcon={<AiFillApple size={18} />}>
+    //       Coming soon
+    //     </Button>
+    //   );
   } else {
     return (
       <Button w="250px" variant="primary">

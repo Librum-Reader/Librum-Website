@@ -14,8 +14,6 @@ const client = createClient({
 });
 
 const SanityVideo = ({ asset, videoSize, alignment }) => {
-  // const videoProps = useNextSanityImage(client, asset);
-  // if (!imageProps) return null;
   const [videoUrl, setVideoUrl] = useState();
 
   useEffect(() => {
@@ -48,8 +46,6 @@ const SanityVideo = ({ asset, videoSize, alignment }) => {
     width = "940px";
     height = "auto";
   }
-
-  console.log(videoSize);
 
   return (
     <ReactPlayer url={videoUrl} controls={true} width={width} height={height} />

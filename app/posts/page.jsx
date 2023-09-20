@@ -16,7 +16,7 @@ import { createClient } from "next-sanity";
 import { useState, useEffect } from "react";
 import { PortableText } from "@portabletext/react";
 import SanityImage from "../components/blog/SanityImage";
-import SanityVideo from "../components/blog/SanityImage";
+import SanityVideo from "../components/blog/SanityVideo";
 
 const Posts = () => {
   const searchParams = useSearchParams();

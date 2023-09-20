@@ -56,7 +56,6 @@ const Posts = () => {
     const fetchedPost = fetchPost();
     fetchedPost.then((post) => {
       setPost(post);
-      console.log(post);
     });
   }, []);
 
@@ -81,6 +80,13 @@ const Posts = () => {
         );
       },
       h2: ({ children }) => {
+        return (
+          <Heading size={{ base: "md", md: "lg" }} color="#946bde">
+            {children}
+          </Heading>
+        );
+      },
+      h3: ({ children }) => {
         return (
           <Heading size={{ base: "md", md: "lg" }} color="#946bde">
             {children}

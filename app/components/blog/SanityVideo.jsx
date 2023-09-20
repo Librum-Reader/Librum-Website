@@ -46,7 +46,6 @@ const SanityVideo = ({ asset, videoSize, alignment }) => {
     width = "940px";
     height = "auto";
   }
-  console.log(videoUrl);
 
   return (
     <ReactPlayer url={videoUrl} controls={true} width={width} height={height} />

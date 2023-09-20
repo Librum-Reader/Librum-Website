@@ -13,7 +13,7 @@ const client = createClient({
   useCdn: true,
 });
 
-const SanityVideo = ({ asset, size, alignment }) => {
+const SanityVideo = ({ asset, videoSize, alignment }) => {
   // const videoProps = useNextSanityImage(client, asset);
   // if (!imageProps) return null;
   const [videoUrl, setVideoUrl] = useState();
@@ -22,7 +22,8 @@ const SanityVideo = ({ asset, size, alignment }) => {
     client
       .fetch(
         `*[_id == '${assetId}'] {
-      url
+      url,
+      videoSize
     }`
       )
       .then((data) => {
@@ -34,8 +35,25 @@ const SanityVideo = ({ asset, size, alignment }) => {
   }, []);
 
   const assetId = asset?._ref;
+  let width;
+  let height;
 
-  return <ReactPlayer url={videoUrl} controls={true} />;
+  if (videoSize === "small") {
+    width = "300px";
+    height = "auto";
+  } else if (videoSize === "medium") {
+    width = "640px";
+    height = "auto";
+  } else if (videoSize === "large") {
+    width = "940px";
+    height = "auto";
+  }
+
+  console.log(videoSize);
+
+  return (
+    <ReactPlayer url={videoUrl} controls={true} width={width} height={height} />
+  );
 };
 
 export default SanityVideo;

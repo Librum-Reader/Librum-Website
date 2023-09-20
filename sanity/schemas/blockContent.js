@@ -120,6 +120,20 @@ const blockContent = {
       options: {
         accept: "video/*", // Specify the accepted video file formats
       },
+      fields: [
+        {
+          name: "videoSize",
+          title: "Video Size",
+          type: "string",
+          options: {
+            list: [
+              { title: "Small", value: "small" },
+              { title: "Medium", value: "medium" },
+              { title: "Large", value: "large" },
+            ],
+          },
+        },
+      ],
     },
   ],
 };

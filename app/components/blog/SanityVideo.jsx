@@ -15,8 +15,11 @@ const client = createClient({
 
 const SanityVideo = ({ asset, videoSize, alignment }) => {
   const [videoUrl, setVideoUrl] = useState();
+  const [windowWidth, setWindowWidth] = useState();
 
   useEffect(() => {
+    setWindowWidth(window.innerWidth);
+
     client
       .fetch(
         `*[_id == '${assetId}'] {
@@ -48,7 +51,12 @@ const SanityVideo = ({ asset, videoSize, alignment }) => {
   }
 
   return (
-    <ReactPlayer url={videoUrl} controls={true} width={width} height={height} />
+    <ReactPlayer
+      url={videoUrl}
+      controls={true}
+      width={windowWidth < 400 ? "100%" : width}
+      height={height}
+    />
   );
 };
 

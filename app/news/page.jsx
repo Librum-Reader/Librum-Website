@@ -84,28 +84,9 @@ const News = () => {
           News and Updates
         </Heading>
       </Box>
-      <VStack spacing={8} mb={8}>
+      <VStack spacing={2} mb={8}>
         <Text>
           {postArray.map((post, index) => {
-            // if (isLoading === true) {
-            //   return (
-            //     <Flex
-            //       background="user-profile-bg"
-            //       border="1px"
-            //       borderColor="user-profile-border"
-            //       borderRadius="md"
-            //       p={{ base: "1rem", md: "2rem" }}
-            //       direction={{ base: "column", md: "row" }}
-            //       mb="3.5rem"
-            //       // w="320px"
-            //       // h="255px"
-            //     >
-            //       <Flex maxW="1300px" w="100%" gap="4rem" align="center">
-            //         <Spinner />
-            //       </Flex>
-            //     </Flex>
-            //   );
-            // } else {
             return (
               <NewsItems
                 key={index}

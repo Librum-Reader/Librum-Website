@@ -21,7 +21,7 @@ const NewsItems = (props) => {
       borderRadius="md"
       p={{ base: "1rem", md: "2rem" }}
       direction={{ base: "column", md: "row" }}
-      mb="3.5rem"
+      mb="2rem"
       // w="320px"
       // h="255px"
     >

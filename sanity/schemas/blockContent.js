@@ -112,6 +112,29 @@ const blockContent = {
         },
       ],
     },
+    {
+      name: "video",
+      title: "Video File",
+      type: "file",
+      description: "Upload the video file.",
+      options: {
+        accept: "video/*", // Specify the accepted video file formats
+      },
+      fields: [
+        {
+          name: "videoSize",
+          title: "Video Size",
+          type: "string",
+          options: {
+            list: [
+              { title: "Small", value: "small" },
+              { title: "Medium", value: "medium" },
+              { title: "Large", value: "large" },
+            ],
+          },
+        },
+      ],
+    },
   ],
 };
 

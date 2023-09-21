@@ -42,11 +42,11 @@ const NewsItems = (props) => {
             {props.date}
           </Text>
           <Text color="text-default">{props.summary}</Text>
-          <Link href={`/posts?id=${props.id}`}>
+          <a href={`/posts?id=${props.id}`}>
             <Button mt={2} alignSelf="self-start" variant="primary">
               Read More
             </Button>
-          </Link>
+          </a>
         </VStack>
       </Flex>
     </Flex>

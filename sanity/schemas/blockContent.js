@@ -82,6 +82,7 @@ const blockContent = {
               { title: "Small", value: "small" },
               { title: "Medium", value: "medium" },
               { title: "Large", value: "large" },
+              { title: "Full", value: "full" },
             ],
           },
         },

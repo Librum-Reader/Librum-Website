@@ -38,7 +38,7 @@ const SanityVideo = ({ asset, videoSize, alignment }) => {
   const assetId = asset?._ref;
   let width;
   let height;
-
+  console.log("SIZE", videoSize);
   if (videoSize === "small") {
     width = "300px";
     height = "auto";
@@ -50,13 +50,12 @@ const SanityVideo = ({ asset, videoSize, alignment }) => {
     height = "auto";
   }
 
+  console.log("WIDTH", width);
+
   return (
-    <ReactPlayer
-      url={videoUrl}
-      controls={true}
-      width={windowWidth < 400 ? "100%" : width}
-      height={height}
-    />
+    <Flex w={windowWidth < 400 ? "100%" : width}>
+      <ReactPlayer url={videoUrl} controls={true} height="100%" width="100%" />
+    </Flex>
   );
 };
 

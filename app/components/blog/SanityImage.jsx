@@ -24,7 +24,7 @@ const SanityImage = ({ asset, size, alignment, wrap }) => {
   let width;
 
   if (size === "small") {
-    height = "400px";
+    width = "400px";
   } else if (size === "medium") {
     width = "600px";
   } else if (size === "large") {

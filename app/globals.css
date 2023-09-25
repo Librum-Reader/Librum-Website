@@ -26,8 +26,6 @@ body {
   font-family: "Lato", sans-serif;
 }
 
-
-
 .news-image {
   width: 300px;
   height: auto;
@@ -203,6 +201,16 @@ Nav links hover animation
 
 .download-chevron {
   padding-top: 3px;
+}
+
+.contribute-card {
+  transition: 150ms ease-in-out;
+}
+
+.contribute-card:hover {
+  filter: drop-shadow(5px 5px 10px #0000006b);
+  transform: scale(1.05);
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 600px) {

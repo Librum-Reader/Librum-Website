@@ -19,6 +19,7 @@ const ContributeCard = ({ text, icon }) => {
       align="center"
       padding="1rem"
       gap="2rem"
+      className="contribute-card"
       //   p={{ base: "1rem", md: "2rem" }}
       //   direction={{ base: "column", md: "row" }}
       // w="320px"

@@ -26,9 +26,11 @@ import {
 } from "@chakra-ui/react";
 
 import FooterContactForm from "../ui/FooterContactForm";
+import { useRouter } from "next/navigation";
 
 const Footer = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const router = useRouter();
 
   return (
     <>

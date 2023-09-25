@@ -10,7 +10,10 @@ import {
   useToast,
 } from "@chakra-ui/react";
 
+import { usePathname } from "next/navigation";
+
 const FooterContactForm = () => {
+  const path = usePathname();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -88,7 +91,9 @@ const FooterContactForm = () => {
       px={{ base: "1rem", md: "0" }}
     >
       <Heading fontSize="1.5rem" mb="1rem" textAlign="center">
-        Have any questions or concerns?
+        {path === "/news" || path === "/posts"
+          ? "Got any feedback?"
+          : "Have any questions or concerns?"}
       </Heading>
       <form
         onSubmit={(e) => {

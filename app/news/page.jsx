@@ -7,7 +7,6 @@ import "../globals.css";
 
 const News = () => {
   const [isLoading, setIsLoading] = useState(true);
-
   const client = createClient({
     projectId: "46vwrypj",
     dataset: "production",

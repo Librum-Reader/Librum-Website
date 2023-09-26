@@ -46,7 +46,7 @@ const Contribute = () => {
       icon: <CgFigma size={isSmallerThan400 ? "50" : "200"} color="#946BDE" />,
     },
     {
-      text: "FINANCIAL",
+      text: "DONATE",
       icon: (
         <PiPatreonLogoFill
           size={isSmallerThan400 ? "50" : "200"}
@@ -78,7 +78,10 @@ const Contribute = () => {
       p="2rem"
     >
       <Heading size="xl">Contribute to Librum</Heading>
-      <Flex gap="3rem" direction={{ base: "column", md: "row" }}>
+      <Flex
+        gap={{ base: "2rem", md: "3rem" }}
+        direction={{ base: "column", md: "row" }}
+      >
         {contributeItems.map((item, index) => {
           return ContributeCard({ text: item.text, icon: item.icon });
         })}

@@ -6,6 +6,7 @@ import { AiFillGithub } from "react-icons/ai";
 import { FaPatreon } from "react-icons/fa";
 import { CgFigma } from "react-icons/cg";
 import { PiPatreonLogoFill } from "react-icons/pi";
+import { BiSolidDonateHeart } from "react-icons/bi";
 
 const ContributeCard = ({ text, icon }) => {
   return (
@@ -42,17 +43,17 @@ const Contribute = () => {
       ),
     },
     {
-      text: "DESIGN",
-      icon: <CgFigma size={isSmallerThan400 ? "50" : "200"} color="#946BDE" />,
-    },
-    {
       text: "DONATE",
       icon: (
-        <PiPatreonLogoFill
+        <BiSolidDonateHeart
           size={isSmallerThan400 ? "50" : "200"}
           color="#946BDE"
         />
       ),
+    },
+    {
+      text: "DESIGN",
+      icon: <CgFigma size={isSmallerThan400 ? "50" : "200"} color="#946BDE" />,
     },
     {
       text: "OTHER",

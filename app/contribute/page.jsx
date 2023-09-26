@@ -78,7 +78,7 @@ const Contribute = () => {
       p="2rem"
     >
       <Heading size="xl">Contribute to Librum</Heading>
-      <Flex gap="2rem" direction={{ base: "column", md: "row" }}>
+      <Flex gap="3rem" direction={{ base: "column", md: "row" }}>
         {contributeItems.map((item, index) => {
           return ContributeCard({ text: item.text, icon: item.icon });
         })}

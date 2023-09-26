@@ -7,7 +7,7 @@ import { FaPatreon } from "react-icons/fa";
 import { CgFigma } from "react-icons/cg";
 import { PiPatreonLogoFill } from "react-icons/pi";
 import { BiSolidDonateHeart } from "react-icons/bi";
-import { IoMdPeople } from "react-icons/io";
+import { IoPeopleSharp } from "react-icons/io5";
 
 const ContributeCard = ({ text, icon }) => {
   return (
@@ -59,7 +59,7 @@ const Contribute = () => {
     {
       text: "OTHER",
       icon: (
-        <IoMdPeople size={isSmallerThan400 ? "50" : "200"} color="#946BDE" />
+        <IoPeopleSharp size={isSmallerThan400 ? "50" : "200"} color="#946BDE" />
       ),
     },
   ];

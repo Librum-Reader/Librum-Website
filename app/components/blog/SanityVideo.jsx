@@ -1,7 +1,7 @@
 import { useNextSanityImage } from "next-sanity-image";
 import { createClient } from "next-sanity";
 import { buildFileUrl } from "@sanity/asset-utils";
-import { Flex } from "@chakra-ui/react";
+import { Flex, useMediaQuery } from "@chakra-ui/react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import ReactPlayer from "react-player";
@@ -15,11 +15,9 @@ const client = createClient({
 
 const SanityVideo = ({ asset, videoSize, alignment }) => {
   const [videoUrl, setVideoUrl] = useState();
-  const [windowWidth, setWindowWidth] = useState();
+  const [isSmallerThan400] = useMediaQuery("(max-width: 400px)");
 
   useEffect(() => {
-    setWindowWidth(window.innerWidth);
-
     client
       .fetch(
         `*[_id == '${assetId}'] {
@@ -50,10 +48,8 @@ const SanityVideo = ({ asset, videoSize, alignment }) => {
     height = "auto";
   }
 
-  console.log("WIDTH", width);
-
   return (
-    <Flex w={windowWidth < 400 ? "100%" : width}>
+    <Flex w={isSmallerThan400 < 400 ? "100%" : width}>
       <ReactPlayer url={videoUrl} controls={true} height="100%" width="100%" />
     </Flex>
   );

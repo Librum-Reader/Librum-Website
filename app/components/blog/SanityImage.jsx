@@ -1,6 +1,6 @@
 import { useNextSanityImage } from "next-sanity-image";
 import { createClient } from "next-sanity";
-import { Flex } from "@chakra-ui/react";
+import { Flex, useMediaQuery } from "@chakra-ui/react";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 
@@ -13,11 +13,7 @@ const client = createClient({
 
 const SanityImage = ({ asset, size, alignment, wrap }) => {
   const imageProps = useNextSanityImage(client, asset);
-  const [windowWidth, setWindowWidth] = useState();
-
-  useEffect(() => {
-    setWindowWidth(window.innerWidth);
-  }, []);
+  const [isSmallerThan400] = useMediaQuery("(max-width: 400px)");
 
   if (!imageProps) return null;
 
@@ -80,7 +76,7 @@ const SanityImage = ({ asset, size, alignment, wrap }) => {
 
   return (
     <Flex w="100%" justify={alignment}>
-      <Flex w={windowWidth < 400 ? "100%" : width}>
+      <Flex w={isSmallerThan400 ? "100%" : width}>
         <img
           // {...imageProps}
           src={source}

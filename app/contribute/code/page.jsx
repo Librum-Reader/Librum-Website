@@ -39,6 +39,7 @@ const Code = () => {
           <Flex
             width="100%"
             align="center"
+            justify="center"
             gap="2rem"
             borderBottom="1px"
             borderColor="user-profile-border"
@@ -69,6 +70,7 @@ const Code = () => {
         >
           <Flex
             align="center"
+            justify="center"
             gap="2rem"
             borderBottom="1px"
             borderColor="user-profile-border"
@@ -100,6 +102,7 @@ const Code = () => {
         >
           <Flex
             align="center"
+            justify="center"
             gap="2rem"
             borderBottom="1px"
             borderColor="user-profile-border"

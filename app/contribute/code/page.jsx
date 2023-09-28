@@ -73,7 +73,7 @@ const StackCard = () => {
           justify="center"
           gap="1rem"
           borderBottom="1px"
-          borderColor="user-profile-border"
+          borderColor="#946BDE"
           paddingBottom="1rem"
           direction="column"
         >
@@ -83,15 +83,16 @@ const StackCard = () => {
         {item.stack.map((stackItem) => {
           return (
             <Flex
-              border="1px"
+              // border="1px"
               w="100%"
-              bg="bg-default"
-              borderColor="user-profile-border"
-              borderRadius="md"
+              // bg="bg-default"
+              // borderColor="user-profile-border"
+              // borderRadius="md"
               px="1rem"
               py=".5rem"
+              justify="center"
             >
-              {stackItem.stackItem}
+              <Text fontSize="lg">{stackItem.stackItem}</Text>
             </Flex>
           );
         })}

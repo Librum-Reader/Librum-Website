@@ -95,8 +95,13 @@ const StackCard = () => {
             </Flex>
           );
         })}
-        <Flex w="100%">
-          <Button variant="primary" w="100%" leftIcon={<PiGithubLogo />}>
+        <Flex w="100%" h="100%">
+          <Button
+            variant="primary"
+            w="100%"
+            leftIcon={<PiGithubLogo />}
+            alignSelf="flex-end"
+          >
             Github
           </Button>
         </Flex>

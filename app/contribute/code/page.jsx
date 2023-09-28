@@ -51,7 +51,7 @@ const StackCard = () => {
       ],
     },
   ];
-  return stackData.map((item) => {
+  return stackData.map((item, index) => {
     return (
       <Flex
         background="user-profile-bg"
@@ -80,7 +80,7 @@ const StackCard = () => {
           {item.icon}
           <Heading>{item.title}</Heading>
         </Flex>
-        {item.stack.map((stackItem) => {
+        {item.stack.map((stackItem, index) => {
           return (
             <Flex
               // border="1px"

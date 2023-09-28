@@ -138,7 +138,7 @@ const Code = () => {
         direction={{ base: "column", md: "row" }}
         width="100%"
         px={{ base: "0", md: "7rem" }}
-        height={{ md: "60%", "2xl": "90%" }}
+        height={{ md: "auto", "2xl": "90%" }}
       >
         <StackCard />
       </Flex>

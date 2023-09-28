@@ -33,6 +33,9 @@ const StackCard = () => {
         {
           stackItem: "ASP.NET",
         },
+        {
+          stackItem: "EF-Core",
+        },
       ],
     },
     {
@@ -119,13 +122,17 @@ const Code = () => {
       width="100vw"
       height={{ base: "100%", md: "100dvh" }}
       justify="center"
-      gap="4rem"
+      // gap="4rem"
       mt={{ base: "0", md: "-78px" }}
       align="center"
       direction="column"
       mb="6rem"
       p="2rem"
     >
+      <Text fontSize="lg" mb="2rem" mt="2rem">
+        Librum offers many ways to contribute through code. Interested? You can
+        contact us via e-mail or our contact form.
+      </Text>
       <Flex
         gap={{ base: "2rem", md: "3rem" }}
         direction={{ base: "column", md: "row" }}
@@ -133,6 +140,17 @@ const Code = () => {
         px="7rem"
       >
         <StackCard />
+      </Flex>
+      <Flex
+        mt={{ base: "1rem", md: "2rem" }}
+        w="100%"
+        px="7rem"
+        justify="space-between"
+        align="center"
+      >
+        <Button variant="secondary" alignSelf="flex-start">
+          Back to contribute
+        </Button>
       </Flex>
     </Flex>
   );

@@ -65,7 +65,7 @@ const StackCard = () => {
         padding="1rem"
         gap="2rem"
         className="contribute-card"
-        width="350px"
+        width="100%"
         key={index}
       >
         <Flex
@@ -116,7 +116,7 @@ const StackCard = () => {
 const Code = () => {
   return (
     <Flex
-      width="100%"
+      width="100vw"
       height={{ base: "100%", md: "100dvh" }}
       justify="center"
       gap="4rem"
@@ -129,6 +129,8 @@ const Code = () => {
       <Flex
         gap={{ base: "2rem", md: "3rem" }}
         direction={{ base: "column", md: "row" }}
+        width="100%"
+        px="7rem"
       >
         <StackCard />
       </Flex>

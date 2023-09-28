@@ -6,6 +6,105 @@ import { FaServer } from "react-icons/fa6";
 import { CgWebsite } from "react-icons/cg";
 import { PiGithubLogo } from "react-icons/pi";
 
+const StackCard = () => {
+  const stackData = [
+    {
+      title: "Client",
+      icon: <BsDisplay size={40} color="#946BDE" />,
+      stack: [
+        {
+          stackItem: "C++",
+        },
+        {
+          stackItem: "Qt",
+        },
+        {
+          stackItem: "Qml",
+        },
+      ],
+    },
+    {
+      title: "Server",
+      icon: <FaServer size={40} color="#946BDE" />,
+      stack: [
+        {
+          stackItem: "C#",
+        },
+        {
+          stackItem: "ASP.NET",
+        },
+      ],
+    },
+    {
+      title: "Website",
+      icon: <CgWebsite size={40} color="#946BDE" />,
+      stack: [
+        {
+          stackItem: "React",
+        },
+        {
+          stackItem: "NextJS",
+        },
+        {
+          stackItem: "Chakra UI",
+        },
+      ],
+    },
+  ];
+  return stackData.map((item) => {
+    return (
+      <Flex
+        background="user-profile-bg"
+        border="1px"
+        borderColor="user-profile-border"
+        borderRadius="md"
+        height="auto"
+        direction={{ base: "row", md: "column" }}
+        h="100%"
+        align="center"
+        padding="1rem"
+        gap="2rem"
+        className="contribute-card"
+        width="350px"
+      >
+        <Flex
+          width="100%"
+          align="center"
+          justify="center"
+          gap="1rem"
+          borderBottom="1px"
+          borderColor="user-profile-border"
+          paddingBottom="1rem"
+          direction="column"
+        >
+          {item.icon}
+          <Heading>{item.title}</Heading>
+        </Flex>
+        {item.stack.map((stackItem) => {
+          return (
+            <Flex
+              border="1px"
+              w="100%"
+              bg="bg-default"
+              borderColor="user-profile-border"
+              borderRadius="md"
+              px="1rem"
+              py=".5rem"
+            >
+              {stackItem.stackItem}
+            </Flex>
+          );
+        })}
+        <Flex w="100%">
+          <Button variant="primary" w="100%" leftIcon={<PiGithubLogo />}>
+            Github
+          </Button>
+        </Flex>
+      </Flex>
+    );
+  });
+};
+
 const Code = () => {
   return (
     <Flex
@@ -23,102 +122,7 @@ const Code = () => {
         gap={{ base: "2rem", md: "3rem" }}
         direction={{ base: "column", md: "row" }}
       >
-        <Flex
-          background="user-profile-bg"
-          border="1px"
-          borderColor="user-profile-border"
-          borderRadius="md"
-          height="auto"
-          direction={{ base: "row", md: "column" }}
-          align="center"
-          padding="1rem"
-          gap="2rem"
-          className="contribute-card"
-          width="250px"
-        >
-          <Flex
-            width="100%"
-            align="center"
-            justify="center"
-            gap="2rem"
-            borderBottom="1px"
-            borderColor="user-profile-border"
-            paddingBottom="1rem"
-          >
-            <BsDisplay size={40} color="#946BDE" />
-            <Heading>Client</Heading>
-          </Flex>
-          <Heading size="lg">Text</Heading>
-          <Flex w="100%">
-            <Button variant="primary" w="100%" leftIcon={<PiGithubLogo />}>
-              Github
-            </Button>
-          </Flex>
-        </Flex>
-        <Flex
-          background="user-profile-bg"
-          border="1px"
-          borderColor="user-profile-border"
-          borderRadius="md"
-          height="auto"
-          direction={{ base: "row", md: "column" }}
-          align="center"
-          padding="1rem"
-          gap="2rem"
-          className="contribute-card"
-          width="250px"
-        >
-          <Flex
-            align="center"
-            justify="center"
-            gap="2rem"
-            borderBottom="1px"
-            borderColor="user-profile-border"
-            paddingBottom="1rem"
-            width="100%"
-          >
-            <FaServer size={40} color="#946BDE" />
-            <Heading>Server</Heading>
-          </Flex>
-          <Heading size="lg">Text</Heading>
-          <Flex w="100%">
-            <Button variant="primary" w="100%" leftIcon={<PiGithubLogo />}>
-              Github
-            </Button>
-          </Flex>
-        </Flex>
-        <Flex
-          background="user-profile-bg"
-          border="1px"
-          borderColor="user-profile-border"
-          borderRadius="md"
-          height="auto"
-          direction={{ base: "row", md: "column" }}
-          align="center"
-          padding="1rem"
-          gap="2rem"
-          className="contribute-card"
-          width="250px"
-        >
-          <Flex
-            align="center"
-            justify="center"
-            gap="2rem"
-            borderBottom="1px"
-            borderColor="user-profile-border"
-            paddingBottom="1rem"
-            width="100%"
-          >
-            <CgWebsite size={40} color="#946BDE" />
-            <Heading>Website</Heading>
-          </Flex>
-          <Heading size="lg">Text</Heading>
-          <Flex w="100%">
-            <Button variant="primary" w="100%" leftIcon={<PiGithubLogo />}>
-              Github
-            </Button>
-          </Flex>
-        </Flex>
+        <StackCard />
       </Flex>
     </Flex>
   );

@@ -66,6 +66,7 @@ const StackCard = () => {
         gap="2rem"
         className="contribute-card"
         width="350px"
+        key={index}
       >
         <Flex
           width="100%"
@@ -91,6 +92,7 @@ const StackCard = () => {
               px="1rem"
               py=".5rem"
               justify="center"
+              key={index}
             >
               <Text fontSize="lg">{stackItem.stackItem}</Text>
             </Flex>

@@ -137,14 +137,15 @@ const Code = () => {
         gap={{ base: "2rem", md: "3rem" }}
         direction={{ base: "column", md: "row" }}
         width="100%"
-        px="7rem"
+        px={{ base: "0", md: "7rem" }}
+        height={{ md: "60%", "2xl": "90%" }}
       >
         <StackCard />
       </Flex>
       <Flex
         mt={{ base: "1rem", md: "2rem" }}
         w="100%"
-        px="7rem"
+        px={{ base: "0", md: "7rem" }}
         justify="space-between"
         align="center"
       >

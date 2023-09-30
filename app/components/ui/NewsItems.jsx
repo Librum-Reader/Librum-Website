@@ -25,7 +25,12 @@ const NewsItems = (props) => {
       // w="320px"
       // h="255px"
     >
-      <Flex maxW="1300px" gap="4rem" align="center">
+      <Flex
+        maxW="1300px"
+        gap={{ base: "1rem", md: "4rem" }}
+        justify={{ base: "space-between" }}
+        align="center"
+      >
         <Image
           alt="news item illustration"
           src={props.image}
@@ -48,6 +53,14 @@ const NewsItems = (props) => {
             </Button>
           </a>
         </VStack>
+        <Image
+          alt="news item illustration"
+          src={props.image}
+          className="news-image"
+          boxSize="100px"
+          display={{ base: "block", md: "none" }}
+          objectFit="cover"
+        />
       </Flex>
     </Flex>
   );

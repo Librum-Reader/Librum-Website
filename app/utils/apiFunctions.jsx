@@ -9,7 +9,6 @@ export const userLogin = async (data) => {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          //   Authorization: `Bearer ${token}`,
         },
         method: "POST",
         body: JSON.stringify({ Email: data.Email, Password: data.Password }),
@@ -19,8 +18,6 @@ export const userLogin = async (data) => {
     const result = await response.json();
 
     localStorage.setItem("token", result);
-
-    console.log(result);
 
     return result;
   } catch (error) {

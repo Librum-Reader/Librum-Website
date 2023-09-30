@@ -34,6 +34,10 @@ import { useRouter, usePathname } from "next/navigation";
 
 import { useRef, useState, useEffect } from "react";
 
+import LoginModal from "./modals/LoginModal";
+import PasswordResetModal from "./modals/PasswordResetModal";
+import PasswordResetConfirmation from "./modals/PasswordResetConfirmation";
+
 import {
   useQuery,
   useMutation,
@@ -45,6 +49,7 @@ import {
 import Logo from "./Logo";
 
 import { updateLoggedIn, updateUser } from "../../features/user/userSlice";
+import { toggleLoginModal } from "../../features/modals/modalSlice";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux/";
 
@@ -59,8 +64,18 @@ import {
 import { useCookies } from "react-cookie";
 
 const LoginButton = (props) => {
+  const [token, setToken] = useState(null);
+  const isOpen = useSelector((state) => state.modal.isLoginOpen);
+
   // Set this to true after user confirms email to trigger login modal
   const [isEmailConfirmed, setIsEmailConfirmed] = useState();
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  // User auth state setters
+  const handleEmail = (event) => setEmail(event.target.value);
+  const handlePassword = (event) => setPassword(event.target.value);
 
   useEffect(() => {
     if (isEmailConfirmed === true) {
@@ -84,25 +99,12 @@ const LoginButton = (props) => {
   // Page redirection
   const router = useRouter();
 
-  // User auth state
-  const [token, setToken] = useState(null);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
-
   // User register state
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
   const [registerConfirmPassword, setRegisterConfirmPassword] = useState("");
   const [registerFirstName, setRegisterFirstName] = useState("");
   const [registerLastName, setRegisterLastName] = useState("");
-
-  // Modal state for login modal
-  const {
-    isOpen: isOpenLogin,
-    onOpen: onOpenLogin,
-    onClose: onCloseLogin,
-  } = useDisclosure();
 
   // Modal state for register modal
   const {
@@ -132,11 +134,6 @@ const LoginButton = (props) => {
 
   const initialRef = useRef(null);
 
-  // User auth state setters
-  const handleEmail = (event) => setEmail(event.target.value);
-  const handlePassword = (event) => setPassword(event.target.value);
-  const handleShowPassword = () => setShowPassword(!showPassword);
-
   // Redux functions for storing user info after login
   const dispatch = useDispatch();
 
@@ -164,44 +161,8 @@ const LoginButton = (props) => {
     });
   };
 
-  const login = useMutation({
-    mutationFn: userLogin,
-    onSuccess: (data) => {
-      queryClient.invalidateQueries({ queryKey: ["login"] });
-      console.log("DATA", data.code);
-      if (data.code === 0) {
-        toast({
-          title: "Uh oh...",
-          description: "The email field is required.",
-          status: "error",
-          duration: 9000,
-          isClosable: true,
-        });
-      } else if (data.code === 1) {
-        toast({
-          title: "Uh oh...",
-          description: "You've entered the wrong email or password.",
-          status: "error",
-          duration: 9000,
-          isClosable: true,
-        });
-      } else {
-        toast({
-          title: "Welcome!",
-          description: "You have been logged in. Enjoy.",
-          status: "success",
-          duration: 9000,
-          isClosable: true,
-        });
-        setToken(data);
-        setUser(data);
-        setCookieHandler(data);
-        dispatch(updateLoggedIn(true));
-        onCloseLogin();
-        router.push("/profile");
-      }
-    },
-  });
+  const [showPassword, setShowPassword] = useState(false);
+  const handleShowPassword = () => setShowPassword(!showPassword);
 
   // Fires every time token state is changed, lets Navbar know whether or not to display Profile link
   useEffect(() => {
@@ -212,11 +173,6 @@ const LoginButton = (props) => {
       dispatch(updateLoggedIn(false));
     }
   }, [token, dispatch]);
-
-  const handleLogin = (userInfo) => {
-    const loginResponse = login.mutate(userInfo);
-    console.log("LOGIN RESPONSE", loginResponse);
-  };
 
   // API handling - Register
   const register = useMutation({
@@ -298,128 +254,23 @@ const LoginButton = (props) => {
     }
   };
 
-  const handlePasswordReset = () => {
-    setEmail("");
-    onClosePasswordReset();
-    onOpenPasswordConfirmation();
-    resetPassword(email);
-  };
-
   const [isChecked, setIsChecked] = useState(true);
 
   return (
     <>
-      <Button onClick={token ? logOut : onOpenLogin} variant="loginButton">
+      <Button
+        onClick={
+          token
+            ? logOut
+            : () => {
+                dispatch(toggleLoginModal());
+              }
+        }
+        variant="loginButton"
+      >
         {token ? "LOGOUT" : "LOGIN"}
       </Button>
-      {/* Login Modal */}
-      <Modal
-        isCentered
-        initialFocusRef={initialRef}
-        isOpen={isOpenLogin}
-        onClose={onCloseLogin}
-        variant="defaultVariant"
-      >
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader> </ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
-            <Center>
-              <Box textAlign="center" mb="1rem">
-                <Heading size="lg" pb=".5rem">
-                  Welcome back!
-                </Heading>
-                <Text fontSize="md">Log into your account</Text>
-              </Box>
-            </Center>
-            <FormControl>
-              <FormLabel
-                fontSize="md"
-                textColor="text-default"
-                mb="0"
-                fontWeight="semibold"
-              >
-                Email
-              </FormLabel>
-              <Input
-                value={email}
-                onChange={handleEmail}
-                ref={initialRef}
-                placeholder="Enter Your Email"
-                fontSize="md"
-                variant="defaultVariant"
-              />
-            </FormControl>
-
-            <FormControl mt={4}>
-              <FormLabel
-                fontSize="md"
-                textColor="text-default"
-                mb="0"
-                fontWeight="semibold"
-              >
-                Password
-              </FormLabel>
-              <InputGroup>
-                <Input
-                  value={password}
-                  onChange={handlePassword}
-                  placeholder="Enter Your Password"
-                  fontSize="md"
-                  variant="defaultVariant"
-                  type={showPassword ? "text" : "password"}
-                />
-                <InputRightElement width="3rem">
-                  {showPassword ? (
-                    <AiOutlineEyeInvisible onClick={handleShowPassword} />
-                  ) : (
-                    <AiOutlineEye onClick={handleShowPassword} />
-                  )}
-                </InputRightElement>
-              </InputGroup>
-            </FormControl>
-            <Text fontSize="sm">
-              Forgot password? Click{" "}
-              <Link
-                href="#"
-                textColor="#946BDE"
-                onClick={() => {
-                  onOpenPasswordReset();
-                  onCloseLogin();
-                }}
-              >
-                here
-              </Link>{" "}
-              to reset it.
-            </Text>
-          </ModalBody>
-
-          <ModalFooter>
-            <Box width="100%" textAlign="center" pb=".7rem">
-              <Button
-                onClick={() => {
-                  handleLogin({ Email: email, Password: password });
-                }}
-                variant="primary"
-                width="100%"
-                mb="1rem"
-              >
-                {login.isLoading ? <BeatLoader /> : "Log In"}
-              </Button>
-              <Button
-                variant="secondary"
-                width="100%"
-                onClick={() => {
-                  registerAccount();
-                }}
-              >
-                Register
-              </Button>
-            </Box>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
+      <LoginModal />
       {/* Register Modal */}
       <Modal
         isCentered
@@ -671,81 +522,9 @@ const LoginButton = (props) => {
         </ModalContent>
       </Modal>
       {/* Password reset Modal */}
-      <Modal
-        isCentered
-        initialFocusRef={initialRef}
-        isOpen={isOpenPasswordReset}
-        onClose={onClosePasswordReset}
-        variant="defaultVariant"
-      >
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader></ModalHeader>
-          <ModalCloseButton />
-
-          <ModalBody>
-            <Flex direction="column" align="center" gap="1rem">
-              <Heading size="md">Password Reset</Heading>
-              <Text>
-                Please enter the email that you&apos;ve used to create your
-                account:
-              </Text>
-              <FormControl>
-                <FormLabel
-                  fontSize="md"
-                  textColor="text-default"
-                  mb="0"
-                  fontWeight="semibold"
-                >
-                  Email
-                </FormLabel>
-                <Input
-                  value={email}
-                  onChange={handleEmail}
-                  ref={initialRef}
-                  placeholder="Enter Your Email"
-                  fontSize="md"
-                  variant="defaultVariant"
-                />
-              </FormControl>
-              <Button
-                variant="primary"
-                alignSelf="flex-end"
-                onClick={handlePasswordReset}
-              >
-                Reset password
-              </Button>
-            </Flex>
-          </ModalBody>
-          <ModalFooter></ModalFooter>
-        </ModalContent>
-      </Modal>
+      <PasswordResetModal />
       {/* Password reset notification Modal */}
-      <Modal
-        isCentered
-        initialFocusRef={initialRef}
-        isOpen={isOpenPasswordConfirmation}
-        onClose={onClosePasswordConfirmation}
-        variant="defaultVariant"
-      >
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader></ModalHeader>
-          <ModalCloseButton />
-
-          <ModalBody>
-            <Flex direction="column" align="center" gap="1rem">
-              <Heading size="md">Password Reset</Heading>
-              <Text>
-                We have sent you an e-mail with a link to complete the password
-                reset process. Please click the link and follow the
-                instructions.
-              </Text>
-            </Flex>
-          </ModalBody>
-          <ModalFooter></ModalFooter>
-        </ModalContent>
-      </Modal>
+      <PasswordResetConfirmation />
     </>
   );
 };

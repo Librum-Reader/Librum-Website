@@ -54,7 +54,7 @@ const StackCard = () => {
           stackItem: "React",
         },
         {
-          stackItem: "NextJS",
+          stackItem: "Next.js",
         },
         {
           stackItem: "Chakra UI",
@@ -90,7 +90,7 @@ const StackCard = () => {
           direction="column"
         >
           {item.icon}
-          <Heading>{item.title}</Heading>
+          <Heading size="2xl">{item.title}</Heading>
         </Flex>
         {item.stack.map((stackItem, index) => {
           return (
@@ -155,7 +155,7 @@ const Code = () => {
         <Link href="#" textColor="#946BDE">
           e-mail
         </Link>{" "}
-        or our contact form.
+        , our contact form, or GitHub.
       </Text>
       <Flex
         gap={{ base: "2rem", md: "3rem" }}

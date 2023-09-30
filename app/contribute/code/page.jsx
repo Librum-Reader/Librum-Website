@@ -1,16 +1,24 @@
 "use client";
 import React from "react";
-import { Flex, Heading, Text, Button } from "@chakra-ui/react";
+import {
+  Flex,
+  Heading,
+  Text,
+  Button,
+  useMediaQuery,
+  Link,
+} from "@chakra-ui/react";
 import { BsDisplay } from "react-icons/bs";
 import { FaServer } from "react-icons/fa6";
 import { CgWebsite } from "react-icons/cg";
 import { PiGithubLogo } from "react-icons/pi";
 
 const StackCard = () => {
+  const [isLargerThan1700] = useMediaQuery("(min-width: 1700px)");
   const stackData = [
     {
       title: "Client",
-      icon: <BsDisplay size={40} color="#946BDE" />,
+      icon: <BsDisplay size={isLargerThan1700 ? 80 : 40} color="#946BDE" />,
       stack: [
         {
           stackItem: "C++",
@@ -25,7 +33,7 @@ const StackCard = () => {
     },
     {
       title: "Server",
-      icon: <FaServer size={40} color="#946BDE" />,
+      icon: <FaServer size={isLargerThan1700 ? 80 : 40} color="#946BDE" />,
       stack: [
         {
           stackItem: "C#",
@@ -40,7 +48,7 @@ const StackCard = () => {
     },
     {
       title: "Website",
-      icon: <CgWebsite size={40} color="#946BDE" />,
+      icon: <CgWebsite size={isLargerThan1700 ? 80 : 40} color="#946BDE" />,
       stack: [
         {
           stackItem: "React",
@@ -97,7 +105,17 @@ const StackCard = () => {
               justify="center"
               key={index}
             >
-              <Text fontSize="lg">{stackItem.stackItem}</Text>
+              <Text
+                fontSize={{ base: "md", xl: "lg", "2xl": "2xl" }}
+                fontWeight={{
+                  base: "normal",
+                  md: "normal",
+                  xl: "semibold",
+                  "2xl": "bold",
+                }}
+              >
+                {stackItem.stackItem}
+              </Text>
             </Flex>
           );
         })}
@@ -117,6 +135,8 @@ const StackCard = () => {
 };
 
 const Code = () => {
+  const [isLargerThan1700] = useMediaQuery("(min-width: 1700px)");
+
   return (
     <Flex
       width="100vw"
@@ -129,9 +149,13 @@ const Code = () => {
       mb="6rem"
       p="2rem"
     >
-      <Text fontSize="lg" mb="2rem" mt="2rem">
+      <Text fontSize={isLargerThan1700 ? "2xl" : "lg"} mb="2rem" mt="2rem">
         Librum offers many ways to contribute through code. Interested? You can
-        contact us via e-mail or our contact form.
+        contact us via{" "}
+        <Link href="#" textColor="#946BDE">
+          e-mail
+        </Link>{" "}
+        or our contact form.
       </Text>
       <Flex
         gap={{ base: "2rem", md: "3rem" }}
@@ -141,17 +165,6 @@ const Code = () => {
         height="65%"
       >
         <StackCard />
-      </Flex>
-      <Flex
-        mt={{ base: "1rem", md: "2rem" }}
-        w="100%"
-        px={{ base: "0", md: "7rem" }}
-        justify="space-between"
-        align="center"
-      >
-        <Button variant="secondary" alignSelf="flex-start">
-          Back to contribute
-        </Button>
       </Flex>
     </Flex>
   );

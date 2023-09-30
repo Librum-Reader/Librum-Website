@@ -70,7 +70,7 @@ const StackCard = () => {
         borderColor="user-profile-border"
         borderRadius="md"
         height="auto"
-        direction={{ base: "row", md: "column" }}
+        direction="column"
         h="100%"
         align="center"
         padding="1rem"

@@ -168,7 +168,16 @@ const LoginButton = (props) => {
     mutationFn: userLogin,
     onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ["login"] });
-      if (data.code === 1) {
+      console.log("DATA", data.code);
+      if (data.code === 0) {
+        toast({
+          title: "Uh oh...",
+          description: "The email field is required.",
+          status: "error",
+          duration: 9000,
+          isClosable: true,
+        });
+      } else if (data.code === 1) {
         toast({
           title: "Uh oh...",
           description: "You've entered the wrong email or password.",
@@ -205,7 +214,8 @@ const LoginButton = (props) => {
   }, [token, dispatch]);
 
   const handleLogin = (userInfo) => {
-    login.mutate(userInfo);
+    const loginResponse = login.mutate(userInfo);
+    console.log("LOGIN RESPONSE", loginResponse);
   };
 
   // API handling - Register
@@ -346,7 +356,9 @@ const LoginButton = (props) => {
   // Register modal logic
   const registerAccount = () => {
     onCloseLogin();
-    onOpenRegister();
+    setTimeout(() => {
+      onOpenRegister();
+    }, 10);
   };
 
   let emailConfirmationInterval;
@@ -409,7 +421,8 @@ const LoginButton = (props) => {
         initialFocusRef={initialRef}
         isOpen={isOpenLogin}
         onClose={onCloseLogin}
-        variant="defaultVariant">
+        variant="defaultVariant"
+      >
         <ModalOverlay />
         <ModalContent>
           <ModalHeader> </ModalHeader>
@@ -428,7 +441,8 @@ const LoginButton = (props) => {
                 fontSize="md"
                 textColor="text-default"
                 mb="0"
-                fontWeight="semibold">
+                fontWeight="semibold"
+              >
                 Email
               </FormLabel>
               <Input
@@ -446,7 +460,8 @@ const LoginButton = (props) => {
                 fontSize="md"
                 textColor="text-default"
                 mb="0"
-                fontWeight="semibold">
+                fontWeight="semibold"
+              >
                 Password
               </FormLabel>
               <InputGroup>
@@ -475,7 +490,8 @@ const LoginButton = (props) => {
                 onClick={() => {
                   onOpenPasswordReset();
                   onCloseLogin();
-                }}>
+                }}
+              >
                 here
               </Link>{" "}
               to reset it.
@@ -490,7 +506,8 @@ const LoginButton = (props) => {
                 }}
                 variant="primary"
                 width="100%"
-                mb="1rem">
+                mb="1rem"
+              >
                 {login.isLoading ? <BeatLoader /> : "Log In"}
               </Button>
               <Button
@@ -498,7 +515,8 @@ const LoginButton = (props) => {
                 width="100%"
                 onClick={() => {
                   registerAccount();
-                }}>
+                }}
+              >
                 Register
               </Button>
             </Box>
@@ -511,7 +529,8 @@ const LoginButton = (props) => {
         initialFocusRef={initialRef}
         isOpen={isOpenRegister}
         onClose={onCloseRegister}
-        variant="defaultVariant">
+        variant="defaultVariant"
+      >
         <ModalOverlay />
         <ModalContent>
           <ModalHeader> </ModalHeader>
@@ -534,7 +553,8 @@ const LoginButton = (props) => {
                       fontSize="md"
                       textColor="text-default"
                       mb="0"
-                      fontWeight="semibold">
+                      fontWeight="semibold"
+                    >
                       First Name
                     </FormLabel>
                     <Input
@@ -550,7 +570,8 @@ const LoginButton = (props) => {
                       fontSize="md"
                       textColor="text-default"
                       mb="0"
-                      fontWeight="semibold">
+                      fontWeight="semibold"
+                    >
                       Last Name
                     </FormLabel>
                     <Input
@@ -568,7 +589,8 @@ const LoginButton = (props) => {
                       fontSize="md"
                       textColor="text-default"
                       mb="0"
-                      fontWeight="semibold">
+                      fontWeight="semibold"
+                    >
                       Email
                     </FormLabel>
                     <Input
@@ -584,7 +606,8 @@ const LoginButton = (props) => {
                       fontSize="md"
                       textColor="text-default"
                       mb="0"
-                      fontWeight="semibold">
+                      fontWeight="semibold"
+                    >
                       Password
                     </FormLabel>
                     <InputGroup>
@@ -609,7 +632,8 @@ const LoginButton = (props) => {
                       fontSize="md"
                       textColor="text-default"
                       mb="0"
-                      fontWeight="semibold">
+                      fontWeight="semibold"
+                    >
                       Confirm password
                     </FormLabel>
                     <InputGroup>
@@ -635,7 +659,8 @@ const LoginButton = (props) => {
                     isChecked={isChecked}
                     onChange={() => {
                       setIsChecked(!isChecked);
-                    }}>
+                    }}
+                  >
                     <Text fontSize="sm">
                       I accept the{" "}
                       <Link href="/termsofservice" textColor="#946BDE">
@@ -666,7 +691,8 @@ const LoginButton = (props) => {
                 variant="loginButton"
                 width="100%"
                 mb="1rem"
-                fontSize={15}>
+                fontSize={15}
+              >
                 {register.isLoading ? <BeatLoader /> : "Let's Get Started"}
               </Button>
               <Text fontSize="sm">
@@ -676,8 +702,11 @@ const LoginButton = (props) => {
                   textColor="#946BDE"
                   onClick={() => {
                     onCloseRegister();
-                    onOpenLogin();
-                  }}>
+                    setTimeout(() => {
+                      onOpenLogin();
+                    }, 10);
+                  }}
+                >
                   Log In
                 </Link>
               </Text>
@@ -691,7 +720,8 @@ const LoginButton = (props) => {
         variant="emailConfirmation"
         initialFocusRef={initialRef}
         isOpen={isOpenConfirmEmail}
-        onClose={onCloseConfirmEmail}>
+        onClose={onCloseConfirmEmail}
+      >
         <ModalOverlay />
         <ModalContent>
           <ModalBody
@@ -700,28 +730,32 @@ const LoginButton = (props) => {
             borderRadius="5px"
             px="3rem"
             pt="3.3rem"
-            pb="3rem">
+            pb="3rem"
+          >
             <Flex direction="column" align="center">
               <Heading
                 size="xl"
                 fontSize="2.6rem"
                 mb={6}
                 color="#ccc"
-                textAlign="center">
+                textAlign="center"
+              >
                 Confirm Your Email
               </Heading>
               <Text
                 textAlign="center"
                 color="#ccc"
                 fontSize="1.15rem"
-                lineHeight="1.5rem">
+                lineHeight="1.5rem"
+              >
                 You&apos;re almost ready to go!
               </Text>
               <Text
                 textAlign="center"
                 color="#ccc"
                 fontSize="1.15rem"
-                lineHeight="1.5rem">
+                lineHeight="1.5rem"
+              >
                 Confirm your email by clicking the link we sent you.
               </Text>
 
@@ -731,7 +765,8 @@ const LoginButton = (props) => {
                 p={2}
                 mt="3.5rem"
                 fontSize="md"
-                onClick={() => onCloseConfirmEmail()}>
+                onClick={() => onCloseConfirmEmail()}
+              >
                 Ok
               </Button>
             </Flex>
@@ -744,7 +779,8 @@ const LoginButton = (props) => {
         initialFocusRef={initialRef}
         isOpen={isOpenPasswordReset}
         onClose={onClosePasswordReset}
-        variant="defaultVariant">
+        variant="defaultVariant"
+      >
         <ModalOverlay />
         <ModalContent>
           <ModalHeader></ModalHeader>
@@ -762,7 +798,8 @@ const LoginButton = (props) => {
                   fontSize="md"
                   textColor="text-default"
                   mb="0"
-                  fontWeight="semibold">
+                  fontWeight="semibold"
+                >
                   Email
                 </FormLabel>
                 <Input
@@ -777,7 +814,8 @@ const LoginButton = (props) => {
               <Button
                 variant="primary"
                 alignSelf="flex-end"
-                onClick={handlePasswordReset}>
+                onClick={handlePasswordReset}
+              >
                 Reset password
               </Button>
             </Flex>
@@ -791,7 +829,8 @@ const LoginButton = (props) => {
         initialFocusRef={initialRef}
         isOpen={isOpenPasswordConfirmation}
         onClose={onClosePasswordConfirmation}
-        variant="defaultVariant">
+        variant="defaultVariant"
+      >
         <ModalOverlay />
         <ModalContent>
           <ModalHeader></ModalHeader>

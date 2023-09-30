@@ -139,7 +139,7 @@ const Code = () => {
 
   return (
     <Flex
-      width="100vw"
+      width="100%"
       height={{ base: "100%", md: "100dvh" }}
       justify="center"
       // gap="4rem"

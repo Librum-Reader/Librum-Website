@@ -1,34 +1,6 @@
 "use client";
 
-import {
-  Button,
-  Modal,
-  ModalContent,
-  ModalHeader,
-  ModalOverlay,
-  ModalCloseButton,
-  useDisclosure,
-  FormControl,
-  FormLabel,
-  Input,
-  ModalBody,
-  ModalFooter,
-  Center,
-  Heading,
-  Text,
-  Box,
-  Flex,
-  useToast,
-  Image,
-  InputGroup,
-  InputRightElement,
-  Checkbox,
-  Link,
-} from "@chakra-ui/react";
-
-import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-
-import { BeatLoader } from "react-spinners";
+import { Button, useToast } from "@chakra-ui/react";
 
 import { useRouter, usePathname } from "next/navigation";
 
@@ -40,28 +12,9 @@ import PasswordResetConfirmation from "./modals/PasswordResetConfirmation";
 import RegisterModal from "./modals/RegisterModal";
 import ConfirmEmailModal from "./modals/ConfirmEmailModal";
 
-import {
-  useQuery,
-  useMutation,
-  useQueryClient,
-  QueryClient,
-  QueryClientProvider,
-} from "@tanstack/react-query";
-
-import Logo from "./Logo";
-
 import { updateLoggedIn, updateUser } from "../../features/user/userSlice";
 import { toggleLoginModal } from "../../features/modals/modalSlice";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux/";
-
-import {
-  fetchUserInfo,
-  userLogin,
-  userRegistration,
-  getVerifiedStatus,
-  resetPassword,
-} from "../../utils/apiFunctions";
+import { useSelector, useDispatch } from "react-redux/";
 
 import { useCookies } from "react-cookie";
 
@@ -77,20 +30,11 @@ const LoginButton = (props) => {
   // the user is redirected back to home if they try to access the /profile page.
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
 
-  // Notifications for successful login or errors
-  const toast = useToast();
-
   // Page redirection
   const router = useRouter();
 
   // Redux functions for storing user info after login
   const dispatch = useDispatch();
-
-  const setUser = (token) => {
-    fetchUserInfo(token).then((result) => {
-      dispatch(updateUser(result));
-    });
-  };
 
   // Fires every time token state is changed, lets Navbar know whether or not to display Profile link
   useEffect(() => {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   Modal,
   ModalBody,
@@ -29,11 +29,13 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 
 import { updateLoggedIn, updateUser } from "../../../features/user/userSlice";
+import { useDispatch } from "react-redux";
 
 import { useRouter } from "next/navigation";
-import { toggleRegisterModal } from "@/app/features/modals/modalSlice";
 
 const LoginModal = () => {
+  const dispatch = useDispatch();
+
   const { togglePasswordReset, toggleLogin, toggleRegister, isLoginOpen } =
     useModalToggle();
 

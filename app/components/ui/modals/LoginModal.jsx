@@ -31,9 +31,11 @@ import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import { updateLoggedIn, updateUser } from "../../../features/user/userSlice";
 
 import { useRouter } from "next/navigation";
+import { toggleRegisterModal } from "@/app/features/modals/modalSlice";
 
 const LoginModal = () => {
-  const { togglePasswordReset, toggleLogin, isLoginOpen } = useModalToggle();
+  const { togglePasswordReset, toggleLogin, toggleRegister, isLoginOpen } =
+    useModalToggle();
 
   const [showPassword, setShowPassword] = useState(false);
   const handleShowPassword = () => setShowPassword(!showPassword);
@@ -203,7 +205,8 @@ const LoginModal = () => {
               variant="secondary"
               width="100%"
               onClick={() => {
-                registerAccount();
+                toggleLogin();
+                toggleRegister();
               }}
             >
               Register

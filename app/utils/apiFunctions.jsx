@@ -37,10 +37,10 @@ export const userRegistration = async (data) => {
         },
         method: "POST",
         body: JSON.stringify({
-          FirstName: data.FirstName,
-          LastName: data.LastName,
-          Email: data.Email,
-          Password: data.Password,
+          FirstName: data.firstName,
+          LastName: data.lastName,
+          Email: data.email,
+          Password: data.password,
         }),
       }
     );

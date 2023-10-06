@@ -63,13 +63,6 @@ const RegisterModal = () => {
     setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
   };
 
-  //   const registerAccount = () => {
-  //     onCloseLogin();
-  //     setTimeout(() => {
-  //       onOpenRegister();
-  //     }, 10);
-  //   };
-
   let emailConfirmationInterval;
 
   const listenForEmailConfirmation = () => {

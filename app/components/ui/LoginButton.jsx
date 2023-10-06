@@ -20,15 +20,6 @@ import { useCookies } from "react-cookie";
 
 const LoginButton = (props) => {
   const [token, setToken] = useState(null);
-  const isOpen = useSelector((state) => state.modal.isLoginOpen);
-
-  const path = usePathname();
-
-  // Cookie bullshit to work around the fact that the authentication for the website is being handled by an external API.
-  // We are using react-cookies to set a cookie containing the JWT received from the external API. Then, the existence of
-  // this cookie is checked by the middleware function (defined in middleware.js). If JWT does not exist in cookies, then
-  // the user is redirected back to home if they try to access the /profile page.
-  const [cookies, setCookie, removeCookie] = useCookies(["user"]);
 
   // Page redirection
   const router = useRouter();

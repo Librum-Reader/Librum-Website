@@ -6,6 +6,7 @@ const initialState = {
   isPasswordConfirmationOpen: false,
   isRegisterModalOpen: false,
   isConfirmEmailOpen: false,
+  isDrawerOpen: false,
 };
 
 export const modalSlice = createSlice({
@@ -27,6 +28,9 @@ export const modalSlice = createSlice({
     toggleConfirmEmailModal: (state) => {
       state.isConfirmEmailOpen = !state.isConfirmEmailOpen;
     },
+    toggleDrawer: (state) => {
+      state.isDrawerOpen = !state.isDrawerOpen;
+    },
   },
 });
 
@@ -36,4 +40,5 @@ export const {
   togglePasswordConfirmationModal,
   toggleRegisterModal,
   toggleConfirmEmailModal,
+  toggleDrawer,
 } = modalSlice.actions;

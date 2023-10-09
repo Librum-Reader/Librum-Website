@@ -63,6 +63,7 @@ import ThemeToggle from "./ThemeToggle";
 import SunIcon from "../ui/SunIcon";
 import { LoginContext } from "../../context/loginModalContext";
 import { useContext } from "react";
+import useModalToggle from "@/app/Hooks/useModalToggle";
 
 const navLinks = [
   {
@@ -80,6 +81,7 @@ let active;
 
 const Navbar = () => {
   const { loginOpen, setLoginOpen } = useContext(LoginContext);
+  const { toggleMobileDrawer, isMobileDrawerOpen } = useModalToggle();
 
   const path = usePathname();
   if (path === "/") {
@@ -459,147 +461,10 @@ const Navbar = () => {
           <IconButton
             icon={<FaBars />}
             display={{ base: "flex", md: "none" }}
-            onClick={onDrawerOpen}
+            onClick={toggleMobileDrawer}
           />
         </Flex>
       </Flex>
-      <Drawer
-        isOpen={isDrawerOpen}
-        placement="right"
-        onClose={onDrawerClose}
-        variant="defaultVariant"
-      >
-        <DrawerOverlay />
-        <DrawerContent>
-          <DrawerHeader>
-            <Flex align="center" justify="space-between" pr="24px">
-              <Flex align="center" gap="1rem" mt="1rem" mb="1rem" px="24px">
-                <MobileNavLogo />
-                <Heading
-                  size="lg"
-                  textColor={colorMode === "dark" ? "white" : "#946BDE"}
-                >
-                  Librum
-                </Heading>
-              </Flex>
-              <FaXmark className="res-theme-icon" onClick={onDrawerClose} />
-            </Flex>
-            <Divider />
-          </DrawerHeader>
-          <DrawerBody>
-            <Flex direction="column" h="100%">
-              <Flex
-                direction="column"
-                w="100%"
-                align="start"
-                gap="1rem"
-                px="10px"
-              >
-                <Link
-                  href="/"
-                  style={{ display: "flex", width: "100%" }}
-                  onClick={onDrawerClose}
-                >
-                  <Button
-                    w="full"
-                    size="md"
-                    variant={path === "/" ? "drawerActive" : "drawerButton"}
-                    rightIcon={<FaAngleRight />}
-                    iconSpacing="auto"
-                  >
-                    HOME
-                  </Button>
-                </Link>
-                <Link
-                  href="/news"
-                  style={{ display: "flex", width: "100%" }}
-                  onClick={onDrawerClose}
-                >
-                  <Button
-                    w="full"
-                    size="md"
-                    variant={path === "/news" ? "drawerActive" : "drawerButton"}
-                    rightIcon={<FaAngleRight />}
-                    iconSpacing="auto"
-                  >
-                    NEWS
-                  </Button>
-                </Link>
-                {/* <Link
-                  style={{ display: "flex", width: "100%" }}
-                  href=""
-                  onClick={() => {
-                    onOpen();
-                    onDrawerClose();
-                  }}
-                > */}
-                <Button
-                  w="full"
-                  size="md"
-                  variant="drawerButton"
-                  rightIcon={<FaAngleRight />}
-                  iconSpacing="auto"
-                  onClick={() => {
-                    onOpen();
-                    onDrawerClose();
-                  }}
-                >
-                  CONTACT
-                </Button>
-                {/* </Link> */}
-
-                {/* <Flex w="100%" justify="space-between" align="center">
-                  <Link href="3">LOGOUT</Link>
-                  <FaAngleRight />
-                </Flex> */}
-              </Flex>
-              <Flex direction="column" mt="auto">
-                <Divider />
-                <Flex
-                  justify="space-between"
-                  align="center"
-                  px="10px"
-                  pt="1rem"
-                  pb=".5rem"
-                >
-                  <Flex align="center" gap="1rem">
-                    {isLoggedIn ? (
-                      <Link href="" onClick={onDrawerClose}>
-                        <ProfileButtonMobile />
-                      </Link>
-                    ) : (
-                      // <Link href="">
-                      <Button
-                        onClick={() => {
-                          setLoginOpen(true);
-                          console.log("open login", loginOpen);
-                        }}
-                        variant="drawerButton"
-                      >
-                        LOGIN
-                      </Button>
-                      // </Link>
-                    )}
-                  </Flex>
-                  {colorMode === "dark" ? (
-                    <Button variant="link" onClick={toggleColorTheme}>
-                      <SunIcon />
-                    </Button>
-                  ) : (
-                    <Button variant="link" onClick={toggleColorTheme}>
-                      <FaMoon
-                        color={"#946BDE"}
-                        size={20}
-                        className="res-theme-icon"
-                      />
-                    </Button>
-                  )}
-                </Flex>
-              </Flex>
-            </Flex>
-          </DrawerBody>
-        </DrawerContent>
-      </Drawer>
       <LoginButtonMobile closeDrawer={onDrawerClose} />
     </>
   );

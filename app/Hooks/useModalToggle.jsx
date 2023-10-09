@@ -5,6 +5,7 @@ import {
   togglePasswordConfirmationModal,
   toggleRegisterModal,
   toggleConfirmEmailModal,
+  toggleDrawer,
 } from "../features/modals/modalSlice";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -31,6 +32,10 @@ const useModalToggle = () => {
     dispatch(toggleConfirmEmailModal());
   };
 
+  const toggleMobileDrawer = () => {
+    dispatch(toggleDrawer());
+  };
+
   const isPasswordResetOpen = useSelector(
     (state) => state.modal.isPasswordResetOpen
   );
@@ -49,17 +54,21 @@ const useModalToggle = () => {
     (state) => state.modal.isConfirmEmailOpen
   );
 
+  const isMobileDrawerOpen = useSelector((state) => state.modal.isDrawerOpen);
+
   return {
     toggleLogin,
     togglePasswordReset,
     togglePasswordConfirmation,
     toggleRegister,
     toggleConfirmEmail,
+    toggleMobileDrawer,
     isPasswordResetOpen,
     isLoginOpen,
     isPasswordConfirmationOpen,
     isRegisterModalOpen,
     isConfirmEmailOpen,
+    isMobileDrawerOpen,
   };
 };
 

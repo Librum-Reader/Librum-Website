@@ -5,6 +5,7 @@ import Container from "./components/ui/Container";
 import Footer from "./components/sections/Footer";
 import dynamic from "next/dynamic";
 import Head from "next/head";
+import MobileDrawer from "./components/ui/modals/Drawer";
 import "./globals.css";
 
 import {
@@ -211,8 +212,8 @@ export default function RootLayout({ children }) {
                         </ModalContent>
                       </Modal>
                       <Navbar />
-                      {/* <DynamicNav /> */}
                       {children}
+                      <MobileDrawer />
                       <Footer />
                     </Container>
                   </Providers>

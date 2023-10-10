@@ -424,8 +424,6 @@ const Navbar = () => {
           pb={4}
         >
           <Flex align="center" gap="1rem">
-            {/* <Image alt="librum logo" src="ereader1.png" /> */}
-            {/* <ThemeToggle /> */}
             <Logo />
             <Heading
               size="lg"
@@ -465,7 +463,6 @@ const Navbar = () => {
           />
         </Flex>
       </Flex>
-      <LoginButtonMobile closeDrawer={onDrawerClose} />
     </>
   );
 };

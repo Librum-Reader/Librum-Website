@@ -115,7 +115,7 @@ const LoginModal = () => {
       variant="defaultVariant"
     >
       <ModalOverlay />
-      <ModalContent>
+      <ModalContent m={{ base: "1rem", md: "0" }}>
         <ModalHeader> </ModalHeader>
         <ModalCloseButton />
         <ModalBody>

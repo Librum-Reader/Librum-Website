@@ -31,6 +31,7 @@ import SunIcon from "../SunIcon";
 const MobileDrawer = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   const { toggleMobileDrawer, isMobileDrawerOpen } = useModalToggle();
+  const { toggleLogin } = useModalToggle();
 
   const toggleColorTheme = () => {
     toggleColorMode();
@@ -130,14 +131,14 @@ const MobileDrawer = () => {
               >
                 <Flex align="center" gap="1rem">
                   {isLoggedIn ? (
-                    <Link href="" onClick={onDrawerClose}>
+                    <Link href="" onClick={toggleMobileDrawer}>
                       <ProfileButtonMobile />
                     </Link>
                   ) : (
                     <Button
                       onClick={() => {
-                        setLoginOpen(true);
-                        console.log("open login", loginOpen);
+                        toggleLogin();
+                        toggleMobileDrawer();
                       }}
                       variant="drawerButton"
                     >

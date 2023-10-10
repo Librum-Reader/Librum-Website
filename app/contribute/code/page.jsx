@@ -120,14 +120,20 @@ const StackCard = () => {
           );
         })}
         <Flex w="100%" h="100%">
-          <Button
-            variant="primary"
+          <Link
+            href="https://github.com/Librum-Reader/Librum"
+            target="#"
             w="100%"
-            leftIcon={<PiGithubLogo />}
-            alignSelf="flex-end"
           >
-            Github
-          </Button>
+            <Button
+              variant="primary"
+              w="100%"
+              leftIcon={<PiGithubLogo />}
+              alignSelf="flex-end"
+            >
+              Github
+            </Button>
+          </Link>
         </Flex>
       </Flex>
     );

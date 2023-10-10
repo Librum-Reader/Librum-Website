@@ -76,7 +76,7 @@ const StackCard = () => {
         padding="1rem"
         gap="2rem"
         className="contribute-card"
-        width="100%"
+        width={isLargerThan1700 ? "80%" : "100%"}
         key={index}
       >
         <Flex

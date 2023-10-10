@@ -76,7 +76,7 @@ const StackCard = () => {
         padding="1rem"
         gap="2rem"
         className="contribute-card"
-        width={isLargerThan1700 ? "80%" : "100%"}
+        width="1000%"
         key={index}
       >
         <Flex
@@ -160,7 +160,7 @@ const Code = () => {
       <Flex
         gap={{ base: "2rem", md: "3rem" }}
         direction={{ base: "column", md: "row" }}
-        width="100%"
+        width={isLargerThan1700 ? "80%" : "100%"}
         px={{ base: "0", md: "7rem" }}
         height="65%"
       >

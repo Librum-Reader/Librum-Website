@@ -88,7 +88,7 @@ const Footer = () => {
           mb="5px"
         >
           <Flex align="center" gap=".5rem">
-            <Image alt="librum logo" src="Logo.svg" w="30px" />
+            <Image alt="librum logo" src="/logo.svg" w="30px" />
             <Heading size="md" color="text-default">
               Librum
             </Heading>

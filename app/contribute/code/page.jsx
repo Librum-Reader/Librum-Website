@@ -30,6 +30,7 @@ const StackCard = () => {
           stackItem: "Qml",
         },
       ],
+      githubUrl: "https://github.com/Librum-Reader/Librum",
     },
     {
       title: "Server",
@@ -45,6 +46,7 @@ const StackCard = () => {
           stackItem: "EF-Core",
         },
       ],
+      githubUrl: "https://github.com/Librum-Reader/Librum-Server",
     },
     {
       title: "Website",
@@ -60,6 +62,7 @@ const StackCard = () => {
           stackItem: "Chakra UI",
         },
       ],
+      githubUrl: "https://github.com/Librum-Reader/Librum-Website",
     },
   ];
   return stackData.map((item, index) => {
@@ -94,37 +97,25 @@ const StackCard = () => {
         </Flex>
         {item.stack.map((stackItem, index) => {
           return (
-            <Flex
-              // border="1px"
-              w="100%"
-              // bg="bg-default"
-              // borderColor="user-profile-border"
-              // borderRadius="md"
-              px="1rem"
-              py=".5rem"
-              justify="center"
-              key={index}
-            >
-              <Text
-                fontSize={{ base: "md", xl: "lg", "2xl": "xl" }}
-                fontWeight={{
-                  base: "normal",
-                  md: "normal",
-                  xl: "semibold",
-                  "2xl": "bold",
-                }}
-              >
-                {stackItem.stackItem}
-              </Text>
-            </Flex>
+            <>
+              <Flex w="100%" px="1rem" py=".5rem" justify="center" key={index}>
+                <Text
+                  fontSize={{ base: "md", xl: "lg", "2xl": "xl" }}
+                  fontWeight={{
+                    base: "normal",
+                    md: "normal",
+                    xl: "semibold",
+                    "2xl": "bold",
+                  }}
+                >
+                  {stackItem.stackItem}
+                </Text>
+              </Flex>
+            </>
           );
         })}
-        <Flex w="100%" h="100%">
-          <Link
-            href="https://github.com/Librum-Reader/Librum"
-            target="#"
-            w="100%"
-          >
+        <Flex w="100%" h="100%" className="test">
+          <Link href={item.githubUrl} target="#" w="100%" alignSelf="flex-end">
             <Button
               variant="primary"
               w="100%"
@@ -158,10 +149,21 @@ const Code = () => {
       <Text fontSize={isLargerThan1700 ? "xl" : "lg"} mb="2rem" mt="2rem">
         Librum offers many ways to contribute through code. Interested? You can
         contact us via{" "}
-        <Link href="#" textColor="#946BDE">
+        <Link href="mailto:contact@librumreader.com" textColor="#946BDE">
           e-mail
         </Link>{" "}
-        , our contact form, or GitHub.
+        or the{" "}
+        <Link
+          textColor="#946BDE"
+          href=""
+          onClick={(e) => {
+            e.preventDefault();
+            window.scrollTo(0, document.body.scrollHeight);
+          }}
+        >
+          contact
+        </Link>{" "}
+        form below.
       </Text>
       <Flex
         gap={{ base: "2rem", md: "3rem" }}

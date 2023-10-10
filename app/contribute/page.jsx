@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Flex, Text, Heading, useMediaQuery } from "@chakra-ui/react";
+import { Flex, Text, Heading, useMediaQuery, Link } from "@chakra-ui/react";
 import { AiFillGithub } from "react-icons/ai";
 import { FaPatreon } from "react-icons/fa";
 import { CgFigma } from "react-icons/cg";
@@ -11,25 +11,27 @@ import { IoPeopleSharp } from "react-icons/io5";
 
 const ContributeCard = ({ text, icon }) => {
   return (
-    <Flex
-      background="user-profile-bg"
-      border="1px"
-      borderColor="user-profile-border"
-      borderRadius="md"
-      height="auto"
-      direction={{ base: "row", md: "column" }}
-      align="center"
-      padding="1rem"
-      gap="2rem"
-      className="contribute-card"
-      //   p={{ base: "1rem", md: "2rem" }}
-      //   direction={{ base: "column", md: "row" }}
-      // w="320px"
-      // h="255px"
-    >
-      {icon}
-      <Heading size="lg">{text}</Heading>
-    </Flex>
+    <Link href="/contribute/code" _hover={{ textDecoration: "none" }}>
+      <Flex
+        background="user-profile-bg"
+        border="1px"
+        borderColor="user-profile-border"
+        borderRadius="md"
+        height="auto"
+        direction={{ base: "row", md: "column" }}
+        align="center"
+        padding="1rem"
+        gap="2rem"
+        className="contribute-card"
+        //   p={{ base: "1rem", md: "2rem" }}
+        //   direction={{ base: "column", md: "row" }}
+        // w="320px"
+        // h="255px"
+      >
+        {icon}
+        <Heading size="lg">{text}</Heading>
+      </Flex>
+    </Link>
   );
 };
 

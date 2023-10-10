@@ -18,7 +18,7 @@ const StackCard = () => {
   const stackData = [
     {
       title: "Client",
-      icon: <BsDisplay size={isLargerThan1700 ? 80 : 40} color="#946BDE" />,
+      icon: <BsDisplay size={isLargerThan1700 ? 60 : 40} color="#946BDE" />,
       stack: [
         {
           stackItem: "C++",
@@ -33,7 +33,7 @@ const StackCard = () => {
     },
     {
       title: "Server",
-      icon: <FaServer size={isLargerThan1700 ? 80 : 40} color="#946BDE" />,
+      icon: <FaServer size={isLargerThan1700 ? 60 : 40} color="#946BDE" />,
       stack: [
         {
           stackItem: "C#",
@@ -48,7 +48,7 @@ const StackCard = () => {
     },
     {
       title: "Website",
-      icon: <CgWebsite size={isLargerThan1700 ? 80 : 40} color="#946BDE" />,
+      icon: <CgWebsite size={isLargerThan1700 ? 60 : 40} color="#946BDE" />,
       stack: [
         {
           stackItem: "React",
@@ -90,7 +90,7 @@ const StackCard = () => {
           direction="column"
         >
           {item.icon}
-          <Heading size="2xl">{item.title}</Heading>
+          <Heading size={isLargerThan1700 ? "xl" : "2xl"}>{item.title}</Heading>
         </Flex>
         {item.stack.map((stackItem, index) => {
           return (
@@ -106,7 +106,7 @@ const StackCard = () => {
               key={index}
             >
               <Text
-                fontSize={{ base: "md", xl: "lg", "2xl": "2xl" }}
+                fontSize={{ base: "md", xl: "lg", "2xl": "xl" }}
                 fontWeight={{
                   base: "normal",
                   md: "normal",
@@ -149,7 +149,7 @@ const Code = () => {
       mb="6rem"
       p="2rem"
     >
-      <Text fontSize={isLargerThan1700 ? "2xl" : "lg"} mb="2rem" mt="2rem">
+      <Text fontSize={isLargerThan1700 ? "xl" : "lg"} mb="2rem" mt="2rem">
         Librum offers many ways to contribute through code. Interested? You can
         contact us via{" "}
         <Link href="#" textColor="#946BDE">

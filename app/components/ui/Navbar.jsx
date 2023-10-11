@@ -63,6 +63,7 @@ import ThemeToggle from "./ThemeToggle";
 import SunIcon from "../ui/SunIcon";
 import { LoginContext } from "../../context/loginModalContext";
 import { useContext } from "react";
+import { useRouter } from "next/navigation";
 
 const navLinks = [
   {
@@ -80,6 +81,7 @@ let active;
 
 const Navbar = () => {
   const { loginOpen, setLoginOpen } = useContext(LoginContext);
+  const router = useRouter();
 
   const path = usePathname();
   if (path === "/") {
@@ -421,7 +423,14 @@ const Navbar = () => {
           className="navbar"
           pb={4}
         >
-          <Flex align="center" gap="1rem">
+          <Flex
+            align="center"
+            gap="1rem"
+            onClick={() => {
+              router.push("/");
+            }}
+            _hover={{ cursor: "pointer" }}
+          >
             {/* <Image alt="librum logo" src="ereader1.png" /> */}
             {/* <ThemeToggle /> */}
             <Logo />

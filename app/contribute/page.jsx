@@ -9,9 +9,9 @@ import { PiPatreonLogoFill } from "react-icons/pi";
 import { BiSolidDonateHeart } from "react-icons/bi";
 import { IoPeopleSharp } from "react-icons/io5";
 
-const ContributeCard = ({ text, icon }) => {
+const ContributeCard = ({ text, icon, link }) => {
   return (
-    <Link href="/contribute/code" _hover={{ textDecoration: "none" }}>
+    <Link href={link} _hover={{ textDecoration: "none" }}>
       <Flex
         background="user-profile-bg"
         border="1px"
@@ -44,6 +44,7 @@ const Contribute = () => {
       icon: (
         <AiFillGithub size={isSmallerThan400 ? "50" : "200"} color="#946BDE" />
       ),
+      link: "/contribute/code",
     },
     {
       text: "DONATE",
@@ -53,16 +54,19 @@ const Contribute = () => {
           color="#946BDE"
         />
       ),
+      link: "/contribute/donate",
     },
     {
       text: "DESIGN",
       icon: <CgFigma size={isSmallerThan400 ? "50" : "200"} color="#946BDE" />,
+      link: "/contribute/design",
     },
     {
       text: "OTHER",
       icon: (
         <IoPeopleSharp size={isSmallerThan400 ? "50" : "200"} color="#946BDE" />
       ),
+      link: "/contribute/other",
     },
   ];
 
@@ -84,7 +88,11 @@ const Contribute = () => {
         direction={{ base: "column", md: "row" }}
       >
         {contributeItems.map((item, index) => {
-          return ContributeCard({ text: item.text, icon: item.icon });
+          return ContributeCard({
+            text: item.text,
+            icon: item.icon,
+            link: item.link,
+          });
         })}
       </Flex>
     </Flex>

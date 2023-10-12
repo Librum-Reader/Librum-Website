@@ -5,6 +5,8 @@ import Container from "./components/ui/Container";
 import Footer from "./components/sections/Footer";
 import dynamic from "next/dynamic";
 import Head from "next/head";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
 import "./globals.css";
 
 import {
@@ -49,8 +51,16 @@ const inter = Inter({ subsets: ["latin"] });
 const queryClient = new QueryClient();
 
 import { getVerifiedStatus } from "./utils/apiFunctions";
+const stripePromise = loadStripe(
+  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
+);
 
 export default function RootLayout({ children }) {
+  const options = {
+    clientSecret:
+      "pi_3O09ivL1HTyqyYMG12WJJa0D_secret_XGvle09c52BepCzCg0IFDL2yG",
+  };
+
   const [firstVisit, setFirstVisit] = useState(true);
   const {
     isOpen: isDisclaimerOpen,
@@ -212,7 +222,9 @@ export default function RootLayout({ children }) {
                       </Modal>
                       <Navbar />
                       {/* <DynamicNav /> */}
-                      {children}
+                      <Elements stripe={stripePromise} options={options}>
+                        {children}
+                      </Elements>
                       <Footer />
                     </Container>
                   </Providers>

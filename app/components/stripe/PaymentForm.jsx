@@ -1,5 +1,5 @@
 "use client";
-import { Card } from "@chakra-ui/react";
+import { Card, Button, Flex } from "@chakra-ui/react";
 import {
   CardElement,
   AddressElement,
@@ -8,6 +8,7 @@ import {
   PaymentElement,
 } from "@stripe/react-stripe-js";
 import React, { useState, useEffect } from "react";
+import DonationCards from "../ui/radio/DonationCards";
 
 const PaymentForm = ({ client_secret }) => {
   const stripe = useStripe();
@@ -20,7 +21,6 @@ const PaymentForm = ({ client_secret }) => {
     }
 
     setClientSecret(client_secret);
-    console.log(client_secret);
 
     if (!clientSecret) {
       return;
@@ -46,18 +46,10 @@ const PaymentForm = ({ client_secret }) => {
 
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    const cardElement = elements?.getElement("card");
-    console.log(elements);
     try {
-      //   const { data } = await fetch("/api/create-payment-intent", {
-      //     method: "POST",
-      //     data: { amount: 89 },
-      //   });
-
       stripe.retrievePaymentIntent(clientSecret).then(({ paymentIntent }) => {
         switch (paymentIntent.status) {
           case "succeeded":
@@ -96,12 +88,25 @@ const PaymentForm = ({ client_secret }) => {
   };
 
   return (
-    <div>
+    <Flex
+      width="100%"
+      height={{ base: "100%", md: "100dvh" }}
+      justify="center"
+      // gap="4rem"
+      mt={{ base: "0", md: "-78px" }}
+      align="center"
+      direction="column"
+      mb="6rem"
+      p="2rem"
+    >
       <form onSubmit={onSubmit}>
+        <DonationCards />
         <PaymentElement options={paymentElementOptions} />
-        <button type="submit">Submit</button>
+        <Button type="submit" variant="primary" mt=".7rem" w="full">
+          Donate
+        </Button>
       </form>
-    </div>
+    </Flex>
   );
 };
 

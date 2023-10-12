@@ -33,7 +33,8 @@ const page = () => {
   }, []);
 
   const appearance = {
-    theme: "stripe",
+    theme: "night",
+    labels: "floating",
   };
 
   const options = {
@@ -43,7 +44,13 @@ const page = () => {
 
   return (
     <Flex mx="auto">
-      {loading ? "Loading" : <PaymentForm client_secret={clientSecret} />}
+      {loading ? (
+        "Loading"
+      ) : (
+        <Elements options={options} stripe={stripePromise}>
+          {loading ? "Loading" : <PaymentForm client_secret={clientSecret} />}
+        </Elements>
+      )}
     </Flex>
   );
 };

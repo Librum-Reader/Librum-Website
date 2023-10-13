@@ -37,6 +37,8 @@ const Donate = () => {
             </Heading>
             <DonationCards setAmount={setAmount} />
             <Button
+              variant="primary"
+              h="45px"
               onClick={() => {
                 setStep(2);
               }}

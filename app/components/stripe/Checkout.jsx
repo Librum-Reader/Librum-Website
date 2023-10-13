@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Elements } from "@stripe/react-stripe-js";
 import PaymentForm from "./PaymentForm";
-import { Heading } from "@chakra-ui/react";
+import { Heading, Flex } from "@chakra-ui/react";
 import { loadStripe } from "@stripe/stripe-js";
+import { BeatLoader } from "react-spinners";
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
@@ -47,7 +48,11 @@ const Checkout = ({ amount, setStep }) => {
         <Elements options={options} stripe={stripePromise}>
           <PaymentForm client_secret={clientSecret} setStep={setStep} />
         </Elements>
-      ) : null}
+      ) : (
+        <Flex w="100%" h="100%" justify="center" align="center">
+          <BeatLoader color="#946BDE" />
+        </Flex>
+      )}
     </>
   );
 };

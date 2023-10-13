@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { HStack, useRadioGroup } from "@chakra-ui/react";
 import RadioCard from "./RadioCard";
-import { useStripe } from "@stripe/react-stripe-js";
 
 const DonationCards = ({ setAmount }) => {
   const options = ["€5", "€10", "€15"];
-  const [donation, setDonation] = useState();
 
   const handleChange = (value) => {
     setAmount(value.slice(1));

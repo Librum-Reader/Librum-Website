@@ -2,16 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Elements } from "@stripe/react-stripe-js";
 import PaymentForm from "./PaymentForm";
 import { Heading } from "@chakra-ui/react";
-import DonationCards from "../ui/radio/DonationCards";
 import { loadStripe } from "@stripe/stripe-js";
-
-import {
-  CardElement,
-  AddressElement,
-  useElements,
-  useStripe,
-  PaymentElement,
-} from "@stripe/react-stripe-js";
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY

@@ -21,12 +21,6 @@ const PaymentForm = ({ client_secret, setStep }) => {
       return;
     }
 
-    // setClientSecret(client_secret);
-
-    // if (!clientSecret) {
-    //   return;
-    // }
-
     stripe.retrievePaymentIntent(client_secret).then(({ paymentIntent }) => {
       console.log("test", client_secret);
       console.log(paymentIntent.status);
@@ -54,25 +48,6 @@ const PaymentForm = ({ client_secret, setStep }) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    // try {
-    //   stripe.retrievePaymentIntent(client_secret).then(({ paymentIntent }) => {
-    //     switch (paymentIntent.status) {
-    //       case "succeeded":
-    //         setMessage("Payment succeeded!");
-    //         console.log("succeeded");
-    //         console.log("form secret", client_secret);
-    //         break;
-    //       case "processing":
-    //         setMessage("Your payment is processing.");
-    //         break;
-    //       case "requires_payment_method":
-    //         setMessage("Your payment was not successful, please try again.");
-    //         break;
-    //       default:
-    //         setMessage("Something went wrong.");
-    //         break;
-    //     }
-    //   });
 
     const { error } = await stripe.confirmPayment({
       elements,
@@ -80,9 +55,6 @@ const PaymentForm = ({ client_secret, setStep }) => {
         return_url: "http://localhost:3000/contribute/donate/#",
       },
     });
-    // } catch (error) {
-    //   console.log(error);
-    // }
   };
 
   const paymentElementOptions = {

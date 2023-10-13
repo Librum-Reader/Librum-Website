@@ -10,8 +10,9 @@ import {
 import React, { useState, useEffect } from "react";
 import DonationCards from "../ui/radio/DonationCards";
 
-const PaymentForm = ({ client_secret }) => {
+const PaymentForm = ({ client_secret, setStep }) => {
   const stripe = useStripe();
+  const [donationAmount, setDonationAmount] = useState();
   const elements = useElements();
   const [clientSecret, setClientSecret] = useState();
 
@@ -20,16 +21,19 @@ const PaymentForm = ({ client_secret }) => {
       return;
     }
 
-    setClientSecret(client_secret);
+    // setClientSecret(client_secret);
 
-    if (!clientSecret) {
-      return;
-    }
+    // if (!clientSecret) {
+    //   return;
+    // }
 
-    stripe.retrievePaymentIntent(clientSecret).then(({ paymentIntent }) => {
+    stripe.retrievePaymentIntent(client_secret).then(({ paymentIntent }) => {
+      console.log("test", client_secret);
+      console.log(paymentIntent.status);
       switch (paymentIntent.status) {
         case "succeeded":
           setMessage("Payment succeeded!");
+          console.log("success");
           break;
         case "processing":
           setMessage("Your payment is processing.");
@@ -42,45 +46,43 @@ const PaymentForm = ({ client_secret }) => {
           break;
       }
     });
-  }, [stripe]);
+  }, [stripe, client_secret]);
 
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState(null);
+  console.log("payment", client_secret);
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    try {
-      stripe.retrievePaymentIntent(clientSecret).then(({ paymentIntent }) => {
-        switch (paymentIntent.status) {
-          case "succeeded":
-            setMessage("Payment succeeded!");
-            break;
-          case "processing":
-            setMessage("Your payment is processing.");
-            break;
-          case "requires_payment_method":
-            setMessage("Your payment was not successful, please try again.");
-            break;
-          default:
-            setMessage("Something went wrong.");
-            break;
-        }
-      });
+    // try {
+    //   stripe.retrievePaymentIntent(client_secret).then(({ paymentIntent }) => {
+    //     switch (paymentIntent.status) {
+    //       case "succeeded":
+    //         setMessage("Payment succeeded!");
+    //         console.log("succeeded");
+    //         console.log("form secret", client_secret);
+    //         break;
+    //       case "processing":
+    //         setMessage("Your payment is processing.");
+    //         break;
+    //       case "requires_payment_method":
+    //         setMessage("Your payment was not successful, please try again.");
+    //         break;
+    //       default:
+    //         setMessage("Something went wrong.");
+    //         break;
+    //     }
+    //   });
 
-      const { error } = await stripe.confirmPayment({
-        elements,
-        confirmParams: {
-          // Make sure to change this to your payment completion page
-          return_url: "http://localhost:3000",
-        },
-      });
-
-      //   await stripe?.confirmCardPayment(clientSecret, {
-      //     payment_method: { card: cardElement },
-      //   });
-    } catch (error) {
-      console.log(error);
-    }
+    const { error } = await stripe.confirmPayment({
+      elements,
+      confirmParams: {
+        return_url: "http://localhost:3000/contribute/donate/#",
+      },
+    });
+    // } catch (error) {
+    //   console.log(error);
+    // }
   };
 
   const paymentElementOptions = {
@@ -90,20 +92,26 @@ const PaymentForm = ({ client_secret }) => {
   return (
     <Flex
       width="100%"
-      height={{ base: "100%", md: "100dvh" }}
       justify="center"
       // gap="4rem"
-      mt={{ base: "0", md: "-78px" }}
       align="center"
       direction="column"
-      mb="6rem"
-      p="2rem"
     >
-      <form onSubmit={onSubmit}>
-        <DonationCards />
+      <form onSubmit={onSubmit} width="300px">
         <PaymentElement options={paymentElementOptions} />
-        <Button type="submit" variant="primary" mt=".7rem" w="full">
+        <Button type="submit" variant="primary" mt=".7rem" w="full" h="45px">
           Donate
+        </Button>
+        <Button
+          onClick={() => {
+            setStep(1);
+          }}
+          variant="secondary"
+          mt=".7rem"
+          w="full"
+          h="45px"
+        >
+          Change amount
         </Button>
       </form>
     </Flex>

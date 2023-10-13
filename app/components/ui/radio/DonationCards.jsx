@@ -1,14 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { HStack, useRadioGroup } from "@chakra-ui/react";
 import RadioCard from "./RadioCard";
+import { useStripe } from "@stripe/react-stripe-js";
 
-const DonationCards = () => {
+const DonationCards = ({ setAmount }) => {
   const options = ["€5", "€10", "€15"];
+  const [donation, setDonation] = useState();
+
+  const handleChange = (value) => {
+    setAmount(value.slice(1));
+  };
 
   const { getRootProps, getRadioProps } = useRadioGroup({
     name: "framework",
-    defaultValue: "€5",
-    onChange: console.log,
+    onChange: handleChange,
   });
 
   const group = getRootProps();

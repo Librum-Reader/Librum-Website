@@ -52,7 +52,7 @@ const PaymentForm = ({ client_secret, setStep, amount }) => {
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url: "http://localhost:3000/contribute/donate/#",
+        return_url: "http://localhost:3000/contribute/donate/thankyou",
       },
     });
 

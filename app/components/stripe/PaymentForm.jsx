@@ -12,9 +12,8 @@ import DonationCards from "../ui/radio/DonationCards";
 
 const PaymentForm = ({ client_secret, setStep, amount }) => {
   const stripe = useStripe();
-  const [donationAmount, setDonationAmount] = useState();
   const elements = useElements();
-  const [clientSecret, setClientSecret] = useState();
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (!stripe) {
@@ -47,6 +46,7 @@ const PaymentForm = ({ client_secret, setStep, amount }) => {
   console.log("payment", client_secret);
 
   const onSubmit = async (e) => {
+    setLoading(true);
     e.preventDefault();
 
     const { error } = await stripe.confirmPayment({
@@ -55,6 +55,8 @@ const PaymentForm = ({ client_secret, setStep, amount }) => {
         return_url: "http://localhost:3000/contribute/donate/#",
       },
     });
+
+    setLoading(false);
   };
 
   const paymentElementOptions = {
@@ -71,7 +73,14 @@ const PaymentForm = ({ client_secret, setStep, amount }) => {
     >
       <form onSubmit={onSubmit} w="100%">
         <PaymentElement options={paymentElementOptions} />
-        <Button type="submit" variant="primary" mt=".7rem" w="full" h="45px">
+        <Button
+          type="submit"
+          variant="primary"
+          mt=".7rem"
+          w="full"
+          h="45px"
+          isDisabled={loading}
+        >
           Donate €{amount}
         </Button>
         <Button

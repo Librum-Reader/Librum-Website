@@ -1,5 +1,12 @@
 import React from "react";
-import { Input, InputGroup, InputLeftElement, Flex } from "@chakra-ui/react";
+import {
+  Input,
+  InputGroup,
+  InputLeftElement,
+  Flex,
+  NumberInput,
+  NumberInputField,
+} from "@chakra-ui/react";
 
 const CustomDonation = ({ amount, setAmount }) => {
   const handleChange = (e) => {
@@ -10,11 +17,15 @@ const CustomDonation = ({ amount, setAmount }) => {
     <Flex>
       <InputGroup mb="1rem">
         <InputLeftElement
-          children="€"
+          //   children="€"
           pointerEvents="none"
           fontWeight="semibold"
-        />
-        <Input value={amount} onChange={handleChange} />
+        >
+          €
+        </InputLeftElement>
+        <NumberInput value={amount} type="number" w="100%">
+          <NumberInputField pl="2rem" onChange={handleChange} />
+        </NumberInput>
       </InputGroup>
     </Flex>
   );

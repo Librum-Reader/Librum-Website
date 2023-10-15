@@ -10,7 +10,7 @@ import {
 import React, { useState, useEffect } from "react";
 import DonationCards from "../ui/radio/DonationCards";
 
-const PaymentForm = ({ client_secret, setStep }) => {
+const PaymentForm = ({ client_secret, setStep, amount }) => {
   const stripe = useStripe();
   const [donationAmount, setDonationAmount] = useState();
   const elements = useElements();
@@ -69,10 +69,10 @@ const PaymentForm = ({ client_secret, setStep }) => {
       align="center"
       direction="column"
     >
-      <form onSubmit={onSubmit} width="300px">
+      <form onSubmit={onSubmit} w="100%">
         <PaymentElement options={paymentElementOptions} />
         <Button type="submit" variant="primary" mt=".7rem" w="full" h="45px">
-          Donate
+          Donate €{amount}
         </Button>
         <Button
           onClick={() => {

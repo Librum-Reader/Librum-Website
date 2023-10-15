@@ -11,6 +11,7 @@ const DonationCards = ({ setAmount }) => {
 
   const { getRootProps, getRadioProps } = useRadioGroup({
     name: "framework",
+    defaultValue: "€5",
     onChange: handleChange,
   });
 

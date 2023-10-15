@@ -41,12 +41,16 @@ const Checkout = ({ amount, setStep }) => {
 
   return (
     <>
-      <Heading size="md" mb="1rem">
+      <Heading size="md" mb="1rem" textAlign="center">
         Choose payment method
       </Heading>
       {!loading ? (
         <Elements options={options} stripe={stripePromise}>
-          <PaymentForm client_secret={clientSecret} setStep={setStep} />
+          <PaymentForm
+            client_secret={clientSecret}
+            setStep={setStep}
+            amount={amount}
+          />
         </Elements>
       ) : (
         <Flex w="100%" h="100%" justify="center" align="center">

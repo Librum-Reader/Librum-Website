@@ -2,14 +2,15 @@
 import React, { useState, useEffect } from "react";
 import PaymentForm from "../../components/stripe/PaymentForm";
 import DonationCards from "@/app/components/ui/radio/DonationCards";
-import { Flex, Heading, Button } from "@chakra-ui/react";
+import CustomDonation from "../../components/stripe/CustomDonation";
+import { Flex, Heading, Button, Input } from "@chakra-ui/react";
 import Checkout from "../../components/stripe/Checkout";
 
 const Donate = () => {
   const [clientSecret, setClientSecret] = useState("");
   const [loading, setLoading] = useState(true);
   const [step, setStep] = useState(1);
-  const [amount, setAmount] = useState();
+  const [amount, setAmount] = useState(5);
 
   return (
     <Flex
@@ -19,8 +20,9 @@ const Donate = () => {
       mb="6rem"
       p="2rem"
       gap="4rem"
+      direction="column"
     >
-      <Flex w="60%" direction="column">
+      {/* <Flex w="60%" direction="column" justify="center">
         <Heading mb="1rem">Lorem ipsum</Heading>
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque sunt hic
         suscipit enim quas nesciunt distinctio iste! Dolores nemo deserunt
@@ -28,14 +30,26 @@ const Donate = () => {
         molestias a accusantium quis dolorem, labore quisquam possimus ratione
         obcaecati excepturi eaque reprehenderit nostrum sequi eum aliquam
         voluptatem unde. Vel earum rem quaerat?
-      </Flex>
-      <Flex mx="auto" direction="column" w="300px">
+      </Flex> */}
+      <Flex
+        mx="auto"
+        direction="column"
+        w="400px"
+        border="1px"
+        borderColor="user-profile-border"
+        borderRadius="md"
+        p="2rem"
+      >
         {step === 1 ? (
           <>
             <Heading size="md" mb="1rem">
               Select donation amount
             </Heading>
             <DonationCards setAmount={setAmount} />
+            <Heading size="md" mb="1rem">
+              Or enter custom amount
+            </Heading>
+            <CustomDonation amount={amount} setAmount={setAmount} />
             <Button
               variant="primary"
               h="45px"

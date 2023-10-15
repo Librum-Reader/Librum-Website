@@ -14,8 +14,8 @@ const RadioCard = (props) => {
         {...checkbox}
         cursor="pointer"
         borderWidth="1px"
-        borderRadius="md"
-        boxShadow="md"
+        borderColor="#946bde"
+        borderRadius="sm"
         _checked={{
           bg: "#946bde",
           color: "white",
@@ -28,6 +28,7 @@ const RadioCard = (props) => {
         py={3}
         w="100%"
         display="flex"
+        fontSize="xl"
         justifyContent="center"
       >
         {props.children}

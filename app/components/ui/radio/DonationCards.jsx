@@ -3,7 +3,7 @@ import { HStack, useRadioGroup } from "@chakra-ui/react";
 import RadioCard from "./RadioCard";
 
 const DonationCards = ({ setAmount }) => {
-  const options = ["€5", "€10", "€15"];
+  const options = ["€10", "€20", "€50"];
 
   const handleChange = (value) => {
     setAmount(value.slice(1));
@@ -11,7 +11,7 @@ const DonationCards = ({ setAmount }) => {
 
   const { getRootProps, getRadioProps } = useRadioGroup({
     name: "framework",
-    defaultValue: "€5",
+    defaultValue: "€10",
     onChange: handleChange,
   });
 

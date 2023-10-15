@@ -1,63 +1,76 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import PaymentForm from "../../components/stripe/PaymentForm";
+import React, { useState } from "react";
 import DonationCards from "@/app/components/ui/radio/DonationCards";
+import DonationFreq from "../../components/stripe/DonationFreq";
 import CustomDonation from "../../components/stripe/CustomDonation";
-import { Flex, Heading, Button, Input } from "@chakra-ui/react";
+import { Flex, Heading, Button, Text } from "@chakra-ui/react";
 import Checkout from "../../components/stripe/Checkout";
+import { BiSolidDonateHeart } from "react-icons/bi";
 
 const Donate = () => {
   const [clientSecret, setClientSecret] = useState("");
   const [loading, setLoading] = useState(true);
+  const [validInput, setValidInput] = useState(true);
   const [step, setStep] = useState(1);
-  const [amount, setAmount] = useState(5);
+  const [amount, setAmount] = useState(10);
+
+  const validateDonationInput = () => {
+    if (amount) {
+      setStep(2);
+    } else {
+      setValidInput(true);
+      setValidInput(false);
+    }
+  };
 
   return (
     <Flex
-      width="80%"
+      width={{ base: "100%", md: "80%" }}
       height={{ base: "100%", md: "100dvh" }}
-      mx="auto"
+      mx={{ base: "0", md: "auto" }}
       mb="6rem"
+      mt="2rem"
       p="2rem"
       gap="4rem"
-      direction="column"
+      direction={{ base: "column", md: "row" }}
     >
-      {/* <Flex w="60%" direction="column" justify="center">
-        <Heading mb="1rem">Lorem ipsum</Heading>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque sunt hic
-        suscipit enim quas nesciunt distinctio iste! Dolores nemo deserunt
-        veritatis laboriosam recusandae architecto qui, repudiandae tempore
-        molestias a accusantium quis dolorem, labore quisquam possimus ratione
-        obcaecati excepturi eaque reprehenderit nostrum sequi eum aliquam
-        voluptatem unde. Vel earum rem quaerat?
-      </Flex> */}
+      <Flex w={{ base: "100%", md: "60%" }} direction="column">
+        <Flex align="center" gap="1rem" mb="2rem">
+          <BiSolidDonateHeart size={50} color="#946bde" />
+          <Heading m="0">Thank you for supporting Librum</Heading>
+        </Flex>
+        Thank you for your generous support of Librum! Your contributions enable
+        us to continue developing and improving our open source, self-hostable
+        e-reader. We are deeply grateful for your commitment to making Librum
+        better with every update.
+      </Flex>
       <Flex
-        mx="auto"
         direction="column"
-        w="400px"
+        w={{ base: "100%", md: "400px" }}
         border="1px"
         borderColor="user-profile-border"
         borderRadius="md"
         p="2rem"
+        alignSelf="flex-start"
       >
         {step === 1 ? (
           <>
             <Heading size="md" mb="1rem">
+              Select donation frequency
+            </Heading>
+            <DonationFreq />
+            <Heading size="md" mb="1rem" mt="2rem">
               Select donation amount
             </Heading>
             <DonationCards setAmount={setAmount} />
-            <Heading size="md" mb="1rem">
-              Or enter custom amount
-            </Heading>
+            {validInput ? null : (
+              <Text fontSize="sm" textColor="red">
+                Please enter a valid amount
+              </Text>
+            )}
             <CustomDonation amount={amount} setAmount={setAmount} />
-            <Button
-              variant="primary"
-              h="45px"
-              onClick={() => {
-                setStep(2);
-              }}
-            >
-              Continue
+            <Button variant="primary" h="50px" onClick={validateDonationInput}>
+              Donate and support
             </Button>
           </>
         ) : null}

@@ -32,6 +32,20 @@ const Checkout = ({ amount, setStep }) => {
   const appearance = {
     theme: "night",
     labels: "floating",
+    rules: {
+      ".Tab": {
+        border: "1px solid #393a48",
+        boxShadow: "0",
+      },
+      ".Tab--selected": {
+        border: "1px solid #393a48",
+        backgroundColor: "#946bde",
+        color: "#ffffff",
+      },
+      ".Input": {
+        boxShadow: "0",
+      },
+    },
   };
 
   const options = {

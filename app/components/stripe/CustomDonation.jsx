@@ -19,7 +19,7 @@ const CustomDonation = ({ amount, setAmount }) => {
 
   return (
     <Flex>
-      <InputGroup mb="1rem">
+      <InputGroup mb="36px">
         <InputLeftElement
           //   children="€"
           pointerEvents="none"

@@ -14,7 +14,7 @@ const DonationFreq = () => {
 
   return (
     <HStack {...group} w="100%">
-      <Button w="full" px={5} py={3} variant="primary">
+      <Button w="full" px={5} py={3} variant="primary" h="46px">
         One time
       </Button>
       <Tooltip hasArrow label="Coming soon!" bg="#946bde" textColor="white">
@@ -25,6 +25,7 @@ const DonationFreq = () => {
           variant="secondary"
           isDisabled
           leftIcon={<AiFillHeart />}
+          h="46px"
         >
           Monthly
         </Button>

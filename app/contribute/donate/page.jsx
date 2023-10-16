@@ -39,10 +39,13 @@ const Donate = () => {
           <BiSolidDonateHeart size={50} color="#946bde" />
           <Heading m="0">Thank you for supporting Librum</Heading>
         </Flex>
-        Thank you for your generous support of Librum! Your contributions enable
-        us to continue developing and improving our open source, self-hostable
-        e-reader. We are deeply grateful for your commitment to making Librum
-        better with every update.
+        <Text>Thank you for your generous support!</Text>
+        <Text>
+          Your contributions fund the maintenance and development of Librum by
+          helping us cover the server cost and allowing us to make investments
+          into new areas of development. We are deeply grateful for your
+          commitment to making Librum better with every update.
+        </Text>
       </Flex>
       <Flex
         direction="column"
@@ -55,12 +58,9 @@ const Donate = () => {
       >
         {step === 1 ? (
           <>
-            <Heading size="md" mb="1rem">
-              Select donation frequency
-            </Heading>
             <DonationFreq />
-            <Heading size="md" mb="1rem" mt="2rem">
-              Select donation amount
+            <Heading size="md" mb="1rem" mt="2rem" textAlign="center">
+              Select amount
             </Heading>
             <DonationCards setAmount={setAmount} />
             {validInput ? null : (
@@ -69,8 +69,13 @@ const Donate = () => {
               </Text>
             )}
             <CustomDonation amount={amount} setAmount={setAmount} />
-            <Button variant="primary" h="50px" onClick={validateDonationInput}>
-              Donate and support
+            <Button
+              variant="primary"
+              h="50px"
+              onClick={validateDonationInput}
+              fontSize="1.1rem"
+            >
+              Donate and Support
             </Button>
           </>
         ) : null}

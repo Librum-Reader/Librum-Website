@@ -22,7 +22,7 @@ const Features = () => {
         display={{ base: "none", md: "block" }}
       />
       <Box
-        px={{ base: "0", md: "9rem" }}
+        px={{ base: "0", md: "8rem" }}
         mt={{ base: "0", md: "10rem" }}
         mb={{ base: "0rem", md: "10rem" }}
         className="features-items"

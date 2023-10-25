@@ -37,23 +37,32 @@ const Alternate = () => {
 
   const data = [
     {
-      title: "Simple",
-      text: "Focus on what actually matters, using a simple and straight forward interface.",
-      text2:
-        "Your time is too valuable to be wasted on badly designed applications.",
-      text_mobile:
-        "Focus on what actually matters, using a simple and straight forward interface. Your time is too valuable to be wasted on badly designed applications.",
-      image: "/screenshots/reading_dark.png",
-      image_light: "/screenshots/reading_light.png",
-    },
-    {
-      title: "Your Own Library",
+      title: "Build Your Library",
       text: "Create your own personalized online library that you can access from any device, anytime, anywhere.",
       text2: "Librum automatically saves everything you need to the cloud.",
       text_mobile:
-        "Create your own personalized online library that you can access from any device, anytime, anywhere. Librum automatically saves everything you need to the cloud.",
+        "Create your own personalized online library that you can access from any device, anytime, anywhere.",
       image: "/screenshots/library_dark.png",
       image_light: "/screenshots/library_light.png",
+    },
+    {
+      title: "Ai Integration",
+      text: "Make use of advanced Artificial Intelligence in just two clicks.",
+      text2: "Use it to explain, summarize or give you more information on any text within your book.",
+      text_mobile:
+        "Make use of advanced Artificial Intelligence in just two clicks.",
+      image: "/screenshots/explanation_dark.png",
+      image_light: "/screenshots/explanation_light.png",
+    },
+    {
+      title: "Simplicity",
+      text: "Focus on what actually matters, using a simple and straight forward interface.",
+      text2:
+        "Your time is too valuable to be wasted on complex applications.",
+      text_mobile:
+        "Focus on what actually matters, using a simple and straight forward interface.",
+      image: "/screenshots/reading_dark.png",
+      image_light: "/screenshots/reading_light.png",
     },
     {
       title: "Fully Customizable",

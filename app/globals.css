@@ -26,6 +26,10 @@ body {
   font-family: "Lato", sans-serif;
 }
 
+.tier-check {
+  margin-bottom: -0.2rem;
+}
+
 .news-image {
   width: 300px;
   height: auto;

@@ -25,6 +25,7 @@ import { useRef, useEffect, useState } from "react";
 import FeaturesAnimate from "../ui/FeaturesAnimate";
 import FeaturesAnimateMobile from "../ui/FeaturesAnimateMobile";
 import MobileFeatureCard from "../ui/MobileFeatureCard";
+import ReactPlayer from "react-player";
 
 const Alternate = () => {
   const { colorMode } = useColorMode();
@@ -48,7 +49,8 @@ const Alternate = () => {
     {
       title: "Ai Integration",
       text: "Make use of advanced Artificial Intelligence in just two clicks.",
-      text2: "Use it to explain, summarize or give you more information on any text within your book.",
+      text2:
+        "Use it to explain, summarize or give you more information on any text within your book.",
       text_mobile:
         "Make use of advanced Artificial Intelligence in just two clicks.",
       image: "/screenshots/explanation_dark.png",
@@ -57,8 +59,7 @@ const Alternate = () => {
     {
       title: "Simplicity",
       text: "Focus on what actually matters, using a simple and straight forward interface.",
-      text2:
-        "Your time is too valuable to be wasted on complex applications.",
+      text2: "Your time is too valuable to be wasted on complex applications.",
       text_mobile:
         "Focus on what actually matters, using a simple and straight forward interface.",
       image: "/screenshots/reading_dark.png",
@@ -126,19 +127,32 @@ const Alternate = () => {
           >
             <Card flexBasis="fit-content">
               <CardBody p="1rem">
-                <Image
-                  src={colorMode === "dark" ? block.image : block.image_light}
-                  className={
-                    index % 2 === 0
-                      ? "features-img shadow-left"
-                      : "features-img shadow-right"
-                  }
-                  alt="Illustration"
-                  onClick={() => {
-                    setModalData(block.image);
-                    onOpen();
-                  }}
-                />
+                {block.title === "Ai Integration" ? (
+                  <ReactPlayer
+                    url={
+                      colorMode === "dark"
+                        ? "/videos/ai-dark.mp4"
+                        : "/videos/ai-light.mp4"
+                    }
+                    controls={true}
+                    height="100%"
+                    width="100%"
+                  />
+                ) : (
+                  <Image
+                    src={colorMode === "dark" ? block.image : block.image_light}
+                    className={
+                      index % 2 === 0
+                        ? "features-img shadow-left"
+                        : "features-img shadow-right"
+                    }
+                    alt="Illustration"
+                    onClick={() => {
+                      setModalData(block.image);
+                      onOpen();
+                    }}
+                  ></Image>
+                )}
               </CardBody>
             </Card>
 

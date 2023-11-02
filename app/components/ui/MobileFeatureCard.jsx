@@ -38,10 +38,12 @@ const MobileFeatureCard = (props) => {
         <ReactPlayer
           url={
             colorMode === "dark"
-              ? "/videos/ai-dark.mkv"
+              ? "/videos/ai-dark.mp4"
               : "/videos/ai-light.mp4"
           }
-          controls={true}
+          controls={false}
+          playing={true}
+          loop={true}
           height="100%"
           width="100%"
         />

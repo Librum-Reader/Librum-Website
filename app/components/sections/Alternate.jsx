@@ -34,6 +34,12 @@ const Alternate = () => {
   const oddAlternateBackground = useColorModeValue("gray.200", "#282c34");
 
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const {
+    isOpen: isVideoOpen,
+    onOpen: onVideoOpen,
+    onClose: onVideoClose,
+  } = useDisclosure();
+
   const [modalData, setModalData] = useState("");
 
   const data = [
@@ -95,6 +101,32 @@ const Alternate = () => {
           {/* </ModalBody> */}
         </ModalContent>
       </Modal>
+      <Modal isOpen={isVideoOpen} onClose={onVideoClose} isCentered>
+        <ModalOverlay />
+        <ModalContent>
+          <Flex
+            alignSelf="center"
+            background="bg-default"
+            padding="1rem"
+            borderRadius="lg"
+            w={{ base: "100%", md: "1400px" }}
+          >
+            <ReactPlayer
+              url={
+                colorMode === "dark"
+                  ? "/videos/ai-dark.mp4"
+                  : "/videos/ai-light.mp4"
+              }
+              controls={true}
+              playing={true}
+              loop={true}
+              height="100%"
+              width="100%"
+            />
+          </Flex>
+          {/* </ModalBody> */}
+        </ModalContent>
+      </Modal>
       {data.map((block, index) => {
         return (
           // <FeaturesAnimateMobile key={index}>
@@ -134,9 +166,14 @@ const Alternate = () => {
                         ? "/videos/ai-dark.mp4"
                         : "/videos/ai-light.mp4"
                     }
-                    controls={true}
+                    controls={false}
+                    playing={true}
+                    loop={true}
                     height="100%"
                     width="100%"
+                    onClick={() => {
+                      onVideoOpen();
+                    }}
                   />
                 ) : (
                   <Image

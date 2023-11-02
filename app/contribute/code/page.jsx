@@ -146,7 +146,7 @@ const Code = () => {
       mb="6rem"
       p="2rem"
     >
-      <Text fontSize={isLargerThan1700 ? "xl" : "lg"} mb="2rem" mt="2rem">
+      <Text fontSize={isLargerThan1700 ? "lg" : "lg"} mb="2rem" mt="2rem">
         Librum offers many ways to contribute through code. Interested? You can
         contact us via{" "}
         <Link href="mailto:contact@librumreader.com" textColor="#946BDE">

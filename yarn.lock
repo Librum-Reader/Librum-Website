@@ -2031,10 +2031,10 @@
   dependencies:
     prop-types "^15.7.2"
 
-"@stripe/stripe-js@^1.44.1 || ^2.0.0", "@stripe/stripe-js@^2.1.7":
-  version "2.1.7"
-  resolved "https://registry.npmjs.org/@stripe/stripe-js/-/stripe-js-2.1.7.tgz"
-  integrity sha512-oI620ARpFp5jCXfwIYMxyBJmtTFuAjSA8x3k3JgW1M6cvLmw9XgmNcGNegQWmirpozhFNflxrZEgp10og+6MSA==
+"@stripe/stripe-js@^1.44.1 || ^2.0.0", "@stripe/stripe-js@^2.1.10":
+  version "2.1.10"
+  resolved "https://registry.npmjs.org/@stripe/stripe-js/-/stripe-js-2.1.10.tgz"
+  integrity sha512-h79zhwvxAJVAvtVjtMoz++DtwI7GdcEItmTC0P2gciZoFUeAO6XX9DL+UXm9uADiEaUvTKqrExYwtBTlMYAaPA==
 
 "@swc/helpers@0.5.1":
   version "0.5.1"

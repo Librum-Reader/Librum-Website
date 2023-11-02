@@ -34,53 +34,54 @@ const Donate = () => {
       gap="4rem"
       direction={{ base: "column", md: "row" }}
     >
-      <Flex w={{ base: "100%", md: "60%" }} direction="column">
-        <Flex align="center" gap="1rem" mb="2rem">
-          <BiSolidDonateHeart size={50} color="#946bde" />
-          <Heading m="0">Thank you for supporting Librum</Heading>
+      <Flex gap="4rem" align="center" h="-moz-max-content">
+        <Flex w={{ base: "100%", md: "60%" }} direction="column">
+          <Flex align="center" gap="1rem" mb="2rem">
+            <BiSolidDonateHeart size={50} color="#946bde" />
+            <Heading m="0">Thank you for your support</Heading>
+          </Flex>
+          <Text>Thank you for your generous support!</Text>
+          <Text>
+            Your contributions fund the maintenance and development of Librum by
+            helping us cover the server cost and allowing us to make investments
+            into new areas of development. We are deeply grateful for your
+            commitment to making Librum better with every update.
+          </Text>
         </Flex>
-        <Text>Thank you for your generous support!</Text>
-        <Text>
-          Your contributions fund the maintenance and development of Librum by
-          helping us cover the server cost and allowing us to make investments
-          into new areas of development. We are deeply grateful for your
-          commitment to making Librum better with every update.
-        </Text>
-      </Flex>
-      <Flex
-        direction="column"
-        w={{ base: "100%", md: "400px" }}
-        border="1px"
-        borderColor="user-profile-border"
-        borderRadius="md"
-        p="2rem"
-        alignSelf="flex-start"
-      >
-        {step === 1 ? (
-          <>
-            <DonationFreq />
-            <Heading size="md" mb="1rem" mt="2rem" textAlign="center">
-              Select amount
-            </Heading>
-            <DonationCards setAmount={setAmount} />
-            {validInput ? null : (
-              <Text fontSize="sm" textColor="red">
-                Please enter a valid amount
-              </Text>
-            )}
-            <CustomDonation amount={amount} setAmount={setAmount} />
-            <Button
-              variant="primary"
-              h="50px"
-              onClick={validateDonationInput}
-              fontSize="1.1rem"
-            >
-              Donate and Support
-            </Button>
-          </>
-        ) : null}
+        <Flex
+          direction="column"
+          w={{ base: "100%", md: "400px" }}
+          border="1px"
+          borderColor="user-profile-border"
+          borderRadius="md"
+          p="2rem"
+        >
+          {step === 1 ? (
+            <>
+              <DonationFreq />
+              <Heading size="md" mb="1rem" mt="2rem" textAlign="center">
+                Select amount
+              </Heading>
+              <DonationCards setAmount={setAmount} />
+              {validInput ? null : (
+                <Text fontSize="sm" textColor="red">
+                  Please enter a valid amount
+                </Text>
+              )}
+              <CustomDonation amount={amount} setAmount={setAmount} />
+              <Button
+                variant="primary"
+                h="50px"
+                onClick={validateDonationInput}
+                fontSize="1.1rem"
+              >
+                Donate and Support
+              </Button>
+            </>
+          ) : null}
 
-        {step === 2 ? <Checkout amount={amount} setStep={setStep} /> : null}
+          {step === 2 ? <Checkout amount={amount} setStep={setStep} /> : null}
+        </Flex>
       </Flex>
     </Flex>
   );

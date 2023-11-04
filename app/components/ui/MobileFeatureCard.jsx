@@ -36,10 +36,14 @@ const MobileFeatureCard = (props) => {
     >
       {props.title === "Ai Integration" ? (
         <ReactPlayer
-          url={videoUrl}
+          url={
+            colorMode === "dark"
+              ? "/videos/ai-dark.mp4"
+              : "/videos/ai-light.mp4"
+          }
           volume={0}
-          muted={true}
           playing={true}
+          muted={true}
           loop={true}
           height="100%"
           width="100%"

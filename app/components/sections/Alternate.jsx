@@ -30,6 +30,9 @@ import ReactPlayer from "react-player";
 const Alternate = () => {
   const { colorMode } = useColorMode();
 
+  const videoUrl =
+    colorMode === "dark" ? "/videos/ai-dark.mp4" : "/videos/ai-light.mp4";
+
   const evenAlternateBackground = useColorModeValue("gray.50", "#3c4047");
   const oddAlternateBackground = useColorModeValue("gray.200", "#282c34");
 
@@ -112,11 +115,9 @@ const Alternate = () => {
             w={{ base: "100%", md: "1400px" }}
           >
             <ReactPlayer
-              url={
-                colorMode === "dark"
-                  ? "/videos/ai-dark.mp4"
-                  : "/videos/ai-light.mp4"
-              }
+              url={videoUrl}
+              volume={0}
+              muted={true}
               controls={true}
               playing={true}
               loop={true}
@@ -161,15 +162,11 @@ const Alternate = () => {
               <CardBody p="1rem">
                 {block.title === "Ai Integration" ? (
                   <ReactPlayer
-                    url={
-                      colorMode === "dark"
-                        ? "/videos/ai-dark.mp4"
-                        : "/videos/ai-light.mp4"
-                    }
-                    controls={false}
+                    url={videoUrl}
+                    volume={0}
+                    muted={true}
                     playing={true}
                     loop={true}
-                    playsinline={true}
                     height="100%"
                     width="100%"
                     onClick={() => {

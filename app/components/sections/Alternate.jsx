@@ -169,6 +169,7 @@ const Alternate = () => {
                     controls={false}
                     playing={true}
                     loop={true}
+                    playsinline={true}
                     height="100%"
                     width="100%"
                     onClick={() => {

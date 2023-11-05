@@ -45,7 +45,8 @@ const Design = () => {
               By contributing to our project, you&apos;ll have the opportunity
               to showcase your creativity and design skills to a global
               audience. Whether you&apos;re an experienced designer or just
-              starting your journey, there's a place for you in our community.
+              starting your journey, there&apos;s a place for you in our
+              community.
             </Text>
             <Text>
               If you are interested in contributing to Librum&apos;s design,

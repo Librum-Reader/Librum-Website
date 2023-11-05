@@ -85,7 +85,7 @@ const PricingCard = () => {
 
   return (
     <>
-      {pricingData.map((tier) => {
+      {pricingData.map((tier, index) => {
         return (
           <Flex
             background="user-profile-bg"
@@ -99,6 +99,7 @@ const PricingCard = () => {
             width="20rem"
             alignSelf="flex-start"
             minH={isLargerThan1700 ? "640px" : "630px"}
+            key={index}
           >
             <Flex
               direction="column"

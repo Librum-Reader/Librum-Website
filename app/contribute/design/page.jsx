@@ -37,19 +37,19 @@ const Design = () => {
             <Text>
               All of these tasks require a fresh and innovative perspective to
               ensure that our software remains cutting-edge and user-friendly.
-              That's where you come in! We invite talented designers to join our
-              open-source community and help us shape the future of Librum's
-              user interface.
+              That&apos;s where you come in! We invite talented designers to
+              join our open-source community and help us shape the future of
+              Librum&apos;s user interface.
             </Text>
             <Text>
-              By contributing to our project, you'll have the opportunity to
-              showcase your creativity and design skills to a global audience.
-              Whether you're an experienced designer or just starting your
-              journey, there's a place for you in our community.
+              By contributing to our project, you&apos;ll have the opportunity
+              to showcase your creativity and design skills to a global
+              audience. Whether you&apos;re an experienced designer or just
+              starting your journey, there's a place for you in our community.
             </Text>
             <Text>
-              If you are interested in contributing to Librum's design, feel
-              free to shoot us an email at{" "}
+              If you are interested in contributing to Librum&apos;s design,
+              feel free to shoot us an email at{" "}
               <Link href="mailto:contact@librumreader.com" textColor="#946BDE">
                 contact@librumreader.com
               </Link>{" "}

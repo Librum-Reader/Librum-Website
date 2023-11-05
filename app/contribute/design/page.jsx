@@ -8,6 +8,7 @@ import {
   useMediaQuery,
   Link,
   Image,
+  Button,
 } from "@chakra-ui/react";
 
 const Design = () => {
@@ -22,8 +23,9 @@ const Design = () => {
       gap="4rem"
       direction={{ base: "column", md: "row" }}
       justify="center"
+      align="space-around"
     >
-      <Flex justify="space-between" gap="4rem" alignSelf="flex-start">
+      <Flex justify="space-between" gap="4rem" align="center">
         <Image src="/mobile_design.svg" width="40%" alignSelf="center" />
         <Flex w={{ base: "100%", md: "80%" }} direction="column">
           <Flex align="center" gap="1rem" mb="2rem">
@@ -67,6 +69,11 @@ const Design = () => {
               </Link>{" "}
               form below.
             </Text>
+            <Link href="mailto:contact@librumreader.com">
+              <Button variant="primary" alignSelf="flex-start">
+                Reach out
+              </Button>
+            </Link>
           </Flex>
         </Flex>
       </Flex>

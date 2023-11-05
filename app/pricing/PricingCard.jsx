@@ -124,9 +124,9 @@ const PricingCard = () => {
                 What you get:
               </Text>
               <List spacing={1}>
-                {tier.tierSpecs.map((spec) => {
+                {tier.tierSpecs.map((spec, index) => {
                   return (
-                    <ListItem>
+                    <ListItem key={index}>
                       <Flex align="baseline" gap=".5rem">
                         <Box>
                           <AiOutlineCheckCircle

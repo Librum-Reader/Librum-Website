@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import {
   VStack,
   Heading,
@@ -13,6 +13,7 @@ import {
 import { usePathname } from "next/navigation";
 
 const FooterContactForm = () => {
+  const contactFormRef = useRef();
   const path = usePathname();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -89,6 +90,8 @@ const FooterContactForm = () => {
       backgroundColor="bg-default"
       mb="4.5rem"
       px={{ base: "1rem", md: "0" }}
+      id="#contact"
+      ref={contactFormRef}
     >
       <Heading fontSize="1.5rem" mb="1rem" textAlign="center">
         {path === "/news" || path === "/posts"

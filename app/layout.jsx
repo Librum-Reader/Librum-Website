@@ -5,6 +5,7 @@ import Container from "./components/ui/Container";
 import Footer from "./components/sections/Footer";
 import dynamic from "next/dynamic";
 import Head from "next/head";
+
 import "./globals.css";
 
 import {

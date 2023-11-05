@@ -25,35 +25,54 @@ import { useRef, useEffect, useState } from "react";
 import FeaturesAnimate from "../ui/FeaturesAnimate";
 import FeaturesAnimateMobile from "../ui/FeaturesAnimateMobile";
 import MobileFeatureCard from "../ui/MobileFeatureCard";
+import ReactPlayer from "react-player";
 
 const Alternate = () => {
   const { colorMode } = useColorMode();
+
+  const videoUrl =
+    colorMode === "dark" ? "/videos/ai-dark.mp4" : "/videos/ai-light.mp4";
 
   const evenAlternateBackground = useColorModeValue("gray.50", "#3c4047");
   const oddAlternateBackground = useColorModeValue("gray.200", "#282c34");
 
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const {
+    isOpen: isVideoOpen,
+    onOpen: onVideoOpen,
+    onClose: onVideoClose,
+  } = useDisclosure();
+
   const [modalData, setModalData] = useState("");
 
   const data = [
     {
-      title: "Simple",
-      text: "Focus on what actually matters, using a simple and straight forward interface.",
-      text2:
-        "Your time is too valuable to be wasted on badly designed applications.",
-      text_mobile:
-        "Focus on what actually matters, using a simple and straight forward interface. Your time is too valuable to be wasted on badly designed applications.",
-      image: "/screenshots/reading_dark.png",
-      image_light: "/screenshots/reading_light.png",
-    },
-    {
-      title: "Your Own Library",
+      title: "Build Your Library",
       text: "Create your own personalized online library that you can access from any device, anytime, anywhere.",
       text2: "Librum automatically saves everything you need to the cloud.",
       text_mobile:
-        "Create your own personalized online library that you can access from any device, anytime, anywhere. Librum automatically saves everything you need to the cloud.",
+        "Create your own personalized online library that you can access from any device, anytime, anywhere.",
       image: "/screenshots/library_dark.png",
       image_light: "/screenshots/library_light.png",
+    },
+    {
+      title: "Ai Integration",
+      text: "Make use of advanced Artificial Intelligence in just two clicks.",
+      text2:
+        "Use it to explain, summarize or give you more information on any text within your book.",
+      text_mobile:
+        "Make use of advanced Artificial Intelligence in just two clicks.",
+      image: "/screenshots/explanation_dark.png",
+      image_light: "/screenshots/explanation_light.png",
+    },
+    {
+      title: "Simplicity",
+      text: "Focus on what actually matters, using a simple and straight forward interface.",
+      text2: "Your time is too valuable to be wasted on complex applications.",
+      text_mobile:
+        "Focus on what actually matters, using a simple and straight forward interface.",
+      image: "/screenshots/reading_dark.png",
+      image_light: "/screenshots/reading_light.png",
     },
     {
       title: "Fully Customizable",
@@ -81,6 +100,30 @@ const Alternate = () => {
             w={{ base: "100%", md: "1400px" }}
           >
             <Image src={modalData} className="modal-img" />
+          </Flex>
+          {/* </ModalBody> */}
+        </ModalContent>
+      </Modal>
+      <Modal isOpen={isVideoOpen} onClose={onVideoClose} isCentered>
+        <ModalOverlay />
+        <ModalContent>
+          <Flex
+            alignSelf="center"
+            background="bg-default"
+            padding="1rem"
+            borderRadius="lg"
+            w={{ base: "100%", md: "1400px" }}
+          >
+            <ReactPlayer
+              url={videoUrl}
+              volume={0}
+              muted={true}
+              controls={true}
+              playing={true}
+              loop={true}
+              height="100%"
+              width="100%"
+            />
           </Flex>
           {/* </ModalBody> */}
         </ModalContent>
@@ -117,19 +160,34 @@ const Alternate = () => {
           >
             <Card flexBasis="fit-content">
               <CardBody p="1rem">
-                <Image
-                  src={colorMode === "dark" ? block.image : block.image_light}
-                  className={
-                    index % 2 === 0
-                      ? "features-img shadow-left"
-                      : "features-img shadow-right"
-                  }
-                  alt="Illustration"
-                  onClick={() => {
-                    setModalData(block.image);
-                    onOpen();
-                  }}
-                />
+                {block.title === "Ai Integration" ? (
+                  <ReactPlayer
+                    url={videoUrl}
+                    volume={0}
+                    muted={true}
+                    playing={true}
+                    loop={true}
+                    height="100%"
+                    width="100%"
+                    onClick={() => {
+                      onVideoOpen();
+                    }}
+                  />
+                ) : (
+                  <Image
+                    src={colorMode === "dark" ? block.image : block.image_light}
+                    className={
+                      index % 2 === 0
+                        ? "features-img shadow-left"
+                        : "features-img shadow-right"
+                    }
+                    alt="Illustration"
+                    onClick={() => {
+                      setModalData(block.image);
+                      onOpen();
+                    }}
+                  ></Image>
+                )}
               </CardBody>
             </Card>
 

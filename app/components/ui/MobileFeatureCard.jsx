@@ -41,7 +41,15 @@ const MobileFeatureCard = (props) => {
               ? "/videos/ai-dark.mp4"
               : "/videos/ai-light.mp4"
           }
-          controls={true}
+
+          controls={false}
+
+          playsinline={true}
+          volume={0}
+          playing={true}
+          muted={true}
+          loop={true}
+
           height="100%"
           width="100%"
         />

@@ -55,11 +55,10 @@ const Showcase = () => {
           transition={{ duration: 0.5, delay: 0.25 }}
         >
           <Heading size="2xl" pb="1rem">
-            A Simple and Free E-Book Reader
+          Read, Explore, Excel with Ease
           </Heading>
-          <Text fontSize="xl" textColor="white" fontWeight="700">
-            A clean and simple way to read your books on any device and build
-            your own online library
+          <Text fontSize="large" textColor="white" fontWeight="560">
+            A clean and powerful way to read and manage your e-books on any device
           </Text>
           <VStack
             align={{ base: "center", md: "flex-start" }}

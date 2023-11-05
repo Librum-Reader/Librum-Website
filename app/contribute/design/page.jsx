@@ -25,7 +25,7 @@ const Design = () => {
       justify="center"
       align="space-around"
     >
-      <Flex justify="space-between" gap="4rem" align="center">
+      <Flex justify="space-between" gap="4rem" alignSelf="flex-start" mt="4rem">
         <Image src="/mobile_design.svg" width="40%" alignSelf="center" />
         <Flex w={{ base: "100%", md: "80%" }} direction="column">
           <Flex align="center" gap="1rem" mb="2rem">
@@ -70,7 +70,12 @@ const Design = () => {
               form below.
             </Text>
             <Link href="mailto:contact@librumreader.com">
-              <Button variant="primary" alignSelf="flex-start">
+              <Button
+                variant="primary"
+                alignSelf="flex-start"
+                w="140px"
+                h="42px"
+              >
                 Reach out
               </Button>
             </Link>

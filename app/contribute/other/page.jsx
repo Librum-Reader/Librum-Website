@@ -11,6 +11,7 @@ import {
   List,
   ListItem,
   OrderedList,
+  Button,
 } from "@chakra-ui/react";
 
 const Design = () => {
@@ -33,7 +34,7 @@ const Design = () => {
           alignSelf="center"
           alt="Community"
         />
-        <Flex w={{ base: "100%", md: "80%" }} direction="column">
+        <Flex w={{ base: "100%", md: "80%" }} direction="column" mt="4rem">
           <Flex align="center" gap="1rem" mb="2rem">
             <Heading m="0">Contribute Your Unique Skills</Heading>
           </Flex>
@@ -72,25 +73,18 @@ const Design = () => {
                 </ListItem>
               </OrderedList>
             </Text>
-            <Text>
-              If you are interested in contributing to Librum&apos;s design,
-              feel free to shoot us an email at{" "}
-              <Link href="mailto:contact@librumreader.com" textColor="#946BDE">
-                contact@librumreader.com
-              </Link>{" "}
-              or use the{" "}
-              <Link
-                textColor="#946BDE"
-                href=""
-                onClick={(e) => {
-                  e.preventDefault();
-                  window.scrollTo(0, document.body.scrollHeight);
-                }}
+
+            <Link href="mailto:contact@librumreader.com">
+              <Button
+                variant="primary"
+                alignSelf="flex-start"
+                w="140px"
+                h="42px"
+                mt=".5rem"
               >
-                contact
-              </Link>{" "}
-              form below.
-            </Text>
+                Reach out
+              </Button>
+            </Link>
           </Flex>
         </Flex>
       </Flex>

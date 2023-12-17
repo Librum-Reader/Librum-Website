@@ -75,7 +75,7 @@ const DownloadButton = () => {
   if (os === "Windows") {
     return (
       <a
-        href="https://librumstorageaccount.blob.core.windows.net/releases/librum-windows-0.10.2-installer.exe"
+        href="https://librumstorageaccount.blob.core.windows.net/releases/librum-windows-0.11.0-installer.exe"
         target="#"
       >
         <Button

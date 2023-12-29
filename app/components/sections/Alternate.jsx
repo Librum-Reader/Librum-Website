@@ -56,6 +56,15 @@ const Alternate = () => {
       image_light: "/screenshots/library_light.png",
     },
     {
+      title: "Simplicity",
+      text: "Focus on what actually matters, using a simple and straight forward interface.",
+      text2: "Librum works out of the box, everywhere and at any time.",
+      text_mobile:
+        "Focus on what actually matters, using a simple and straight forward interface.",
+      image: "/screenshots/reading_dark.png",
+      image_light: "/screenshots/reading_light.png",
+    },
+    {
       title: "Ai Integration",
       text: "Make use of advanced Artificial Intelligence in just two clicks.",
       text2:
@@ -64,15 +73,6 @@ const Alternate = () => {
         "Make use of advanced Artificial Intelligence in just two clicks.",
       image: "/screenshots/explanation_dark.png",
       image_light: "/screenshots/explanation_light.png",
-    },
-    {
-      title: "Simplicity",
-      text: "Focus on what actually matters, using a simple and straight forward interface.",
-      text2: "Your time is too valuable to be wasted on complex applications.",
-      text_mobile:
-        "Focus on what actually matters, using a simple and straight forward interface.",
-      image: "/screenshots/reading_dark.png",
-      image_light: "/screenshots/reading_light.png",
     },
     {
       title: "Fully Customizable",

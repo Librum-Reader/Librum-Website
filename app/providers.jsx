@@ -252,6 +252,7 @@ export function Providers({ children }) {
           textColor: "text-default",
           letterSpacing: "1px",
           lineHeight: "1.6em",
+          fontSize: ["md", "lg"],
         },
       },
       Input: inputTheme, // Same as modal, need a pre-defined variant

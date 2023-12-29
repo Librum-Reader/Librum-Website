@@ -77,8 +77,7 @@ const Alternate = () => {
     {
       title: "Fully Customizable",
       text: "Customize Librum to make it look and feel the way you want it to. No app is perfect for everyone right away, but we make it possible for you to make it perfect.",
-      text_mobile:
-        "Customize Librum to make it look and feel the way you want it to. No app is perfect for everyone right away, but we make it possible for you to make it perfect.",
+      text_mobile: "Customize Librum to make it look and feel the way you want it to.",
       image: "/screenshots/settings_dark.png",
       image_light: "/screenshots/settings_light.png",
     },

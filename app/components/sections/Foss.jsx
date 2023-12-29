@@ -16,13 +16,12 @@ const Foss = () => {
       gap="2rem"
       px="1rem"
     >
-      <Heading size="lg" mb={{ base: "0", md: "1rem" }}>
+      <Heading size="lg" mb={{ base: "0", md: "-0.6rem" }}>
         Free and Open Source
       </Heading>
       <Text textAlign="center">
-        Our code is open source so feel free to propose a new feature or
-        improvement on it . Also check out our blog for latest updates and
-        downloads.
+        Our code is fully open source, feel free to propose new features or
+        improvements.
       </Text>
       <Flex gap={{ base: "5rem", md: "10rem" }} mt={{ base: "0", md: "2rem" }}>
         <Link href="https://github.com/Librum-Reader/Librum" target="#">

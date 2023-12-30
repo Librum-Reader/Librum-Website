@@ -140,54 +140,24 @@ export default function RootLayout({ children }) {
                               w={{ base: "100%", md: "620px" }}
                               bg="bg-default"
                               // mx={{ base: "1rem", md: "0" }}
-                              p={{ base: "1rem", md: "4rem" }}
+                              p={{ base: "1rem", md: "2rem" }}
                               borderRadius="md"
-                              gap="2rem"
+                              gap="1rem"
                               direction="column"
-                              align="center"
+                              align="left"
                             >
-                              <Image src="/cookies.svg" w="150px" h="auto" />
-                              <Heading size="lg">We use cookies</Heading>
+                              <Flex gap="1rem"><Image src="/cookies.svg" alt="cookies icon" w="40px" h="auto" />
+                                <Heading size="lg">We use cookies</Heading></Flex>
                               <Flex
                                 gap="2rem"
                                 direction="column"
                                 justify="center"
                               >
-                                <Text align={{ base: "center", md: "center" }}>
+                                <Text align={{ base: "left", md: "left" }}>
                                   We use cookies to provide the best possible
                                   experience. By clicking continue, you agree to
-                                  Librum&apos;s policies.
+                                  Librum&apos;s <Link color="#946bdd" href="/privacypolicy">policies</Link>.
                                 </Text>
-                                <Flex
-                                  gap=".5rem"
-                                  justify="space-between"
-                                  align={{ base: "center", md: "start" }}
-                                  w="100%"
-                                  direction={{ base: "column", md: "row" }}
-                                >
-                                  <UnorderedList mt="0">
-                                    <ListItem>
-                                      <Link href="/disclaimer">
-                                        Legal Disclaimer
-                                      </Link>
-                                    </ListItem>
-                                    <ListItem>
-                                      <Link href="/privacypolicy">
-                                        Privacy Policy
-                                      </Link>
-                                    </ListItem>
-                                    <ListItem>
-                                      <Link href="/cookies">
-                                        Cookies Policy
-                                      </Link>
-                                    </ListItem>
-                                    <ListItem>
-                                      <Link href="/termsofservice">
-                                        Terms of Service
-                                      </Link>
-                                    </ListItem>
-                                  </UnorderedList>
-                                </Flex>
                               </Flex>
                               <Flex
                                 gap="1rem"

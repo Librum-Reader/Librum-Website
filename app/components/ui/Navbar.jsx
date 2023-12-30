@@ -107,8 +107,8 @@ const Navbar = () => {
                 ? "navActive"
                 : "navLinkHome"
               : path === link.href
-              ? "navActive"
-              : "navLink"
+                ? "navActive"
+                : "navLink"
           }
         >
           {link.text}
@@ -447,14 +447,6 @@ const Navbar = () => {
             display={{ base: "none", lg: "flex" }}
             align="center"
           >
-            <Button variant="link" onClick={toggleColorTheme}>
-              {colorMode === "dark" ? (
-                <SunIcon />
-              ) : (
-                <FaMoon color={path == "/" ? "white" : "#946BDE"} size={16} />
-              )}
-            </Button>
-
             {navLinkComponents}
             <Button
               variant={path == "/" ? "navLinkHome" : "navLink"}
@@ -464,6 +456,13 @@ const Navbar = () => {
               CONTACT
             </Button>
             {isLoggedIn ? <ProfileButton /> : <LoginButton />}
+            <Button variant="link" onClick={toggleColorTheme}>
+              {colorMode === "dark" ? (
+                <SunIcon />
+              ) : (
+                <FaMoon color={path == "/" ? "white" : "#946BDE"} size={16} />
+              )}
+            </Button>
           </Flex>
           <IconButton
             icon={<FaBars />}

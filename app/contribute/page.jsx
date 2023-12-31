@@ -14,9 +14,8 @@ const ContributeCard = ({ text, icon, link }) => {
   return (
     <Link href={link} _hover={{ textDecoration: "none" }}>
       <Flex
-        // background="user-profile-bg"
         border="1px"
-        borderColor={colorMode === "light" ? "user-profile-bg" : "#9c34c2"}
+        borderColor="#946BDE"
         borderRadius="md"
         height="auto"
         direction={{ base: "column", md: "column" }}

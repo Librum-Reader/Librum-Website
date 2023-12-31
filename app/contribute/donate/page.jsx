@@ -34,9 +34,9 @@ const Donate = () => {
       gap="4rem"
       direction={{ base: "column", md: "row" }}
     >
-      <Flex gap="4rem" align="center" h="-moz-max-content">
-        <Flex w={{ base: "100%", md: "60%" }} direction="column">
-          <Flex align="center" gap="1rem" mb="2rem">
+      <Flex gap={{ base: "2rem", md: "4rem" }} flexDirection={{ base: "column", md: "row" }} align="center" h="-moz-max-content">
+        <Flex w={{ base: "100%", md: "60%" }} direction="column" textAlign={{ base: "center", md: "left" }}>
+          <Flex align="center" gap="1rem" mb="2rem" direction={{ base: "column", md: "row" }}>
             <BiSolidDonateHeart size={50} color="#946bde" />
             <Heading m="0">Thank you for your support</Heading>
           </Flex>

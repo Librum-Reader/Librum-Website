@@ -119,12 +119,10 @@ body {
 }
 
 .nav-container-gradient {
-  background: linear-gradient(
-    150deg,
-    rgb(43, 25, 68) 0%,
-    rgb(109, 75, 172) 100%,
-    rgba(0, 0, 0, 1) 100%
-  );
+  background: linear-gradient(150deg,
+      rgb(43, 25, 68) 0%,
+      rgb(109, 75, 172) 100%,
+      rgba(0, 0, 0, 1) 100%);
 }
 
 .nav-container-dark {
@@ -208,13 +206,14 @@ Nav links hover animation
 }
 
 .contribute-card {
-  transition: 150ms ease-in-out;
+  transition: 150ms ease-in;
 }
 
 .contribute-card:hover {
-  filter: drop-shadow(5px 5px 10px #0000006b);
-  transform: scale(1.05);
+  border: 1px solid #9c34c2;
   cursor: pointer;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px -1px rgba(0, 0, 0, .1);
+
 }
 
 @media only screen and (max-width: 600px) {

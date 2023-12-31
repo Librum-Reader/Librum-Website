@@ -140,9 +140,9 @@ export default function RootLayout({ children }) {
                               w={{ base: "100%", md: "620px" }}
                               bg="bg-default"
                               // mx={{ base: "1rem", md: "0" }}
-                              p={{ base: "1rem", md: "2rem" }}
+                              p={{ base: "1.5rem", md: "2rem" }}
                               borderRadius="md"
-                              gap="1rem"
+                              gap={{ base: "1rem", md: "1.5rem" }}
                               direction="column"
                               align="left"
                             >
@@ -156,7 +156,8 @@ export default function RootLayout({ children }) {
                                 <Text align={{ base: "left", md: "left" }}>
                                   We use cookies to provide the best possible
                                   experience. By clicking continue, you agree to
-                                  Librum&apos;s <Link color="#946bdd" href="/privacypolicy">policies</Link>.
+                                  Librum&apos;s <Link color="#946bdd" focusBorderColor="transparent"
+                                    focusBoxShadow="none" _focusVisible={"none"} href="/privacypolicy">policies</Link>.
                                 </Text>
                               </Flex>
                               <Flex

@@ -7,8 +7,10 @@ import {
   Box,
   Button,
   VStack,
+  useMediaQuery,
   chakra,
   shouldForwardProp,
+  Center,
 } from "@chakra-ui/react";
 import { useContext, useEffect, useRef } from "react";
 import Lottie from "lottie-web";
@@ -18,6 +20,7 @@ import ShowcaseAnimation from "../ui/ShowcaseAnimation";
 import { isValidMotionProp, motion } from "framer-motion";
 import { PiGithubLogo } from "react-icons/pi";
 import Link from "next/link";
+import { Providers } from "@/app/providers";
 
 const Showcase = () => {
   const container = useRef(null);
@@ -33,6 +36,8 @@ const Showcase = () => {
   }, []);
 
   const ChakraBox = motion(Box);
+
+  const [isDesktop] = useMediaQuery("(min-width: 48em)");
 
   return (
     <Flex direction="column" align="center" w="100%">
@@ -76,6 +81,13 @@ const Showcase = () => {
                 GitHub
               </Button>
             </Link>
+            {isDesktop && (
+            <Link href="contribute">
+              <Text fontSize="md" textColor="#946BDE" mt="-0.5rem" ml="5.1em" textDecor='underline'>
+                Contribute
+              </Text>
+            </Link>
+            )}
           </VStack>
         </ChakraBox>
         <Box w="50%" align="right" display={{ base: "none", md: "flex" }}>

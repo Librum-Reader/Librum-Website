@@ -17,8 +17,8 @@ const Design = () => {
       width={{ base: "100%", md: "80%" }}
       height={{ base: "100%", md: "100dvh" }}
       mx={{ base: "0", md: "auto" }}
-      mb="6rem"
-      mt="2rem"
+      mb={{ base: '6rem', md: '-8rem' }}
+      mt={{ base: '1rem', md: '6rem' }}
       p="2rem"
       gap="4rem"
       direction={{ base: "column", md: "row" }}

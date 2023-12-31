@@ -19,14 +19,14 @@ const Design = () => {
       width={{ base: "100%", md: "80%" }}
       height={{ base: "100%", md: "100dvh" }}
       mx={{ base: "0", md: "auto" }}
-      mb="6rem"
+      mb={{ base: '4rem', md: '-6rem' }}
       mt="2rem"
       p="2rem"
       gap="4rem"
       direction={{ base: "column", md: "row" }}
       justify="center"
     >
-      <Flex justify="space-between" gap={{ base: "2rem", md: "4rem" }} alignSelf="flex-start" direction={{ base: "column", md: "row" }}>
+      <Flex justify="space-between" gap={{ base: "2rem", md: "5rem" }} alignSelf="flex-start" direction={{ base: "column", md: "row" }}>
         <Image
           src="/community.svg"
           width={{ base: "100%", md: "40%" }}
@@ -39,11 +39,8 @@ const Design = () => {
           </Flex>
           <Flex direction="column" gap="1rem">
             <Text>
-              While we greatly appreciate code contributions, donations, and
-              design support, we also recognize that there are countless
-              valuable skills out there. If you have a skill or expertise that
-              you think could be useful to our project, feel free to reach out
-              to us at contact@librumreader.com
+              There are countless different, valuable skills out there. If you have a skill or expertise that
+              you think could be useful to Librum, feel free to reach out to us at contact@librumreader.com
             </Text>
             <Text>Other ways to contribute:</Text>
             <OrderedList spacing={6} textAlign={"left"}>

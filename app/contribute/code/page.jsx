@@ -150,10 +150,10 @@ const Code = () => {
       mt={{ base: "0", md: "-78px" }}
       align="center"
       direction="column"
-      mb="6rem"
+      mb="1rem"
       p="2rem"
     >
-      <Text fontSize={isLargerThan1700 ? "lg" : "lg"} mb="2rem" mt="2rem">
+      <Text fontSize={isLargerThan1700 ? "lg" : "lg"} textAlign={{ base: 'center', md: 'left' }} mb="2rem" mt="2rem">
         Librum offers many ways to contribute through code. Interested? You can
         contact us via{" "}
         <Link href="mailto:contact@librumreader.com" textColor="#946BDE">

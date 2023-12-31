@@ -38,6 +38,7 @@ export function Providers({ children }) {
         "user-profile-bg": "#e2e8f0",
         "user-profile-border": "#bec3ca",
         "user-info-bg": "#edf3fb",
+        "contribute-card": "#f8f8f8"
       },
       dark: {
         "mobile-nav-active": "#3c4047",
@@ -54,6 +55,7 @@ export function Providers({ children }) {
         "user-profile-bg": "#2d313a",
         "user-profile-border": "#3c4047",
         "user-info-bg": "#30353e",
+        "contribute-card": "#30353e"
       },
     },
   };
@@ -75,6 +77,10 @@ export function Providers({ children }) {
       "user-profile-border": {
         default: tokens.colors.light["user-profile-border"],
         _dark: tokens.colors.dark["user-profile-border"],
+      },
+      "contribute-card": {
+        default: tokens.colors.light["contribute-card"],
+        _dark: tokens.colors.dark["contribute-card"],
       },
       "text-default": {
         default: tokens.colors.light["text-default"],

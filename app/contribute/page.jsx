@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Flex, Text, Heading, useMediaQuery, Link } from "@chakra-ui/react";
+import { Flex, Text, Heading, useMediaQuery, Link, useColorMode } from "@chakra-ui/react";
 import { AiFillGithub } from "react-icons/ai";
 import { FaPatreon } from "react-icons/fa";
 import { CgFigma } from "react-icons/cg";
@@ -10,12 +10,13 @@ import { BiSolidDonateHeart } from "react-icons/bi";
 import { IoPeopleSharp } from "react-icons/io5";
 
 const ContributeCard = ({ text, icon, link }) => {
+  const { colorMode } = useColorMode();
   return (
     <Link href={link} _hover={{ textDecoration: "none" }}>
       <Flex
         // background="user-profile-bg"
         border="1px"
-        borderColor="user-profile-border"
+        borderColor={colorMode === "light" ? "user-profile-bg" : "#9c34c2"}
         borderRadius="md"
         height="auto"
         direction={{ base: "column", md: "column" }}

@@ -27,6 +27,7 @@ import {
 
 import FooterContactForm from "../ui/FooterContactForm";
 import { useRouter } from "next/navigation";
+import LeagalLinkPopup from "@/app/components/popup/leagal-links"
 
 const Footer = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -34,43 +35,8 @@ const Footer = () => {
 
   return (
     <>
-      <Modal
-        isOpen={isOpen}
-        onClose={onClose}
-        variant="legalVariant"
-        isCentered
-        size="xl"
-      >
-        <ModalOverlay />
-        <ModalContent mx={{ base: "1rem", md: "0" }}>
-          <ModalHeader px="4rem" pt="3.5rem">
-            Librum-Reader Legal Information
-          </ModalHeader>
-          <ModalCloseButton />
-          <ModalBody px="4rem" pb="3rem">
-            <Flex direction="column">
-              The following pages provide the various legal information
-              pertaining to Librum-Reader:
-              <VStack mt="1rem" align="start">
-                <UnorderedList mt="0">
-                  <ListItem>
-                    <Link href="/disclaimer">Legal Disclaimer</Link>
-                  </ListItem>
-                  <ListItem>
-                    <Link href="/privacypolicy">Privacy Policy</Link>
-                  </ListItem>
-                  <ListItem>
-                    <Link href="/cookies">Cookies Policy</Link>
-                  </ListItem>
-                  <ListItem>
-                    <Link href="/termsofservice">Terms of Service</Link>
-                  </ListItem>
-                </UnorderedList>
-              </VStack>
-            </Flex>
-          </ModalBody>
-        </ModalContent>
-      </Modal>
+      <LeagalLinkPopup isOpen={isOpen}
+        onClose={onClose} />
       <Flex
         backgroundColor="bg-default"
         justify="center"

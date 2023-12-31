@@ -1,55 +1,48 @@
 "use client";
-import { Inter } from "next/font/google";
-import Navbar from "./components/ui/Navbar";
-import Container from "./components/ui/Container";
-import Footer from "./components/sections/Footer";
 import dynamic from "next/dynamic";
+import { Inter } from "next/font/google";
 import Head from "next/head";
+import Footer from "./components/sections/Footer";
+import Container from "./components/ui/Container";
+import Navbar from "./components/ui/Navbar";
 
 import "./globals.css";
 
 import {
-  ChakraProvider,
+  Button,
   ColorModeScript,
+  Flex,
+  Heading,
+  Image,
+  Link,
   Modal,
   ModalBody,
-  ModalCloseButton,
   ModalContent,
   ModalOverlay,
-  useDisclosure,
-  Card,
-  CardBody,
-  Flex,
-  Image,
-  Heading,
   Text,
-  Center,
-  Button,
-  Link,
-  UnorderedList,
-  ListItem,
+  useDisclosure
 } from "@chakra-ui/react";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import { Providers } from "./providers";
 
-import { store } from "./store";
 import { Provider } from "react-redux";
+import { store } from "./store";
 
 import { CookiesProvider } from "react-cookie";
 
 import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
 
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { LoginContext } from "./context/loginModalContext";
-import { useRouter } from "next/navigation";
 
 const inter = Inter({ subsets: ["latin"] });
 
 const queryClient = new QueryClient();
 
-import { getVerifiedStatus } from "./utils/apiFunctions";
+import LeagalLinkPopup from "./components/popup/leagal-links";
 
 export default function RootLayout({ children }) {
   const [firstVisit, setFirstVisit] = useState(true);
@@ -58,6 +51,7 @@ export default function RootLayout({ children }) {
     onOpen: onDisclaimerOpen,
     onClose: onDisclaimerClose,
   } = useDisclosure();
+  const { isOpen: isPolicyOpen, onOpen: onPolicyOpen, onClose: onPolicyClose } = useDisclosure();
 
   useEffect(() => {
     const inititalVisitToWebsite = localStorage.getItem("firstVisit");
@@ -157,7 +151,10 @@ export default function RootLayout({ children }) {
                                   We use cookies to provide the best possible
                                   experience. By clicking continue, you agree to
                                   Librum&apos;s <Link color="#946bdd" focusBorderColor="transparent"
-                                    focusBoxShadow="none" _focusVisible={"none"} href="/privacypolicy">policies</Link>.
+                                    focusBoxShadow="none" _focusVisible={"none"} onClick={() => {
+                                      onPolicyOpen()
+                                      onDisclaimerClose()
+                                    }}>policies</Link>.
                                 </Text>
                               </Flex>
                               <Flex
@@ -185,6 +182,8 @@ export default function RootLayout({ children }) {
                       <Navbar />
                       {/* <DynamicNav /> */}
                       {children}
+                      <LeagalLinkPopup isOpen={isPolicyOpen}
+                        onClose={onPolicyClose} />
                       <Footer />
                     </Container>
                   </Providers>

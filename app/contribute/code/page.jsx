@@ -70,7 +70,7 @@ const StackCard = () => {
   return stackData.map((item, index) => {
     return (
       <Flex
-        background="#f8f8f8"
+        background={colorMode === "dark" ? "user-profile-bg" : "#f8f8f8"}
         border="1px"
         borderColor="user-profile-border"
         borderRadius="md"
@@ -111,7 +111,6 @@ const StackCard = () => {
                     xl: "semibold",
                     "2xl": "bold",
                   }}
-                  color={"#333"}
                 >
                   {stackItem.stackItem}
                 </Text>

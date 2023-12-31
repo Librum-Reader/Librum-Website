@@ -135,7 +135,7 @@ export function Providers({ children }) {
   };
 
   const theme = extendTheme({
-    initialColorMode: "light",
+    initialColorMode: "dark",
     useSystemColorMode: false,
     semanticTokens,
     styles: {

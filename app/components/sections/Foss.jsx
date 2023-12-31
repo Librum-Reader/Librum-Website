@@ -7,21 +7,20 @@ const Foss = () => {
   return (
     <Flex
       bg="bg-default"
-      pt={{ base: "10rem", md: "0" }}
+      pt={{ base: "2rem", md: "1rem" }}
       direction="column"
       justify="center"
       align="center"
       w="100%"
-      pb="10rem"
+      pb={{ base: "6rem", md: "10rem" }}
       gap="2rem"
       px="1rem"
     >
-      <Heading size="lg" mb={{ base: "0", md: "-0.6rem" }}>
+      <Heading size="lg" mb="-0.6rem">
         Free and Open Source
       </Heading>
       <Text textAlign="center">
-        Our code is fully open source, feel free to propose new features or
-        improvements.
+        Our code is fully open source, feel free to propose new features or improvements.
       </Text>
       <Flex gap={{ base: "5rem", md: "10rem" }} mt={{ base: "0", md: "2rem" }}>
         <Link href="https://github.com/Librum-Reader/Librum" target="#">

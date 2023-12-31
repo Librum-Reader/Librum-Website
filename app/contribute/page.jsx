@@ -13,23 +13,23 @@ const ContributeCard = ({ text, icon, link }) => {
   return (
     <Link href={link} _hover={{ textDecoration: "none" }}>
       <Flex
-        background="user-profile-bg"
+        // background="user-profile-bg"
         border="1px"
         borderColor="user-profile-border"
         borderRadius="md"
         height="auto"
-        direction={{ base: "row", md: "column" }}
+        direction={{ base: "column", md: "column" }}
         align="center"
-        padding="1rem"
-        gap="2rem"
+        padding={{ base: "1rem 2rem", md: "2rem 3rem" }}
+        // gap="1rem"
         className="contribute-card"
         //   p={{ base: "1rem", md: "2rem" }}
-        //   direction={{ base: "column", md: "row" }}
-        // w="320px"
-        // h="255px"
+        w={{ base: "300px", md: "250px" }}
+        h="200px"
+        justifyContent={"space-evenly"}
       >
         {icon}
-        <Heading size="lg">{text}</Heading>
+        <Heading size="md">{text}</Heading>
       </Flex>
     </Link>
   );
@@ -42,7 +42,7 @@ const Contribute = () => {
     {
       text: "CODE",
       icon: (
-        <AiFillGithub size={isSmallerThan400 ? "50" : "200"} color="#946BDE" />
+        <AiFillGithub size={"60"} color="#946BDE" />
       ),
       link: "/contribute/code",
     },
@@ -50,7 +50,7 @@ const Contribute = () => {
       text: "DONATE",
       icon: (
         <BiSolidDonateHeart
-          size={isSmallerThan400 ? "50" : "200"}
+          size={"60"}
           color="#946BDE"
         />
       ),
@@ -58,13 +58,13 @@ const Contribute = () => {
     },
     {
       text: "DESIGN",
-      icon: <CgFigma size={isSmallerThan400 ? "50" : "200"} color="#946BDE" />,
+      icon: <CgFigma size={"60"} color="#946BDE" />,
       link: "/contribute/design",
     },
     {
       text: "OTHER",
       icon: (
-        <IoPeopleSharp size={isSmallerThan400 ? "50" : "200"} color="#946BDE" />
+        <IoPeopleSharp size={"60"} color="#946BDE" />
       ),
       link: "/contribute/other",
     },

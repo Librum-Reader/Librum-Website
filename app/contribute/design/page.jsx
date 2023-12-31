@@ -25,9 +25,9 @@ const Design = () => {
       justify="center"
       align="space-around"
     >
-      <Flex justify="space-between" gap="4rem" alignSelf="flex-start" mt="4rem">
-        <Image src="/mobile_design.svg" width="40%" alignSelf="center" />
-        <Flex w={{ base: "100%", md: "80%" }} direction="column">
+      <Flex justify="space-between" gap={{ base: "2rem", md: "4rem" }} alignSelf="flex-start" mt="4rem" direction={{ base: "column", md: "row" }}>
+        <Image src="/mobile_design.svg" alt="Design contribute" width={{ base: "100%", md: "35%" }} alignSelf="center" />
+        <Flex w={{ base: "100%", md: "80%" }} direction="column" textAlign={{ base: "center", md: "left" }}>
           <Flex align="center" gap="1rem" mb="2rem">
             <Heading m="0">Contribute through design</Heading>
           </Flex>

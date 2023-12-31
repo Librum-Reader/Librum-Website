@@ -1,5 +1,4 @@
 "use client";
-
 import React from "react";
 import {
   Flex,
@@ -27,14 +26,14 @@ const Design = () => {
       direction={{ base: "column", md: "row" }}
       justify="center"
     >
-      <Flex justify="space-between" gap="4rem" alignSelf="flex-start">
+      <Flex justify="space-between" gap={{ base: "2rem", md: "4rem" }} alignSelf="flex-start" direction={{ base: "column", md: "row" }}>
         <Image
           src="/community.svg"
-          width="40%"
+          width={{ base: "100%", md: "40%" }}
           alignSelf="center"
           alt="Community"
         />
-        <Flex w={{ base: "100%", md: "80%" }} direction="column" mt="4rem">
+        <Flex w={{ base: "100%", md: "80%" }} direction="column" mt={{ base: "2rem", md: "4rem" }} textAlign={{ base: "center", md: "left" }}>
           <Flex align="center" gap="1rem" mb="2rem">
             <Heading m="0">Contribute Your Unique Skills</Heading>
           </Flex>
@@ -47,32 +46,30 @@ const Design = () => {
               to us at contact@librumreader.com
             </Text>
             <Text>Other ways to contribute:</Text>
-            <Text>
-              <OrderedList spacing={6}>
-                <ListItem>
-                  Spread the Word: Even if you don&apos;t have a specific skill
-                  to contribute, you can still support Librum in various ways.
-                  Share our application with your friends and colleagues,
-                  encouraging them to explore and utilize it.
-                </ListItem>
-                <ListItem>
-                  Leave Reviews: If you&apos;ve used Librum and found it
-                  valuable, consider leaving a review. Your feedback not only
-                  helps us improve but also guides others in discovering the
-                  benefits of our software.
-                </ListItem>
-                <ListItem>
-                  Write Blogs: If you enjoy writing, consider creating blog
-                  posts about your experience with Librum, its features, and how
-                  it helps you. Share your insights and tips with our community.
-                </ListItem>
-                <ListItem>
-                  Social Media Sharing: Promote Librum on your social media
-                  platforms. Share your thoughts, tips, and help us expand our
-                  user base.
-                </ListItem>
-              </OrderedList>
-            </Text>
+            <OrderedList spacing={6} textAlign={"left"}>
+              <ListItem>
+                Spread the Word: Even if you don&apos;t have a specific skill
+                to contribute, you can still support Librum in various ways.
+                Share our application with your friends and colleagues,
+                encouraging them to explore and utilize it.
+              </ListItem>
+              <ListItem>
+                Leave Reviews: If you&apos;ve used Librum and found it
+                valuable, consider leaving a review. Your feedback not only
+                helps us improve but also guides others in discovering the
+                benefits of our software.
+              </ListItem>
+              <ListItem>
+                Write Blogs: If you enjoy writing, consider creating blog
+                posts about your experience with Librum, its features, and how
+                it helps you. Share your insights and tips with our community.
+              </ListItem>
+              <ListItem>
+                Social Media Sharing: Promote Librum on your social media
+                platforms. Share your thoughts, tips, and help us expand our
+                user base.
+              </ListItem>
+            </OrderedList>
 
             <Link href="mailto:contact@librumreader.com">
               <Button

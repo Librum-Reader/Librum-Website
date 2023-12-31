@@ -68,7 +68,7 @@ const StackCard = () => {
   return stackData.map((item, index) => {
     return (
       <Flex
-        background="user-profile-bg"
+        background="#f8f8f8"
         border="1px"
         borderColor="user-profile-border"
         borderRadius="md"
@@ -79,8 +79,9 @@ const StackCard = () => {
         padding="1rem"
         gap="2rem"
         className="contribute-card"
-        width="1000%"
+        width={{ base: "auto", md: "350px" }}
         key={index}
+
       >
         <Flex
           width="100%"
@@ -91,9 +92,10 @@ const StackCard = () => {
           borderColor="#946BDE"
           paddingBottom="1rem"
           direction="column"
+
         >
           {item.icon}
-          <Heading size={isLargerThan1700 ? "xl" : "2xl"}>{item.title}</Heading>
+          <Heading size={isLargerThan1700 ? "lg" : "lg"}>{item.title}</Heading>
         </Flex>
         {item.stack.map((stackItem, index) => {
           return (
@@ -121,6 +123,7 @@ const StackCard = () => {
               w="100%"
               leftIcon={<PiGithubLogo />}
               alignSelf="flex-end"
+            // background={"#333"}
             >
               Github
             </Button>
@@ -170,7 +173,7 @@ const Code = () => {
         direction={{ base: "column", md: "row" }}
         width={isLargerThan1700 ? "80%" : "100%"}
         px={{ base: "0", md: "7rem" }}
-        height="65%"
+        justifyContent={"center"}
       >
         <StackCard />
       </Flex>

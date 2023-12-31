@@ -28,8 +28,8 @@ const Donate = () => {
       width={{ base: "100%", md: "80%" }}
       height={{ base: "100%", md: "100dvh" }}
       mx={{ base: "0", md: "auto" }}
-      mb="6rem"
-      mt="2rem"
+      mb={{ base: '4rem', md: '-12rem' }}
+      mt={{ base: '2rem', md: '10rem' }}
       p="2rem"
       gap="4rem"
       direction={{ base: "column", md: "row" }}

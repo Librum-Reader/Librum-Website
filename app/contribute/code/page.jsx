@@ -7,6 +7,7 @@ import {
   Button,
   useMediaQuery,
   Link,
+  useColorMode,
 } from "@chakra-ui/react";
 import { BsDisplay } from "react-icons/bs";
 import { FaServer } from "react-icons/fa6";
@@ -15,6 +16,7 @@ import { PiGithubLogo } from "react-icons/pi";
 
 const StackCard = () => {
   const [isLargerThan1700] = useMediaQuery("(min-width: 1700px)");
+  const { colorMode } = useColorMode();
   const stackData = [
     {
       title: "Client",
@@ -109,6 +111,7 @@ const StackCard = () => {
                     xl: "semibold",
                     "2xl": "bold",
                   }}
+                  color={"#333"}
                 >
                   {stackItem.stackItem}
                 </Text>

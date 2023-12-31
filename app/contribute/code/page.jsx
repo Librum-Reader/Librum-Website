@@ -111,6 +111,7 @@ const StackCard = () => {
                     xl: "semibold",
                     "2xl": "bold",
                   }}
+                  color={colorMode === "light" ? "text-default" : "#fff"}
                 >
                   {stackItem.stackItem}
                 </Text>

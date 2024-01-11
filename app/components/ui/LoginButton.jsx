@@ -326,18 +326,18 @@ const LoginButton = (props) => {
           <ModalCloseButton />
           <ModalBody>
             <Center>
-              <Box textAlign="center" mb="1rem">
-                <Heading size="lg" pb=".5rem">
+              <Box textAlign="center" mb="1.4rem">
+                <Heading size="xl" fontWeight="semibold" pb=".5rem">
                   Welcome back!
                 </Heading>
-                <Text fontSize="md">Log into your account</Text>
+                <Text fontSize="xl">Log into your account</Text>
               </Box>
             </Center>
             <FormControl>
               <FormLabel
                 fontSize="md"
                 textColor="text-default"
-                mb="0"
+                mb="0.4rem"
                 fontWeight="semibold"
               >
                 Email
@@ -356,7 +356,7 @@ const LoginButton = (props) => {
               <FormLabel
                 fontSize="md"
                 textColor="text-default"
-                mb="0"
+                mb="0.4rem"
                 fontWeight="semibold"
               >
                 Password
@@ -379,24 +379,24 @@ const LoginButton = (props) => {
                 </InputRightElement>
               </InputGroup>
             </FormControl>
-            <Text fontSize="sm">
-              Forgot password? Click{" "}
-              <Link
-                href="#"
-                textColor="#946BDE"
-                onClick={() => {
-                  onOpenPasswordReset();
-                  onCloseLogin();
-                }}
-              >
-                here
-              </Link>{" "}
-              to reset it.
-            </Text>
           </ModalBody>
 
           <ModalFooter>
             <Box width="100%" textAlign="center" pb=".7rem">
+              <Text fontSize="sm" mb="0.8rem" textAlign="left">
+                Forgot password? Click{" "}
+                <Link
+                  href="#"
+                  textColor="#946BDE"
+                  onClick={() => {
+                    onOpenPasswordReset();
+                    onCloseLogin();
+                  }}
+                >
+                  here
+                </Link>{" "}
+                to reset it.
+              </Text>
               <Button
                 onClick={() => {
                   handleLogin({ Email: email, Password: password });
@@ -436,10 +436,10 @@ const LoginButton = (props) => {
             <Center>
               <Flex direction="column">
                 <Box textAlign="center" mb="1rem">
-                  <Heading size="lg" pb=".5rem">
+                  <Heading size="xl" pb=".5rem">
                     Welcome to Librum
                   </Heading>
-                  <Text fontSize="sm" lineHeight={1.6}>
+                  <Text fontSize={15} lineHeight={1.2}>
                     Your credentials are only used to authenticate you. Your
                     credentials will be stored in a secure database.
                   </Text>
@@ -449,7 +449,7 @@ const LoginButton = (props) => {
                     <FormLabel
                       fontSize="md"
                       textColor="text-default"
-                      mb="0"
+                      mb="0.4rem"
                       fontWeight="semibold"
                     >
                       First Name
@@ -466,7 +466,7 @@ const LoginButton = (props) => {
                     <FormLabel
                       fontSize="md"
                       textColor="text-default"
-                      mb="0"
+                      mb="0.4rem"
                       fontWeight="semibold"
                     >
                       Last Name
@@ -485,7 +485,7 @@ const LoginButton = (props) => {
                     <FormLabel
                       fontSize="md"
                       textColor="text-default"
-                      mb="0"
+                      mb="0.4rem"
                       fontWeight="semibold"
                     >
                       Email
@@ -502,7 +502,7 @@ const LoginButton = (props) => {
                     <FormLabel
                       fontSize="md"
                       textColor="text-default"
-                      mb="0"
+                      mb="0.4rem"
                       fontWeight="semibold"
                     >
                       Password
@@ -528,7 +528,7 @@ const LoginButton = (props) => {
                     <FormLabel
                       fontSize="md"
                       textColor="text-default"
-                      mb="0"
+                      mb="0.4rem"
                       fontWeight="semibold"
                     >
                       Confirm password
@@ -550,32 +550,32 @@ const LoginButton = (props) => {
                       </InputRightElement>
                     </InputGroup>
                   </FormControl>
-                  <Checkbox
-                    mt="1rem"
-                    colorScheme="purple"
-                    isChecked={isChecked}
-                    onChange={() => {
-                      setIsChecked(!isChecked);
-                    }}
-                  >
-                    <Text fontSize="sm">
-                      I accept the{" "}
-                      <Link href="/termsofservice" textColor="#946BDE">
-                        Terms of Service
-                      </Link>{" "}
-                      and the{" "}
-                      <Link href="/privacypolicy" textColor="#946BDE">
-                        Privacy Policy
-                      </Link>
-                    </Text>
-                  </Checkbox>
                 </Box>
               </Flex>
             </Center>
           </ModalBody>
 
           <ModalFooter>
-            <Box width="100%" textAlign="center">
+            <Box width="100%" textAlign="left">
+              <Checkbox
+                mb="0.8rem"
+                colorScheme="purple"
+                isChecked={isChecked}
+                onChange={() => {
+                  setIsChecked(!isChecked);
+                }}
+              >
+                <Text fontSize="sm">
+                  I accept the{" "}
+                  <Link href="/termsofservice" textColor="#946BDE">
+                    Terms of Service
+                  </Link>{" "}
+                  and the{" "}
+                  <Link href="/privacypolicy" textColor="#946BDE">
+                    Privacy Policy
+                  </Link>
+                </Text>
+              </Checkbox>
               <Button
                 onClick={() => {
                   handleRegister({
@@ -587,12 +587,12 @@ const LoginButton = (props) => {
                 }}
                 variant="loginButton"
                 width="100%"
-                mb="1rem"
+                mb="0.4rem"
                 fontSize={15}
               >
                 {register.isLoading ? <BeatLoader /> : "Let's Get Started"}
               </Button>
-              <Text fontSize="sm">
+              <Text fontSize="sm" textAlign="center">
                 Already have an account?{" "}
                 <Link
                   href="#"

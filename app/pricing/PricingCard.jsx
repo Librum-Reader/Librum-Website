@@ -28,6 +28,7 @@ const PricingCard = ({ products }) => {
   const [paymentData, setPaymentData] = useState({});
 
   const isLoggedIn = useSelector((state) => {
+    console.log(state);
     return state.user.isLoggedIn;
   });
 

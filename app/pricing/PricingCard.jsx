@@ -1,6 +1,6 @@
 "use client";
-
-import React, { useState } from "react";
+import React, { use, useState } from "react";
+import { getStripe } from "@/app/utils/stripe-client";
 
 import {
   Flex,
@@ -12,80 +12,95 @@ import {
   ListIcon,
   useMediaQuery,
   Box,
+  useToast,
+  useDisclosure,
 } from "@chakra-ui/react";
 import { AiOutlineCheckCircle } from "react-icons/ai";
+import { useSelector } from "react-redux";
+import { useRouter } from "next/navigation";
+import { fetchUserInfo } from "../utils/apiFunctions";
+import PricingPaymentPopup from "@/app/components/popup/pricing-payment";
 
-const PricingCard = () => {
+const PricingCard = ({ products }) => {
   const [isLargerThan1700] = useMediaQuery("(min-width: 1700px)");
-  const pricingData = [
-    {
-      tierName: "Basic",
-      tierDescription: "Experience the power and simplicity of Librum.",
-      tierPrice: "Free",
-      tierLink: "#",
-      tierSpecs: [
+  const [isLoading, setIsLoading] = useState(false);
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [paymentData, setPaymentData] = useState({});
+
+  const isLoggedIn = useSelector((state) => {
+    return state.user.isLoggedIn;
+  });
+
+  const router = useRouter();
+  const toast = useToast();
+
+
+  const handleGetStarted = async (product) => {
+    if (!isLoggedIn) {
+      toast({
+        title: "Please login to continue",
+        status: "warning",
+        duration: 3000,
+        isClosable: true,
+      });
+      return null;
+    }
+
+    if (product?.price === 0) return null;
+
+    const token = localStorage.getItem("token");
+
+    const userinfo = await fetchUserInfo(token);
+
+    if (userinfo?.productId === product?.id) {
+      toast({
+        title: "You already have this tier",
+        status: "warning",
+        duration: 3000,
+        isClosable: true,
+      });
+      return null;
+    }
+
+    try {
+      const createCheckoutSession = await fetch(
+        '/api/create-checkout-session',
         {
-          spec: "2GB of book storage",
-        },
-        {
-          spec: "10 AI Explanation requests",
-        },
-      ],
-    },
-    {
-      tierName: "Plus",
-      tierDescription: "Increased storage and AI request limit.",
-      tierPrice: "2.49€",
-      tierLink: "#",
-      tierSpecs: [
-        {
-          spec: "5GB of book storage",
-        },
-        {
-          spec: "25 AI Explanation requests/day",
-        },
-      ],
-    },
-    {
-      tierName: "Pro",
-      tierDescription:
-        "More storage and AI power, with an addition of a statistics page.",
-      tierPrice: "4.99€",
-      tierLink: "#",
-      tierSpecs: [
-        {
-          spec: "15GB of book storage",
-        },
-        {
-          spec: "50 AI Explanation requests/day",
-        },
-        {
-          spec: "Statistics page",
-        },
-      ],
-    },
-    {
-      tierName: "Elite",
-      tierDescription: "Even more storage.",
-      tierPrice: "9.99€",
-      tierLink: "#",
-      tierSpecs: [
-        {
-          spec: "50GB of book storage",
-        },
-        {
-          spec: "100 AI Explanation requests/day",
-        },
-        {
-          spec: "Statistics page",
-        },
-      ],
-    },
-  ];
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email: userinfo?.email, name: userinfo?.firstName + " " + userinfo?.lastName,
+            priceId: product?.priceId,
+            customerId: userinfo?.customerId,
+          })
+        }
+      );
+
+      const { sessionId } = await createCheckoutSession.json();
+
+      const stripe = await getStripe();
+
+      stripe?.redirectToCheckout({ sessionId });
+
+    } catch (error) {
+      console.log(error);
+
+    }
+  }
 
   return (
-    <>
-      {pricingData.map((tier, index) => {
+    <Flex
+      width={{ base: "100%", md: "80%" }}
+      height={{ base: "100%", md: "100dvh" }}
+      mx={{ base: "0", md: "auto" }}
+      mb="6rem"
+      mt="2rem"
+      p="2rem"
+      gap={{ base: "2rem", "2xl": "4rem" }}
+      direction={{ base: "column", md: "row" }}
+      justify="center"
+    >
+      {products.length > 0 && products.map((product) => {
         return (
           <Flex
             background="user-profile-bg"
@@ -99,7 +114,7 @@ const PricingCard = () => {
             width="20rem"
             alignSelf="flex-start"
             minH={isLargerThan1700 ? "640px" : "630px"}
-            key={index}
+            key={product?.id}
           >
             <Flex
               direction="column"
@@ -107,16 +122,16 @@ const PricingCard = () => {
               gap="2rem"
             >
               <Text fontSize="xl" textColor="#946bde" fontWeight="bold">
-                {tier.tierName}
+                {product.name}
               </Text>
               <Text fontSize="md" minH={isLargerThan1700 ? "50px" : "100px"}>
-                {tier.tierDescription}
+                {product.description}
               </Text>
               <Text fontSize="2rem" fontWeight="bold" mb="2rem">
-                {tier.tierPrice}
+                {product.price === 0 ? "Free" : `${product.price / 100}€/m`}
               </Text>
             </Flex>
-            <Button variant="primary" mb="2rem" h="3rem">
+            <Button variant="primary" mb="2rem" h="3rem" onClick={() => handleGetStarted(product)}>
               Get started
             </Button>
             <Flex direction="column" mb="2rem">
@@ -124,7 +139,7 @@ const PricingCard = () => {
                 What you get:
               </Text>
               <List spacing={1}>
-                {tier.tierSpecs.map((spec, index) => {
+                {product?.features?.map((feature, index) => {
                   return (
                     <ListItem key={index}>
                       <Flex align="baseline" gap=".5rem">
@@ -134,7 +149,7 @@ const PricingCard = () => {
                             className="tier-check"
                           />
                         </Box>
-                        <Text m="0">{spec.spec}</Text>
+                        <Text m="0">{feature}</Text>
                       </Flex>
                     </ListItem>
                   );
@@ -144,7 +159,8 @@ const PricingCard = () => {
           </Flex>
         );
       })}
-    </>
+      <PricingPaymentPopup paymentData={paymentData} isOpen={isOpen} onClose={onClose} />
+    </Flex>
   );
 };
 

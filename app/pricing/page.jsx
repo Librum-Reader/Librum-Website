@@ -1,27 +1,28 @@
-"use client";
-
-import React, { useState } from "react";
-
-import { Flex, useMediaQuery } from "@chakra-ui/react";
 import PricingCard from "./PricingCard";
 
-const Pricing = () => {
-  const [isLargerThan1700] = useMediaQuery("(min-width: 1700px)");
-  return (
-    <Flex
-      width={{ base: "100%", md: "80%" }}
-      height={{ base: "100%", md: "100dvh" }}
-      mx={{ base: "0", md: "auto" }}
-      mb="6rem"
-      mt="2rem"
-      p="2rem"
-      gap={isLargerThan1700 ? "4rem" : "2rem"}
-      direction={{ base: "column", md: "row" }}
-      justify="center"
-    >
-      <PricingCard />
-    </Flex>
-  );
+const Pricing = async () => {
+  let products = [];
+  let isLive = process.env.NEXT_PUBLIC_SITE_URL.includes("librumreader");
+  try {
+    await fetch("https://api.librumreader.com/products")
+      .then((response) => response.json())
+      .then(async (data) => {
+        products = data;
+      });
+  } catch (err) {
+    console.log(err);
+  }
+
+  // sort products by price
+  products.sort((a, b) => {
+    return a.price - b.price;
+  });
+
+  const filteredProducts = products.filter((product) => {
+    return product.liveMode === isLive;
+  });
+
+  return <PricingCard products={filteredProducts} />
 };
 
 export default Pricing;

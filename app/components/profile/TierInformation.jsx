@@ -2,12 +2,14 @@ import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Flex, Text, Button } from "@chakra-ui/react";
 import UpgradeTier from "../profile/UpgradeTier";
+import { useRouter } from "next/navigation";
 
 const TierInformation = () => {
   let token;
   if (typeof window !== "undefined") {
     token = localStorage.getItem("token");
   }
+  const router = useRouter();
 
   const { isLoading, error, data } = useQuery({
     queryKey: ["user"],
@@ -37,6 +39,38 @@ const TierInformation = () => {
     storageProgress = storageProgress * 100;
   }
 
+  const handleOpenPortal = async () => {
+    try {
+      const response = await fetch("/api/create-portal-link", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: data?.email,
+          name: data?.firstName + " " + data?.lastName,
+          customerId: data?.customerId,
+        }),
+      });
+      const { url } = await response.json();
+      router.push(url);
+    } catch (error) {
+      console.log(error);
+
+    }
+    // const response = await fetch("/api/create-portal-session", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({ token: token }),
+    // });
+
+    // const { url } = await response.json();
+
+    // window.location.assign(url);
+  }
+
   return (
     <Flex
       direction="column"
@@ -57,7 +91,7 @@ const TierInformation = () => {
       </Text>
       <Flex direction="column" my="1rem" mb="2rem">
         <Text fontSize="xl" textColor="text-default" textAlign="center">
-          {data?.role.toUpperCase()}
+          {data?.role?.toUpperCase()}
         </Text>
         <Text
           fontSize="4xl"
@@ -70,8 +104,11 @@ const TierInformation = () => {
       </Flex>
       <Flex direction="column" gap="1rem">
         <UpgradeTier />
-        <Button size="sm" variant="secondary" h="40px">
+        {/* <Button size="sm" variant="secondary" h="40px">
           See why we offer multiple tiers
+        </Button> */}
+        <Button size="sm" variant="secondary" h="40px" onClick={handleOpenPortal}>
+          Open Customer Portal
         </Button>
       </Flex>
     </Flex>

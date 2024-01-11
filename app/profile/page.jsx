@@ -186,8 +186,8 @@ const UserProfile = () => {
           borderRadius="md"
           p={{ base: "1rem", md: "2rem" }}
           direction={{ base: "column", md: "row" }}
-          // w="320px"
-          // h="255px"
+        // w="320px"
+        // h="255px"
         >
           <AvatarAndUserName />
           <UsernameAndEmail />

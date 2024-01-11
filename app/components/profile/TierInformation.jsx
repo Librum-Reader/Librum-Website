@@ -11,6 +11,8 @@ const TierInformation = () => {
   }
   const router = useRouter();
 
+  const [portalLoading, setPortalLoading] = React.useState(false);
+
   const { isLoading, error, data } = useQuery({
     queryKey: ["user"],
     queryFn: () => {
@@ -23,7 +25,7 @@ const TierInformation = () => {
   let storageProgress;
 
   if (!isLoading) {
-    console.log(data);
+    // console.log(data);
     storageLimit = data?.bookStorageLimit;
     storageLimit = storageLimit / 1024;
     storageLimit = storageLimit / 1024;
@@ -41,6 +43,7 @@ const TierInformation = () => {
 
   const handleOpenPortal = async () => {
     try {
+      setPortalLoading(true);
       const response = await fetch("/api/create-portal-link", {
         method: "POST",
         headers: {
@@ -54,9 +57,10 @@ const TierInformation = () => {
       });
       const { url } = await response.json();
       router.push(url);
+      setPortalLoading(false);
     } catch (error) {
       console.log(error);
-
+      setPortalLoading(false);
     }
     // const response = await fetch("/api/create-portal-session", {
     //   method: "POST",
@@ -107,7 +111,7 @@ const TierInformation = () => {
         {/* <Button size="sm" variant="secondary" h="40px">
           See why we offer multiple tiers
         </Button> */}
-        <Button size="sm" variant="secondary" h="40px" onClick={handleOpenPortal}>
+        <Button size="sm" isLoading={portalLoading} variant="secondary" h="40px" onClick={handleOpenPortal}>
           Open Customer Portal
         </Button>
       </Flex>

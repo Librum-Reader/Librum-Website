@@ -15,6 +15,7 @@ const Donate = () => {
   const [amount, setAmount] = useState(10);
 
   const validateDonationInput = () => {
+    console.log(amount);
     if (amount) {
       setStep(2);
     } else {
@@ -26,9 +27,9 @@ const Donate = () => {
   return (
     <Flex
       width={{ base: "100%", md: "80%" }}
-      height={{ base: "100%", md: "100dvh" }}
+      height={{ base: "100%", md: "100%" }}
       mx={{ base: "0", md: "auto" }}
-      mb={{ base: '4rem', md: '-12rem' }}
+      mb={{ base: '4rem', md: '6rem' }}
       mt={{ base: '2rem', md: '10rem' }}
       p="2rem"
       gap="4rem"

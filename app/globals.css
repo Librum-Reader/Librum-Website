@@ -209,6 +209,14 @@ Nav links hover animation
   transition: 150ms ease-in;
 }
 
+.StripeElement.StripeElement--empty {
+  width: 100%;
+}
+
+.StripeElement {
+  flex: 1;
+}
+
 .contribute-card:hover {
   border: 1px solid #9c34c2;
   cursor: pointer;

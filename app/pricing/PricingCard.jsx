@@ -91,7 +91,7 @@ const PricingCard = ({ products, user, isSubscribed }) => {
               key={product?.id}
               position={"relative"}
             >
-              {product.name === "Pro" && <Text fontWeight={"bold"} fontSize={"large"} py="4px" px="15px" background={"#946bde"} borderRadius="md" position={"absolute"} w={"max-content"} top={"0"} left="50%" textAlign={"center"} transform="translate(-50%, -50%)">Most Popular</Text>}
+              {product.name === "Pro" && <Text fontWeight={"bold"} fontSize={"medium"} py="4px" px="15px" background={"#946bde"} borderRadius="sm" position={"absolute"} w={"max-content"} top={"0"} left="50%" textAlign={"center"} transform="translate(-50%, -50%)">Most Popular</Text>}
               <Flex
                 direction="column"
                 minH={isLargerThan1700 ? "200px" : "230px"}

@@ -1,11 +1,11 @@
 "use client";
-import { getStripe } from "@/app/utils/stripe-client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import {
   Box,
   Button,
   Flex,
+  Heading,
   List,
   ListItem,
   Text,
@@ -15,11 +15,11 @@ import {
 import { useRouter } from "next/navigation";
 import { AiOutlineCheckCircle } from "react-icons/ai";
 import { useSelector } from "react-redux";
-import { createCheckoutSession, createPortalLink, fetchUserInfo } from "../utils/apiFunctions";
+import { createCheckoutSession, createPortalLink } from "../utils/apiFunctions";
+import Link from "next/link";
 
 const PricingCard = ({ products, user, isSubscribed }) => {
   const [isLargerThan1700] = useMediaQuery("(min-width: 1700px)");
-  const [isLoading, setIsLoading] = useState(false);
   const [priceIdLoading, setPriceIdLoading] = useState();
 
   const isLoggedIn = useSelector((state) => {
@@ -57,75 +57,97 @@ const PricingCard = ({ products, user, isSubscribed }) => {
   }
 
   return (
-    <Flex
-      width={{ base: "80%", md: "80%" }}
-      height={{ base: "100%", md: "100dvh" }}
-      mx={{ base: "0", md: "auto" }}
-      mb="6rem"
-      mt="2rem"
-      p="2rem"
-      gap={"2rem"}
-      direction={{ base: "column", md: "row" }}
-      justify="center"
-    >
-      {products.length > 0 && products.map((product) => {
-        return (
-          <Flex
-            background="user-profile-bg"
-            border="1px"
-            borderColor={product.id === user.productId ? "#946bde" : "user-profile-border"}
-            borderRadius="md"
-            direction="column"
-            padding="1.5rem"
-            gap="1rem"
-            className="contribute-card"
-            width="20rem"
-            alignSelf="flex-start"
-            minH={isLargerThan1700 ? "640px" : "630px"}
-            key={product?.id}
-          >
+    <>
+      <Flex alignItems={"center"} direction={"column"} pt="4rem" pb={"2rem"} gap={"0.5rem"}>
+        <Heading as="h1" fontSize="4xl" fontWeight="bold" color="#946bde">Read, Explore, Excel with Librum</Heading>
+        <Text fontWeight="bold">
+          Choose a plan and start reading
+        </Text>
+      </Flex>
+      <Flex
+        width={{ base: "80%", md: "80%" }}
+        height={{ base: "100%" }}
+        mx={{ base: "0", md: "auto" }}
+        p="2rem"
+        pb="0"
+        gap={"2rem"}
+        direction={{ base: "column", md: "row" }}
+        justify="center"
+      >
+        {products.length > 0 && products.map((product) => {
+          return (
             <Flex
+              background="user-profile-bg"
+              border="1px"
+              borderColor={product.id === user.productId ? "#946bde" : "user-profile-border"}
+              borderRadius="md"
               direction="column"
-              minH={isLargerThan1700 ? "200px" : "230px"}
-              gap="1.5rem"
+              padding="1.5rem"
+              gap="1rem"
+              className="contribute-card"
+              width="20rem"
+              alignSelf="flex-start"
+              minH={isLargerThan1700 ? "640px" : "630px"}
+              key={product?.id}
+              position={"relative"}
             >
-              <Text fontSize="2xl" textColor="#946bde" fontWeight="bold">
-                {product.name}
-              </Text>
-              <Text fontSize="md" minH={isLargerThan1700 ? "100px" : "100px"}>
-                {product.description}
-              </Text>
-              <Text fontSize="2rem" fontWeight="bold" mb="2rem">
-                {product.price === 0 ? "Free" : `${product.price / 100}€ / mo`}
-              </Text>
+              {product.name === "Pro" && <Text fontWeight={"bold"} fontSize={"base"} py="0.2rem" background={"#946bde"} borderTopRadius={"5px"} borderTopRightRadius={"5px"} position={"absolute"} w={"full"} top={"0"} left="0" textAlign={"center"}>Most Popular</Text>}
+              <Flex
+                direction="column"
+                minH={isLargerThan1700 ? "200px" : "230px"}
+                gap="2rem"
+                pt="0.5rem"
+              >
+                <Text fontSize="xl" textColor="#946bde" fontWeight="bold">
+                  {product.name}
+                </Text>
+                <Text fontSize="md" minH={isLargerThan1700 ? "100px" : "100px"}>
+                  {product.description}
+                </Text>
+                {product.price === 0 ? (
+                  <Text fontSize="2rem" fontWeight="bold">Free</Text>
+                ) : (
+                  <Flex gap={"0.2rem"} alignItems={"baseline"} fontWeight="bold">
+                    <Text fontSize="2rem">{`${product.price / 100}€`}</Text>
+                    <Flex fontSize={"md"}>
+                      /mo
+                    </Flex>
+                  </Flex>
+                )}
+              </Flex>
+              <Button isLoading={product.priceId === priceIdLoading} variant="primary" mb="2rem" h="3rem" onClick={() => handleGetStarted(product)}>{buttonText}</Button>
+              <Flex direction="column" mb="2rem">
+                <Text fontWeight="bold" mb="1rem">
+                  What you get:
+                </Text>
+                <List spacing={1}>
+                  {product?.features?.map((feature, index) => {
+                    return (
+                      <ListItem key={index}>
+                        <Flex align="baseline" gap=".5rem">
+                          <Box>
+                            <AiOutlineCheckCircle
+                              color="#946bde"
+                              className="tier-check"
+                            />
+                          </Box>
+                          <Text fontSize={"base"} m="0">{feature}</Text>
+                        </Flex>
+                      </ListItem>
+                    );
+                  })}
+                </List>
+              </Flex>
             </Flex>
-            <Button isLoading={product.priceId === priceIdLoading} variant="primary" mb="2rem" h="3rem" onClick={() => handleGetStarted(product)}>{buttonText}</Button>
-            <Flex direction="column" mb="2rem">
-              <Text fontWeight="bold" mb="1rem">
-                What you get:
-              </Text>
-              <List spacing={1}>
-                {product?.features?.map((feature, index) => {
-                  return (
-                    <ListItem key={index}>
-                      <Flex align="baseline" gap=".5rem">
-                        <Box>
-                          <AiOutlineCheckCircle
-                            color="#946bde"
-                            className="tier-check"
-                          />
-                        </Box>
-                        <Text m="0">{feature}</Text>
-                      </Flex>
-                    </ListItem>
-                  );
-                })}
-              </List>
-            </Flex>
-          </Flex>
-        );
-      })}
-    </Flex>
+          );
+        })}
+      </Flex>
+      <Flex alignItems={"center"} direction={"column"} py={"5rem"} gap={"0.5rem"}>
+        <Text fontWeight="bold" fontSize={"md"}>
+          Need more? Contact us at <Link style={{ color: "#946bde" }} href="mailto:contact@librumreader.com">contact@librumreader.com</Link> to discuss your custom needs.
+        </Text>
+      </Flex>
+    </>
   );
 };
 

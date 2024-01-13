@@ -87,16 +87,16 @@ const PricingCard = ({ products, user, isSubscribed }) => {
             <Flex
               direction="column"
               minH={isLargerThan1700 ? "200px" : "230px"}
-              gap="2rem"
+              gap="1.5rem"
             >
-              <Text fontSize="xl" textColor="#946bde" fontWeight="bold">
+              <Text fontSize="2xl" textColor="#946bde" fontWeight="bold">
                 {product.name}
               </Text>
               <Text fontSize="md" minH={isLargerThan1700 ? "100px" : "100px"}>
                 {product.description}
               </Text>
               <Text fontSize="2rem" fontWeight="bold" mb="2rem">
-                {product.price === 0 ? "Free" : `${product.price / 100}€/m`}
+                {product.price === 0 ? "Free" : `${product.price / 100}€ / mo`}
               </Text>
             </Flex>
             <Button isLoading={product.priceId === priceIdLoading} variant="primary" mb="2rem" h="3rem" onClick={() => handleGetStarted(product)}>{buttonText}</Button>

@@ -91,14 +91,14 @@ const PricingCard = ({ products, user, isSubscribed }) => {
               key={product?.id}
               position={"relative"}
             >
-              {product.name === "Pro" && <Text fontWeight={"bold"} fontSize={"base"} py="0.2rem" background={"#946bde"} borderTopRadius={"5px"} borderTopRightRadius={"5px"} position={"absolute"} w={"full"} top={"0"} left="0" textAlign={"center"}>Most Popular</Text>}
+              {product.name === "Pro" && <Text fontWeight={"bold"} fontSize={"large"} py="0.2rem" background={"#946bde"} borderTopRadius={"5px"} borderTopRightRadius={"5px"} position={"absolute"} w={"full"} top={"0"} left="0" textAlign={"center"}>Most Popular</Text>}
               <Flex
                 direction="column"
                 minH={isLargerThan1700 ? "200px" : "230px"}
                 gap="2rem"
                 pt="0.5rem"
               >
-                <Text fontSize="xl" textColor="#946bde" fontWeight="bold">
+                <Text fontSize="2xl" textColor="#946bde" fontWeight="bold">
                   {product.name}
                 </Text>
                 <Text fontSize="md" minH={isLargerThan1700 ? "100px" : "100px"}>
@@ -143,7 +143,7 @@ const PricingCard = ({ products, user, isSubscribed }) => {
         })}
       </Flex>
       <Flex alignItems={"center"} direction={"column"} py={"5rem"} gap={"0.5rem"}>
-        <Text fontWeight="bold" fontSize={"md"}>
+        <Text fontWeight="bold" fontSize={"lg"}>
           Need more? Contact us at <Link style={{ color: "#946bde" }} href="mailto:contact@librumreader.com">contact@librumreader.com</Link> to discuss your custom needs.
         </Text>
       </Flex>

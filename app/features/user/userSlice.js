@@ -16,7 +16,12 @@ export const userSlice = createSlice({
     updateLoggedIn: (state, action) => {
       state.isLoggedIn = action.payload;
     },
+    resetUser: (state) => {
+      state.userInfo = null;
+      state.isLoggedIn = false;
+      localStorage.removeItem("user");
+    }
   },
 });
 
-export const { updateUser, updateLoggedIn } = userSlice.actions;
+export const { updateUser, updateLoggedIn, resetUser } = userSlice.actions;

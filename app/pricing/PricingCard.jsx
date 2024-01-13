@@ -1,36 +1,32 @@
 "use client";
-import React, { use, useState } from "react";
 import { getStripe } from "@/app/utils/stripe-client";
+import { useEffect, useState } from "react";
 
 import {
-  Flex,
-  Heading,
+  Box,
   Button,
-  Text,
+  Flex,
   List,
   ListItem,
-  ListIcon,
+  Text,
   useMediaQuery,
-  Box,
-  useToast,
-  useDisclosure,
+  useToast
 } from "@chakra-ui/react";
+import { useRouter } from "next/navigation";
 import { AiOutlineCheckCircle } from "react-icons/ai";
 import { useSelector } from "react-redux";
-import { useRouter } from "next/navigation";
-import { fetchUserInfo } from "../utils/apiFunctions";
-import PricingPaymentPopup from "@/app/components/popup/pricing-payment";
+import { createCheckoutSession, createPortalLink, fetchUserInfo } from "../utils/apiFunctions";
 
-const PricingCard = ({ products }) => {
+const PricingCard = ({ products, user, isSubscribed }) => {
   const [isLargerThan1700] = useMediaQuery("(min-width: 1700px)");
   const [isLoading, setIsLoading] = useState(false);
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const [paymentData, setPaymentData] = useState({});
+  const [priceIdLoading, setPriceIdLoading] = useState();
 
   const isLoggedIn = useSelector((state) => {
-    console.log(state);
     return state.user.isLoggedIn;
   });
+
+  const buttonText = isSubscribed ? "Manage" : "Get started";
 
   const router = useRouter();
   const toast = useToast();
@@ -46,58 +42,29 @@ const PricingCard = ({ products }) => {
       });
       return null;
     }
-
     if (product?.price === 0) return null;
 
-    const token = localStorage.getItem("token");
+    setPriceIdLoading(product?.priceId);
 
-    const userinfo = await fetchUserInfo(token);
-
-    if (userinfo?.productId === product?.id) {
-      toast({
-        title: "You already have this tier",
-        status: "warning",
-        duration: 3000,
-        isClosable: true,
-      });
+    if (isSubscribed) {
+      const url = await createPortalLink(user);
+      router.push(url);
       return null;
     }
-
-    try {
-      const createCheckoutSession = await fetch(
-        '/api/create-checkout-session',
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            email: userinfo?.email, name: userinfo?.firstName + " " + userinfo?.lastName,
-            priceId: product?.priceId,
-            customerId: userinfo?.customerId,
-          })
-        }
-      );
-
-      const { sessionId } = await createCheckoutSession.json();
-
-      const stripe = await getStripe();
-
-      stripe?.redirectToCheckout({ sessionId });
-
-    } catch (error) {
-      console.log(error);
-
-    }
+    // create checkout session
+    await createCheckoutSession(user, product?.priceId);
+    return null;
   }
 
   return (
     <Flex
-      width={{ base: "100%", md: "80%" }}
+      width={{ base: "80%", md: "80%" }}
       height={{ base: "100%", md: "100dvh" }}
       mx={{ base: "0", md: "auto" }}
       mb="6rem"
       mt="2rem"
       p="2rem"
-      gap={{ base: "2rem", "2xl": "4rem" }}
+      gap={"2rem"}
       direction={{ base: "column", md: "row" }}
       justify="center"
     >
@@ -106,7 +73,7 @@ const PricingCard = ({ products }) => {
           <Flex
             background="user-profile-bg"
             border="1px"
-            borderColor="user-profile-border"
+            borderColor={product.id === user.productId ? "#946bde" : "user-profile-border"}
             borderRadius="md"
             direction="column"
             padding="1.5rem"
@@ -125,16 +92,14 @@ const PricingCard = ({ products }) => {
               <Text fontSize="xl" textColor="#946bde" fontWeight="bold">
                 {product.name}
               </Text>
-              <Text fontSize="md" minH={isLargerThan1700 ? "50px" : "100px"}>
+              <Text fontSize="md" minH={isLargerThan1700 ? "100px" : "100px"}>
                 {product.description}
               </Text>
               <Text fontSize="2rem" fontWeight="bold" mb="2rem">
                 {product.price === 0 ? "Free" : `${product.price / 100}€/m`}
               </Text>
             </Flex>
-            <Button variant="primary" mb="2rem" h="3rem" onClick={() => handleGetStarted(product)}>
-              Get started
-            </Button>
+            <Button isLoading={product.priceId === priceIdLoading} variant="primary" mb="2rem" h="3rem" onClick={() => handleGetStarted(product)}>{buttonText}</Button>
             <Flex direction="column" mb="2rem">
               <Text fontWeight="bold" mb="1rem">
                 What you get:
@@ -160,7 +125,6 @@ const PricingCard = ({ products }) => {
           </Flex>
         );
       })}
-      <PricingPaymentPopup paymentData={paymentData} isOpen={isOpen} onClose={onClose} />
     </Flex>
   );
 };

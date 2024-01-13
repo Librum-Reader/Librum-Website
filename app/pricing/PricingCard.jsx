@@ -59,18 +59,18 @@ const PricingCard = ({ products, user, isSubscribed }) => {
   return (
     <>
       <Flex alignItems={"center"} direction={"column"} pt="4rem" pb={"2rem"} gap={"0.5rem"}>
-        <Heading as="h1" fontSize="4xl" fontWeight="bold" color="#946bde">Read, Explore, Excel with Librum</Heading>
+        <Heading as="h1" fontSize={{ base: "3xl", md: "4xl" }} textAlign={"center"} fontWeight="bold" color="#946bde">Read, Explore, Excel with Librum</Heading>
         <Text fontWeight="bold">
           Choose a plan and start reading
         </Text>
       </Flex>
       <Flex
-        width={{ base: "80%", md: "80%" }}
+        width={{ base: "100%", md: "80%" }}
         height={{ base: "100%" }}
         mx={{ base: "0", md: "auto" }}
         p="2rem"
         pb="0"
-        gap={"2rem"}
+        gap={{ base: "3rem", md: "2rem" }}
         direction={{ base: "column", md: "row" }}
         justify="center"
       >
@@ -91,17 +91,17 @@ const PricingCard = ({ products, user, isSubscribed }) => {
               key={product?.id}
               position={"relative"}
             >
-              {product.name === "Pro" && <Text fontWeight={"bold"} fontSize={"large"} py="0.2rem" background={"#946bde"} borderTopRadius={"5px"} borderTopRightRadius={"5px"} position={"absolute"} w={"full"} top={"0"} left="0" textAlign={"center"}>Most Popular</Text>}
+              {product.name === "Pro" && <Text fontWeight={"bold"} fontSize={"large"} py="4px" px="15px" background={"#946bde"} borderRadius="md" position={"absolute"} w={"max-content"} top={"0"} left="50%" textAlign={"center"} transform="translate(-50%, -50%)">Most Popular</Text>}
               <Flex
                 direction="column"
                 minH={isLargerThan1700 ? "200px" : "230px"}
-                gap="2rem"
+                gap={{ base: "1rem", md: "2rem" }}
                 pt="0.5rem"
               >
                 <Text fontSize="2xl" textColor="#946bde" fontWeight="bold">
                   {product.name}
                 </Text>
-                <Text fontSize="md" minH={isLargerThan1700 ? "100px" : "100px"}>
+                <Text fontSize="md" minH={isLargerThan1700 ? "100px" : "70px"}>
                   {product.description}
                 </Text>
                 {product.price === 0 ? (
@@ -142,8 +142,8 @@ const PricingCard = ({ products, user, isSubscribed }) => {
           );
         })}
       </Flex>
-      <Flex alignItems={"center"} direction={"column"} py={"5rem"} gap={"0.5rem"}>
-        <Text fontWeight="bold" fontSize={"lg"}>
+      <Flex alignItems={"center"} direction={"column"} py={{ base: "3rem", md: "5rem" }} gap={"0.5rem"}>
+        <Text fontWeight="bold" fontSize={"lg"} p="1rem" textAlign={"center"}>
           Need more? Contact us at <Link style={{ color: "#946bde" }} href="mailto:contact@librumreader.com">contact@librumreader.com</Link> to discuss your custom needs.
         </Text>
       </Flex>

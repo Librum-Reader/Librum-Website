@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Flex, Text, Button } from "@chakra-ui/react";
 import UpgradeTier from "../profile/UpgradeTier";
 import { useRouter } from "next/navigation";
+import { createPortalLink } from "@/app/utils/apiFunctions";
 
 const TierInformation = () => {
   let token;
@@ -42,37 +43,10 @@ const TierInformation = () => {
   }
 
   const handleOpenPortal = async () => {
-    try {
-      setPortalLoading(true);
-      const response = await fetch("/api/create-portal-link", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: data?.email,
-          name: data?.firstName + " " + data?.lastName,
-          customerId: data?.customerId,
-        }),
-      });
-      const { url } = await response.json();
-      router.push(url);
-      setPortalLoading(false);
-    } catch (error) {
-      console.log(error);
-      setPortalLoading(false);
-    }
-    // const response = await fetch("/api/create-portal-session", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({ token: token }),
-    // });
-
-    // const { url } = await response.json();
-
-    // window.location.assign(url);
+    setPortalLoading(true);
+    const url = await createPortalLink(data);
+    router.push(url);
+    return null;
   }
 
   return (

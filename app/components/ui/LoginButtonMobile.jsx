@@ -200,7 +200,9 @@ const LoginButtonMobile = ({ closeDrawer }) => {
   useEffect(() => {
     setToken(localStorage.getItem("token"));
     if (token) {
+      const userData = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : null;
       dispatch(updateLoggedIn(true));
+      dispatch(updateUser(userData));
       setTokenExists(true);
     } else {
       dispatch(updateLoggedIn(false));

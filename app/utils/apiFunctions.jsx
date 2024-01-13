@@ -1,8 +1,8 @@
 import jwt_decode from "jwt-decode";
+import { getStripe } from "./stripe-client";
 
 export const userLogin = async (data) => {
   try {
-    console.log(data);
     const response = await fetch(
       "https://api.librumreader.com/authentication/login",
       {
@@ -375,3 +375,46 @@ export const deleteAccount = async (data) => {
     console.log(err);
   }
 };
+
+export const createPortalLink = async (data) => {
+  try {
+    const response = await fetch("/api/create-portal-link", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: data?.email,
+        name: data?.firstName + " " + data?.lastName,
+        customerId: data?.customerId,
+      }),
+    });
+    const { url } = await response.json();
+    return url;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export const createCheckoutSession = async (user, priceId) => {
+  try {
+    const response = await fetch("/api/create-checkout-session", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: user?.email,
+        name: user?.firstName + " " + user?.lastName,
+        priceId: priceId,
+        customerId: user?.customerId,
+      }),
+    });
+    const { sessionId } = await response.json();
+    const stripe = await getStripe();
+    stripe?.redirectToCheckout({ sessionId });
+    return sessionId;
+  } catch (error) {
+    console.log(error);
+  }
+}

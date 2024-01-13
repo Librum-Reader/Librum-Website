@@ -140,8 +140,8 @@ const LoginButton = (props) => {
   // Redux functions for storing user info after login
   const dispatch = useDispatch();
 
-  const setUser = (token) => {
-    fetchUserInfo(token).then((result) => {
+  const setUser = async (token) => {
+    await fetchUserInfo(token).then((result) => {
       dispatch(updateUser(result));
     });
   };

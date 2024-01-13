@@ -38,8 +38,7 @@ const AccountSettings = ({ email }) => {
   const logOut = () => {
     localStorage.removeItem("token");
     removeCookie("token");
-    // dispatch(resetUser({}));
-    dispatch(updateLoggedIn(false));
+    dispatch(resetUser());
     router.push("/");
   };
 
@@ -51,8 +50,8 @@ const AccountSettings = ({ email }) => {
       borderRadius="md"
       p={{ base: "1rem", md: "2rem" }}
       direction={{ base: "column", md: "row" }}
-      // w="320px"
-      // h="255px"
+    // w="320px"
+    // h="255px"
     >
       <Flex
         direction="column"

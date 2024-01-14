@@ -45,6 +45,7 @@ import {
   DrawerCloseButton,
   Avatar,
   Divider,
+  useToast,
 } from "@chakra-ui/react";
 import Link from "next/link";
 import LoginButton from "../ui/LoginButton";
@@ -150,6 +151,8 @@ const Navbar = () => {
   const handleEmail = (event) => setEmail(event.target.value);
   const handleMessage = (event) => setMessage(event.target.value);
 
+  const toast = useToast();
+
   const submitForm = async (e, values) => {
     e.preventDefault();
     try {
@@ -175,24 +178,36 @@ const Navbar = () => {
   };
 
   const handleSubmit = async (e) => {
-    const values = {
-      Name: name,
-      Email: email,
-      Message: message,
-    };
-    setiIsLoading(true);
-    try {
-      await submitForm(e, values);
-    } catch (err) {
-      console.log(err);
+    if (!email || !message) {
+      e.preventDefault();
+      toast({
+        title: "Uh oh!",
+        description:
+          "Please make sure all the fields are filled out before submitting your message.",
+        status: "error",
+        duration: 9000,
+        isClosable: true,
+      });
+    } else {
+      const values = {
+        Name: name,
+        Email: email,
+        Message: message,
+      };
+      setiIsLoading(true);
+      try {
+        await submitForm(e, values);
+      } catch (err) {
+        console.log(err);
+      }
+      setName("");
+      setEmail("");
+      setMessage("");
+      setiIsLoading(false);
+      e.preventDefault();
+      onClose();
+      onThankYouOpen();
     }
-    setName("");
-    setEmail("");
-    setMessage("");
-    setiIsLoading(false);
-    e.preventDefault();
-    onClose();
-    onThankYouOpen();
   };
 
   const loading = <Spinner />;

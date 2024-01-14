@@ -65,7 +65,7 @@ const Footer = () => {
             justifySelf="center"
             display={{ base: "none", md: "flex" }}
           >
-            © 2023 Librum-Reader, All rights reserved
+            © 2024 Librum-Reader, All rights reserved
           </Text>
           <Flex justifySelf="end" alignSelf="center" align="center" gap="1rem">
             <Link href="/impressum" alignSelf="center">

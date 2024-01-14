@@ -68,7 +68,7 @@ const PricingCard = ({ products, user, isSubscribed }) => {
         mx={{ base: "0", md: "auto" }}
         p="2rem"
         pb="0"
-        gap={{ base: "3rem", md: "2rem" }}
+        gap={{ base: "3rem", md: "1.8rem" }}
         direction={{ base: "column", md: "row" }}
         justify="center"
       >
@@ -89,7 +89,7 @@ const PricingCard = ({ products, user, isSubscribed }) => {
               key={product?.id}
               position={"relative"}
             >
-              {product.name === "Pro" && <Text fontWeight={"bold"} fontSize={"medium"} py="4px" px="15px" background={"#946bde"} borderRadius="sm" position={"absolute"} w={"max-content"} top={"0"} left="50%" textAlign={"center"} transform="translate(-50%, -50%)">Most Popular</Text>}
+              {product.name === "Pro" && <Button position={"absolute"} top={"0"} left="50%" transform="translate(-50%, -50%)" variant="primary" mx="auto" w="80%" h="2rem">Most Popular</Button>}
               <Flex
                 direction="column"
                 minH={isLargerThan1700 ? "200px" : "230px"}

@@ -16,13 +16,20 @@ import {
   Heading,
   Link,
 } from "@chakra-ui/react";
+import { useRouter } from "next/navigation";
 
 const UpgradeTier = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const router = useRouter();
+
+  const handleUpgrade = () => {
+    router.push("/pricing");
+    return null;
+  }
 
   return (
     <>
-      <Button size="sm" variant="primary" h="40px" onClick={onOpen}>
+      <Button size="sm" variant="primary" h="40px" onClick={handleUpgrade}>
         Upgrade
       </Button>
       <Modal

@@ -68,6 +68,10 @@ const navLinks = [
     text: "HOME",
   },
   {
+    href: "/pricing",
+    text: "PRICING",
+  },
+  {
     href: "/news",
     text: "NEWS",
   },

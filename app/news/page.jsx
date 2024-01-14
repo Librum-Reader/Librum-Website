@@ -85,7 +85,7 @@ const News = () => {
       </Box>
       <VStack spacing={2} mb={8}>
         <Text>
-          {postArray.map((post, index) => {
+          {postArray?.map((post, index) => {
             return (
               <NewsItems
                 key={index}

@@ -13,7 +13,7 @@ export const getURL = () => {
 };
 
 export async function getUser() {
-    const userToken = cookies().get("token").value;
+    const userToken = cookies().get("token")?.value;
     const userinfo = await fetchUserInfo(userToken);
 
     return userinfo;

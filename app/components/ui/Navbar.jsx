@@ -72,6 +72,10 @@ const navLinks = [
     text: "HOME",
   },
   {
+    href: "/pricing",
+    text: "PRICING",
+  },
+  {
     href: "/news",
     text: "NEWS",
   },
@@ -531,6 +535,21 @@ const Navbar = () => {
                     iconSpacing="auto"
                   >
                     HOME
+                  </Button>
+                </Link>
+                <Link
+                  href="/pricing"
+                  style={{ display: "flex", width: "100%" }}
+                  onClick={onDrawerClose}
+                >
+                  <Button
+                    w="full"
+                    size="md"
+                    variant={path === "/pricing" ? "drawerActive" : "drawerButton"}
+                    rightIcon={<FaAngleRight />}
+                    iconSpacing="auto"
+                  >
+                    PRICING
                   </Button>
                 </Link>
                 <Link

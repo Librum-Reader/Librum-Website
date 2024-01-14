@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 import {
   Box,
@@ -17,6 +17,7 @@ import { AiOutlineCheckCircle } from "react-icons/ai";
 import { useSelector } from "react-redux";
 import { createCheckoutSession, createPortalLink } from "../utils/apiFunctions";
 import Link from "next/link";
+import { LoginContext } from "../context/loginModalContext";
 
 const PricingCard = ({ products, user, isSubscribed }) => {
   const [isLargerThan1700] = useMediaQuery("(min-width: 1700px)");
@@ -26,20 +27,17 @@ const PricingCard = ({ products, user, isSubscribed }) => {
     return state.user.isLoggedIn;
   });
 
-  const buttonText = isSubscribed ? "Manage" : "Get started";
+  const buttonText = isSubscribed && isLoggedIn ? "Manage" : "Get started";
 
   const router = useRouter();
   const toast = useToast();
+  const { loginOpen, setLoginOpen } = useContext(LoginContext);
 
 
   const handleGetStarted = async (product) => {
+
     if (!isLoggedIn) {
-      toast({
-        title: "Please login to continue",
-        status: "warning",
-        duration: 3000,
-        isClosable: true,
-      });
+      setLoginOpen(!loginOpen);
       return null;
     }
     if (product?.price === 0) return null;
@@ -79,7 +77,7 @@ const PricingCard = ({ products, user, isSubscribed }) => {
             <Flex
               background="user-profile-bg"
               border="1px"
-              borderColor={product.id === user.productId ? "#946bde" : "user-profile-border"}
+              borderColor={product.id === user?.productId ? "#946bde" : "user-profile-border"}
               borderRadius="md"
               direction="column"
               padding="1.5rem"

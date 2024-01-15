@@ -24,7 +24,6 @@ const UpgradeTier = () => {
 
   const handleUpgrade = () => {
     router.push("/pricing");
-    return null;
   }
 
   return (

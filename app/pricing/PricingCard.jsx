@@ -68,7 +68,7 @@ const PricingCard = ({ products, user, isSubscribed }) => {
         mx={{ base: "0", md: "auto" }}
         p="2rem"
         pb="0"
-        gap={{ base: "3rem", md: "2rem" }}
+        gap={{ base: "3rem", md: "1rem", "2xl": "2rem" }}
         direction={{ base: "column", md: "row" }}
         justify="center"
       >
@@ -89,7 +89,7 @@ const PricingCard = ({ products, user, isSubscribed }) => {
               key={product?.id}
               position={"relative"}
             >
-              {product.name === "Pro" && <Text fontWeight={"bold"} fontSize={"medium"} py="4px" px="15px" background={"#946bde"} borderRadius="sm" position={"absolute"} w={"max-content"} top={"0"} left="50%" textAlign={"center"} transform="translate(-50%, -50%)">Most Popular</Text>}
+              {product.name === "Pro" && <Text fontWeight={"bold"} fontSize={"medium"} py="4px" px="15px" background={"#946bde"} borderRadius="sm" position={"absolute"} w={"max-content"} textColor={"white"} top={"0"} left="50%" textAlign={"center"} transform="translate(-50%, -50%)">Most Popular</Text>}
               <Flex
                 direction="column"
                 minH={isLargerThan1700 ? "200px" : "230px"}
@@ -139,7 +139,7 @@ const PricingCard = ({ products, user, isSubscribed }) => {
             </Flex>
           );
         })}
-      </Flex>
+      </Flex >
       <Flex alignItems={"center"} direction={"column"} py={{ base: "3rem", md: "5rem" }} gap={"0.5rem"}>
         <Text fontWeight="bold" fontSize={"lg"} p="1rem" textAlign={"center"}>
           Need more? Contact us at <Link style={{ color: "#946bde" }} href="mailto:contact@librumreader.com">contact@librumreader.com</Link> to discuss your custom needs.

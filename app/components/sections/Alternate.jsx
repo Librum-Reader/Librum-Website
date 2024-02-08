@@ -65,6 +65,16 @@ const Alternate = () => {
       image_light: "/screenshots/reading_light.png",
     },
     {
+      title: "Fine-grained Organization",
+      text: "Organize your library the way you want it to be using Librum's organization features.",
+      text2:
+        "Add your books to collections, tag them, and sort them in any way you want.",
+      text_mobile:
+        "Organize your library the way you want it to be using Librum's organization features.",
+      image: "/screenshots/folders_dark.png",
+      image_light: "/screenshots/folders_light.png",
+    },
+    {
       title: "Ai Integration",
       text: "Make use of advanced Artificial Intelligence in just two clicks.",
       text2:

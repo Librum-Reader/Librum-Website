@@ -51,7 +51,7 @@ const ProfileButtonMobile = () => {
       <Flex align="center" ml=".5rem">
         <Avatar src={!isAvatarLoading && avatarData} size="sm" />
         <Button colorScheme="gray" variant="drawerButton">
-          {data?.firstName} {data?.lastName}
+          {data?.name || `${data?.firstName || ""} ${data?.lastName || ""}`}
         </Button>
       </Flex>
     </Link>

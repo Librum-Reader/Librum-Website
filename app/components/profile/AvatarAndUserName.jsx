@@ -149,7 +149,7 @@ const AvatarAndUserName = () => {
 
         {/* {!isAvatarLoading && <Image src={avatarData} alt="Fetched" />} */}
         <Text fontWeight="bold">
-          {data?.firstName} {data?.lastName}
+          {data?.name || `${data?.firstName || ""} ${data?.lastName || ""}`}
         </Text>
         <Box>
           <Button

@@ -57,22 +57,18 @@ const UsernameAndEmail = () => {
   };
 
   // State handlers for changing username
-  const [newFirstName, setNewFirstName] = useState("");
-  const [newLastName, setNewLastName] = useState("");
+  const [newName, setNewName] = useState("");
 
-  const handleNewFirstName = (e) => setNewFirstName(e.target.value);
-  const handleNewLastName = (e) => setNewLastName(e.target.value);
+  const handleNewName = (e) => setNewName(e.target.value);
   const resetUsernames = () => {
-    setNewFirstName("");
-    setNewLastName("");
+    setNewName("");
   };
 
-  const handleUpdateUser = (newFirstName, newLastName) => {
+  const handleUpdateUser = (newName) => {
     const token = localStorage.getItem("token");
 
     updateUser.mutate({
-      firstName: newFirstName,
-      lastName: newLastName,
+      name: newName,
       token: token,
     });
   };
@@ -212,15 +208,17 @@ const UsernameAndEmail = () => {
           py=".3rem"
         >
           <Text fontSize="md">
-            {data?.firstName} {data?.lastName}
+            {data?.name || `${data?.firstName || ""} ${data?.lastName || ""}`}
           </Text>
 
           <Button variant="secondary" size="sm" border="0">
             <FiEdit
               size={18}
               onClick={() => {
-                setNewFirstName(data?.firstName);
-                setNewLastName(data?.lastName);
+                setNewName(
+                  data?.name ||
+                    `${data?.firstName || ""} ${data?.lastName || ""}`
+                );
                 onEditUserNameOpen();
               }}
             />
@@ -282,23 +280,14 @@ const UsernameAndEmail = () => {
           <ModalCloseButton />
           <ModalBody>
             <Text mb=".1rem" fontSize="sm" fontWeight="semibold">
-              First name
+              Name
             </Text>
             <Input
               type="text"
               variant="editUserInfo"
-              value={newFirstName}
+              value={newName}
               mb="1rem"
-              onChange={handleNewFirstName}
-            />
-            <Text mb=".1rem" fontSize="sm" fontWeight="semibold">
-              Last name
-            </Text>
-            <Input
-              type="text"
-              variant="editUserInfo"
-              value={newLastName}
-              onChange={handleNewLastName}
+              onChange={handleNewName}
             />
           </ModalBody>
 
@@ -307,7 +296,7 @@ const UsernameAndEmail = () => {
               variant="primary"
               mr="1rem"
               onClick={() => {
-                handleUpdateUser(newFirstName, newLastName);
+                handleUpdateUser(newName);
               }}
             >
               {updateUser.isLoading ? <BeatLoader /> : "Save Changes"}

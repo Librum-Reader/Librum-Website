@@ -29,6 +29,7 @@ export const userLogin = async (data) => {
 };
 
 export const userRegistration = async (data) => {
+  console.log(data);
   try {
     const response = await fetch(
       "https://api.librumreader.com/authentication/register",
@@ -40,8 +41,7 @@ export const userRegistration = async (data) => {
         },
         method: "POST",
         body: JSON.stringify({
-          FirstName: data.FirstName,
-          LastName: data.LastName,
+          Name: data.FullName,
           Email: data.Email,
           Password: data.Password,
         }),
@@ -131,13 +131,13 @@ export const getVerifiedStatus = async (email) => {
 
 export const editUser = async (data) => {
   try {
-    console.log(
-      JSON.stringify({
-        op: "replace",
-        path: "firstname",
-        value: data.email,
-      })
-    );
+    // console.log(
+    //   JSON.stringify({
+    //     op: "replace",
+    //     path: "firstname",
+    //     value: data.email,
+    //   })
+    // );
 
     const response = await fetch("https://api.librumreader.com/user", {
       headers: {
@@ -149,13 +149,8 @@ export const editUser = async (data) => {
       body: JSON.stringify([
         {
           op: "replace",
-          path: "firstName",
-          value: data.firstName,
-        },
-        {
-          op: "replace",
-          path: "lastName",
-          value: data.lastName,
+          path: "name",
+          value: data.name,
         },
         // {
         //   op: "replace",
@@ -385,7 +380,7 @@ export const createPortalLink = async (data) => {
       },
       body: JSON.stringify({
         email: data?.email,
-        name: data?.firstName + " " + data?.lastName,
+        name: data?.name || data?.firstName + " " + data?.lastName,
         customerId: data?.customerId,
       }),
     });
@@ -394,7 +389,7 @@ export const createPortalLink = async (data) => {
   } catch (error) {
     console.log(error);
   }
-}
+};
 
 export const createCheckoutSession = async (user, priceId) => {
   try {
@@ -405,7 +400,7 @@ export const createCheckoutSession = async (user, priceId) => {
       },
       body: JSON.stringify({
         email: user?.email,
-        name: user?.firstName + " " + user?.lastName,
+        name: data?.name || data?.firstName + " " + data?.lastName,
         priceId: priceId,
         customerId: user?.customerId,
       }),
@@ -417,4 +412,4 @@ export const createCheckoutSession = async (user, priceId) => {
   } catch (error) {
     console.log(error);
   }
-}
+};

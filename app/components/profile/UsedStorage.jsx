@@ -20,7 +20,6 @@ const UsedStorage = () => {
   let storageProgress;
 
   if (!isLoading) {
-    console.log(data);
     storageLimit = data?.bookStorageLimit;
     storageLimit = storageLimit / 1024;
     storageLimit = storageLimit / 1024;

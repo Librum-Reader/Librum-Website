@@ -94,7 +94,7 @@ const LoginButton = (props) => {
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
   const [registerConfirmPassword, setRegisterConfirmPassword] = useState("");
-  const [registerFirstName, setRegisterFirstName] = useState("");
+  const [registerFullName, setRegisterFullName] = useState("");
   const [registerLastName, setRegisterLastName] = useState("");
 
   // Modal state for login modal
@@ -147,8 +147,7 @@ const LoginButton = (props) => {
   };
 
   // User registration state setters
-  const handleRegFName = (event) => setRegisterFirstName(event.target.value);
-  const handleRegLName = (event) => setRegisterLastName(event.target.value);
+  const handleRegFName = (event) => setRegisterFullName(event.target.value);
   const handleRegEmail = (event) => setRegisterEmail(event.target.value);
   const handleRegPass = (event) => setRegisterPassword(event.target.value);
   const handleRegConfirmPass = (event) =>
@@ -222,6 +221,7 @@ const LoginButton = (props) => {
   const register = useMutation({
     mutationFn: userRegistration,
     onSuccess: (data) => {
+      console.log("DATA", data);
       if (data.success) {
         queryClient.invalidateQueries({ queryKey: ["register"] });
         onCloseRegister();
@@ -444,44 +444,24 @@ const LoginButton = (props) => {
                     credentials will be stored in a secure database.
                   </Text>
                 </Box>
-                <Flex gap="1rem" my="1rem">
-                  <FormControl>
-                    <FormLabel
-                      fontSize="md"
-                      textColor="text-default"
-                      mb="0"
-                      fontWeight="semibold"
-                    >
-                      First Name
-                    </FormLabel>
-                    <Input
-                      fontSize="md"
-                      value={registerFirstName}
-                      onChange={handleRegFName}
-                      variant="defaultVariant"
-                      placeholder="Kai"
-                    />
-                  </FormControl>
-                  <FormControl>
-                    <FormLabel
-                      fontSize="md"
-                      textColor="text-default"
-                      mb="0"
-                      fontWeight="semibold"
-                    >
-                      Last Name
-                    </FormLabel>
-                    <Input
-                      fontSize="md"
-                      value={registerLastName}
-                      onChange={handleRegLName}
-                      variant="defaultVariant"
-                      placeholder="Doe"
-                    />
-                  </FormControl>
-                </Flex>
                 <Box>
-                  <FormControl>
+                  <FormControl mt={4}>
+                    <FormLabel
+                      fontSize="md"
+                      textColor="text-default"
+                      fontWeight="semibold"
+                    >
+                      Name
+                    </FormLabel>
+                    <Input
+                      fontSize="md"
+                      value={registerFullName}
+                      onChange={(e) => setRegisterFullName(e.target.value)}
+                      variant="defaultVariant"
+                      placeholder="Kai Doe"
+                    />
+                  </FormControl>
+                  <FormControl mt={4}>
                     <FormLabel
                       fontSize="md"
                       textColor="text-default"
@@ -579,8 +559,7 @@ const LoginButton = (props) => {
               <Button
                 onClick={() => {
                   handleRegister({
-                    FirstName: registerFirstName,
-                    LastName: registerLastName,
+                    FullName: registerFullName,
                     Email: registerEmail,
                     Password: registerPassword,
                   });

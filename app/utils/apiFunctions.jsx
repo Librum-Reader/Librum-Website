@@ -400,7 +400,7 @@ export const createCheckoutSession = async (user, priceId) => {
       },
       body: JSON.stringify({
         email: user?.email,
-        name: data?.name || data?.firstName + " " + data?.lastName,
+        name: user?.name || user?.firstName + " " + user?.lastName,
         priceId: priceId,
         customerId: user?.customerId,
       }),

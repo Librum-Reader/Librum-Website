@@ -26,13 +26,11 @@ const TierInformation = () => {
   let storageProgress;
 
   if (!isLoading) {
-    // console.log(data);
     storageLimit = data?.bookStorageLimit;
     storageLimit = storageLimit / 1024;
     storageLimit = storageLimit / 1024;
     storageLimit = storageLimit / 1024;
 
-    // usedStorage = data?.usedBookStorage;
     usedStorage = data?.usedBookStorage;
     usedStorage = usedStorage / 1024;
     usedStorage = usedStorage / 1024;

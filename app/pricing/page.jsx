@@ -24,14 +24,14 @@ const Pricing = async () => {
   });
 
   const isSubscribed = products?.some((product) => {
-    return userinfo?.productId === product?.id && product?.price === 0;
+    return userinfo?.productId === product?.id && product?.price !== 0;
   });
 
   const filteredProducts = products.filter((product) => {
     return product.liveMode === isLive;
   });
 
-  return <PricingCard products={filteredProducts} user={userinfo} isSubscribed={!isSubscribed} />
+  return <PricingCard products={filteredProducts} user={userinfo} isSubscribed={isSubscribed} />
 };
 
 export default Pricing;

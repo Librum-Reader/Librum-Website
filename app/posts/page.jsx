@@ -81,7 +81,7 @@ const Posts = () => {
       },
       h2: ({ children }) => {
         return (
-          <Heading size={{ base: "md", md: "lg" }} color="#946bde">
+          <Heading size={{ base: "md", md: "lg" }} color="#946bde" style={{ marginTop: '70px'}}>
             {children}
           </Heading>
         );
